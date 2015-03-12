@@ -177,7 +177,7 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins.js",
-		"outputAbbreviatedPath": "\/plugins.min.js",
+		"outputAbbreviatedPath": "\/assets\/js\/plugins.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
@@ -211,6 +211,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_backgroundvideo.js",
 		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_backgroundvideo-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/kit\/assets\/js\/plugins\/_classie.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_classie.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_classie-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -271,6 +282,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/kit\/assets\/js\/plugins\/_gmaps.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_gmaps.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_gmaps-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/kit\/assets\/js\/plugins\/_hoverintent.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -310,6 +332,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_mc-signup.js",
 		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_mc-signup-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/kit\/assets\/js\/plugins\/_menu-overlay.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_menu-overlay.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_menu-overlay-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -359,12 +392,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/kit\/assets\/js\/plugins\/_parallax-heros.js": {
+	"\/kit\/assets\/js\/plugins\/_parallax-mast.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_parallax-heros.js",
-		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_parallax-heros-min.js",
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_parallax-mast.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_parallax-mast-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -436,12 +469,34 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/kit\/assets\/js\/plugins\/_svgtoinline.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_svgtoinline.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_svgtoinline-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/kit\/assets\/js\/plugins\/_tabs.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_tabs.js",
 		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_tabs-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/kit\/assets\/js\/plugins\/_vids.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/_vids.js",
+		"outputAbbreviatedPath": "\/kit\/assets\/js\/plugins\/min\/_vids-min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -1158,17 +1213,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/plugins.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/plugins.min.js",
-		"outputAbbreviatedPath": "\/min\/plugins.min-min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		},
 	"\/screenshot.png": {
 		"fileType": 32768,
