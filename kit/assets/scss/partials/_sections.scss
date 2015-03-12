@@ -1,0 +1,72 @@
+section * {
+  z-index: 3;
+  position:	relative;
+}
+
+/*----------------------------------------------   
+--Content - Sections
+-----------------------------------------------  */
+.sect-content {
+  padding: 3em 0;
+
+		.title{
+			@include content-title();
+		}  
+  &.no-top{
+  	padding-top: 0;
+  }
+  &.no-bottom{
+  	padding-bottom: 0;
+  }
+}
+
+
+/*----------------------------------------------   
+--Sect: Intro
+-----------------------------------------------  */
+.sect-intro{
+	.cols, figure{
+		@include centered;
+	}
+	figure{
+		text-align:	center;
+	}
+}
+
+/*----------------------------------------------   
+--Banners - sections with full width background images
+-----------------------------------------------  */
+.sect-banner {
+	@include sect-banner;
+}
+
+/*----------------------------------------------   
+-Sect - Video Banners
+-----------------------------------------------  */
+.bg-vid {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: 50% 50% no-repeat;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  background-size: auto 200%;
+
+  @media (min-width: $mq-med) {
+  	background-size: cover;
+  }
+}
+
+.sect-banner #bgVideo {
+  overflow: hidden;
+}
+
+.sect-banner #bgVideo > video {
+  position: absolute !important;
+  top: 0 !important;
+}
+
+

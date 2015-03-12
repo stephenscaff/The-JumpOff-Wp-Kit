@@ -1,0 +1,127 @@
+/*----------------------------------------------   
+--Positioning
+-----------------------------------------------  */
+
+.left{float:left}
+.right{float:right}
+.text-left{text-align:left}
+.text-right{text-align:right}
+.text-center{text-align:center}
+
+.cols.centered, .centered{ 
+  float:none;
+  margin:0 auto;
+  display: block;
+}
+
+.center-all,
+.center-all .g-full.cols{
+  @include center-all;
+}
+
+
+/*----------------------------------------------   
+--Vertical Center
+-----------------------------------------------  */
+.v-center{
+  display: table;
+  width: 100%;
+
+  & > div{
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 0;
+  margin-bottom: 0;
+  float: none;
+  padding: 7% 0;
+  }
+  &.row > *,
+  &.row > * {
+    display: block;
+    vertical-align: baseline;
+  }
+}
+
+
+/*----------------------------------------------   
+--Inline Lists
+-----------------------------------------------  */
+.inline-list {
+  margin: 0 auto 1.0625em auto;
+  margin-left: -1.375em;
+  margin-right: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;   
+  
+  > li {
+    list-style: none;
+    float: left;
+    margin-left: 1.375em;
+    display: block; 
+  }  
+  
+  > li > * {
+  display: block; 
+  }
+}
+
+
+/*----------------------------------------------   
+--Link Lists
+-----------------------------------------------  */
+ul.link-list{
+  margin:0 0 1em -1em;
+  padding:0;
+  list-style:none;
+  overflow:hidden
+  
+ li{
+    list-style:none;
+    float:left;
+    margin-left:1em;
+    display:block
+  }
+
+  li a{
+    display:block
+  }
+}
+
+/*----------------------------------------------   
+-Paddings 
+-----------------------------------------------  */
+
+.nomargin{
+  margin: 0;
+}
+
+
+/*----------------------------------------------   
+-Visibilities
+-----------------------------------------------  */
+.show-small{
+  display: block;
+  
+  @media (min-width: $mq-small) {
+    display: none !important;
+  }
+}
+
+.hide-small{
+  display: none !important;
+  
+  @media (min-width: $mq-small) {
+    display: block !important;
+  }
+}
+
+
+/*----------------------------------------------   
+--L to R Scroll on mobile
+-----------------------------------------------  */
+@media (max-width: $mq-xsmall) {
+	.scroller {
+		overflow-x: scroll;
+	}
+}

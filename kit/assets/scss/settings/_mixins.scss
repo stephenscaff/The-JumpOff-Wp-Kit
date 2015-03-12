@@ -1,0 +1,585 @@
+
+/*----------------------------------------------   
+--Vendor Prefix
+-----------------------------------------------  */
+@mixin prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+      -ms-#{$name}: #{$argument};
+     -moz-#{$name}: #{$argument};
+       -o-#{$name}: #{$argument};
+          #{$name}: #{$argument};
+}
+
+
+
+/*----------------------------------------------   
+--Microclearfix
+-----------------------------------------------  */
+@mixin cf() {
+ & {
+     *zoom: 1;
+ }
+ &:before,
+ &:after {
+     content: "";
+     display: table;
+ }
+ &:after {
+     clear: both;
+ }
+}
+
+/*----------------------------------------------   
+--Positioning
+-----------------------------------------------  */
+@mixin centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  float:	none;
+}
+
+@mixin center-all {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  
+  .cols{
+  	margin:	0 auto;
+  	float:	none;
+  	display:	block;
+  }
+}
+
+
+/*----------------------------------------------   
+--Positioning - vert center
+-----------------------------------------------  */
+@mixin v-center{
+  display: table;
+  width: 100%;
+
+  & > .vcenter{
+  display: table-cell;
+  vertical-align: middle;
+  margin-top: 0;
+  margin-bottom: 0;
+  float: none;
+  padding: 7% 0;
+  }
+  &.inner > *,
+  &.inner > * {
+    display: block;
+    vertical-align: baseline;
+  }
+}
+
+/*----------------------------------------------   
+--Vert Center: Single Element
+-----------------------------------------------  */
+@mixin trans-vcenter{
+	position: relative;
+	top: 50%;
+	@include transform(translateY(-50%));
+}
+
+
+/*----------------------------------------------   
+--Absolute Center
+-----------------------------------------------  */
+@mixin abs-center{
+	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+}
+
+
+/* Simple Vert Center: abs */
+@mixin abs-vcenter{
+	position: absolute !important;
+	top: 50%;
+	@include transform(translateY(-50%));
+}
+
+
+
+/*----------------------------------------------   
+--Links
+-----------------------------------------------  */
+@mixin link-styles($linkColor: $color-alpha){
+ color: $linkColor;
+ text-decoration: none; 
+ line-height:inherit;
+ @include transition(color 0.6s ease-in-out);
+ 
+ &:hover{
+ 	@include transition(color 0.6s ease-out-out);
+ 
+ @if lightness($linkColor) > 40% {
+   color:darken($linkColor,20);
+  } @else {
+    color:lighten($linkColor,20);
+  }
+ } 
+ &:active{
+ 	color: $color-alpha;
+ }
+}
+
+/*----------------------------------------------   
+--Link: psedu line interaction
+-----------------------------------------------  */
+@mixin link-line($lineColor: $color-alpha){
+	position: relative;
+	padding-bottom: .125em;
+	display:	inline-block;
+
+	&:after{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background-color: $lineColor;
+		content: '';
+		opacity: 0;
+		@include transform(translateX(-100px));
+		@include transition(opacity .3s, transform .3s);
+	}
+ 
+	&:hover::after,
+	&:focus::after{
+		opacity: 1;
+		@include transform(translateX(0px));
+	}
+}
+
+/*----------------------------------------------   
+--Header Font Defualts
+-----------------------------------------------  */
+@mixin font-header-styles($letterSpacing: 0.9em, $fontWeight: 600){
+	font-family:	$font-header;
+	text-transform:	uppercase;
+	letter-spacing:	$letterSpacing;
+	font-weight:	$fontWeight;
+}
+
+/*----------------------------------------------   
+--H1
+-----------------------------------------------  */
+@mixin font-h1{
+	font-size: 2.15em;  
+	line-height: 1.2em;
+ margin-bottom: 0.5em;
+
+	@media (min-width: $mq-med) {
+	  font-size: 2.75em;
+	} 
+	@media (min-width: $mq-xxlarge) {}  
+}
+
+
+/*----------------------------------------------   
+--H2
+-----------------------------------------------  */
+@mixin font-h2{
+	font-size: 1.75em;
+	line-height: 1.4em;
+	margin-bottom: 0.75em;
+	
+	@media (min-width: $mq-med) {
+	  font-size: 2.25em;
+	} 
+	@media (min-width: $mq-xxlarge) {}  
+}
+
+
+/*----------------------------------------------   
+--H3
+-----------------------------------------------  */
+@mixin font-h3{
+	font-size: 1.5em;
+	line-height: 1.6em;
+	margin-bottom: 0.6em;
+	
+	@media (min-width: $mq-med) {
+		font-size:	1.85em;
+	} 
+	@media (min-width: $mq-xxlarge) {}  
+}
+
+/*----------------------------------------------   
+--H4
+-----------------------------------------------  */
+@mixin font-h4{
+	font-size: 1.25em;
+ line-height: 1.4em;
+ margin-bottom: 0.7em;
+	
+	@media (min-width: $mq-med) {} 
+	@media (min-width: $mq-xxlarge) {}  
+}
+
+/*----------------------------------------------   
+--H5
+-----------------------------------------------  */
+@mixin font-h5{
+	font-size: 1em;
+	line-height: 1.6em;
+	margin-bottom: 0.7em;
+	
+	@media (min-width: $mq-med) {} 
+	@media (min-width: $mq-xxlarge) {}  
+}
+
+
+/*----------------------------------------------   
+--Font size: custom
+-----------------------------------------------  */
+
+@mixin font-r-sizing($fontSmall, $fontMed, $font-Large){
+	font-size: $fontSmall;
+	
+	@media (min-width: $mq-med) {
+	  font-size: $fontMed;
+	} 
+	@media (min-width: $mq-large) {
+	  font-size: $fontLarge;
+	}
+	@media (min-width: $mq-xlarge) {
+	  font-size: $fontLarge;
+	}  
+}
+/*----------------------------------------------   
+--Font size: biggie
+-----------------------------------------------  */
+
+@mixin font-biggie{
+	font-size: 1.7em;
+	
+	@media (min-width: $mq-med) {
+	  font-size: 3em;
+	} 
+	@media (min-width: $mq-xxlarge) {
+	  font-size: 3.5em;
+	}  
+}
+
+/*----------------------------------------------   
+--Font size: small
+-----------------------------------------------  */
+@mixin font-small{
+	font-size: .7em;
+	letter-spacing: 0.02em;
+	margin: 0.1em auto 0.2em;
+	
+	@media (min-width: $mq-med) {
+	  font-size: .8em;
+	} 
+	@media (min-width: $mq-xxlarge) {
+	  font-size: .9em;
+	}  
+}
+
+/*----------------------------------------------   
+--Lists:inline
+-----------------------------------------------  */
+
+@mixin list-inline{
+		margin:	0;
+		padding:	0;
+		list-style:	none;
+		display:	block;
+		position:	relative;
+	
+	li, dd{
+		display:	inline-block;
+		vertical-align:	middle;
+		margin-right:	1em;
+		font-size:	1em;
+		line-height:	1em;
+		margin-left:	0;
+		
+		&.has-border{
+			border-top:	1px solid #ddd;
+			border-bottom:	1px solid #ddd;
+		}
+		
+		li.current a{
+			border-bottom:	2px solid $color-beta;
+		}
+		
+		a{
+			display:	block;
+		}
+	}
+}
+
+/*----------------------------------------------   
+--Lists: Nav
+-----------------------------------------------  */
+@mixin list-nav($direction, $margin){
+
+	ul{
+  display:	block;
+  list-style:	none;
+  
+ li{
+   display:	inline-block;
+   vertical-align:	middle;
+   #{$direction}: $margin;
+  }
+
+  li a{
+    display:block
+  }
+	}
+}
+
+/*----------------------------------------------   
+--Lists: Vertical
+-----------------------------------------------  */
+@mixin list-vert($lineHeight, $marginBottom){
+	&, ul{
+  list-style: none;
+  line-height: $lineHeight;
+  padding: 0;
+  margin:	0;
+  display:	block;
+  
+  li{
+  	margin-bottom:	$marginBottom;
+  }
+	}
+}
+
+/*----------------------------------------------   
+--Layouts: Grid - Semantic Cols
+-----------------------------------------------  */
+@mixin cols($num) {
+	width: ($col * $num);
+	min-height:1px;
+	padding:$col-padding;
+	position:relative;
+	 @media (min-width: $mq-small) {
+	 	float: left
+	 }
+	 
+	 &:last-child {
+	 	@media (min-width: $mq-small) {
+	 		float: right;
+	 	}
+	}
+}
+
+/*----------------------------------------------   
+--Layouts Grid - Table
+-----------------------------------------------  */
+@mixin t-row{
+	display:	table;
+	width:	100%;
+	
+	.t-col{
+		display:	table-cell;
+		vertical-align:	middle;
+		table-layout:	fixed;
+	}
+}
+@mixin t-col{
+	display:	table-cell;
+	vertical-align:	middle;
+	table-layout:	fixed;
+}
+
+/*----------------------------------------------   
+--Truncate
+-----------------------------------------------  */
+@mixin truncate{
+	//max-width: 71%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/*----------------------------------------------   
+--overlay
+-----------------------------------------------  */
+@mixin overlay($bgColor: #000, $bgOpacity: 0.6){
+	&:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: rgba($bgColor, $bgOpacity);
+	z-index: 0;
+	}
+	
+	.row, .content{
+		position:	relative;
+		z-index:	2;
+	}
+}
+
+/*----------------------------------------------   
+--Sect: Banners
+-----------------------------------------------  */
+@mixin sect-banner {
+ position: relative;
+ background-size: cover;
+ background-position:	50%;
+ background-repeat:	no-repeat;
+ background-color:	$color-dark;
+ color: white;
+ overflow: hidden;
+ min-height:	30em;
+ padding: 15% 0;
+ @include v-center;
+ 
+ @media (min-width: $mq-med) {
+ 	padding: 7% 0;
+ }
+ h1, h2, h3, h4, p{
+   color:	#fff;
+ }
+ hr{
+ 	border-color:	$color-light;
+ }
+ .vcenter{
+ 	display:	table-cell;
+ 	vertical-align:	middle;
+ 	width:	100%;
+ }
+ p{
+ 	font-size: 110%;
+  @media (min-width: $mq-med) {
+   font-size: 125%;
+  } 
+ }
+ br{
+ 	display: none;
+  
+  @media (min-width: $mq-small) {
+   display: block;
+  }
+ }
+}
+
+
+/*----------------------------------------------   
+--Banner Bgs
+-----------------------------------------------  */
+@mixin banner-bg{
+	background-size: cover;
+	background-position:	50%;
+	background-repeat:	no-repeat;
+	width:	100%;
+}
+
+/*----------------------------------------------   
+--BG: abs for plax
+-----------------------------------------------  */
+@mixin bg-abs{
+	height: 100% !important;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position:	50%;
+	z-index:	0;
+}
+
+
+/*----------------------------------------------   
+--Banner BG Abs url shortcut
+-----------------------------------------------  */
+@mixin bgurl-abs ($imgUrl){
+	$url:"../images/#{$imgUrl}.jpg";
+	background: url($url);
+	height: 100% !important;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	z-index:	0;
+}
+
+
+/*----------------------------------------------   
+--Sect: Title Modifier
+-----------------------------------------------  */
+@mixin content-title($padding: 2em 1em){
+	padding: $padding;
+	@include center-all;
+	
+	figure img{
+		max-width:	10em;
+	}
+	
+	br{
+		@media (max-width: $mq-med) {
+			display:	none;
+		}
+	}
+}	
+/*----------------------------------------------   
+--Transition Links: SLideIn
+-----------------------------------------------  */
+@mixin link-slideIn($position:"relative", $bgColor: #000, $bgOpacity: 0.9){
+	position:	$position;
+	width:	100%;
+
+	&:before{
+		content:	'';
+		background-color:	rgba($bgColor, $bgOpacity);
+		top:	0;
+		left:	-100%;
+		position:	absolute;
+		width:	100%;
+		height:	100%;		
+		@include transition(all .5s ease-in-out);
+	}
+	
+	&:hover{
+		&:before{
+			left:	0;
+			@include transition(all .5s ease-in-out);
+		}
+	}
+}
+
+
+/*----------------------------------------------   
+-Visibilities: Show hide
+-----------------------------------------------  */
+@mixin show-small{
+ display: block;
+ 
+ @media (min-width: $mq-small) {
+   display: none !important;
+ }
+}
+
+@mixin hide-small{
+ display: none;
+ 
+ @media (min-width: $mq-small) {
+   display: block !important;
+ }
+}
+
+
+
+
+/*----------------------------------------------   
+--3D Engine
+-----------------------------------------------  */
+@mixin engine3d{
+  -webkit-transform: translateZ(0);
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+}

@@ -1,0 +1,123 @@
+/*----------------------------------------------   
+--Links
+-----------------------------------------------  */
+a{
+  @include link-styles($color-beta);
+}
+
+a.invert, .invert a{
+  color:darken($color-alpha,70);
+  
+  &:hover{
+  color: $color-alpha;
+  }
+}
+
+a.secondary{
+  color: $color-beta;
+  
+  &:hover{
+  color:darken($color-beta,70);
+  }
+  
+  &:active{
+  color: $color-beta;
+  }
+}
+
+/*----------------------------------------------   
+--Arrow Link
+-----------------------------------------------  */
+.arrowlink:after, .link-arrow:after {
+    content:  "→";
+}
+
+/*----------------------------------------------   
+--Color Classes
+-----------------------------------------------  */
+
+.color-alpha{
+  color: $color-alpha;
+}
+
+.color-beta{
+  color: $color-beta;
+}
+
+.bg-alpha{
+   background-color: $color-alpha;
+}
+
+.bg-beta{
+  background-color: $color-beta;
+}
+
+.bg-delta{
+  background-color: $color-delta;
+}
+
+.bg-zeta{
+  background-color: $color-zeta;
+}
+
+.bg-grey{
+  background-color: $color-lightgrey;
+}
+
+.bg-dark{
+  background-color: $color-dark;
+}
+
+.bg-light{
+  background-color: $color-light;
+}
+
+.bg-red-gradi {
+  @include prefix(background, linear-gradient(45deg, #9a2323 12%, #242b4b 72%));
+  opacity: 0.95;
+}
+
+.bg-green-gradi{
+  @include prefix(background, linear-gradient(45deg, #1578A8 12%, #14B18B 72%));
+  opacity: 0.95;
+}
+
+/*----------------------------------------------   
+--Overlays
+-----------------------------------------------  */
+[class*="overlay"] {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 5;
+	display: block;
+	top: 0;
+	left: 0;
+	@include transition(background-color 1s ease);
+}
+
+.overlay{
+	background-color: rgba(0,0,0,0.2);
+}
+
+.overlay-alpha{
+  background-color: #5094A0;
+}
+
+/*----------------------------------------------   
+--Light & Dark Themes
+-----------------------------------------------  */
+.light *{
+	color: $color-darkgrey;
+}
+
+.dark *{
+	color: #fff;
+}
+
+/*----------------------------------------------   
+--Selection
+-----------------------------------------------  */
+
+*::selection{background: $color-alpha;color: white;text-shadow: none;}
+.highlight{background:$color-alpha}

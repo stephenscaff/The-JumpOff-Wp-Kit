@@ -1,0 +1,214 @@
+/*----------------------------------------------   
+--Typography
+-----------------------------------------------  */
+body {
+  font-family: $font-paragraph;
+  color: $color-darkgrey;
+  background: $color-light;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  font-weight: 400;
+  font-style: normal;
+  line-height: $base-lineheight;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;  
+}
+
+/*----------------------------------------------   
+--Fluid body sizing
+-----------------------------------------------  */
+body {
+font-size: 100%;
+  
+  @media (min-width: $mq-small) {
+    font-size: 110%
+  }
+  @media (min-width: $mq-med) {
+    font-size: 111%
+  }
+  @media (min-width: $mq-large) {
+    font-size: 115%
+  }
+  @media (min-width: 75em) {
+    font-size: 120%
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: 135%
+  }
+  @media (min-width: $mq-xxlarge) {
+    font-size: 145%
+  }
+  @media (min-width: $mq-xxxlarge) {
+    font-size: 160%
+  }
+}
+
+/*----------------------------------------------   
+--Headers
+-----------------------------------------------  */
+h1,h2,h3,h4,h5,h6{
+  font-weight: 600;
+  font-family: $font-header;
+  text-rendering:optimizeLegibility; 
+}
+
+h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{
+  font-size:$font-small;
+  line-height:0
+}
+
+h1, .font-h1 {
+ @include font-h1;
+}
+
+h2, .font-h2 {
+ @include font-h2;
+}
+
+h3, .font-h3 {
+ @include font-h3;
+}
+
+h4, .font-h4 {
+ @include font-h4;
+}
+
+h5, .font-h5 {
+ @include font-h5;
+}
+
+/*----------------------------------------------   
+--Font Sizes: Helpers
+-----------------------------------------------  */
+p.lead{
+		font-size:	1.6em;
+		font-family: $font-header;
+		line-height:	1.6;
+		margin:	0;
+}
+
+/*----------------------------------------------   
+--Paragraph
+-----------------------------------------------  */
+
+p{
+  margin-top: 0.7em;
+  margin-bottom: 0.75em;
+}
+
+p, small, em, ul, li{
+  font-family: $font-paragraph;
+}
+
+
+ul, ol{
+	margin:	0;
+	padding:	0;
+	
+	li{
+		margin-left:	1em;
+	}
+}
+/*----------------------------------------------   
+--Misc
+-----------------------------------------------  */
+.bordered {
+	@media (min-width: $mq-med) {
+		border: 1px solid #fff;
+		display: inline-block;
+		padding: .2em .8em .325em;
+		margin: 0;
+	}
+}
+
+.subheader{
+  font-size: 145%;
+  line-height:1;
+  font-weight:400;
+  margin:.6em 0 -.1em;
+}
+
+.preheader {
+  font-size: 90%;
+  line-height: 1;
+  color: $color-alpha;
+  margin: 0;
+  padding: 0;
+  @media (min-width: $mq-med) {
+  font-size: 100%;
+  }
+}
+
+em{
+  font-style: italic; 
+  font-weight: 600; 
+  color: #999;
+}
+
+.caps{
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+
+/*--------------------------------------------------- 
+Quotes
+---------------------------------------------------  */
+blockquote cite{display:block;font-size:2em;color:#555}
+blockquote cite:before{content:"\2014 \0020"}
+blockquote cite a,blockquote cite a:visited{color:#555}
+
+q, blockquote {
+  font-family: $font-paragraph;
+  text-align: left;
+  padding: .5em 1em;
+  margin: 1em auto;
+  line-height: inherit;
+  letter-spacing: inherit;
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+  font-size: 110%;
+  font-style: italic;
+  color: rgba(0,0,0,0.7);
+  
+  &.text-center{
+    border:  0;
+  }
+  
+  @media (min-width: $mq-med) {
+    font-size: 130%;
+    border-left: 5px solid rgba(0, 0, 0, 0.1);
+  }  
+}
+q, blockquote {quotes: "“" "”" "‘" "’";}
+
+
+blockquote.grid-breaking {
+	font-size: 128%;
+	border: 0;
+	padding: 0;
+	text-align: center;
+	color: #999;
+
+	@media (min-width: $mq-med) {
+		font-size: 170%;
+		margin: 1em -15%;
+	}
+}
+
+/*--------------------------------------------------- 
+VCards
+---------------------------------------------------  */
+.vcard{
+	margin:	0 0 1em;
+	span{
+		display:	block;
+	}
+	.company{
+		font-weight:	120%;
+		font-weight:	600;
+	}
+}

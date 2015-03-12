@@ -1,0 +1,121 @@
+/*----------------------------------------------   
+--Alerts
+
+-For bg colors, use: bg-white, bg-alpha, bg-beta, bg-grey, etc.
+-Colors and Bgs defined in modules/_colors.scss with variables in settings/_config.scss
+-----------------------------------------------  */
+.alert{
+	//Default bg color: White
+	background-color: #fff;
+	padding: 1.25em 1.5em;
+	margin:	1em 0;
+	border-radius:	$base-borderradius;
+	box-shadow:0 1px 2px rgba(0,0,0,0.2);
+	border-top: 1px solid rgba(0,0,0,0.05);
+	border-left-width:	5px;
+	position:	relative;
+	
+	h2, h3, h4, h5, p{
+		margin:	0;
+		padding:	0;
+	}
+	
+	.js-close{
+		position: absolute;
+		right: 2%;
+		top: 54%;
+		font-size: 1.75em;
+		@include transform(translateY(-50%));
+	}
+	
+	/*----------------------------------------------   
+	--Alert: alpha
+	-----------------------------------------------  */
+	&.alert-alpha{
+	border-left:	7px solid $color-alpha;
+	
+	h2, h3, h4, h5{
+		color:	$color-alpha;
+		}
+	}
+	/*----------------------------------------------   
+	--Alert: Beta
+	-----------------------------------------------  */
+	&.alert-beta{
+	border-left:	7px solid $color-beta;
+	
+	h2, h3, h4, h5{
+		color:	$color-beta;
+		}
+	}
+	/*----------------------------------------------   
+	--Alert: Ok
+	-----------------------------------------------  */
+	&.alert-ok{
+	border-left:	7px solid $color-ok;
+	
+	h2, h3, h4, h5{
+		color:	$color-ok;
+		}
+	}
+	/*----------------------------------------------   
+	--Alert: Warning
+	-----------------------------------------------  */
+	&.alert-warning{
+	border-left:	7px solid $color-warning;
+	
+	h2, h3, h4, h5{
+		color:	$color-warning;
+		}
+	}
+}
+
+
+/*----------------------------------------------   
+--Alert Bar - via jquery and data-alert
+-----------------------------------------------  */
+.alert-bar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  width: 100%;
+  background-color: #09a;
+  color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.75);
+  
+  h2, h3, h4, h5, p{
+  	padding:	0;
+  	margin:	0;
+  }
+  
+  .icon{
+  	font-size:	1.5em;
+  	display:	inline;
+  	vertical-align:	middle;
+  }
+  
+  p{
+  	display:	inline;
+  	vertical-align:	middle;
+  }
+  
+	.js-close{
+		font-size:	1.5em;
+		color:	#fff;
+		color: inherit;
+		float: right;
+		font-weight:	600;
+		line-height: 1;
+		text-shadow: 0 1px 0 #fff;
+		@include transition(color .6s ease);
+		
+		&:hover{
+			color:	rgba(255,255,255,0.7);
+			@include transition(color .6s ease);
+		}
+	}
+}

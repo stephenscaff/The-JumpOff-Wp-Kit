@@ -1,0 +1,245 @@
+/*----------------------------------------------   
+--Blog - archive
+-----------------------------------------------  */
+.news{
+
+
+/*----------------------------------------------   
+--Blog Banner
+-----------------------------------------------  */
+
+	.sect-banner.banner-mast{
+		min-height: 24em;
+		
+		.banner-bg{
+			background-image:	url(/assets/images/news-mast-bg.jpg);
+		}
+	}
+	
+
+/*----------------------------------------------   
+--Sect Posts
+-----------------------------------------------  */	
+	.sect-posts {
+		background-image: url(/assets/images/bg-pattern.jpg);
+		background-position: top 50%;
+		background-repeat: no-repeat;
+		background-size: 38em;
+		background-position: 50% 0;
+	
+	
+	.post-meta-date {
+		font-size: 75%;
+		margin-bottom: .5em;
+		display: block;
+	}
+	
+	.inner{
+		display:	block;
+		margin:	0 auto;
+		max-width:	90%;
+		
+		@media (min-width: $mq-small) {
+			max-width:	80%;
+		}
+		@media (min-width: $mq-med) {
+			max-width:	70%;
+		}
+		@media (min-width: $mq-large) {
+			max-width:	42em;
+		}
+	}
+	article:not(.box)	{
+		border-bottom:	1px	solid	#ddd;
+		padding:	3em 0;
+		@include transition(background-color .6s ease);
+		
+		h1{
+			margin-top:	0;
+			@include font-h3
+		}
+		
+		a p{
+			color:	#7A8188;
+		}
+		
+		&:hover{
+			background-color:	#eee !important;
+			@include transition(background-color .7s ease);
+			cursor:	pointer;
+		}
+	}
+}
+/*----------------------------------------------   
+--Pagination
+-----------------------------------------------  */
+.sect-pagination{
+	background: lighten($color-beta, 70);
+	padding:	3em 0;
+
+	.pagination{
+		@include list-nav(right, 0.25em);
+		
+		span.page-numbers.dots{
+				display:	none;
+		}
+
+		ul li a, ul li .current{
+			border: 1px solid $color-beta;
+			display: block;
+			text-align: center;
+			padding: .1em .8em;
+			line-height: 1.9em;
+			border-radius: $base-borderradius;
+			color: $color-beta;
+			
+			&:hover{
+				background: $color-beta;
+				border-color: darken( $color-beta, 20% );
+				color: #fff;
+			}
+			
+			&.current{
+				color: #aaa;
+				border: 1px solid #aaa;
+			
+			&:hover{
+				color: #aaa;
+				border: 1px solid #aaa;
+				background: #fff;
+			}
+		}
+		&.next, &.newer{
+			background: $color-beta;
+			color: #fff;
+			border-color: lighten( $color-beta, 20% );
+			
+					&:hover{
+						background: darken( $color-beta, 20% )
+					}
+				}
+			}
+		}
+	}
+}
+
+/*----------------------------------------------   
+-Blog  - single
+-----------------------------------------------  */
+.single-post{
+		
+		main{
+	  padding-top: 10em;
+		}
+
+/*----------------------------------------------   
+--Single: Sect-post-single
+-----------------------------------------------  */
+	.post-content {
+		padding:	0.5em 0 5em;
+			
+			.post-meta-date{
+				margin-bottom:	1em;
+				color:	$color-alpha;
+			}
+			
+			h3, h4{
+				@include font-h3;
+			}
+			p:first-of-type {
+		  @include font-lead;
+			}
+
+			figure{
+		  margin: 0 0 0.5em;
+			}
+
+		.grid-breaking{
+		 @media (min-width: $mq-med) {
+		  margin-right: -6%;
+		  margin-left: -6%;
+		 }
+		}
+		ul{
+			padding-left:	1em;
+			margin-top:	0.25em;
+		}
+	
+	ol {
+	  counter-reset:li;
+	  counter-reset:li;
+	  margin-left: 0em;
+	  margin-top: 0.25em;
+	  margin-bottom: 2em;
+	}
+	
+	ol > li {
+	  position:relative;
+	  margin-left:-.5em;
+	  padding-bottom:.2em;
+	  list-style:none
+	}
+	
+	ol > li:before {
+	  content: counter(li);
+	  counter-increment: li;
+	  position: absolute;
+	  font-size: 1.2em;
+	  top: -0.2em;
+	  left: -1em;
+	  width: 1em;
+	  font-weight: 600;
+	  color:	$color-beta;
+	}
+	
+	q, blockquote {
+	  text-align: center;
+	  padding: .5em 0.5em 1em 0;
+	  margin: 1em auto;
+	  font-size: 110%;
+	  font-style: normal;
+	  color: rgba(0,0,0,0.7);
+	  font-family:	$font-header;
+	  border-top: 2px solid #ccc;
+	  border-bottom: 2px solid #ccc;
+	  
+	  @media (min-width: $mq-med) {
+	    font-size: 160%;
+	  }  
+		}
+	}
+}
+	
+
+/*----------------------------------------------   
+--Sect Next
+-----------------------------------------------  */
+.sect-next{
+	//background-color:	lighten($color-alpha, 30);
+	.meta-next{
+		color:	#999;
+		font-size:	1em;
+		font-style:	italic;
+		border-bottom:	1px	solid	#ddd;
+		font-family:	$font-header;
+	}
+	
+	h2{
+		margin:	0.5em 0;
+		color:	rgba(0,0,0,0.8);
+		text-transform:	capitalize;
+	}
+	
+	a{
+		background-color:	lighten($color-beta, 45);
+		display:	block;
+		padding:	3em 0;
+		@include transition(all 0.7s ease);
+		
+		&:hover{
+		background-color:	lighten($color-alpha, 30);
+		@include transition(all 0.7s ease);
+		}
+	}
+	
+}

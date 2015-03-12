@@ -1,0 +1,259 @@
+/*----------------------------------------------   
+--Sect Blocks
+-----------------------------------------------  */
+.sect-blocks{
+	z-index: 99;
+	@include cf;
+
+
+/*----------------------------------------------   
+-Article blocks
+-----------------------------------------------  */
+ article {
+  text-align: center;
+  height: 30em;
+  overflow: hidden; 
+  
+  @media (min-width: $mq-small) {
+  	height: 25em;
+  }
+  @media (min-width: $mq-med) {
+  	height: 25em;
+  }
+  @media (min-width: $mq-large) {
+  	height: 30em;
+  }
+
+
+/*----------------------------------------------   
+--link + content
+-----------------------------------------------  */ 
+	a {
+		float:	left;
+	 color: #fff;
+	 width: 100%;
+	 height: 100%;
+	 display: block;
+	 position: relative;
+	 @include bg-img($color-dark);
+	 //@include overlay($color-dark, 0.4);
+	 @include transition(all 1s ease);
+		
+		.bgimg{
+			@include transform(scale(1));
+			@include transition(all .8s ease);
+		}
+		&:hover{
+			@include overlay($color-dark, 0.1);
+			@include transition(all 1s ease);
+		 
+		hr.sep{
+			width:	50%;
+		}
+
+	}
+	&:after{
+		@include transition(all 1s ease);
+	}
+}
+
+/*----------------------------------------------   
+--Content
+-----------------------------------------------  */
+	.content {
+
+		width: 100%;
+		opacity: 1;
+		z-index: 10;
+		overflow:	hidden;
+		@include center-all;
+		@include abs-vcenter;
+		@include transition(all .5s ease-in-out);
+	
+		h3{
+			color:	#fff;	
+			font-size:	1.75em;
+		}
+		
+		p {
+			color: #fff;
+			font-size:	100%;
+			margin-bottom: 1em;
+			@include transition(margin .3s ease-in-out);
+			padding: 0 10%;
+			
+			@media (min-width: $mq-large) {
+				padding: 0 5%;
+			}
+			@media (min-width: $mq-xxlarge) {
+				padding: 0 15%;
+			}
+		}
+	
+		hr.sep {
+			display: block;
+			margin: 1em auto;
+			border: 1px solid #fff;
+			border-bottom:	0;
+			width: 12%; 
+			@include transition(width 1s ease);  
+		}
+		
+		.btn{
+			min-width:	14em;
+		}
+	}
+	
+	/*----------------------------------------------   
+	--Blocks Content: Title
+	-----------------------------------------------  */
+		.content-title{
+			display:	block;
+			@include transition(transform 0.6s ease);
+			
+			@media (min-width: $mq-med) {
+				margin-top:	15%;
+			}
+			@media (min-width: $mq-large) {
+				margin-top:	20%;
+			}
+			
+			h3{
+					margin:	0;
+			}
+			.icon{
+				width:	7em;
+				@include transition(transform 0.6s ease, opacity 0.6s ease);
+				outline: 1px solid transparent;
+			}
+		}
+		
+	/*----------------------------------------------   
+	--Blocks Content: Details
+	-----------------------------------------------  */
+		.content-details{
+			display:	block;
+			opacity:	1;
+			font-size:	89%;
+			padding:	0 5%;
+			
+			@media (min-width: $mq-med) {
+				@include transform(translateY(100%));
+				@include transition(transform 0.5s ease);
+			}
+			
+			ul.services{
+				display:	block;
+				list-style:	none;
+				margin:	0 auto;
+				padding:	0;
+				
+				@media (min-width: $mq-med) {
+					max-width:	70%;
+				}
+				
+				li{
+					width:	50%;
+					float:	left;
+					font-size:	85%;
+				}
+			}
+			.btn{
+				margin-top:	2.75em;
+			}
+		}
+	
+}
+
+ /*----------------------------------------------   
+ --Blocks Hover States
+ -----------------------------------------------  */
+ 	a:hover{
+ 		@media (min-width: $mq-med) {
+ 		.content-title{
+ 			@include engine3d;
+ 			@include transform(translateY(-60%));
+ 			@include transition(all 0.6s ease);
+ 			
+ 			.icon{
+ 				opacity:	0;
+ 				@include transition(transform 0.6s ease, opacity 0.6s ease);
+ 			}
+ 		}
+ 		.content-details{
+ 				opacity:	1;
+ 				@include transform(translateY(-40%));
+ 				@include transition(transform 0.6s ease);
+ 			}
+ 			
+ 			.block-bgimg{
+ 				@include transform(scale(1.25) rotate(0.01deg));
+ 				@include transition(transform 1s ease);
+
+ 				//@include filter(blur(4px));
+ 			}
+ 		}		
+ 	}
+ 
+/*----------------------------------------------   
+--G-4 Thirds
+-----------------------------------------------  */
+.g-4{
+	@media (min-width: $mq-large) {
+		height: 23em;
+	}
+	@media (min-width: $mq-xxlarge) {
+		height: 24em;
+	}
+	@media (min-width: $mq-xxxlarge) {
+		height: 28em;
+	}
+	.content p{
+		padding: 0 5%;
+		@media (min-width: $mq-large) {
+			padding: 0 10%;
+			}
+		}
+	}
+
+
+
+
+/*----------------------------------------------   
+--G-4 Thirds
+-----------------------------------------------  */
+&.blocks-big{
+	article{
+		min-height:	35em;
+		
+		@media (min-width: $mq-med) {
+			height: 35em;
+		}
+		@media (min-width: $mq-large) {
+			height: 35em;
+		}
+	}
+	
+	.content-title{
+		@media (min-width: $mq-med) {
+			margin-top:	25%;
+		}
+		@media (min-width: $mq-large) {
+			margin-top:	29%;
+		}
+	}
+	a:hover{
+		.content-title{
+			@media (min-width: $mq-med) {	
+			@include transform(translateY(-110%));
+		}	
+	}
+		@media (min-width: $mq-med) {
+		.content-details{
+				@include transform(translateY(-55%));
+			}
+		}
+	}
+}
+}
+
