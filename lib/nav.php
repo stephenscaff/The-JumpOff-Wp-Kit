@@ -23,9 +23,7 @@ register_nav_menus(
      );
  
 }
- 
 //Add the above function to init hook.
- 
 add_action('init', 'add_wp3menu_support');
 
 

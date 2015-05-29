@@ -2,7 +2,7 @@
   Family: [family name]
   Weights: 400=reg, 600=Medium, 900=Bold
   
-  Note: Convert font to woff
+  Note: Convert font to woff, then base64
 =========================================*/
 
 @font-face {
@@ -12,13 +12,19 @@ font-style:normal;
 font-weight:400;
 }
 
+/*----------------------------------------
+font-name: 600
+------------------------------------------*/
 @font-face {
 font-family:"font-name";
-src:url(data:application/x-font-woff;charset=utf-8;base64,P1ASTE-BASE64-HERE);
+src:url(data:application/x-font-woff;charset=utf-8;base64,PASTE-BASE64-HERE);
 font-style:normal;
 font-weight:600;
 }
 
+/*----------------------------------------
+font-name: 900
+------------------------------------------*/
 @font-face {
 font-family:"font-name";
 src:url(data:application/x-font-woff;charset=utf-8;base64,PASTE-BASE64-HERE);

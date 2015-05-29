@@ -1,23 +1,9 @@
-
-/*----------------------------------------------   
---Vendor Prefix
------------------------------------------------  */
-@mixin prefix($name, $argument) {
-  -webkit-#{$name}: #{$argument};
-      -ms-#{$name}: #{$argument};
-     -moz-#{$name}: #{$argument};
-       -o-#{$name}: #{$argument};
-          #{$name}: #{$argument};
-}
-
-
-
 /*----------------------------------------------   
 --Microclearfix
 -----------------------------------------------  */
 @mixin cf() {
  & {
-     *zoom: 1;
+   *zoom: 1;
  }
  &:before,
  &:after {
@@ -60,7 +46,7 @@
   display: table;
   width: 100%;
 
-  & > .vcenter{
+  & > .vc-content{
   display: table-cell;
   vertical-align: middle;
   margin-top: 0;
@@ -156,6 +142,33 @@
 }
 
 /*----------------------------------------------   
+--Transition Links: SLideIn
+-----------------------------------------------  */
+@mixin link-slideIn($position:"relative", $bgColor: #000, $bgOpacity: 0.9){
+	position:	$position;
+	width:	100%;
+
+	&:before{
+		content:	'';
+		background-color:	rgba($bgColor, $bgOpacity);
+		top:	0;
+		left:	-100%;
+		position:	absolute;
+		width:	100%;
+		height:	100%;		
+		@include transition(all .5s ease-in-out);
+	}
+	
+	&:hover{
+		&:before{
+			left:	0;
+			@include transition(all .5s ease-in-out);
+		}
+	}
+}
+
+
+/*----------------------------------------------   
 --Header Font Defualts
 -----------------------------------------------  */
 @mixin font-header-styles($letterSpacing: 0.9em, $fontWeight: 600){
@@ -168,74 +181,75 @@
 /*----------------------------------------------   
 --H1
 -----------------------------------------------  */
-@mixin font-h1{
+@mixin font-h1($margin-bottom:0.25em){
 	font-size: 2.15em;  
-	line-height: 1.2em;
- margin-bottom: 0.5em;
+	line-height: 1.4;
+	margin-top:	0;
+ margin-bottom: $margin-bottom;
 
-	@media (min-width: $mq-med) {
-	  font-size: 2.75em;
-	} 
-	@media (min-width: $mq-xxlarge) {}  
+	@media (min-width: $mq-xlarge) {
+	  font-size:	calc(2.15em + 40%);
+	}  
 }
 
 
 /*----------------------------------------------   
 --H2
 -----------------------------------------------  */
-@mixin font-h2{
+@mixin font-h2($margin-bottom:0.5em){
 	font-size: 1.75em;
-	line-height: 1.4em;
-	margin-bottom: 0.75em;
+	line-height: 1.4;
+
+	margin-bottom: $margin-bottom;
 	
-	@media (min-width: $mq-med) {
-	  font-size: 2.25em;
-	} 
-	@media (min-width: $mq-xxlarge) {}  
+	@media (min-width: $mq-xlarge) {
+	  font-size:	calc(1.75em + 40%);
+	}  
 }
 
 
 /*----------------------------------------------   
 --H3
 -----------------------------------------------  */
-@mixin font-h3{
+@mixin font-h3($margin-bottom:0.6em){
 	font-size: 1.5em;
-	line-height: 1.6em;
-	margin-bottom: 0.6em;
+	line-height: 1.35;
+	margin-bottom: $margin-bottom;
 	
-	@media (min-width: $mq-med) {
-		font-size:	1.85em;
+	@media (min-width: $mq-xlarge) {
+		font-size:	calc(1.5em + 40%);
 	} 
-	@media (min-width: $mq-xxlarge) {}  
 }
 
 /*----------------------------------------------   
 --H4
 -----------------------------------------------  */
-@mixin font-h4{
+@mixin font-h4($margin-bottom:0.4em){
 	font-size: 1.25em;
- line-height: 1.4em;
- margin-bottom: 0.7em;
+ line-height: 1.6;
+ margin-bottom: $margin-bottom;
 	
-	@media (min-width: $mq-med) {} 
-	@media (min-width: $mq-xxlarge) {}  
+	@media (min-width: $mq-xlarge) {
+	  font-size:	calc(1.25em + 40%);
+	}  
 }
 
 /*----------------------------------------------   
 --H5
 -----------------------------------------------  */
-@mixin font-h5{
+@mixin font-h5($margin-bottom:0.4em){
 	font-size: 1em;
-	line-height: 1.6em;
-	margin-bottom: 0.7em;
+	line-height: 1.7;
+	margin-bottom: $margin-bottom;
 	
-	@media (min-width: $mq-med) {} 
-	@media (min-width: $mq-xxlarge) {}  
+	@media (min-width: $mq-xlarge) {
+	  font-size:	calc(1em + 40%);
+	}  
 }
 
 
 /*----------------------------------------------   
---Font size: custom
+--Font size: rwd
 -----------------------------------------------  */
 
 @mixin font-r-sizing($fontSmall, $fontMed, $font-Large){
@@ -249,36 +263,6 @@
 	}
 	@media (min-width: $mq-xlarge) {
 	  font-size: $fontLarge;
-	}  
-}
-/*----------------------------------------------   
---Font size: biggie
------------------------------------------------  */
-
-@mixin font-biggie{
-	font-size: 1.7em;
-	
-	@media (min-width: $mq-med) {
-	  font-size: 3em;
-	} 
-	@media (min-width: $mq-xxlarge) {
-	  font-size: 3.5em;
-	}  
-}
-
-/*----------------------------------------------   
---Font size: small
------------------------------------------------  */
-@mixin font-small{
-	font-size: .7em;
-	letter-spacing: 0.02em;
-	margin: 0.1em auto 0.2em;
-	
-	@media (min-width: $mq-med) {
-	  font-size: .8em;
-	} 
-	@media (min-width: $mq-xxlarge) {
-	  font-size: .9em;
 	}  
 }
 
@@ -512,9 +496,20 @@
 /*----------------------------------------------   
 --Sect: Title Modifier
 -----------------------------------------------  */
-@mixin content-title($padding: 2em 1em){
+@mixin content-title($padding: 2em 0){
 	padding: $padding;
 	@include center-all;
+	
+	
+	h2{
+		text-transform:	uppercase;
+		letter-spacing:	0.07em;
+		font-weight:	900;
+	}
+	p{
+		font-size:	115%;
+		line-height:	1.7;
+	}
 	
 	figure img{
 		max-width:	10em;
@@ -526,31 +521,7 @@
 		}
 	}
 }	
-/*----------------------------------------------   
---Transition Links: SLideIn
------------------------------------------------  */
-@mixin link-slideIn($position:"relative", $bgColor: #000, $bgOpacity: 0.9){
-	position:	$position;
-	width:	100%;
 
-	&:before{
-		content:	'';
-		background-color:	rgba($bgColor, $bgOpacity);
-		top:	0;
-		left:	-100%;
-		position:	absolute;
-		width:	100%;
-		height:	100%;		
-		@include transition(all .5s ease-in-out);
-	}
-	
-	&:hover{
-		&:before{
-			left:	0;
-			@include transition(all .5s ease-in-out);
-		}
-	}
-}
 
 
 /*----------------------------------------------   

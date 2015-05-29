@@ -1,6 +1,7 @@
 
 /*----------------------------------------
 Upload btn
+Dependancies: modules/_forms.scss
 ------------------------------------------*/
 
 var SITE = SITE || {};

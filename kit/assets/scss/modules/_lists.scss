@@ -1,0 +1,220 @@
+/*--------------------------------------------------- 
+List: Ordered
+---------------------------------------------------  */
+ol li{
+  padding-bottom:.5em
+}
+
+ol{
+  counter-reset: li;
+}
+
+ol > li {
+  position: relative;
+  margin-left: -.5em;
+  list-style: none;
+}
+
+ol > li:before {
+ content: counter(li);
+ counter-increment: li;
+ position:absolute;
+ top: -.03em;
+ left: -1.2em;
+ width: 1em;
+ font-weight: 700;
+ color: $color-alpha;
+}
+
+
+/*--------------------------------------------------- 
+Basic List
+---------------------------------------------------  */
+ul.list-disc{
+	list-style-type: disc;
+	margin-left: 1em;
+	list-style-position: outside;
+
+	li{
+		padding-bottom:	0.75em;
+	}
+}
+
+
+/*--------------------------------------------------- 
+Lists: Question and Answer
+---------------------------------------------------  */
+ul.qa{	
+	list-style:	none;
+	display:	block;
+
+	& > li{
+		position: relative;
+		margin-left: 0;
+		padding-left:	3em;
+		padding-bottom:	1em !important;
+		list-style:	none !important;
+	}
+	
+	& > li:nth-child(odd){
+		font-weight:	600;
+	}
+	
+	& > li:before{
+		position: absolute;
+		left: 0;
+		color:	rgba(255,255,255,0.7);
+		font-weight:	600;
+		font-size:	1.1em;
+	}
+ li:nth-child(odd):before{
+  content: 'Q:';
+	}
+	li:nth-child(even):before{
+  content: 'A:';
+	}
+	
+	&.has-border{		
+		li:nth-child(even) {
+	  border-bottom: 1px solid rgba(255,255,255,0.2);
+	  padding-bottom: 3em;
+	  margin-bottom: 3em;
+		}
+		&:last-child{
+			//border-bottom:	0;
+		}
+	}
+}
+/*--------------------------------------------------- 
+Lists: Expander
+---------------------------------------------------  */
+ul.faq{	
+	padding-left: 0;
+	margin-left: 2em;
+	margin-top:	1.75em;
+	list-style-type: none;
+	
+	& > li {
+	position: relative;
+	list-style: none;
+	padding-bottom: 0.25em;
+	font-size:	90%;
+	
+	}
+.icon{
+	position: absolute;
+	left: -2em;
+	width: 2em;
+	top: 0.25em;
+	text-align: center;
+	font-size: 1.5em;
+	color:	$color-alpha;
+	@include transition(all 0.5s ease)
+}
+
+h5{
+	@include transition(opacity 0.5s ease);
+}
+h5:hover{
+	opacity:	0.8;
+	@include transition(opacity 0.5s ease);
+}
+
+.expand-content p{
+		font-size:	110%;
+		margin-top:	0.5em;
+}
+.expand-open .icon{
+		@include transform(rotate(225deg));
+		@include transition(all 0.5s ease);
+		-webkit-backface-visibility:	hidden;	
+}
+	
+	&.has-border{
+		li{
+		border-bottom:	1px solid #ddd;
+		margin-bottom: 3em;
+		padding-bottom: 2em;
+		}
+		&:last-child{
+			border-bottom:	0;
+		}
+	}
+}
+
+
+/*----------------------------------------------   
+--Breadcrumbs
+-----------------------------------------------  */
+
+.breadcrumbs {
+display: block;
+padding: $font-xsmall 0em;
+overflow: hidden;
+margin-left: 0;
+list-style: none;
+//background-color: $color-lightgrey;
+
+	> * {
+		margin: 0;
+		float: left;
+		font-size: $font-xsmall;
+		line-height: $font-xsmall;
+		text-transform: uppercase;
+		color: $color-alpha; 
+	}
+	> *:hover a, 
+	> *:focus a {
+		text-decoration: underline; 
+	}
+	> * a {
+		color: $color-alpha; 
+	}
+	> *.current {
+		cursor: default;
+		color: #333333; 
+	}
+	> *.current a {
+		cursor: default;
+		color: #333333; 
+		
+		&:hover, 
+		&:hover a, 
+		&:focus, 
+		&:focus a {
+			text-decoration: none; 
+		}
+	}
+	> *.unavailable {
+		color: #999999; 
+	}
+	> *.unavailable a {
+		color: #999999; 
+	}
+	> *.unavailable:hover, 
+	> *.unavailable:hover a,
+	> *.unavailable:focus,
+	> *.unavailable a:focus {
+		text-decoration: none;
+		color: #999999;
+		cursor: default; 
+	}
+	> *:before {
+		content: "/";
+		color: #aaaaaa;
+		margin: 0 0.66667rem;
+		position: relative;
+		top: 1px; 
+	}
+	> *:first-child:before {
+		content: " ";
+		margin: 0; 
+	}
+	&.has-border{
+		border:	1px	solid	#ddd;
+		padding: 0.5em 0.8em;
+		border-radius:	$base-borderradius;
+		background-color:	#fefefe;
+	}
+}
+

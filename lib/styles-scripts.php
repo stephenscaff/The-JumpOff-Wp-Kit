@@ -33,7 +33,6 @@ function jumpoff_scripts_and_styles() {
 		if ( is_front_page() ) {}
 	}
 }
-//add_action( 'init', 'jumpoff_scripts_and_styles' );
 ?>
 
 

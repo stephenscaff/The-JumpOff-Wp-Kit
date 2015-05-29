@@ -5,17 +5,7 @@ body {
   font-family: $font-paragraph;
   color: $color-darkgrey;
   background: $color-light;
-  position: relative;
-  overflow-x: hidden;
-  width: 100%;
-  font-weight: 400;
-  font-style: normal;
   line-height: $base-lineheight;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;  
 }
 
 /*----------------------------------------------   
@@ -202,6 +192,7 @@ blockquote.grid-breaking {
 /*--------------------------------------------------- 
 VCards
 ---------------------------------------------------  */
+
 .vcard{
 	margin:	0 0 1em;
 	span{

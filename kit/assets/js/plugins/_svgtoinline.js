@@ -1,5 +1,5 @@
 /*----------------------------------------
-Contact Panel Slide
+Turn img svg to inline so we can play with the vectors
 ------------------------------------------*/
 $('img.svg').each(function(){
 	var $img = $(this);

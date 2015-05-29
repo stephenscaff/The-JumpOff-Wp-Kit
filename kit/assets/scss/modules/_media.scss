@@ -1,21 +1,6 @@
 /*----------------------------------------------   
 --Images
 -----------------------------------------------  */
-img,object,embed{
-  max-width:100%;
-  height:auto
-}
-
-img{
-  -ms-interpolation-mode:bicubic;
-  border: 0;
-}
-
-#map_canvas img,
-.map_canvas img{
-  max-width:none !important;
-}
-
 img.full-center,{
   width:100%;
   margin:0 auto;
@@ -27,6 +12,10 @@ figure img, figure, img.respond{
   width: 100%;
   height:auto
 }
+
+/*----------------------------------------------   
+--SVG-Wrap for rwd
+-----------------------------------------------  */
 .svg-wrap {
 	margin: 0 auto;
 	width: 100%;
@@ -34,19 +23,13 @@ figure img, figure, img.respond{
 }
 
 /*----------------------------------------------   
---Google Maps
+--Maps
 -----------------------------------------------  */
 #map_canvas { 
 	height: 100%; 
-	height: 37vh;
-	min-height: 29em;
+	min-height: 30em;
 	margin: 0; 
 	padding: 0;
-
-	@media (min-width: $mq-med) {
-	height: 72vh;
-	min-height: 41em;
-	}
 
 		&::after{
 			@media (max-width: $mq-med) {
@@ -59,30 +42,6 @@ figure img, figure, img.respond{
 				background: transparent;
 		}
 	}
-}
-
-.infotext, .infotext *{
-overflow: auto !important;
-width: 70% !important;
-height: 27em !important;
-line-height: 1.2 !important;
-}
-
-.gm-style-iw > div{
-	overflow:	hidden !important;
-	height:	auto !important;
-	line-height:	1.6 !important;
-}
-.gmnoscreen {
-    display: none !important;
-}
-
-.gmnoprint.gm-style-cc {
-    display: none !important;
-}
-
-.gm-style-cc {
-    display: none;
 }
 /*----------------------------------------------   
 --Avatars

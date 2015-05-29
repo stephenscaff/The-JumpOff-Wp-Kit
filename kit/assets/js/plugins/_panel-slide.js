@@ -2,15 +2,15 @@
 Contact Panel Slide
 ------------------------------------------*/
 $(".js-panelslide").click(function () {
-$("#js-slide-contact").addClass("absolute");
-$('body,html').animate({
-				scrollTop: 0
-			}, 500);
-			return false;
-}); 
+	$("#js-slide-contact").addClass("absolute");
+	$('body,html').animate({
+					scrollTop: 0
+				}, 500);
+				return false;
+	}); 
 
-$(".js-back").click(function () {
-$("#js-slide-contact").removeClass("absolute");
+	$(".js-back").click(function () {
+	$("#js-slide-contact").removeClass("absolute");
 }); 
 
 

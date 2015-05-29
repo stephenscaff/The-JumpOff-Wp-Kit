@@ -40,7 +40,7 @@
 				<li><a class="current" href="#">1</a></li>
 				<li><a href="#">2</a></li>
 				<li><a href="#">3</a></li>
-				<li><a class="next" href="#"><?php previous_posts_link( __( 'Older Posts &rarr;', 'urbaninfluence' ) ); ?></a></li>
+				<li><a class="next" href="#"><?php previous_posts_link( __( 'Older Posts &rarr;', 'jumpoff' ) ); ?></a></li>
 			</ul>
 		</nav>
 	<?php } ?>

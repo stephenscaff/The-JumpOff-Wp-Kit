@@ -1,0 +1,496 @@
+/*-----------------------
+SoSweet Admin Styles 
+-------------
+TOC
+-------------
+-General
+-Login
+-Admin
+-Admin: ACF
+-Admin: Toolbar
+-------------------------*/
+/*----------------------------------------------   
+--General
+-----------------------------------------------  */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, arial, sans-serif !important; }
+
+/*----------------------------------------------   
+--Custom Login Screen
+-----------------------------------------------  */
+body.login {
+  background-image: url(http://192.254.186.163/~brianlee/assets/images/home-mast-bg.jpg) !important;
+  background-size: cover;
+  height: 100%;
+  background-size: cover !important;
+  background-position: 50% top;
+  /*-- Overlay Tint --*/ }
+  body.login background-repeat:no-repeat
+  * {
+    margin: 0;
+    padding: 0; }
+  body.login::after {
+    content: '';
+    position: absolute;
+    background: #333;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    opacity: 0.4; }
+
+/*----------------------------------------------   
+--Login Box
+-----------------------------------------------  */
+body.login #login {
+  width: 400px;
+  padding: 5em 0 0;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20%;
+  z-index: 9;
+  padding: 1em 1em 2em;
+  background: white;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2); }
+  @media (max-width: 32em) {
+    body.login #login {
+      width: 100%; } }
+
+/*----------------------------------------------   
+--Login Logo
+-----------------------------------------------  */
+.login h1 {
+  text-align: center;
+  margin: 0 auto;
+  display: table; }
+
+.login h1 a {
+  background: none;
+  background-image: url(http://192.254.186.163/~brianlee/assets/images/logo-wayofthedog-white.png) !important;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  color: #999;
+  width: 15em !important;
+  height: 4em;
+  font-weight: 400;
+  text-decoration: none;
+  width: 80px;
+  text-indent: -9999px;
+  outline: none;
+  overflow: hidden;
+  opacity: 1;
+  margin: 1em auto -1em;
+  display: table;
+  background-size: 100%; }
+
+/*----------------------------------------------   
+--Login Form
+-----------------------------------------------  */
+body.login #login form#loginform {
+  margin-top: 20px;
+  margin-left: 0;
+  padding: 26px 24px 46px;
+  font-weight: 400;
+  background: rgba(255, 255, 255, 0);
+  width: 90%;
+  display: table;
+  padding: 3em 1.7em 4em;
+  box-shadow: none; }
+  body.login #login form#loginform label {
+    color: #f16d49;
+    font-size: 1em;
+    font-weight: 400;
+    letter-spacing: 0.08em; }
+  body.login #login form#loginform p {
+    margin-bottom: 0; }
+  body.login #login form#loginform input:not(#wp-submit), body.login #login form#loginform input#user_pass {
+    background: rgba(124, 124, 124, 0.24) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    border-radius: 1px !important; }
+    body.login #login form#loginform input:not(#wp-submit):focus, body.login #login form#loginform input#user_pass:focus {
+      border-color: #f16d49 !important; }
+  body.login #login form#loginform input[type="text"] {
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1;
+    width: 100%;
+    padding: 0.8em 0.3em;
+    margin-top: 0.2em;
+    color: #9C9C9C;
+    background: rgba(124, 124, 124, 0.24) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 2px !important;
+    outline: none; }
+  body.login #login form#loginform input[type=submit].button {
+    height: 36px;
+    line-height: 28px;
+    padding: 0.3em 3.5em 1.8em !important;
+    color: #f16d49;
+    background: transparent;
+    border: 0;
+    border: 1px solid #f16d49;
+    float: right !important;
+    box-shadow: none !important; }
+  body.login #login form#loginform p.submit {
+    border: none;
+    margin: -10px 0 20px;
+    padding: 0;
+    /* May want to revisit this */ }
+  body.login #login form#loginform .button-primary {
+    float: right; }
+  body.login #login form#loginform .forgetmenot {
+    font-weight: 400;
+    float: left;
+    margin-bottom: 0 label #rememberme;
+      margin-bottom-font-size: 1em !important;
+      margin-bottom-line-height: 1.4em;
+      margin-bottom-width: 1.4em !important;
+      margin-bottom-height: 1.4em;
+      margin-bottom-margin: .1em .3em 0 0;
+      margin-bottom-float: left;
+      margin-bottom-display: inline;
+      margin-bottom-color: #f16d49;
+      margin-bottom-background: transparent !important;
+      margin-bottom-border-color: #f16d49;
+      margin-bottom-border-radius: 3px; }
+
+/*----------------------------------------------   
+--Hide Admin Stuff
+-----------------------------------------------  */
+/*--- Format Box--
+#side-sortables #formatdiv,
+#side-sortables #postimagediv,
+#normal-sortables #postexcerpt,
+#normal-sortables #trackbacksdiv ,
+#normal-sortables  #postcustom,
+#normal-sortables  #trackbacksdiv, 
+#advanced-sortables #removep{
+  display: none !important;
+}
+*/
+/*----------------------------------------------   
+--Advanced Custom Fields Styles: Box Headers
+*Useage - ACF Message type, value: <h2>Box Title</h2>
+-----------------------------------------------  */
+#poststuff h2 {
+  font-size: 1.55em;
+  font-weight: 400;
+  padding: .5em .7em;
+  background: #060d15;
+  color: #FFF;
+  margin-right: -17px;
+  margin-bottom: -22px;
+  margin-left: -17px; }
+#poststuff h2.dark-navy {
+  background: #060d15; }
+#poststuff h2.navy {
+  background: #0C1633; }
+#poststuff h2.blue {
+  background: #1CA0B9; }
+#poststuff h2.colbalt {
+  background: #0F649C; }
+#poststuff h2.black {
+  background: #9A1CB9; }
+#poststuff h2.grey-blue {
+  background: #49757F; }
+#poststuff h3.sub-title {
+  font-size: 22px;
+  font-weight: 400;
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  color: #000;
+  background: #EEE;
+  padding: 0.3em; }
+
+/*----------------------------------------------   
+--Advanced Custom Fields: Post Boxes
+-----------------------------------------------  */
+.acf_postbox p.label label {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  padding: 1em 0 0.2em !important;
+  margin: 0 0 8px !important; }
+.acf_postbox p.label {
+  font-size: 14px;
+  line-height: 1.6em; }
+
+/*----------------------------------------------   
+--No Box
+-----------------------------------------------  */
+.acf_postbox.no_box .field {
+  background-color: #fff;
+  padding: 0 1.3em 1.5em !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3); }
+
+/*----------------------------------------------   
+-ACF: Tabs
+-----------------------------------------------  */
+.acf-tab-group {
+  margin-bottom: 0 !important; }
+
+.field_type-message {
+  background: #238DBD;
+  padding: 0 !important; }
+
+/*----------------------------------------------   
+-ACF: Inputs
+-----------------------------------------------  */
+.acf_postbox .field input[type="text"],
+.acf_postbox .field input[type="number"],
+.acf_postbox .field input[type="password"],
+.acf_postbox .field input[type="email"],
+.acf_postbox .field textarea {
+  width: 100%;
+  padding: 6px;
+  resize: none;
+  margin: 0;
+  height: 3em;
+  box-shadow: none;
+  border: 2px solid #ddd; }
+
+/*----------------------------------------------   
+-ACF: True False Meta Blocks
+-----------------------------------------------  */
+div#acf-mast-btn {
+  border-top: 1px solid #C7E6F9;
+  background: #D8F4FE;
+  border-bottom: 1px solid #DBC8C8; }
+  div#acf-mast-btn p.label {
+    text-shadow: none; }
+
+table.acf_input tbody tr td.label {
+  width: 25% !important;
+  background: #fff !important;
+  background-color: #fff;
+  vertical-align: middle !important;
+  border-right: 0 !important;
+  padding: 2em 1em; }
+
+.repeater {
+  margin: 0 -17px; }
+
+.repeater > table > tbody > tr > td.order {
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  width: 3em !important;
+  text-align: center !important;
+  vertical-align: middle;
+  color: #FFF !important;
+  text-shadow: none !important;
+  cursor: move;
+  font-size: 1.75em;
+  padding: 0 3em; }
+
+.repeater > table > tbody > tr > td.order {
+  border-right-color: #E1E1E1;
+  background: #000 !important;
+  padding: 1em; }
+
+table.acf-input-table.row_layout > tbody > tr > td {
+  background: #FFFFFF; }
+
+.repeater > table > tbody > tr > td.order {
+  border-right-color: #E1E1E1;
+  background: #000 !important;
+  padding: 1em; }
+
+/*----------------------------------------------   
+-ACF:Add Row Button
+-----------------------------------------------  */
+a.add-row-end.acf-button {
+  background: #000;
+  height: 49px;
+  line-height: 44px;
+  width: 15em; }
+
+/*----------------------------------------------   
+-ACF:Uploader Button
+-----------------------------------------------  */
+.acf-image-uploader input.button {
+  width: auto;
+  background: #000;
+  color: #fff;
+  box-shadow: none;
+  width: 9em;
+  height: 2.8em;
+  border: 1px solid #000;
+  margin-left: 1em; }
+
+/*----------------------------------------------   
+-ACF: Table
+-----------------------------------------------  */
+table.widefat td {
+  vertical-align: middle !important; }
+
+table.acf-input-table.row_layout > tbody > tr > td {
+  border-top-color: #fff; }
+
+/*----------------------------------------------   
+-ACF:Uploader
+-----------------------------------------------  */
+.acf-file-uploader img {
+  box-shadow: none !important;
+  background: transparent !important; }
+
+/*----------------------------------------------   
+-ACF: True False Meta Blocks
+-----------------------------------------------  */
+.field.field_type-true_false {
+  border-bottom: 1px solid #E8E8E8 !important p;
+    border-bottom-width: 71%; }
+
+/*
+ul.acf-checkbox-list li input {
+  width:auto!important;
+  top:-3em;
+  position:absolute;
+  right:0;
+  margin:0
+}
+*/
+/*----------------------------------------------   
+-ACF: Tabs
+-----------------------------------------------  */
+.postbox-container .acf-tab-wrap {
+  background: #fff; }
+
+.postbox-container .acf-tab-group li a {
+  background: #fefefe; }
+.postbox-container .acf-tab-group li.active a {
+  background: #FFFFFF; }
+
+/*----------------------------------------------   
+-ACF: Custom SEO Blocks
+-----------------------------------------------  */
+#acf-seo_title, #acf-seo_description, #acf-seo_keywords {
+  background: #fff !important;
+  padding: 1em; }
+
+/*----------------------------------------------   
+--Dashboard
+-----------------------------------------------  */
+.index-php .wrap h2:first-child {
+  opacity: 0;
+  padding: 0 0 0.1em; }
+
+.metabox-holder .postbox-container .empty-container {
+  display: none; }
+
+#wpbody-content #dashboard-widgets .postbox-container {
+  width: 100% !important; }
+
+.postbox .inside {
+  margin-bottom: 0;
+  margin: 0;
+  overflow: hidden; }
+
+div#themename_dashboard_welcome h3.hndle {
+  display: none; }
+
+#dashboard-widgets .postbox .inside {
+  margin-bottom: 0;
+  margin: 0;
+  padding: 0; }
+
+.postbox .handlediv {
+  display: none; }
+
+.postbox .handlediv h3.hndle {
+  display: none; }
+
+div#themename_dashboard_hero {
+  background: transparent;
+  border: 0;
+  box-shadow: none; }
+
+div#themename_dashboard_hero img {
+  width: 100%; }
+
+div#themename_dashboard_hero h3.hndle, div#themename_dashboard_brand h3.hndle, div#themename_dashboard_hero .handlediv, div#themename_dashboard_brand .handlediv {
+  display: none; }
+
+div#themename_dashboard_hero #dashboard-widgets .postbox .inside {
+  padding: 0; }
+
+div#themename_dashboard_welcome {
+  width: 33.33%;
+  float: left;
+  margin-right: 1em; }
+
+div#themename_dashboard_brand {
+  width: 33%;
+  float: left; }
+
+/*----------------------------------------------   
+--Admin Main Screen Widgets
+-----------------------------------------------  */
+.box {
+  background: #fff; }
+  .box .box-top {
+    padding: 4em 2em; }
+    .box .box-top h3 {
+      color: #fff;
+      font-size: 3em !important;
+      font-weight: 400; }
+  .box .bg-green {
+    background: #f16d49; }
+  .box .bg-orange {
+    background: #d15527; }
+  .box .box-content {
+    padding: 2.25em;
+    min-height: 11.2em p;
+      min-height-font-size: 1.4em;
+      min-height-color: #999;
+      min-height-line-height: 1.5;
+      min-height-font-weight: 400; }
+  .box .box-footer {
+    padding: 1em 2.25em;
+    border-top: 1px solid #eee a;
+      border-top-font-size: 1.4em; }
+
+/*----------------------------------------------   
+--Toolbar Admin
+-----------------------------------------------  */
+div#ed_toolbar {
+  background: #fff;
+  background: #111; }
+
+.wp-core-ui .quicktags-toolbar input.button.button-small {
+  font-size: 1em !important;
+  height: 3em !important;
+  line-height: 3em !important;
+  min-width: 5em !important;
+  background: #111;
+  border: 1px solid #000;
+  color: #fff;
+  letter-spacing: .1em;
+  box-shadow: none; }
+
+.postarea .wp-core-ui .quicktags-toolbar input.button.button-small:hover {
+  background: #09f; }
+.postarea a#insert-media-button {
+  background: #000;
+  box-shadow: none;
+  color: #fff;
+  min-height: 3em;
+  line-height: 1em;
+  padding: 1em 3em; }
+.postarea a#insert-media-button:hover {
+  background: #09f; }
+.postarea .wp-media-buttons .add_media span.wp-media-buttons-icon:before {
+  font: 400 18px/1 dashicons;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: '\f104';
+  color: #fff;
+  top: -3px;
+  position: relative; }

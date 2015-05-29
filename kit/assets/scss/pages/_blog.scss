@@ -1,0 +1,50 @@
+/*----------------------------------------------   
+--Blog  - archive
+-----------------------------------------------  */
+.blog{
+	
+/*----------------------------------------------   
+--Sect-Posts Half/half Example
+-----------------------------------------------  */	
+	.sect-posts{
+	
+		article{
+			border-bottom:	1px	solid	#bbb;
+			overflow:	hidden;
+			background-color:	$color-dark;
+			
+		.half{
+			overflow:	hidden;
+		}
+		
+		.has-bgimg{
+			overflow:	hidden;
+			position:	relative;
+			z-index:	1;
+			@include transition(all 1.6s ease);
+			@include transform(scale(1));
+			@include animation(fade-in ease-in-out .75s 1s both);
+			background-color:	$color-dark;
+			
+			&.zoom{
+				@include transition(all 33.6s ease);
+				@include transform(scale(1.7));
+			}
+		}
+	
+		.has-content{
+			background:	#fff;
+			position:	relative;
+			z-index:	3;
+		}
+		
+		.post-meta{
+			color:	#aaa;
+			
+				a{
+					color:	$color-alpha;
+				}
+			}
+		}
+	}
+}

@@ -77,47 +77,51 @@ var _gaq = _gaq || [];
 
 <body id="top" <?php body_class(); ?>>
 
-<!-- Header
-================================================== -->
 <!-- Mobile Nav
 ================================================== -->
-<div class='mobile-nav-toggle right'>
-	<a class='toggle' id='trigger-nav'>
-		<div class='menubars'></div>
-	</a>
-</div>
+<!-- Nav Toggle -->
+<a class='toggle-offcanvas'>
+  <div class='menubars'></div>
+</a>
 
-<nav class='mobile-nav'>
-	<ul>
-		<li><a href="/">Home</a></li>
-		<li><a href="/about">Anbout</a></li>
-		<li><a href="/contact">Contact</a></li>
-		<li><a href="/blog">Blog</a></li>
-		<li><a href="/project-starter">Start a Project</a></li>
-	</ul>
-</nav>
+<section class="offcanvas-bg">
+<!-- Footer-nav -->
+  <nav class='mobile-nav'>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </nav>
+
+  <!-- Footer-nav -->
+  <footer class="footer-nav">
+    <ul>
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">Instagram</a></li>
+      <li><a href="#">Github</a></li>
+    </ul>
+  </footer> 
+</section>
 
 <!-- Header
 ================================================== -->
 <header class="header-main">
-  <div class="row">
-		<!--- Logo --->
-  	<h1 id="logo">
-  	  	<a href="/">
-	  	  		<img	src=""	alt=""	/>
-						</a>
-  	  </div>
-  	</h1>
+ <div class="row">
+    <!-- Logo -->
+  <a href="/"><h1 id="logo">TheJumpOff</h1></a>
 
-		<!--- Main Nav --->
-    <nav role="navigation">
-  	  <ul>
-  	    <li><a href="/">Home</a></li>
-  	    <li><a href="/about">About</a></li>
-       <li><a href="/contact">Contact</a></li>
-       <li><a href="/blog">Blog</a></li>
-       <li><a class="btn" href="/project-starter">Start a Project</a></li>
-      </ul>  
-    </nav>
+    <!-- Main Nav-->
+  <nav role="navigation">
+    <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/services">Services</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li><a href="/blog">Blog</a></li>
+   </ul>  
+  </nav>
   </div>
 </header>

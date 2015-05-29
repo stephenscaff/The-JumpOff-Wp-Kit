@@ -1,5 +1,5 @@
 /*----------------------------------------------   
---Disable css hovers on scroll
+--Disable css hovers on scroll for css interactions
 -----------------------------------------------  */
 .disable-hover,
 .disable-hover * {
@@ -9,8 +9,7 @@
 /*----------------------------------------------   
 --Fade Images on hover
 -----------------------------------------------  */
-.fade-img, 
-a.fade-img, 
+.fade-img,  
 a.fade-img img{
 	opacity: 1;
  @include transition(opacity 1.5s ease-out);
@@ -79,7 +78,22 @@ a.fade-img img{
 
 @include keyframes(fade-down) {
   0%{
-    @include transform(translateY(-50px));
+    @include transform(translateY(-150px));
+  }
+  100%{
+    @include transform(translateY(0px));
+  }
+}
+/*----------------------------------------------   
+--Nav Down
+-----------------------------------------------  */
+.nav-down{
+  @include animation(fade-down ease-in-out 1s .4s both);
+}
+
+@include keyframes(nav-down) {
+  0%{
+    @include transform(translateY(-$header-height));
   }
   100%{
     @include transform(translateY(0px));

@@ -3,7 +3,6 @@
 /*	Head Clean Up
 /*--------------------------------------------------*/
 function jumpoff_head_cleanup() {
-  // Originally from http://wpengineer.com/1438/wordpress-header/
   remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'feed_links_extra', 3);
   remove_action('wp_head', 'rsd_link');
@@ -11,12 +10,17 @@ function jumpoff_head_cleanup() {
   //remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
   remove_action('wp_head', 'wp_generator');
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+  // Remove Stupid Emoticons
+  remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+  remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
   global $wp_widget_factory;
   remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
   add_filter('use_default_gallery_style', '__return_null');
 }
-
+/*--------------------------------------------------*/
+/*  Canonical
+/*--------------------------------------------------*/
 function jumpoff_rel_canonical() {
   global $wp_the_query;
 
@@ -31,45 +35,12 @@ function jumpoff_rel_canonical() {
   $link = get_permalink($id);
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
-//add_action('init', 'jumpoff_head_cleanup');
 
 /*--------------------------------------------------*/
 /*	Remove Wp Version - for security
 /*--------------------------------------------------*/
-function remove_wp_version() { return ''; }
-add_filter('the_generator', 'remove_wp_version');
-add_filter('the_generator', '__return_false');
+function jumpoff_remove_wp_version() { return ''; }
 
-/*--------------------------------------------------*/
-/*  Language_attributes(): used in <html> tag
-/*  Change lang="en-US" to lang="en"
-/*  Remove dir="ltr
-/*--------------------------------------------------*/ 
-function jumpoff_language_attributes() {
-  $attributes = array();
-  $output = '';
-
-  if (function_exists('is_rtl')) {
-    if (is_rtl() == 'rtl') {
-      $attributes[] = 'dir="rtl"';
-    }
-  }
-
-  $lang = get_bloginfo('language');
-
-  if ($lang && $lang !== 'en-US') {
-    $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
-  }
-
-  $output = implode(' ', $attributes);
-  $output = apply_filters('jumpoff_language_attributes', $output);
-
-  return $output;
-}
-//add_filter('language_attributes', 'jumpoff_language_attributes');
- 
 /*--------------------------------------------------*/
 /*	Clean up output of stylesheet <link> tags
 /*--------------------------------------------------*/ 
@@ -79,19 +50,15 @@ function jumpoff_clean_style_tag($input) {
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
-//add_filter('style_loader_tag', 'jumpoff_clean_style_tag');
-
 
 /*--------------------------------------------------*/
 /*	Remove Versions: js and css
 /*--------------------------------------------------*/
-function remove_cssjs_ver( $src ) {
+function jumpoff_remove_cssjs_ver( $src ) {
     if( strpos( $src, '?ver=' ) )
         $src = remove_query_arg( 'ver', $src );
     return $src;
 }
-//add_filter( 'style_loader_src', 'remove_cssjs_ver', 1000 );
-//add_filter( 'script_loader_src', 'remove_cssjs_ver', 1000 );
 
 /*--------------------------------------------------*/
 /*	Stop Injected Styles: Remove Recent Comments Widget CSS
@@ -101,6 +68,7 @@ function jumpoff_remove_wp_widget_recent_comments_style() {
       remove_filter('wp_head', 'wp_widget_recent_comments_style' );
    }
 }
+
 /*--------------------------------------------------*/
 /*	Stop Injected Styles: Remove Recent Comments CSS
 /*--------------------------------------------------*/
@@ -119,20 +87,32 @@ function jumpoff_gallery_style($css) {
 }
 
 /*--------------------------------------------------*/
-/*	Images: Remove auto HxW
-/*--------------------------------------------------*/
-add_filter( 'post_thumbnail_html', 'remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'remove_width_attribute', 10 );
+/*  Language_attributes(): used in <html> tag
+/*  Change lang="en-US" to lang="en"
+/*  Remove dir="ltr
+/*--------------------------------------------------*/ 
+function jumpoff_language_attributes() {
+  $attributes = array();
+  $output = '';
 
-function remove_width_attribute( $html ) {
-   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-   return $html;
+  if (function_exists('is_rtl')) {
+    if (is_rtl() == 'rtl') {
+      $attributes[] = 'dir="rtl"';
+    }
+  }
+  $lang = get_bloginfo('language');
+
+  if ($lang && $lang !== 'en-US') {
+    $attributes[] = "lang=\"$lang\"";
+  } else {
+    $attributes[] = 'lang="en"';
+  }
+
+  $output = implode(' ', $attributes);
+  $output = apply_filters('jumpoff_language_attributes', $output);
+
+  return $output;
 }
-
-/*--------------------------------------------------*/
-/*	Images: Stop autolinking
-/*--------------------------------------------------*/
-update_option('image_default_link_type','none');
-
+ 
 
 ?>

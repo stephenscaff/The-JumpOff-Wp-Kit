@@ -10,7 +10,7 @@ function jumpoff_flush_rewrite_rules() {
 }
 
 /*--------------------------------------------------*/
-/*	CPT: Team
+/*	CPT Example
 /*--------------------------------------------------*/
 
 add_action('init', 'create_team_post_types');

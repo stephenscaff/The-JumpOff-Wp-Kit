@@ -6,12 +6,9 @@ get_header(); ?>
 
 <!-- Hero-Section
 ================================================== -->
-<section id="hero-section" class="">
+<section class="sect-mast sect-banner"></section>
 
-
-</section>
-
-<!-- form 
+<!-- Sect-form 
 ================================================== -->
 <section id="form-section" class="sect-pad">
   <div class="row">

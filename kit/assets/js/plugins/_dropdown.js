@@ -1,9 +1,7 @@
 /*----------------------------------------
 Drop Down - Blog Cats
 ------------------------------------------*/
-
-$("#blognavs").sticky({topSpacing:65});
-
+//Setup
 function DropDown(el) {
 	this.dd = el;
 	this.initEvents();
@@ -16,12 +14,12 @@ DropDown.prototype = {
 			event.stopPropagation();
 		});	
 	}
-}
-
+};
+//Init
 $(function() {
-	var dd = new DropDown( $('.js-dropdown-cats') );
+	var dd = new DropDown( $('.js-dropdown') );
 	$(document).click(function() {
 		// all dropdowns
-		$('.wrapper-dropdown').removeClass('active');
+		$('.dd-wrap').removeClass('active');
 	});
 });

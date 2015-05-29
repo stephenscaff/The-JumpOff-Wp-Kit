@@ -1,5 +1,5 @@
 /*----------------------------------------------   
---tabs
+--tabs: nav
 -----------------------------------------------  */
 .js-tabs{
 	nav.tab-nav{
@@ -8,12 +8,15 @@
 			display: inline-block;
 			padding-right: 1em;
 		}
-		
-		li:hover{
-			cursor: pointer;
-		}
+	
+	li:hover{
+		cursor: pointer;
 	}
-		.tab-viewer li{
-			list-style: none;
-		}
+}
+/*----------------------------------------------   
+--tabs: viewer
+-----------------------------------------------  */
+	.tab-viewer li{
+		list-style: none;
 	}
+}

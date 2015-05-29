@@ -9,11 +9,11 @@
 
 /* --Vendor
 ========================================*/
-@import 'vendor/_normalize';
+@import 'vendor/_normalizer';
+
 
 /* --Modules: Reuseable UI elements
 =======================================*/
-@import 'modules/_setup';
 @import 'modules/_media';
 @import 'modules/_decor';
 @import 'modules/_forms';
@@ -23,10 +23,16 @@
 @import 'modules/_layouts';
 @import 'modules/_typography';
 @import 'modules/_animations';
+@import 'modules/_lists';
+
 /* --Partial: page components
 =======================================*/
 @import 'partials/_mobilenav';
 @import 'partials/_header';
 @import 'partials/_footer';
 @import 'partials/_sections';
+@import 'partials/_blocks';
 
+/* --Pages
+=======================================*/
+@import 'pages/_home';

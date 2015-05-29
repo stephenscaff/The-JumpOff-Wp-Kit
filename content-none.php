@@ -5,15 +5,12 @@
  * @subpackage gryphon
  */
 ?>
-<section class="simple-section white-bg">
-<div class="row">
+<section class="sect-content">
+<div class="row g-8 cols centered">
 <article id="post-0" class="post no-results not-found">
 
-		<h2><?php _e( 'Nothing Found', 'gryphon' ); ?></h2>
+		<h2><?php _e( 'Nothing Found', 'jumpoff' ); ?></h2>
 
-	<div class="entry-content">
 		<p><?php _e( 'Apologies, but no results were found. Perhaps searching will help find a related post.', 'jumpoff' ); ?></p>
-	</div>
-	<hr />
 </article>
 </section>

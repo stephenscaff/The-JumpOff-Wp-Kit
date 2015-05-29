@@ -7,20 +7,18 @@
 
 /*--------------------------------------------------*/
 /*	Add Specific class to body
-/*--------------------------------------------------
+/*--------------------------------------------------*/
 add_filter('body_class','my_class_names');
 function my_class_names($classes) {
 	// add 'class-name' to the $classes array
-	$classes[] = 'kf-fade-in-2';
+	$classes[] = 'page-fade-in';
 	// return the $classes array
 	return $classes;
 }
-*/
 
 /*--------------------------------------------------*/
 /*	Create Is Blog Function
 /*--------------------------------------------------*/ 
-
 function jumpoff_is_blog() {
 	if (is_home() || is_singular('post') || is_post_type_archive( 'post' ))
 		return true;
@@ -28,7 +26,7 @@ function jumpoff_is_blog() {
 }
 
 /*--------------------------------------------------*/
-/*	Is Blog - Add Class Journal
+/*	Is Blog - Add Blog class regardless of blogpage name
 /*--------------------------------------------------*/ 
 function jumpoff_body_class($classes) {
 
@@ -37,7 +35,7 @@ function jumpoff_body_class($classes) {
     $classes[] = basename(get_permalink());
   }
 if (jumpoff_is_blog()) {
-  $classes[] = 'journal';
+  $classes[] = 'blog';
 }
 // REMOVE UNNECESSARY CLASSES
   $home_id_class = 'page-id-' . get_option('page_on_front');

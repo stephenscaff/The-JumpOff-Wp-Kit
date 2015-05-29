@@ -1,13 +1,13 @@
 /*----------------------------------------------   
-Expand
+Expander and Accordions
 -stupid simple
+-by Stephen Scaff
 -----------------------------------------------  */
 $('.js-expander').click(function (e) {
 	e.preventDefault();
  $( '#' + $(this).data('expander') ).slideToggle(150);
  $(this).toggleClass("expander-open");
 });
-
 
 /*----------------------------------------------   
 Expand: accordion
@@ -29,3 +29,27 @@ function accordion() {
   });
 }
 accordion();
+
+/*----------------------------------------------   
+Accordion: Alt
+-----------------------------------------------  */
+$(".js-trigger").click(function() {
+$(".js-trigger").removeClass("active");
+
+var activeTab = $(this).attr("href");
+
+if($(activeTab).is(":visible")) {
+$(".content").slideUp().removeClass("is-showing");
+$(this).removeClass("active");
+
+} else {
+if ($(".is-showing").length > 0) {
+$(".is-showing").slideUp(function() {
+$(activeTab).hide().slideDown().addClass("is-showing");
+} ).removeClass("is-showing");
+
+} else {
+$(activeTab).hide().slideDown().addClass("is-showing");
+} $(this).addClass("active");
+} return false;
+});
