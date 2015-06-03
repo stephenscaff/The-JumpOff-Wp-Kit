@@ -60,7 +60,4 @@ $query->set('post_type',$post_type);
 return $query;
 }
 }
-
-
-
 ?>

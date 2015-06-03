@@ -31,7 +31,6 @@
 </div>
 </article>
 
-
 <!-- Sect: Read Next
 ================================================== -->
 <section class="sect-next">

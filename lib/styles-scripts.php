@@ -34,7 +34,3 @@ function jumpoff_scripts_and_styles() {
 	}
 }
 ?>
-
-
-
-

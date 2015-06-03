@@ -114,6 +114,46 @@ return $pee;
 /*-----------------------------------------------*/
 add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'status', 'video', 'audio'));
 
+/*-----------------------------------------------------------------------------------*/
+/*	Popular Posts Dopeness - Track by page views
+/*-----------------------------------------------------------------------------------
+function getPostViews($postID){
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count.' Views';
+}
+function setPostViews($postID) {
+    $count_key = 'post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
 
+USEAGE:
+		<ul class="posts-list">
+		<?php
+			query_posts('meta_key=post_views_count&orderby=meta_value_num&order=DESC');
+			if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<li>
+			<h5><a href="<? the_permalink()?>"><?php the_title(); ?></a></h5> 
+			<span class="meta-date"><?php echo get_the_time('M, j'); ?></span>		
+			</li>
+			<?php
+			endwhile; endif;
+			wp_reset_query();
+		?>
+		</ul>
+*/
 
 ?>

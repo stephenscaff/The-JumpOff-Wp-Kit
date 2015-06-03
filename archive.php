@@ -4,7 +4,7 @@
 ================================================== -->
 <section class="sect-archive-hero">
   <div class="row">
-    <div class="g-7 cols center-all">
+    <div class="g-7 cols centered">
       <img class="post-archive-avatar" src="<?php the_author_meta( 'profilepic' ); ?>"/>
       <h2><?php $author = get_userdata(get_query_var('author'));?>      
       <?php echo htmlspecialchars($author->display_name);?></h2>
@@ -19,11 +19,11 @@
 
 <!-- Blog Posts Grid
 ================================================== -->
-<section class="sect-posts-simple">
+<section class="sect-posts-simple sect-content">
   <div class="row">
     <div class="g-7 cols centered">
 
-    <div class="posts-title-rule"><?php the_author() ?> Has <?php the_author_posts(); ?> Posts</div>
+    <div class="archive-info"><?php the_author() ?> Has <?php the_author_posts(); ?> Posts</div>
     	<?php if ( have_posts() ) : ?>
     	  <?php /* Start the Loop */ ?>
     	    <?php while ( have_posts() ) : the_post(); ?>

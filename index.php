@@ -5,22 +5,21 @@
 ================================================== -->
 <main role="main">
 
-<!-- Sect: Banner
+<!-- Cover Story
 ================================================== -->	
-<section role="banner" class="sect-banner banner-mast">
-	<div id="mast-bg" class="banner-bg"></div>
-  <div class="row center-all vcenter">
-  	<div class="g-8 cols">
-	  <h1>News & Updates</h1>
-	  </div>
- </div>
-</section>
+<?php if ( have_posts() ) : ?>
+	<?php query_posts('posts_per_page=1'); ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+		<?php get_template_part( 'content-coverstory', get_post_format() ); ?>
+	<?php endwhile; ?>
+<?php endif; // end have_posts() check ?>
+
 
 <!-- Sect: News / Posts
 ================================================== -->
 	<section class="sect-posts">			
   <?php if ( have_posts() ) : ?>
-    <?php /* Start the Loop */ ?>
+    <?php query_posts('offset=1'); ?>
       <?php while ( have_posts() ) : the_post(); ?>
 	    <?php get_template_part( 'content', get_post_format() ); ?>
       <?php endwhile; ?>
@@ -34,7 +33,7 @@
 <section class="sect-pagination xl">
 	<div class="row">
 	<?php /* Display navigation to next/previous pages when applicable */ ?>
-	<?php if ( function_exists('jumpoff_pagination') ) { jumpoff_pagination(); } else if ( is_paged() ) { ?>
+	<?php if ( function_exists('jumpoffpagination') ) { thinc_pagination(); } else if ( is_paged() ) { ?>
 		<nav class="pagination">
 			<ul>
 				<li><a class="current" href="#">1</a></li>
@@ -47,6 +46,7 @@
 	</div>
 </section>
 
+</main>
 <!-- Footer
 ================================================== -->	
 <?php get_footer(); ?>
