@@ -2,7 +2,7 @@
 
 <!-- Main
 ================================================== -->
-<main role="main">
+<main role="main" class="post-single">
 
 <?php /* Start loop */ ?>
 <?php while (have_posts()) : the_post(); ?>
@@ -10,55 +10,59 @@
 
 <!-- Article/Post
 ================================================== -->
-<article class="post-single">
- <div class="row">
-  <div class="g-8 cols centered">	
+<article class="sect-post" id="post-<?php the_ID(); ?>">
 
-<!-- Post: Header
+
+<!-- Article header/hero
 ================================================== -->
-	 <header>
-	  <span class="post-meta-date">Posted on <?php the_date(); ?></span>
+	<header class="post-hero hero-noimg">
+		<div class="row">
+			<ul class="post-meta-tags"><li><?php the_category('</li><li>'); ?></li></ul>
 	  <h1 class="post-title"><?php the_title(); ?></h1>
-	 </header>
+	  <?php if(get_field('post-subtitle')) { echo '<p class="post-subtitle">' . get_field('post-subtitle') . '</p>';} ?>
+	  <div class="post-meta-byline">
+			<img class="post-meta-avatar" src="<?php the_author_meta( 'profilepic' ); ?>" alt="post author"/>
+			<p class="post-meta-credit">Written by <?php the_author_posts_link(); ?> on <?php the_date(); ?></p>
+		</div>
+	</header>
 
-<!-- Post: content
+<!-- First Image
 ================================================== -->
-	 <section class="post-content">
-		 <?php the_content(); ?>
-	 </section>
+	<figure>
+		<img	src="<?php echo catch_that_image() ?>"	alt=""	/>
+		<figcaption class="post-content">Here a little caption son to check caps</figcaption>
+	</figure>
 
+<!-- Article Content
+================================================== -->
+	<section class="post-content post-body">
+		<?php the_content(); ?>
+	</section>
+
+<!-- Article Footer
+================================================== -->
+<footer class="post-content post-footer">
+		<div class="socials">
+			<a href="http://twitter.com/home?status=<?php the_title(); ?>+<?php the_permalink(); ?>"><span class="icon icon-twitters"></span></a>
+			<a href="http://www.facebook.com/share.php?u=<?php the_permalink(); ?>/&amp;title=<?php the_title(); ?>"<span class="icon icon-facebooks"></span></a>
 	</div>
-</div>
-</article>
+
+	<div class="post-footer-card">
+		<p class="post-footer-title">Written By</p>  
+			<img class="post-footer-avatar" src="<?php the_author_meta( 'profilepic' ); ?>"/>
+				<div class="post-footer-info">
+					<h4><?php the_author_posts_link(); ?></h4>
+					<p><?php the_author_meta('description'); ?></p>
+					<a class="link-arrow" href="<?php bloginfo('url'); ?>/author/<?php the_author_meta( 'user_nicename' ); ?> ">View Posts</a>           
+			</div>
+		</div>
+</footer>
 
 <!-- Sect: Read Next
 ================================================== -->
-<section class="sect-next">
-<?php $prevPost = get_previous_post(true);
-	if($prevPost) {
-		$args = array(
-			'posts_per_page' => 1,
-			'include' => $prevPost->ID
-		);
-	$prevPost = get_posts($args);
-		foreach ($prevPost as $post) {
-	setup_postdata($post);
-?>
-	<a href="<?php the_permalink(); ?>">
-		<div class="row">
-			<div class="g-8 cols centered">
-				<small class="meta-next">Read Next</small>
-				<h2><?php the_title();?></h2>
-			</div>
-		</div>
-	</a>
-				<?php
-		wp_reset_postdata();
-		} //end foreach
-		} // end if
-	?>
-</section>
+<?php include (TEMPLATEPATH . '/content-nextpost.php'); ?>
 <?php endwhile; // End the loop ?>
+	</article>
 </main>
 
 
