@@ -1,5 +1,6 @@
 /*----------------------------------------
-Contact Panel Slide
+Panel Slide
+Author: Stephen Scaff
 ------------------------------------------*/
 $(".js-panelslide").click(function () {
 	$("#js-slide-contact").addClass("absolute");
@@ -10,8 +11,8 @@ $(".js-panelslide").click(function () {
 	}); 
 
 	$(".js-back").click(function () {
-	$("#js-slide-contact").removeClass("absolute");
-}); 
+		$("#js-slide-contact").removeClass("absolute");
+	}); 
 
 
 	scroll = {

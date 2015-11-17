@@ -1,5 +1,10 @@
 /** -------------------------------------------------------------------
-Validates
+Validatior
+Author: Stephen Scaff
+Dependencies: _forms.scss
+
+A super simple validation. add an empty div (.error-message) to render notice bar
+
 * ------------------------------------------------------------------- */
 $("form").on("submit", function(e){
   
@@ -7,7 +12,7 @@ $("form").on("submit", function(e){
   var hasError = false;
   //var email		= 'input[type="email"]';
   //var testEmail = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-  $("input:not(:hidden), select, #lead_vehicle_make_id").each(function(){
+  $("input:not(:hidden), select").each(function(){
     var $this = $(this);
     
     if($this.val() === ""){

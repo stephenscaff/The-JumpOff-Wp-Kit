@@ -3,11 +3,16 @@
 --Links
 -----------------------------------------------  */
 a{
-  @include link-styles($color-beta);
+  @include link-styles($color-alpha);
 }
 
-a.link-line{
-	@include link-line();
+.link-line, .link-more{
+  font-weight: 600;
+  @include link-line-b();
+}
+
+.bg-alpha .link-more{
+  @include link-line-b(#fff, #fff);
 }
 /*----------------------------------------------   
 --Arrow Link
@@ -44,6 +49,12 @@ a.link-line{
   background-color: $color-grey;
 }
 
+.bg-alpha, .bg-beta, .bg-delta, .bg-dark{
+  *:not(.btn-white), figure.fig-stat span, figure.fig-stat figcaption{
+    color: #fff;
+  }
+}
+
 .bg-lightgrey{
   background-color: $color-lightgrey;
 }
@@ -55,17 +66,31 @@ a.link-line{
 .bg-light{
   background-color: $color-light;
 }
+.bg-white{
+  background-color: #fff;
+}
+/*----------------------------------------------   
+--Overlay: Dark
+-----------------------------------------------  */
+.overlay-dark{
+  @include overlay;
+}
 
-
+/*----------------------------------------------   
+--Overlay: Gradient
+-----------------------------------------------  */
+.overlay-gradient{
+  @include overlay-gradient;
+}
 /*----------------------------------------------   
 --Light & Dark Themes
 -----------------------------------------------  */
 .light *{
-	color: $color-darkgrey;
+  color: $color-darkgrey;
 }
 
 .dark *{
-	color: #fff;
+  color: #fff;
 }
 
 /*----------------------------------------------   

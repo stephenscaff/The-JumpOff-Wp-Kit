@@ -1,0 +1,41 @@
+/*---------------------------------------------   
+-404 
+----------------------------------------------- */  
+.error404{
+ background-color: $color-dark;
+/*----------------------------------------------   
+--Sect-Mast
+-----------------------------------------------  */
+ .sect-mast{
+ background-image: url(../images/fourohfour-bg.jpg);
+ height: 100vh;
+ @include overlay($color-darkgrey, 0.1);
+ @include animation(fade-in 1.5s ease-in both);
+
+  h1{
+   font-size: 5em;
+   font-size: 12vmin;
+   margin: 0 auto;
+   @include animation(fade-in 2s 1s ease-in both);
+  }
+
+  h3{
+   font-size: 2.5em;
+   font-size: 5vmin;
+   margin: 0 auto 0.6em;
+   @include animation(fade-in 2s 2s ease-in both);
+  }
+
+  h1, h3{
+   color: rgba(255,255,255,0.7);
+  }
+
+  .btn{
+   @include animation(fade-in 2s 2.5s ease-in both);
+  }
+ }
+
+ footer.footer-main{
+  display:none;
+ }
+}

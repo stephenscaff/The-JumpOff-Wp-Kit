@@ -1,3 +1,25 @@
+/*----------------------------------------
+Vide
+
+/*----------------------------------------------   
+--Usage:
+
+//Init
+if ($(window).width() > 767) {
+  $(".bg-vid").vide({
+    mp4: '/assets/videos/video-home.mp4',
+    ogv: '/assets/videos/video-home.ogv',
+    webm: '/assets/videos/video-home.webm',
+    //poster: '/assets/images/home-mast-bg.jpg'
+  });
+    
+// Fade that shit in  
+$('.bg-vid').fadeIn(3000);
+$('#sect-video .overlay').stop().animate({
+    "opacity": 0.6
+});
+}
+------------------------------------------*/
 ;(function($, window, document, navigator) {
     "use strict";
 
@@ -413,24 +435,3 @@
         });
     });
 })(window.jQuery, window, document, navigator);
-
-
-
-
-/*----------------------------------------------   
---Usage
------------------------------------------------  
-    if ($(window).width() > 767) {
-      $(".bg-vid").vide({
-        mp4: '/assets/videos/video-home.mp4',
-        ogv: '/assets/videos/video-home.ogv',
-        webm: '/assets/videos/video-home.webm',
-        poster: '/assets/images/home-mast-bg.jpg'
-      });
-     
-      $('.bg-vid').fadeIn(3000);
-      //$('#sect-video .overlay').stop().animate({
-      //  "opacity": 0.6
-      // });
-    }
-    */

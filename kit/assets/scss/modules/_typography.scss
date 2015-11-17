@@ -86,7 +86,7 @@ p.lead{
 -----------------------------------------------  */
 
 p{
-  margin-top: 0.7em;
+  margin-top: 0;
   margin-bottom: 0.75em;
 }
 
@@ -154,45 +154,36 @@ blockquote cite a,blockquote cite a:visited{color:#555}
 
 q, blockquote {
   font-family: $font-paragraph;
-  text-align: left;
-  padding: .5em 1em;
+  font-weight: 600;
+  color: $color-alpha;
+  text-align: center;
+  font-style: normal;
+  padding: .5em 0.5em;
   margin: 1em auto;
-  line-height: inherit;
+  line-height: 1.5;
   letter-spacing: inherit;
-  border-left: 2px solid rgba(0, 0, 0, 0.1);
   font-size: 110%;
-  font-style: italic;
-  color: rgba(0,0,0,0.7);
-  
-  &.text-center{
-    border:  0;
-  }
-  
-  @media (min-width: $mq-med) {
-    font-size: 130%;
-    border-left: 5px solid rgba(0, 0, 0, 0.1);
-  }  
+  @include font-rwd(1.15em, 1.7em, 2em, 2.1em)
 }
 q, blockquote {quotes: "“" "”" "‘" "’";}
 
 
 blockquote.grid-breaking {
-	font-size: 128%;
-	border: 0;
-	padding: 0;
-	text-align: center;
-	color: #999;
+  font-size: 128%;
+  border: 0;
+  padding: 0;
+  text-align: center;
+  color: #999;
 
-	@media (min-width: $mq-med) {
-		font-size: 170%;
-		margin: 1em -15%;
-	}
+  @media (min-width: $mq-med) {
+    font-size: 170%;
+    margin: 1em -15%;
+  }
 }
 
 /*--------------------------------------------------- 
 VCards
 ---------------------------------------------------  */
-
 .vcard{
 	margin:	0 0 1em;
 	span{

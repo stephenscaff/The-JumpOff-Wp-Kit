@@ -2,497 +2,293 @@
 --Micro Clearfix - also added to row class
 -----------------------------------------------  */
 .cf, .row {
-	@include cf;
+ @include cf;
 }
 
 /*----------------------------------------------   
 -Row Class (container)
 -----------------------------------------------  */
 .row{  
-	width: 95%;
-	max-width: $row-max-width;
-	margin-left: auto;
-	margin-right: auto;
-	
-	@media (min-width: $mq-med) {
-	 width: 94%;
-	}
-	@media (min-width: $mq-large) {
-	 max-width: 90%;
-	}
-	@media (min-width: $mq-xlarge) { 
-	 max-width: 80%;
-	}
-	@media (min-width: $mq-xxlarge) {
-	 max-width: $row-max-width;
-	}
+ width: 94%;
+ max-width: $row-max-width;
+ margin-left: auto;
+ margin-right: auto;
  
+ @media (min-width: $mq-med) {
+  width: 94%;
+ }
+ @media (min-width: $mq-large) {
+  max-width: 90%;
+ }
+ @media (min-width: $mq-xlarge) { 
+  max-width: 80%;
+ }
+ @media (min-width: $mq-xxlarge) {
+  max-width: $row-max-width;
+ }
+}
+
 /*----------------------------------------------   
---Row: Wider
+-Row XL
 -----------------------------------------------  */
-	.xl &, &.xl {
-		max-width: 98%; 
-		width:98%;
-	}
-	
-	/* Go Full Width */ 
-	.xxl &, &.xxl{
-		width: 100%;
-		max-width: 100%;
-	}
-	
-	/*----------------------------------------------   
-	--padding for single cols
-	-----------------------------------------------  */
-	&.g-full, &[class*="g-"]{
-		padding-left:$col-padding;
-		padding-right: $col-padding;
-	}
+ .row-xl{
+  @extend .row;
+  @media (min-width: $mq-med) {
+   max-width: 90%; 
+  }
+ }
+
+/*----------------------------------------------   
+-Row XXL
+-----------------------------------------------  */
+.row-xxl{
+ @extend .row;
+ @media (min-width: $mq-med) {
+  width: 98%;
+  max-width: 98%;
+ }
+}
+
+/*----------------------------------------------   
+-Row Full Width
+-----------------------------------------------  */
+.row-full{
+ @extend .row;
+ width: 100%;
+ max-width: 100%;
+
+ .cols{
+  padding-left: 6%;
+  padding-right: 6%;
+ }
+}
+
+ /*----------------------------------------------   
+ -Row with Col padding
+ -----------------------------------------------  */
+.row.g-full{
+ padding-left:$col-padding;
+ padding-right: $col-padding;
 }
 
 /*----------------------------------------------   
 -Row : Nested
 -----------------------------------------------  */
 .row .row { 
-	width:auto; 
-	max-width:none; 
-	min-width:0; 
-	margin: 0 -$base-gutter; 
+ width:auto; 
+ max-width:none; 
+ min-width:0; 
+ margin: 0 -$base-gutter; 
  
-	@media (min-width: $mq-med) {
-	 width:auto; 
-	 max-width:none; 
-	 min-width:0; 
-	 margin:0 -$base-gutter;
-	}
+ @media (min-width: $mq-med) {
+  width:auto; 
+  max-width:none; 
+  min-width:0; 
+  margin:0 -$base-gutter;
+ }
 }
 
 /*----------------------------------------------   
 -Columns
 -----------------------------------------------  */
 .cols{ 
-	float:left;
-	min-height:1px;
-	position:relative;
-	width: 100%;
-	
-	.row &{
-		padding-left:$col-padding;
-		padding-right:$col-padding;
-	}
+ float:left;
+ min-height:1px;
+ position:relative;
+ width: 100%;
+
+ .row &{
+  padding-left:$col-padding;
+  padding-right:$col-padding;
+ }
 }
 
 /*----------------------------------------------   
 -Row with half the paddings
 -----------------------------------------------  */
-.half-pad .row, .half-pad .row .cols {
-  padding: 0 $base-gutter/2;
+.half-pad .row, .half-pad .row .cols { 
+ padding: 0 $base-gutter/2;
 }
 
 /*----------------------------------------------   
 -Row with no padding cols
 -----------------------------------------------  */
-.row.nopad .cols { 
-  padding:0
-}
-
-.row .row.nopad { 
-  margin:0 -$col-padding;
+.row.no-pad .cols { 
+ padding:0
 }
 
 /*----------------------------------------------   
 -Cols: Float last col right
 -----------------------------------------------  */
-@media only screen and (min-width: $mq-med) {
 [class*="cols"]+[class*="cols"]:last-child { 
+ @media (min-width: $mq-med) { 
   float:right
-}
-
-/*----------------------------------------------   
---Cols: stay left
------------------------------------------------  */
-	.cols.is-left{
- 	float: left !important;
  }
 }
-
 /*----------------------------------------------   
--Grid Cols: xtra small (also for non collapsing columns)
+-Grid System
 -----------------------------------------------  */
-.xsm-3, .row .xsm-3  { width: $col * 3;}
-.xsm-6, .row .xsm-6  { width: $col * 6;}
-.xsm-4, .row .xsm-4  { width: $col * 4;}
-.xsm-8, .row .xsm-8  { width: $col * 8;}
-
-/*----------------------------------------------   
--Grid Cols Small
------------------------------------------------  */
-@media only screen and (min-width: $mq-small) {
-.sm-6, .row .sm-6   { width: $col * 6;}
-.sm-4, .row .sm-4  { width: $col * 4;}
-.sm-3, .row .sm-3  { width: $col * 3;}
-.sm-8, .row .sm-8  { width: $col * 8;}
+@for $i from 1 through $cols {
+ //Columns "xsm-*"  
+ .xsm-#{$i} {
+  width: ((100 / $cols) * $i) * 1%;
+ }
 }
-
 /*----------------------------------------------   
 -Grid Cols Main: after med
 -----------------------------------------------  */
-@media only screen and (min-width: $mq-med) {
-.g-1,  .row .g-1  { width: $col;}
-.g-2,  .row .g-2  { width: $col * 2;}
-.g-3,  .row .g-3  { width: $col * 3;}
-.g-4,  .row .g-4  { width: $col * 4;}
-.g-5,  .row .g-5  { width: $col * 5;}
-.g-6,  .row .g-6  { width: $col * 6;}
-.g-7,  .row .g-7  { width: $col * 7;}
-.g-8,  .row .g-8  { width: $col * 8;}
-.g-9,  .row .g-9  { width: $col * 9;}
-.g-10, .row .g-10 { width: $col * 10;}
-.g-11, .row .g-11 { width: $col * 11;}
-.g-12, .row .g-12 { width: $col * 12;}
-
-/*----------------------------------------------   
--Offsets: after med
------------------------------------------------  */ 
-.row .offset1 {margin-left: $col}
-.row .offset2 {margin-left: $col * 2}
-.row .offset3 {margin-left: $col * 3}
-.row .offset4 {margin-left: $col * 4}
-.row .offset5 {margin-left: $col * 5}
-.row .offset6 {margin-left: $col * 6}
-.row .offset7 {margin-left: $col * 7}
-.row .offset8 {margin-left: $col * 8}
-.row .offset9 {margin-left: $col * 9}
-.row .offset10{margin-left: $col * 10}
+@media (min-width: $mq-med) {
+ @for $i from 1 through $cols {
+  //Columns "g-*"  
+  .g-#{$i} {
+   width: ((100 / $cols) * $i) * 1%;
+  }
+  // Offsets "os-*"
+  .offset-#{$i}{
+   margin-left: ((100 / $cols) * $i) * 1%;
+  }
+   //source order reverse: "pull-*"
+  .pull-#{$i}{
+   left: ((100 / $cols) * $i) * 1%;
+  }
+  //source order reverse: "push-*""
+  .push-#{$i}{
+   right: ((100 / $cols) * $i) * 1%;
+  }
+ }
 }
-
 /*---------------------------------------------   
--Source Order: after med
+-Source Reverse: after med for half/half
 ----------------------------------------------- */
 .source-reverse{
  .cols:first-child{
- 	@media (min-width: $mq-med) {
- 		right:	-50%;
- 	}
+  @media (min-width: $mq-med) {
+   right: -50%;
+  }
  }
  .cols:last-child{
- 	@media (min-width: $mq-med) {
- 		left:	-50%;
- 	}
+  @media (min-width: $mq-med) {
+   left: -50%;
+  }
  }
-}
-.push-right{
-	@media (min-width: $mq-med) {
-  position: relative;
-  right: -50%;
-	}
-}
-.pull-left{
-	@media (min-width: $mq-med) {
-  position: relative;
-  left: -50%;
- }
-}
-.pull-9{
-	@media (min-width: $mq-med) {
-  right: 75%;
- }
-}
-
-.pull-7{
-	@media (min-width: $mq-med) {
-  right: $col * 7;
- }
-}
-.push-3 {
-	@media (min-width: $mq-med) {
-  left: 25%;
-	}
 }
 
 /*---------------------------------------------   
--Containerless Grid modifer
+-Containerless Grid via Table Cell
 ----------------------------------------------- */
 .has-table{
-	@include cf;
+ @include cf;
 
-.row-table{
-	display:	block;
-	width:	100%;
-	max-width:	none;
-	
-	@media (min-width: $mq-med) {
-		display:	table;
-	}
-	
-	/*-- contains g- from grid --*/
-	[class*="g-"]{
-		padding:	10% $col-padding;
-		float:	none;
-		//width:	100%;
-		
-		@media (min-width: $mq-med) {
-			padding-left: 5%;
-			padding-right:	5%;
-			//width:	50%;
-			display:	table-cell;
-			vertical-align:	middle;
-		}
-	}
-	
-	.half{
-		padding:	10% $col-padding;
-		float:	none;
-		width:	100%;
-		
-		@media (min-width: $mq-med) {
-			padding:	6% 5%;
-			width:	50%;
-			display:	table-cell;
-			vertical-align:	middle;
-		}
-		
-		&.has-map{
-			padding:	0;
-			margin:	0;
-			@media (min-width: $mq-med) {
-				padding:	0;
-				margin:	0;
-			}
-		}
-		&.has-bgimg{
-			background-size:	cover;
-			background-position:	50%;
-			min-height:	20em;
-		}
-		&[class*="bg-"] {
-			color:	$color-dark;
-		}
-		.content{
-			vertical-align:	middle;
-		}
-	}
+ .row-table{
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-height: 32em;
+  width: 100%;
+  overflow-x: hidden;
+  
+  @media (min-width: $mq-med) {
+   display: table;
+  }
+
+ 
+ .half, .g-6{
+  padding: 10% $col-padding;
+  float: none;
+  width: 100%;
+  overflow-x:hidden;
+  background-color: #fff;
+  position: relative;
+  
+  @media (min-width: $mq-med) {
+   padding: 6% 5%;
+   width: 50%;
+   display: table-cell;
+   vertical-align: middle;
+  }
+
+  &.has-bgimg{
+   background-size: cover;
+   background-position: 50%;
+   min-height: 20em;
+   background-repeat: no-repeat;
+  }
+  .has-content, .content{
+   vertical-align: middle;
+   padding: 5%;
+   margin: 0 auto;
+  }
+ }
 }
-	&.is-reversed{
-		.half:first-child{
-			@media (min-width: $mq-med) {
-				right:	-50%;
-			}
-		}
-		.half:last-child{
-			@media (min-width: $mq-med) {
-				left:	-50%;
-			}
-		}
-	}
-}
+/*---------------------------------------------   
+-Reverse 50/50 and maintain source order. 
+-For dymaic instances, use &:nth-of-type(odd) / &:nth-of-type(even)
+----------------------------------------------- */
+ &.is-reversed{
+  .half:first-child{
+   @media (min-width: $mq-med) {
+    right: -50%;
+   }
+  }
+  .half:last-child{
+   @media (min-width: $mq-med) {
+    left: -50%;
+   }
+  }
+ }
 
 /*---------------------------------------------   
---Simple Img Grid
+--Has Padding
+----------------------------------------------- */
+ &.has-pad{
+  padding: 0 2%;
+  background-color: #fff;
+ }
+}
+
+
+/*---------------------------------------------   
+Simple Img Grid
 ----------------------------------------------- */
 .img-grid{
-	@include cf;
-	
-	img.left, img.right{
-		width: 50%;
-	}
-	img.left{
-		float: left;
-	}
-	img.right{
-		float: right;
-	}
-	img.full{
-		width: 100%;
-		float: left;
-		margin: 0;
-	}
-	
-	&.has-sep{
-		padding-top: .25em;
-	
-		img.left, img.right{
-			padding-bottom: 0.25em;
-		}
-	
-		img.left{
-			padding-right: 0.125em;
-		}
-		img.right{
-			padding-left: 0.125em;
-		}
-		img.full{
-			padding-bottom: 0.25em;
-		}
-		.g-4{
-			padding-right: .25em;
-		}
-		.last{
-			margin-right: -0.25em;
-		}
-	}
-}
-
-/*---------------------------------------------   
-Form Grid
------------------------------------------------ */
-form .cols,
-form .row.full{
-  @media only screen and (max-width: $mq-med) {
-    width: 100%;
-  }
-}
-form .row{
-  width: 95%;
-  @media (min-width: $mq-med) {
-    width: 90%;
-  }
-}
-form .cols{
-  padding: 0 0.5em;
-}
-
-
-/*---------------------------------------------   
-Multi Col Layout
------------------------------------------------ */
-.multicol-2 {
-  -webkit-column-count: 2;
-  -webkit-column-gap: 2em;
-  -webkit-column-width: 48.571%;
-  -moz-column-count: 2;
-  -moz-column-gap: 2.857%;
-  -moz-column-width: 48.571%;
-  column-count: 2;
-  column-gap: 2em;
-  column-width: 48.571%;
-  text-align: justify;
-}
-
-/*---------------------------------------------   
-Grid Blocks / List Grid
------------------------------------------------ */
-
-@media only screen {
-[class*="g-block-"] {
-  display: block;
-  padding: 0;
-  margin: 0;
-  *zoom: 1; 
-}
-
-[class*="g-block-"]:before, [class*="g-block-"]:after {
-  content: " ";
-  display: table; 
-}
-
-[class*="g-block-"]:after {
-  clear: both; 
-}
-
-[class*="g-block-"] > li {
-  display: inline;
-  height: auto;
+ @include cf;
+ 
+ img.left, img.right{
+  width: 50%;
+ }
+ img.left{
   float: left;
-  padding: 0 $base-gutter 1.25em; 
-  
-  .half-pad &{
-    padding: 0 $base-gutter/2 1.25em;;
+ }
+ img.right{
+  float: right;
+ }
+ img.full{
+  width: 100%;
+  float: left;
+  margin: 0;
+ }
+ 
+ &.has-sep{
+  padding-top: .25em;
+ 
+  img.left, img.right{
+   padding-bottom: 0.25em;
   }
-}
-
-
-.g-block-1 > li { width: $col * 12;}
-.g-block-2 > li { width: $col * 6;}
-.g-block-3 > li { width: $col * 4;}
-.g-block-4 > li { width: $col * 3;}
-
-.g-block-1 > li:nth-of-type(n),
-.g-block-2 > li:nth-of-type(n),
-.g-block-3 > li:nth-of-type(n),
-.g-block-4 > li:nth-of-type(n) {
-      clear: none; 
-}
-
-.g-block-1 > li:nth-of-type(1n+1),
-.g-block-2 > li:nth-of-type(2n+1),
-.g-block-3 > li:nth-of-type(3n+1),
-.g-block-4 > li:nth-of-type(4n+1) {
-  clear: both;
-}
-
-}
-
-/*---------------------------------------------   
-Grid Blocks - Med
------------------------------------------------ */
-@media only screen and (min-width: $mq-med) {
-
-.med-g-block-1 > li { width: $col * 12;}
-.med-g-block-2 > li { width: $col * 6;}
-.med-g-block-3 > li { width: $col * 4;}
-.med-g-block-4 > li { width: $col * 3;}
-.med-g-block-5 > li { width: 20%;}
-.med-g-block-6 > li { width: $col * 2;}
-.med-g-block-7 > li { width: 14.28571%;}
-.med-g-block-8 > li { width: 12.5%;}
-
-.med-g-block-1 > li:nth-of-type(n),
-.med-g-block-2 > li:nth-of-type(n),
-.med-g-block-3 > li:nth-of-type(n),
-.med-g-block-4 > li:nth-of-type(n),
-.med-g-block-5 > li:nth-of-type(n),
-.med-g-block-6 > li:nth-of-type(n),
-.med-g-block-7 > li:nth-of-type(n),
-.med-g-block-8 > li:nth-of-type(n) {
-  clear: none; 
-}
-
-.med-g-block-1 > li:nth-of-type(1n+1),
-.med-g-block-2 > li:nth-of-type(2n+1),
-.med-g-block-3 > li:nth-of-type(3n+1),
-.med-g-block-4 > li:nth-of-type(4n+1), 
-.med-g-block-5 > li:nth-of-type(5n+1), 
-.med-g-block-6 > li:nth-of-type(6n+1),
-.med-g-block-7 > li:nth-of-type(7n+1),
-.med-g-block-8 > li:nth-of-type(8n+1), {
- clear: both;
-}
-}
-
-/*---------------------------------------------   
-Grid Blocks - Large
------------------------------------------------ */ 
-@media only screen and (min-width: $mq-xxlarge) {
-
-.lg-g-block-1 > li { width: $col * 12;}
-.lg-g-block-2 > li { width: $col * 6;}
-.lg-g-block-3 > li { width: $col * 4;}
-.lg-g-block-4 > li { width: $col * 3;}
-.lg-g-block-5 > li { width: 20%;}
-.lg-g-block-6 > li { width: $col * 2;}
-.lg-g-block-7 > li { width: 14.28571%;}
-.lg-g-block-8 > li { width: 12.5%;}
-
-.lg-g-block-1 > li:nth-of-type(n),
-.lg-g-block-2 > li:nth-of-type(n),
-.lg-g-block-3 > li:nth-of-type(n),
-.lg-g-block-4 > li:nth-of-type(n),
-.lg-g-block-5 > li:nth-of-type(n),
-.lg-g-block-6 > li:nth-of-type(n),
-.lg-g-block-7 > li:nth-of-type(n),
-.lg-g-block-8 > li:nth-of-type(n) {
-  clear: none; 
-}
-
-.lg-g-block-1 > li:nth-of-type(1n+1),
-.lg-g-block-2 > li:nth-of-type(2n+1),
-.lg-g-block-3 > li:nth-of-type(3n+1),
-.lg-g-block-4 > li:nth-of-type(4n+1), 
-.lg-g-block-5 > li:nth-of-type(5n+1), 
-.lg-g-block-6 > li:nth-of-type(6n+1),
-.lg-g-block-7 > li:nth-of-type(7n+1),
-.lg-g-block-8 > li:nth-of-type(8n+1), {
-  clear: both;
-}
+ 
+  img.left{
+   padding-right: 0.125em;
+  }
+  img.right{
+   padding-left: 0.125em;
+  }
+  img.full{
+   padding-bottom: 0.25em;
+  }
+  .g-4{
+   padding-right: .25em;
+  }
+  .last{
+   margin-right: -0.25em;
+  }
+ }
 }

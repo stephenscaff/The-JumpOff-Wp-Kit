@@ -1,13 +1,12 @@
-/*
-* Stupid Simple Modals
-*	By Stephen Scaff
-* 
-*/
+/*----------------------------------------
+Stupid Simple Modals
+Author: Stephen Scaff
+------------------------------------------*/
 
 $(function(){
 
 var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
-var modalBoxOverlay = (".modal-box, .modal-overlay")
+var modalBoxOverlay = (".modal-box, .modal-overlay");
 var removeOverlay = $(".modal-overlay").remove();
 
 	$('a[data-modal-id]').click(function(e) {
@@ -23,22 +22,24 @@ var removeOverlay = $(".modal-overlay").remove();
 $(".js-modal-close").click(function(e) {
 e.preventDefault();
    $(modalBoxOverlay).fadeOut(500, function() {
-      removeOverlay;
+      removeOverlay();
   });
 });
 //click anywhere to close appended overlay
 $("body").on('click', '.modal-overlay', function(){
   $(modalBoxOverlay).fadeOut(500, function() {
-      removeOverlay;
+      removeOverlay();
   });
 });
 //Close on control c for copy to clipboard close
  $("input").bind('copy', function() {
    $(modalBoxOverlay).fadeOut(500, function() {
-       removeOverlay;
+       removeOverlay();
    });
  }); 
  
+
+ //Maybe ditch this for pure css
 $(window).on("load resize scroll",function(){
     $(".modal-box").css({
         //top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
@@ -48,9 +49,6 @@ $(window).on("load resize scroll",function(){
     });
 });
  
-//$(window).resize();
+$(window).resize();
 
 });
-
-
-

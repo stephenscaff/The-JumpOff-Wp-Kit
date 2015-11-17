@@ -11,7 +11,7 @@
 -----------------------------------------------  */
 .fade-img,  
 a.fade-img img{
-	opacity: 1;
+  opacity: 1;
  @include transition(opacity 1.5s ease-out);
   
  &:hover{
@@ -26,8 +26,8 @@ a.fade-img img{
 -----------------------------------------------  */
 .js-fademe, .js-fademe-late{
   opacity: 1;
-  @include media($mq-med) {
-  opacity: 0
+  @media (min-width: $mq-med) {
+    opacity: 0
   }
 }
 .no-js .js-fademe, .no-js .fademe-late{
@@ -39,12 +39,27 @@ a.fade-img img{
 -----------------------------------------------  */
 
 .fade-in {
- @include animation(fade-in ease-in-out .75s both);
+ @include animation(fade-in ease-in-out 1s both);
 }
 .fade-in-page {
  @include animation(fade-in ease-in-out 1.3s both);
 }
 @include keyframes(fade-in) {
+ 0%{
+   opacity: 0
+ }
+ 100%{
+   opacity: 1
+ }
+}
+
+
+
+.fade-out {
+ @include animation(fade-in ease-in-out 1s both);
+}
+
+@include keyframes(fade-out) {
  0%{
    opacity: 0
  }
@@ -140,11 +155,51 @@ a.fade-img img{
 -----------------------------------------------  */
 .zoom-in {
   @include animation(zoom-in ease-in-out 5s 0s);
-  tansform:translate3d(0,0,0);
+  @include engine3d;
 }
 
 @include keyframes(zoom-in) {
  50%{
    @include transform(scale(1.4) rotate(3.2deg));
+ }
+}
+
+/*----------------------------------------------   
+--Preloader
+-----------------------------------------------  */
+.preloader {
+  width: 4em;
+  height: 4em;
+  position: absolute;
+  top: 40%;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.preloader:before, .preloader:after {
+  content: '';
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  background-color: $color-alpha;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include animation(preloader-bounce 2s infinite ease);
+}
+
+.preloader:after {
+  @include animation-delay(-1s);
+}
+
+@include keyframes(preloader-bounce) {
+ 0%, 100%{
+  @include transform(scale(1.4) rotate(3.2deg));
+ }
+ 50%{
+   @include transform(scale(0.5));
  }
 }

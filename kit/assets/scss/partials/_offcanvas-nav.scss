@@ -1,0 +1,254 @@
+/*----------------------------------------------   
+--Header offcanvas-bg
+-----------------------------------------------  */
+	.offcanvas-menu{
+ 	@include transition(transform 0.5s cubic-bezier(.34,.95,.27,.98));
+ 	background-color:	rgba($color-dark, 0.9); 
+ 	height:	100vh;
+ 	height:	100%;
+ 	width:	100%;
+ 	right:	0;
+ 	top:	0;
+ 	position:	fixed;
+ 	display:	table;
+ 	z-index:	9;
+ 	@include transform(translate3d(100%, 0, 0));
+  @include transition(transform 0.7s ease);
+   
+  @media (min-width: $mq-med) {
+ 		width:	50%;
+ 	}
+			
+  nav{
+  	display:	table-cell;
+  	vertical-align:	middle;
+  	width:	100%;
+  	
+  	ul{
+		  font-family: $font-header;
+		  width:	100%;
+		  margin: 0 auto;
+		  text-align:	center;
+	   padding: 1em 0.5em;
+	   margin:	0;
+	   display:	block;
+	   @include transition(all 0.5s ease);
+ 	 }
+  
+		 li{
+		 	opacity:	0;
+		 	@include transition(all 0.5s ease);
+		 	@include transform(translateX(10%));
+		 	display:	block;
+		 	padding:	0.5em 0;
+		 	text-align:	center;
+		 	font-family:	$font-header;
+		 }
+	 
+  	a{
+		  color:	#fff;
+		  text-decoration:none;
+		  @include transition(all 0.7s ease);
+	  
+	  	&:hover, &.active{
+	  		color:	rgba(255,255,255,0.6);
+	  		@include transition(all 0.7s ease);
+	  	}
+	 	}
+		}
+	}
+	
+	/*--Footer-nav --*/
+	footer.offcanvas-menu--footer{
+		position:	absolute;
+		width:	100%;
+		bottom:	1em;
+		left:	0;
+		right:	0;
+		margin:	0 auto;
+		text-align:	center;
+		
+		ul li{
+			display:	inline-block;
+			padding:	0 0.5em;
+			margin:	0 0.25em;
+			font-family:	$font-header;
+			text-transform: uppercase;
+			font-size: 80%;
+			letter-spacing: 0.05em;
+			opacity:	0;
+			@include transition(all 0.5s ease);
+			@include transform(translateX(30%));
+			
+			a{
+				color:	rgba(255,255,255,0.4);
+				
+				&:hover{
+					color:	$color-alpha;
+				}
+			}
+		}
+	}
+
+
+/*----------------------------------------------   
+--js-nav-open
+-----------------------------------------------  */
+.js-nav-open{
+	/*--offcanvas-bg--*/
+	.offcanvas-menu{
+		@include transform(translate3d(0, 0, 0));
+		@include transition(transform 0.5s cubic-bezier(.34,.95,.27,.98));
+		/*--offcanvas nav link animation--*/
+		ul li{
+			opacity:	1;
+			@include transform(translateX(0px));
+			@include transition(all 0.4s ease);
+			visibility: visible;
+			-webkit-backface-visibility: hidden;
+			
+			&:nth-of-type(1) {	
+				@include transition-delay(0.1s);
+			}
+			&:nth-of-type(2){
+				@include transition-delay(.2s);
+			}
+			&:nth-of-type(3){
+				@include transition-delay(.3s);
+			}
+			&:nth-of-type(4){
+				@include transition-delay(.4s);
+			}
+			&:nth-of-type(5){
+				@include transition-delay(0.5s);
+			}
+			&:nth-of-type(6){
+				@include transition-delay(0.6s);
+			}
+			&:nth-of-type(7){
+				@include transition-delay(0.7s);
+			}
+			&:nth-of-type(8){
+				@include transition-delay(0.8s);
+			}
+		}
+		
+		/*--offcanvas nav footer links animation--*/
+		footer.footer-nav ul li{
+			&:nth-of-type(1){
+				@include transition-delay(0.7s);
+			}
+			&:nth-of-type(2){
+				@include transition-delay(0.8s);
+			}
+			&:nth-of-type(3){
+				@include transition-delay(0.8s);
+			}
+			&:nth-of-type(4){
+				@include transition-delay(0.8s);
+			}
+		}
+	}
+}
+
+/*----------------------------------------------   
+--Mobile Nav Toggle
+-----------------------------------------------  */
+.offcanvas-toggle {
+ height: 3em;
+ z-index: 9999;
+ padding: 1em .6em 1em 1em;
+ cursor: pointer;
+ position: fixed;
+ top: 0;
+ right: 1%;
+ @include transition(padding-top .5s cubic-bezier(0.1, 0.01, 0.3, 1));
+
+ /*-- Hide > Med --*/
+ @media (min-width: $mq-med){
+ display:	none;
+ }
+
+ &:hover {
+ 	@include transition (top 0.5s ease-in-out)
+ }
+ &:hover .menubars:before {
+  top: -9px; }
+ &:hover .menubars:after {
+  top: 9px; }
+ span {
+  position: absolute;
+  top: .8em;
+  right: -.3em;
+  width: 3em;
+  color: #fff;
+ }
+}
+
+/*----------------------------------------------   
+--Offcanvas-menu: Menu Bars
+-----------------------------------------------  */
+.menubars {
+ width: 1.7em;
+ height: 1px;
+ margin: 0.75em 0;
+ background: #fff;
+ position: relative;
+ @include transition (top 0.3s ease-in-out);
+ 
+	 &:before {
+   top: -8px; 
+	 }
+	 &:after {
+   top: 8px; 
+	 }
+	 &:after, &:before {
+   content: '';
+   display: block;
+   width: 1.7em;
+   height: 1px;
+   background: #fff;
+   position: absolute;
+   z-index: -1;
+   @include transition (all 0.3s ease-in-out); 
+	 }
+
+  .scrolling-down &,
+  .communities &{
+    background: $color-darkgrey;
+
+   &:after, &:before {
+    background: $color-darkgrey;
+   }
+  }
+	} 
+
+/*----------------------------------------------   
+--JS-Nav-Open: Menu Bars Animate
+-----------------------------------------------  */
+.js-nav-open {
+			
+	/*--Menu-bars--*/
+	.menubars {
+	 background: none !important; 
+	}
+
+	.menubars:after {
+  top: 0 !important;
+  //background: #fff !important;
+  @include transform(rotate(45deg));
+  filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(45), M12=-sin(45), M21=sin(45), M22=cos(45));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(45), M12=-sin(45), M21=sin(45), M22=cos(45))";
+  zoom: 1; 
+	}
+	
+	.menubars:before {
+  top: 0 !important;
+  //background: #fff !important;
+  @include transform(rotate(-45deg));
+  filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(-45), M12=-sin(-45), M21=sin(-45), M22=cos(-45));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(-45), M12=-sin(-45), M21=sin(-45), M22=cos(-45))";
+  zoom: 1;
+ }
+}
+

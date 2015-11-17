@@ -1,5 +1,5 @@
 /*----------------------------------------
-Simple Alerts
+Simple Alerts via data-atts
 Author: Stephen Scaff
 Dependancies: _alerts.scss
 ------------------------------------------*/

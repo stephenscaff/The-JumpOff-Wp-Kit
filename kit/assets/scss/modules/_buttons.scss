@@ -1,232 +1,65 @@
-/*----------------------------------------------   
---Buttons
------------------------------------------------  */
-.btn, button{
-  color: $color-white;
-  background-color: $color-alpha;
+%btn{
   font-family: $font-header;
   text-align: center;
+  font-size: 100%;
+  font-weight: 600;
+  line-height: $base-lineheight;
   display: inline-block;
-  vertical-align:	middle;
+  vertical-align: middle;
   margin: .1em 0 1em;
-  padding: 0.15em 2.15em 0.25em;
+  padding: 0.6em 3.25em;
   text-decoration: none; 
   width: auto;
-  font-size: 100%;
-  line-height: $base-lineheight;
-  border-radius:  0;
+  cursor: pointer;
+  -webkit-appearance:none;
+  border: 0;
+  border-radius:  $base-borderradius;
   @include transition(background-color, 0.25s, ease-in);
-  position:	relative;
- 
- &:hover {
-  background-color: lighten($color-alpha,10);
-  color: $color-white;
-  @include transition(all, 0.25s, ease-in); 
- }
-
- &:active {
-  background-color: darken($color-alpha,5); 
-  @include transition(background-color, 0.2s, linear);
 }
 
-/*----------------------------------------------   
---Btn Colors
------------------------------------------------  */ 
-&-beta{
-  background-color: $color-beta;
 
- &:hover{
-   background-color: lighten($color-beta,10);
- }
- &:active{
-  background-color: darken($color-beta,5);
- }
-}
-
-/*----------------------------------------------   
---Button Sizes
------------------------------------------------  */
-&-large{
-  font-size: 107%;
-  padding: 0.4em 2.75em;
-}
-
-&-small{
-  font-size: 80%;
-  padding: 0.5em 1.75em 0.45em;
-}
-&-full{
-  width: 100%;
-  display:	block;
-}
-&-block{
-  min-width: 12em;
-  display:	block;
-}
-
-/*----------------------------------------------   
---Clear buttons
------------------------------------------------  */
-
- &-clear {
-   background: none;
-   background-color:	transparent;
-   border: 1px solid $color-dark;
-   font-weight: 400;
-   color: $color-dark;
-   display: inline-block;
-   position:	relative;
-   z-index:	2;
-   
- &:hover,
- &:focus {
-   background: transparent;
-   background-color:	transparnet;
-   border-color:	$color-dark;
-   color: #fff;  
- }
- &:before{
-  	content: '';
-  	position: absolute;
-  	top: -1px;
-  	width: 100%;
-  	height: 0;
-  	background: $color-dark;
-  	left: 0;
-  	@include transition(all .3s ease-in-out);
-  	z-index:	-1;
-  }
-  
-  &:hover:before{
-  	top:	0;
-  	opacity:	1;
-  	height:	100%;
-  	@include transition(all .3s ease-in-out);
-  }
- }
- &-white{
-  border-color: #fff;
-  color: #fff;
-  background:	transparent;
-  border-radius:	0px;
+@mixin btn-theme($btn-bg, $btn-color, $btn-hoverbg:"",$btn-hover-color:"") {
+  color: $btn-color;
+  background-color: $btn-bg;
 
   &:hover{
-    border-color: #fff;
-    //background: #fff;
-    color: #000 !important;
+    cursor: pointer;
+    color: $btn-color;
+    @if $btn-hoverbg != ""{
+      background-color: $btn-hoverbg;
+    } 
+    @else{
+    background-color: lighten($btn-bg,10);
+    }
+    @if $btn-hover-color != ""{
+      color: $btn-hover-color;
+    }
+
   }
-  &:before{
-  	background-color:	#fff;
-		}   
-	}
+
+  &:active{
+    background-color: darken($btn-bg,5); 
+  }
+  @extend %btn
 }
 
-
-
-
-/*----------------------------------------------   
---Buttons w/ Icons: this may take some tweaking 
-due to the nature of ems and subpixel rounding errors.
------------------------------------------------  */
-.btn, button{
-	.icon, i{
-		position:	relative;
-		left: -11px;
-		top: 1px;
-		padding: 0;
-		font-size: .9em;
-		}
-	}
-
-/*----------------------------------------------   
---Button Groups
------------------------------------------------  */
-.btn-group, .btn-group-vertical {
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;
+.btn-alpha{
+  @include btn-theme($color-alpha, #fff);
 }
 
-.btn-group{
-		position: relative;
-		display: inline-block;
-		vertical-align: middle;
-	
-	.btn{
-		border-radius:	0;
-	}
-	
-	.btn:active{
-		top:	0 !important;
-		@include transition(all .2s ease)
-	}
-
-	.btn:first-child:not(:last-child):not(.dropdown-toggle) {
-			border-top-left-radius: $base-borderradius;
-			border-bottom-left-radius: $base-borderradius;
-			right:	-2px;
-	}	
-	.btn:last-child{
-		border-top-right-radius: $base-borderradius;;
-		border-bottom-right-radius: $base-borderradius;
-		left:	-2px;
-	}	
-
-	.btn+.btn, .btn-group .btn+.btn-group, .btn-group .btn-group+.btn, .btn-group .btn-group+.btn-group{
-		margin-left: -1px
-	}
-
-	&.btn-group-justified {
-		display: table;
-		width: 100%;
-		table-layout: fixed;
-		border-collapse: separate;
-	}
-	
-	&>.btn, .btn-group-justified>.btn-group {
-		display: table-cell;
-		float: none;
-		width: 1%;
-	}
+.btn-beta{
+  @include btn-theme($color-beta, #fff);
 }
 
-.btn-split > .btn {
-	position: relative;
-	float: left;
-	width:	auto;
-
-	&:hover{
-		cursor:	pointer;
-	}
-
-	&:last-child{
-		width:	3em;
-	
-	i, .icon{
-		left:	-3px;
-		top:	1px;
-	}
-	
-		&.has-caret::after{
-			left:	-6px;
-		}
-	}
+.btn-white{
+  @include btn-theme(#fff, $color-beta, $color-beta, #fff);
 }
 
-
-/*----------------------------------------------   
---Caret
------------------------------------------------  */
-.caret, .has-caret::after {
-	position:	relative;
-	content:	'';
-	display: inline-block;
-	width: 0;
-	height: 0;
-	margin-left: 2px;
-	vertical-align: middle;
-	border-top: 5px solid;
-	border-right: 5px solid transparent;
-	border-left: 5px solid transparent;
-}
-
+.btn-small{
+    font-size: 90%;
+    padding: 0.5em 1.5em;
+  }
+.btn-full{
+    width: 100%;
+    display:  block;
+  }

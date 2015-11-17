@@ -1,0 +1,260 @@
+/*----------------------------------------------   
+--Posts - Layout and Elements
+-----------------------------------------------  */
+.single{
+
+/*----------------------------------------------   
+--Mast
+-----------------------------------------------  */ 
+.sect-mast{
+ //height: 40em;
+ @include overlay-gradient;
+ @media (min-width: $mq-med){
+   height: 40em;
+ }
+ .mast-logo{
+  max-width: 8em;
+  margin-bottom: 1em;
+ }
+}
+
+/*----------------------------------------------   
+--Post-Meta-Byline
+-----------------------------------------------  */ 
+.post-byline{
+ padding: 1em 0 0;
+
+  .post-meta-byline{
+   margin: 0 0 1em;
+
+   li, span, img, i{
+    display:inline-block;
+    vertical-align: middle;
+    color: $color-grey;
+   }
+
+   li{
+    margin-right: 0.5em;
+   }
+
+   span{
+    margin-right: 1em;
+    font-size: $font-small;
+    font-weight: 600;
+   }
+
+   a, a i{
+    color: $color-grey;
+    @include transition(color 0.6s ease);
+
+    &:hover{
+     color: $color-alpha;
+     @include transition(color 0.6s ease);
+    }
+   }
+
+  img{
+   width: 2em;
+   border-radius: 100%;
+   margin-right: 0.5em;
+  }
+ }
+}
+
+/*----------------------------------------------   
+--Post-content, post-footer layout row
+-----------------------------------------------  */ 
+ .post-content, .post-footer{
+
+ .row{
+  max-width: 90%;
+  @media (min-width: $mq-med){
+   width: 65%;
+  }
+  @media (min-width: $mq-xlarge){
+   width: 55%;
+  }
+ }
+}
+
+/*----------------------------------------------   
+--Post-Content
+-----------------------------------------------  */ 
+.post-body{
+ padding: 1em 0;
+ overflow-x: hidden;
+
+/*----------------------------------------------   
+--Post-Content: Typography
+-----------------------------------------------  */ 
+  h3, h4{
+  color: #333;
+  margin-top: 1em;
+  clear: both;
+ }
+ /*-- Lead paragraph --*/
+ p:first-of-type{
+  @include font-lead;
+ }
+
+ p{
+  margin-bottom: 1em;
+ }
+
+  /*-- figure and paragraph pacing --*/
+ p + figure, 
+ figure + p{
+  margin-top: 1.5em;
+ }
+
+ /*-- subheader and full width img pacing --*/ 
+ h3 + [class*="gridbreak"], 
+ [class*="gridbreak"] + h3{
+   margin-top: 1.5em;
+ }
+
+
+ 
+ blockquote p{
+  font-family: $font-header;
+  font-size: 140%;
+  font-style: normal;
+  color: $color-alpha;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  padding: 1em 0;
+  margin: 1.25em 0;
+  line-height: 1.4;
+  
+  @media (min-width: $mq-med){
+   font-size: 160% !important;
+   margin: 1.5em -10%;
+  } 
+ }
+
+ /*-- image pacing --*/
+ figure + figure{
+  margin-top: 0.15em;
+  margin-bottom: 0.15em;
+ }
+
+/*----------------------------------------------   
+--Post-Content: Media
+-----------------------------------------------  */ 
+ figure{
+  display: block;
+
+  img{
+   width: 100%;
+  }
+
+  & + &{
+   margin-bottom: 0.5em;
+  }
+ }
+
+ figcaption{
+  color: $color-grey;
+  text-transform: none;
+  font-weight: 400;
+  font-size: 0.75em;
+  border-bottom: 1px solid;
+  padding: 0em 0 0.5em;
+  margin: -0.3em 0 0.5em;
+
+  [class*="icon"]{
+   margin-right: 0.3em;
+  }
+ }
+}
+}
+
+/*----------------------------------------------   
+--Single-Post (blog)
+-----------------------------------------------  */ 
+.single-post{
+ 
+ .post-body{
+   figure:first-child{
+    display:none;
+   }
+  }
+
+
+/*----------------------------------------------   
+--sect-news (more posts)
+-----------------------------------------------  */
+.sect-news{}
+}
+
+/*----------------------------------------------   
+--POST FOOTER (shares and byline)
+-----------------------------------------------  */
+.post-footer{
+ padding: 0 0 2em;
+ 
+ /*--Post Footer Shares --*/
+ .post-footer-shares{ 
+  padding: 0 0 1em;
+  
+  h5{
+   margin: 0;
+   vertical-align: top;
+   display:inline;
+  }
+  li{
+   display: inline-block;
+   vertical-align:middle;
+   margin-right: 0.25em;
+  }
+  li a{
+   color: $color-alpha;
+   font-size: 1.1em;
+  }
+  li:first-child{
+    margin-right: 0.6em;
+  }
+ }
+ 
+ /*--Post Footer Byline --*/
+ ul.post-footer-byline{
+  @include list-tc;
+  border-top: 1px solid #eee;
+  
+  li:first-child{
+   max-width: 4em;
+  }
+  li{
+   padding-top: 1em;
+  }
+  li.post-footer-credit{
+   padding-left: 2em;
+
+   h5{
+    text-transform: capitalize;
+   }
+   
+   @media (min-width: $mq-large){
+    max-width: 70%;
+   }
+  }
+ }
+ 
+ img{
+  max-width: 5em;
+  width: 5em;
+  border-radius: 100%;
+ }
+
+ h5{
+  font-size: 1em;
+  margin: 0;
+ }
+ p{
+  font-size: $font-small;
+  margin: 0 0 0.1em;
+ }
+ .btn{
+  font-size: $font-small;
+ }
+}

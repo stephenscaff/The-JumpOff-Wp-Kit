@@ -1,10 +1,12 @@
 /*----------------------------------------------   
 --Modals: box
 -----------------------------------------------  */
- 
 .modal-box {
  display:none;
  position:absolute;
+ left: 0;
+ right: 0;
+ margin: 0 auto;
  z-index:99999;
  width:98%;
  background:rgba(255,255,255,1);
@@ -13,8 +15,6 @@
  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
  border: 1px solid rgba(0,0,0,0.1);
  background-clip: padding-box;
- 
-
  
  @media (min-width: 32em) {
    width:70%;
@@ -29,23 +29,23 @@
  --Modal Sizes
  -----------------------------------------------  */
  &.modal-large{
- 	max-width:	40em;
+  max-width:  40em;
  }
-	&.modal-med{
-		max-width:	34em;
-	}
-	&.modal-small{
-		max-width:	28em;
-	}
+  &.modal-med{
+    max-width:  34em;
+  }
+  &.modal-small{
+    max-width:  28em;
+  }
 
 /*----------------------------------------------   
 --Modal: Header
 -----------------------------------------------  */  
  header, .modal-header{
-  padding:1em 1.15em;
+  padding:0.5em 1.15em;
   border-bottom: 1px solid #ddd;
     
- h3, h4{
+ h3, h4, h5{
   margin: 0;
  }
 }
@@ -78,23 +78,165 @@
   z-index:99;
   width:100%;
   height:100%;
-  background:rgba(0,0,0, 0.3) !important;
+  background:rgba(0,0,0, 0.9) !important;
+}
+
+
+
+
+/*----------------------------------------------   
+--Modal Signup
+-----------------------------------------------  */
+#modal-signup{
+  header{
+    background-color: $color-lightgrey;
+  }
+  form{
+    label{
+      font-size: 0.9em;
+      margin: 0.2em 0 -0.5em;
+      display: block;
+    }
+  }
+}
+
+
+
+
+/*----------------------------------------------   
+--Modal: Full height X width (for video)
+-----------------------------------------------  */
+.modal-vid{
+  display:none;
+  position:  fixed;
+  z-index:1000;
+  width:100%;
+  height:100%;
+  top: 0;
+  
+
+  &.is-open{
+  display:  table !important;
+  height: 100%;
+  width:  100%;
+  }
+}
+
+/*----------------------------------------------   
+--Video Reveal
+-----------------------------------------------  */
+#video{
+  display: table-cell;
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 /*----------------------------------------------   
 --Close
 -----------------------------------------------  */
-a.close {
+.close, .js-close {
  line-height: 1;
- font-size: 1.5em;
+ font-size: 1em;
  position: absolute;
- top: 5%;
+ top: 3%;
  right: 2%;
  text-decoration: none;
  color: #bbb;
   
  &:hover{
   color: #222;
+  cursor: pointer;
   @include transition(color 1s ease);
   }
+}
+
+/*----------------------------------------------   
+--Close Modal
+-----------------------------------------------  */
+.js-close.js-close-vid {
+ line-height: 1;
+ font-size: 1.3em;
+ position: absolute;
+ z-index: 999;
+ top: 0.4em;
+ left: 0.3em;
+ text-decoration: none;
+
+
+.close-bars {
+  width: 24px;
+  height: 24px;
+  margin: 10px 0;
+  position: relative;
+  z-index:  999;
+  @include transition (top 0.3s ease-in-out);
+  
+  &:before {
+    top: -8px; 
+  }
+  &:after {
+    top: 8px; 
+  }
+
+  &:after, &:before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    z-index: -1;
+    @include transition (all 0.3s ease-in-out); 
+  }
+
+&:after {
+    top: 0 !important;
+    background: #fff !important;
+    @include transform(rotate(45deg));
+    filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(45), M12=-sin(45), M21=sin(45), M22=cos(45));
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(45), M12=-sin(45), M21=sin(45), M22=cos(45))";
+    zoom: 1; 
+  }
+
+ &:before {
+    top: 0 !important;
+    background: #fff !important;
+    @include transform(rotate(-45deg));
+    filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(-45), M12=-sin(-45), M21=sin(-45), M22=cos(-45));
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=cos(-45), M12=-sin(-45), M21=sin(-45), M22=cos(-45))";
+    zoom: 1;
+  }
+ }
+}
+
+
+
+/*----------------------------------------------   
+--Video Modal
+-----------------------------------------------  */
+.modal-vid__data.flex-vid.vimeo {
+    display: table-cell;
+    width: 100%;
+}
+
+.modal-box.is-open {
+    display: table !important;
+    height: 100%;
+    width: 100%;
+}
+
+#video, #player {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }

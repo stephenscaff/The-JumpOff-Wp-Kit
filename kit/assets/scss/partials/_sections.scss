@@ -1,22 +1,44 @@
-section * {
+section{
   z-index: 3;
-  position:	relative;
+  position: relative;
+  background-color: #fff;
+}
+
+/*----------------------------------------------   
+--Banners - sections with full width background images
+-----------------------------------------------  */
+.sect-mast, .sect-banner {
+  @include sect-banner;
+  @include overlay-gradient();
+}
+
+/*----------------------------------------------   
+--Mastheads, maybe add height as extend theme?
+--Or, as seperate height class?
+-----------------------------------------------  */
+.sect-mast{
+  height: 40em;
+
+  .vcenter{
+    padding: 10% 0 5%;
+  }
+}
+
+.sect-banner{
+  height: 25em;
 }
 
 /*----------------------------------------------   
 --Sect: content (basic repeatable content regions)
 -----------------------------------------------  */
 .sect-content {
-  padding: 3em 0;
+  padding: 4em 0;
 
-		.title{
-			@include content-title();
-		}  
   &.no-top{
-  	padding-top: 0;
+    padding-top: 0;
   }
   &.no-bottom{
-  	padding-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -24,19 +46,24 @@ section * {
 --Sect: Intro (intro sections)
 -----------------------------------------------  */
 .sect-intro{
-	.cols, figure{
-		@include centered;
-	}
-	figure{
-		text-align:	center;
-	}
+  padding: 4em 0;
+  .cols{
+    //@include centered;
+  }
 }
 
-/*----------------------------------------------   
---Banners - sections with full width background images
+/*--------- -------------------------------------   
+--Modifier: CTA Button rows
 -----------------------------------------------  */
-.sect-banner {
-	@include sect-banner;
+.has-btn{
+  @include center-all;
+  padding: 3em 0 1em;
+}
+/*----------------------------------------------   
+--Modifier - content titles
+-----------------------------------------------  */
+.content-title{
+  @include content-title;
 }
 
 /*----------------------------------------------   
@@ -48,19 +75,31 @@ section * {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 0;
   background: 50% 50% no-repeat;
   opacity: 0.2;
+  opacity: 1;
   filter: alpha(opacity=20);
   background-size: auto 200%;
   overflow: hidden;
 
   @media (min-width: $mq-med) {
-  	background-size: cover;
+    background-size: cover;
   }
-	& > video {
-  position: absolute !important;
-  top: 0 !important;
-	}
+  & > video {
+    position: absolute !important;
+    top: 0 !important;
+  }
+}
+
+/*----------------------------------------------   
+-Plax
+-----------------------------------------------  */
+.js-plax{
+  @media (min-width: $mq-med){
+    background-attachemnt: fixed;
+    background-position: top 50%;
+    @include engine3d;
+  }
 }
 

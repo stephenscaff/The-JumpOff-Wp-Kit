@@ -1,5 +1,6 @@
 /*----------------------------------------
-Drop Down - Blog Cats
+Simple Drop Down
+Author: Stephen Scaff
 ------------------------------------------*/
 //Setup
 function DropDown(el) {

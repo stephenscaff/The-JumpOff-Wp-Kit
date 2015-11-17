@@ -1,8 +1,21 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying the author pages
+ *
+ *
+ * @author    Stephen Scaff
+ * @package   jumpoff/partials/partial-head
+ * @version   1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+  exit; // Exit if accessed directly
+}
+get_header();
+?>
 
 <!-- Archive heros
 ================================================== -->
-<section class="sect-archive-hero">
+<section class="sect-mast">
   <div class="row">
     <div class="g-7 cols centered">
        <?php 
@@ -32,7 +45,7 @@
           <?php get_template_part( 'content-simple', get_post_format() ); ?>
           <?php endwhile; ?>
           <?php else : ?>
-        <?php get_template_part( 'content-simple', 'none' ); ?>
+        <?php get_template_part( 'partials/sect', 'signup' ); ?>
       <?php endif; // end have_posts() check ?>
     </div>
   </div>
@@ -40,7 +53,7 @@
 
 <!-- Pagination-Section
 ================================================== -->  
-<?php include (TEMPLATEPATH . '/sect-signup.php'); ?>
+<?php include (TEMPLATEPATH . 'partials//sect-signup.php'); ?>
 
 <!-- Pagination-Section
 ================================================== -->  

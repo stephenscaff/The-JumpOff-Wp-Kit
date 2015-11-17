@@ -1,6 +1,6 @@
  /* --Bourbon from CodeKit
 =======================================*/
-@import 'bourbon', 'neat';
+@import 'bourbon';
 
 /* --settings: configs
 =======================================*/
@@ -10,7 +10,6 @@
 /* --Vendor
 ========================================*/
 @import 'vendor/_normalizer';
-
 
 /* --Modules: Reuseable UI elements
 =======================================*/
@@ -27,7 +26,7 @@
 
 /* --Partial: page components
 =======================================*/
-@import 'partials/_mobilenav';
+@import 'partials/_offcanvas-nav';
 @import 'partials/_header';
 @import 'partials/_footer';
 @import 'partials/_sections';
@@ -35,6 +34,4 @@
 
 /* --Pages
 =======================================*/
-@import 'pages/_blog';
-@import 'pages/_archive';
-@import 'pages/_single';
+@import 'pages/_home';

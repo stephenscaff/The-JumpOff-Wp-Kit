@@ -1,4 +1,16 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying archives
+ *
+ *
+ * @author    Stephen Scaff
+ * @package   jumpoff/archive
+ * @version   1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+  exit; // Exit if accessed directly
+}
+get_header(); ?>
 
 <!-- Archive hero
 ================================================== -->
@@ -38,7 +50,7 @@
 
 <!-- Pagination-Section
 ================================================== -->	
-<?php include (TEMPLATEPATH . '/sect-signup.php'); ?>
+<?php get_template_part( 'partials/sect', 'signup' );?>
 
 <!-- Pagination-Section
 ================================================== -->	
@@ -57,5 +69,7 @@
   </div> 
 </div>
 </section>
-		
+
+<!-- Footer
+================================================== --> 
 <?php get_footer(); ?>

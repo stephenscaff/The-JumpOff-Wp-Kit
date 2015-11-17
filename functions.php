@@ -1,117 +1,47 @@
 <?php
 
 /*--------------------------------------------------*/
-/*	Let's run all out inits and whatnot through a single setup.
-/* Fucntions broken up in lib/ folder with files noted in comments.
-/* lib/ files also contain a few other ready to rock common
-/* functions currently commented out.
-/*--------------------------------------------------*/ 
+/* Setup funciton - if so desired.
+/*
 
-function jumpoff_setup() {
-
-/*--------------------------------------------------*/
-/*	@Cleanup: head cleanup
-/*--------------------------------------------------*/ 
-add_action('init', 'jumpoff_head_cleanup');
-add_filter('language_attributes', 'jumpoff_language_attributes');
-
-/*--------------------------------------------------*/
-/*	@style: scripts: enqueue & load scripts & styles
-/*--------------------------------------------------*/
-add_action( 'wp_enqueue_scripts', 'jumpoff_scripts_and_styles' );
-
-/*--------------------------------------------------*/
-/*	@cleanup: remove css and js versions. Clean style output
-/*--------------------------------------------------*/ 
-add_filter('style_loader_src', 'jumpoff_remove_cssjs_ver', 1000 );
-add_filter('script_loader_src', 'jumpoff_remove_cssjs_ver', 1000 );
-add_filter('style_loader_tag', 'jumpoff_clean_style_tag');
-
-/*--------------------------------------------------*/
-/*	@cleanup.php: Security - remove wp version
-/*--------------------------------------------------*/ 
-add_filter('the_generator', 'jumpoff_remove_wp_version');
-add_filter('the_generator', '__return_false');
-
-/*--------------------------------------------------*/
-/*	@classes: Body Classes
-/*--------------------------------------------------*/ 
-add_filter('body_class', 'jumpoff_body_class');
-
-/*--------------------------------------------------*/
-/*	@posts: Remove img widths
-/*--------------------------------------------------*/ 
-add_filter( 'post_thumbnail_html', 'jumpoff_remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'jumpoff_remove_width_attribute', 10 );
-
-/*--------------------------------------------------*/
-/*	@posts: Excerpts
-/*--------------------------------------------------*/
-add_filter( 'excerpt_length', 'jumpoff_custom_excerpt_length', 999 );
-add_filter('excerpt_more', 'jumpoff_new_excerpt_more');
-//add_filter('the_content', 'removeEmptyParagraphs',99999);
-
-/*--------------------------------------------------*/
-/*	@posts: Unauto p
-/*--------------------------------------------------*/
-add_filter( 'the_content', 'jumpoff_img_unautop', 10 );
-
-/*-----------------------------------------------*/
-/*	Admin: Remove P Custom Options  
-/*-----------------------------------------------*/
-add_action('admin_menu', 'jumpoff_removep_meta_box_add');
-add_action('edit_post', 'jumpoff_removep_post_meta_tags');
-add_action('publish_post', 'jumpoff_removep_post_meta_tags');
-add_action('save_post', 'jumpoff_removep_post_meta_tags');
-add_action('edit_page_form', 'jumpoff_removep_post_meta_tags');
-add_filter('the_content', 'jumpoff_removep_wpautop', 9);
-
-/*-----------------------------------------------*/
-/*	@admin: Toolbar customization
-/*-----------------------------------------------*/
-add_filter('quicktags_settings', 'jumpoff_show_quicktags');
-add_action( 'admin_print_footer_scripts', 'jumpoff_add_quicktags' );
-
-/*-----------------------------------------------*/
-/*	@users: Extra custom fields - contact methods, avatar img
-/*-----------------------------------------------*/
-add_filter('user_contactmethods', 'jumpoff_contact_information');
-add_action( 'show_user_profile', 'jumpoff_avatar_add_profile_field' );
-add_action( 'edit_user_profile', 'jumpoff_avatar_add_profile_field' );
-add_action( 'personal_options_update', 'jumpoff_save_avatar_profile_field' );
-add_action( 'edit_user_profile_update', 'jumpoff_save_avatar_profile_field' );
-
-}
+function jumpoff_setup() {}
 add_action('after_setup_theme', 'jumpoff_setup');
+/*--------------------------------------------------*/ 
 
-
 /*-----------------------------------------------*/
-/*	Includes: Enqueue
+/* Includes: Enqueue
 /*-----------------------------------------------*/
-require_once('lib/styles-scripts.php');
+require_once('inc/functions/styles-scripts.php');
 /*-----------------------------------------------*/
-/*	Includes: CleanUp
+/* Includes: CleanUp
 /*-----------------------------------------------*/
-require_once('lib/cleanup.php');
+require_once('inc/functions/cleanup.php');
 /*-----------------------------------------------*/
-/*	Includes: Classes
+/* Includes: Admin
 /*-----------------------------------------------*/
-require_once('lib/classes.php');
+require_once('inc/functions/admin.php');
 /*-----------------------------------------------*/
-/*	Includes: Admin
+/* Includes: Users
 /*-----------------------------------------------*/
-require_once('lib/admin.php');
+require_once('inc/functions/users.php');
 /*-----------------------------------------------*/
-/*	Includes: Users
+/* Includes: Posts
 /*-----------------------------------------------*/
-require_once('lib/users.php');
+require_once('inc/functions/posts.php');
 /*-----------------------------------------------*/
-/*	Includes: Posts
+/* Includes: helpers
 /*-----------------------------------------------*/
-require_once('lib/posts.php');
+require_once('inc/functions/helpers.php');
 /*-----------------------------------------------*/
-/*	Includes: Custom Fields
+/* Includes: Custom Fields
 /*-----------------------------------------------*/
-require_once('lib/customfields.php');
-
+require_once('inc/customfields/custom-fields.php');
+/*-----------------------------------------------*/
+/* Includes: Custom Post Types (CPTs)
+/*-----------------------------------------------*/
+//require_once('inc/cpts/post-types.php');
+/*-----------------------------------------------*/
+/* Includes: Circular Post Nav
+/*-----------------------------------------------*/
+require_once('inc/functions/circular-post-nav.php');
 ?>

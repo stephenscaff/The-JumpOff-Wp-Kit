@@ -1,3 +1,9 @@
+/*----------------------------------------------   
+Everyday I'm Instagrammin
+everydayiminstagrammin.stephenscaff.com
+Author: Stephen Scaff
+-----------------------------------------------  */ 
+
 (function($) {
   $.everydayImInstagrammin = {
     defaults: {

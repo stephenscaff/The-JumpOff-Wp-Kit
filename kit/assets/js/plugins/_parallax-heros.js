@@ -1,8 +1,7 @@
-/**
- * @license Asparagus v1.0
- * (c) 2013 Form5 http://form5.is
- * License: MIT
- */
+/*----------------------------------------------   
+-Parallax
+-init of div id #mast-bg
+-----------------------------------------------  */
 (function() {
   var lastScrollY = 0,
       ticking = false,
@@ -205,5 +204,3 @@
 		}
 	};
 }(window.jQuery));
-
-

@@ -7,8 +7,9 @@ $font-paragraph: "minion-pro", georgia, times, serif;
 /*----------------------------------------------   
 --Font Sizes: supporting
 -----------------------------------------------  */
-$font-xsmall: .6em;
-$font-small: .8em;
+$font-xxsmall: .7em;
+$font-xsmall: .8em;
+$font-small: .9em;
 
 /*----------------------------------------------   
 --Line Height
@@ -19,17 +20,23 @@ $base-lineheight: 1.7;
 --Grid
 -----------------------------------------------  */
 /* Row Container */
-$row-max-width: 60em;
+$row-max-width: 67em;
 
-/* Columns Grid */
+/* Number of Columns */
+$cols: 12;
 $col: 100% / 12;
-$col-padding: 0.75em;
-$base-gutter: 0.75em;
+$col-padding: 1%;
+$base-gutter: 1%;
 
-/* MQs Min-Width */
-/* MQs Min-Width */
+
+/*----------------------------------------------   
+--Media Queries (min-widths)
+-----------------------------------------------  */
+//Smallest phone
 $mq-xsmall: 22em;
+//phone
 $mq-small: 32em;
+//Tablet
 $mq-med: 54em;
 //laptop
 $mq-large: 65em;
@@ -62,7 +69,7 @@ $form-bordercolor: #aaa;
 /*----------------------------------------------   
 --Colors
 -----------------------------------------------  */
-$color-alpha:  #38d397;
+$color-alpha:  #33449C;
 $color-beta:   #003a49;
 $color-delta:  #d15424;
 $color-zeta:   #1b7091;

@@ -2,40 +2,76 @@
 --Header + Nav
 -----------------------------------------------  */
 header.header-main{
- position: absolute;
- width: 100%;
+  position: absolute;
+  width: 100%;
  //background: #fff;
  //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
- display: block;
- z-index: 8;
- height:	$header-height;
- line-height:	$header-height;
+  display: block;
+  z-index: 9;
+  height: $header-height;
+  line-height:  $header-height;
+  @include transition(all 1s ease);
  
  .row {
-   width: 90%;
+   max-width: 98%;
+   @media (min-width: $mq-large){
+    max-width: 90%;
+   }
  }
  
- &.sticky{
- 	position:	fixed;
- 	background:	#fff;
- 	@include animation(nav-down ease-in-out 0.7s .1s both);
- 	@include engine3d;
- 	@include transition(transform 0.5s ease);
- 	//@include transition(all 1s ease);
- 	
- 	nav a{
- 		color:	#aaa;
- 	}
+/*----------------------------------------------   
+--Header - Sticky
+-----------------------------------------------  */ 
+.scrolling-down &{
+  position: fixed;
+  background: #fff;
+  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+  @include animation(nav-down ease-in-out 0.3s .1s both);
+  @include engine3d;
+  @include transition(transform 0.5s ease, background 0.1s ease);
+
+  .header-main__logo {
+    //background-image: url(../images/logo-jumpoff-alpha.png);
+  }
+  nav a:not(.btn){
+    display:inline-block;
+    vertical-align:middle;
+    color: $color-grey;
+  }
  } 
- h1#logo {
-  font-size: 1em;
-  max-width: 10em;
-  display: inline-block;
-  vertical-align: middle;
-  color:	#fff;
-  @media (min-width: $mq-med) {}
- }
- 
+
+
+/*----------------------------------------------   
+--Header-main Logo
+-----------------------------------------------  */
+ .header-main__logo {
+    background-image: url(../images/logo-jumpoff.png);
+    background-size: 8em;
+    height: 4em;
+    width: 8.25em;
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    display: inline-block;
+    @include transition(all 0.5s ease);
+    
+    @media (min-width: $mq-med){
+      background-size: 9.25em;
+      width: 9.75em;
+    }
+
+    &:hover{
+     background-image: url(../images/logo-jumpoff-alpha.png);
+     @include transition(all 0.5s ease);
+    }
+  img{
+    width: 8em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+/*----------------------------------------------   
+--Header-main--nav
+-----------------------------------------------  */ 
  nav {
   text-align: right;
   display: none; 
@@ -45,44 +81,43 @@ header.header-main{
    display: inline-block; 
   }
 
- ul{padding: 0;}
+  ul{padding: 0;}
  
- ul > li{
+  ul > li{
    position: relative;
    display: inline-block;
    padding: 0;
    margin-left: .7em;
    vertical-align: middle;
+  }
  
-   &.btn{
-    margin: 0;
-    margin-left: 1em;
-    padding: .4em 1em;
-    font-size: 80%;
-    border-color:$color-delta !important;
-    font-weight: 400;
-   }
-   
-   &.btn:hover{
-    background: $color-delta !important;
-   }
-   
-   &.btn a:hover{
-    color: #fff !important;
-   }
-   
-   &.btn-right{
-    margin-left: 0;
-   }
-   a{
+  a{
     font-family: $font-header;
-    display:block;
+    font-weight: 600;
+    display:inline-block;
     color: #fff;
-   }
+  }
    
-   a:hover,  a:active  {
+  a:hover,  a:active  {
     color: $color-alpha !important;
-   }
+  }
+
+  [class*="btn"]{
+    margin: 0;
+    color: #fff;
+    font-size: $font-small;
+    margin-left: 0.25em;
+    padding: .2em 1.85em;
+    color: #fff !important;
   }
  }
+}
+
+/*----------------------------------------------   
+--header-light
+-----------------------------------------------  */ 
+.header-light .header-main{
+  a{
+    color: $color-grey;
+  }
 }

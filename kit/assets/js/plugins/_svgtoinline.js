@@ -1,5 +1,12 @@
 /*----------------------------------------
-Turn img svg to inline so we can play with the vectors
+SVG To Inline
+Author: Stepehen Scaff
+
+A simple method for converting svgs as image 
+tags into inline svg so you can muck with them
+all fancy like.
+
+
 ------------------------------------------*/
 $('img.svg').each(function(){
 	var $img = $(this);

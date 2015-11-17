@@ -1,10 +1,111 @@
-# The Jumpoff Wp Kit
-A Wordpress / Codekit project starter and front-end framework
+# The Jumpoff WP Kit
+A Wordpress starter theme and front-end framework for CodeKit
+
+## Dependencies
+-CodeKit: for minification, linting, and js + html includes (more on that below).
+-Wordpress: for, eh, Wordpress.
+-Burbon: for mixin lib
+-Jquery: for js
+
+## Transitioning from Static to WP
+Simple take the kit folder form the static projects and replace the kit folder in the wp project. Then replace global headers and footers and create page tempaltes from each static page.
+
+## Project Structre
+The kit folder includes the working files for scss and js, which minify and build to a similarly named assets folder in the root.
+For Wp, we organize loops and partials into a partials folder, and various includes and funcitons in a inc folder.
 
 
-## What's That Now?
-Oh, just a little Wordpress starter theme for CodeKit, including my own front-end framework. It contains all them common ui elements, a proportional grid & typographic system, some js stuff I use a good bit, SCSS configs and mixins (with Bourbon), and so on. On the Wp side, it holds a bunch of stuff I commonly rely on, in a structure I've found works well.
+## Codekit and SCSS/JS Structre
+```
+|-- assets/                   # The Build folder
+|   |-- css/      
+|       |-- app.min.scss      # all styles minified
+|       |-- fonts.min.scss    # minified base64 font-face
+|
+|   |-- js 
+|       |-- plugins.min.js    # all minified plugins
+|       |-- scripts.min.js    # minified init and one off scripts
+|       |-- jquery.min.js  
+|       |-- modernizr.js   
+|
+|-- kit/                      # Working files
+|   |-- assets/               # scss and js
+|       |-- scss/             # scss files
+|           |-- app.scss      # main scss imports
+|           |-- fonts.scss    # font base64 imports
+|
+|           |-- fonts/
+|               |--- _iconfont.scss
+|               |--- _base64starter.scss
+|           |--modules/  
+|               |-- _animations.scss  
+|               |-- _buttons.scss      
+|               |-- _code.scss  
+|               |-- _colors.scss 
+|               |-- _forms.scss  
+|               |-- _grid.scss 
+|               |-- _typography.scss      
+|               |-- etc...  
+|           |--partials/
+|               |-- _header.scss
+|               |-- _footer.scss       
+|               |-- _sections.scss     
+|           |--pages/
+|               |-- _home.scss      
+|               |-- _about.scss  
+|               |-- _etc...  
+|           |--settings/     
+|               |-- _config.scss   
+|               |-- _mixins.scss 
+|           |-- vendor/ 
+|               |-- _normalize.scss 
+|
+|       |-- js/             # js files
+|           |-- scripts.js  # working scripts
+|           |-- plugins.js  # imported plugins
+|           |-- plugins/    # plugin import files
+|               |-- _easings.js   
+|               |-- _tabs.js
+|               |-- _etc...   
+|
+```
 
+## Wordpress Structre
 
-## You Gonna Document It Proper Like?
-Maybe one of these days. This is more for me. And, it' undoubtably all kinds of sloppy right now - many todo cleanups afoot.
+```
+|-- inc/                      
+|   |-- admin-styles/      
+|       |-- admin-styles.min.css     # Admin Styles, minifed
+|       |-- admin-styles.scss        # Admin styles, working
+|
+|   |-- cpts 
+|       |-- post-types.php           # Custom Post Types
+|
+|   |-- customfields
+|       |-- custom-fields.php        # custom-fields saves
+|
+|   |-- functions                    # Functions, called in functions.php
+|       |-- admin.php                # admin related functions 
+|       |-- circular-post-nav.php    # Circular CPTS 
+|       |-- cleanup.php              # Cleanups 
+|       |-- helpers.php              # Helper funcitons
+|       |-- nav.php                  # Nav functions
+|       |-- posts.php                # Post functions
+|       |-- socials.php              # Social integration funcitons
+|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
+|       |-- usrs.php                 # User related functions 
+|
+|-- page-templates/                  # Custom Page Templates
+|   |-- page-home.php                # Prefix page names with page-
+|
+|-- partials/                        # Partials, Loops, and modular elements
+|   |-- content/                     # Loop content
+|       |-- content-posts.php        # scss files
+|       |-- content-etc.php         
+|   |-- partials-head.php            # global head content, called in header.php
+|   |-- partials-header.php          # global header content, called in header.php
+|   |-- partials-footer.php          # global footer content, called in header.php
+|   |-- sect-signup.php              # modular sections, prefixed with sect-
+|
+|-- resources/                       # a place to save working files and notes, ie PSDs, Icon Project Json files, etc
+```
