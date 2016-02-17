@@ -1,7 +1,8 @@
 <?php
 /*--------------------------------------------------*/
-/* Flush Rewrites
-/* 01: Team - example cpt
+/*  Cusotm Post Types and Custom Taxonomies 
+/*  01. Flush Rewrites
+/*  02: Taxonomy - Post Functions
 /*--------------------------------------------------*/
 
 
@@ -11,81 +12,45 @@
 add_action( 'after_switch_theme', 'jumpoff_flush_rewrite_rules' );
 
 // Flush your rewrite rules
-function worldhousing_flush_rewrite_rules() {
+function jumpoff_flush_rewrite_rules() {
  flush_rewrite_rules();
 }
 
 /*--------------------------------------------------*/
-/* CPT: Team
+/*  Taxonomy: Post Functions (posts)
+/*  
+/*  A "Post Functions" taxonomy
+/*  Instead of cluttering up categories, use Post Function for stuff like
+/*  "Featured Posts" and so on.
 /*--------------------------------------------------*/
-function create_team_post_types() {
- register_post_type( 'team', 
+function post_functions_taxonomy() {
+    register_taxonomy(
+    'post-functions',  //The name of the taxonomy.
+    'post',
+    array(  
+        'hierarchical' => true,
+        'labels' => array(
+            'name' => _x('Post Functions', 'taxonomy general name'),
+            'singular_name' => _x('Post Function', 'taxonomy singular name'),
+            'search_items' => __('Search Post Functions'),
+            'all_items' => __('All Post Functions'),
+            'edit_item' => __('Edit Post Functions'),
+            'update_item' => __('Update Post Function'),
+            'add_new_item' => __('Add New Post Function'),
+            'new_item_name' => __('New Post Function'),
+            'menu_name' => __('Post Functions'),
+        ),
+        'rewrite' => array(
+        'show_ui' => true,
+        'show_admin_column' => true,
+            'with_front' => false, 
+            'hierarchical' => false 
+        ),
+    ));
 
-  array(
-   'labels' => array(
-   'name' => __( 'Team' ),
-   'singular_name' => __( 'Team Member' ),
-   'add_new' => __( 'Add New Team Member' ),
-   'add_new_item' => __( 'Add New Team Member' ),
-   'edit' => __( 'Edit Team Member' ),
-   'edit_item' => __( 'Edit Team Member' ),
-   'new_item' => __( 'New Team Member' ),
-   'view' => __( 'View This Team Member' ),
-   'view_item' => __( 'View This Team Member' ),
-   'search_items' => __( 'Search Team Member' ),
-   'not_found' => __( 'Sorry Buddy. That Team Member is not found' ),
-   'not_found_in_trash' => __( 'That Team Member is not in the Trash' ),
-  ),
 
-  'description' => __( 'The Team' ),
-  'public' => true,
-  'show_ui' => true,
-  'menu_position' => 5,
-  'menu_dashicon' => 'dashicons-nametag',
-  'menu_icon' => 'dashicons-nametag',
-  'query_var' => true,
-  //'taxonomies' => array( 'category'),
-  'supports' => array( 'title','thumbnail', 'excerpt', 'custom-fields', 'editor' ),
-  'capability_type' => 'post',
-  'can_export' => true,
-  'has_archive' => true,
-  'rewrite' => array('slug' => 'team', 'with_front' => false),
-  )
- );
 }
-
-/*--------------------------------------------------*/
-/* CPT Team: init
-/*--------------------------------------------------*/
-add_action('init', 'create_team_post_types');
+add_action( 'init', 'post_functions_taxonomy');
 
 
-
-/*--------------------------------------------------*/
-/*  Jobs Taxonomy: Job Type (volunteer or paid)
-/*--------------------------------------------------*/
-function team_category_taxonomy() {
-  register_taxonomy(
-  'team-categories',  //The name of the taxonomy.
-  'team',             //post type name
-  array(  
-      'hierarchical' => true,
-      'labels' => array(
-       'name' => _x('Team Categories', 'taxonomy general name'),
-       'singular_name' => _x('Team Category', 'taxonomy singular name'),
-       'search_items' => __('Search Team Categories'),
-       'all_items' => __('All Team Categories'),
-       'edit_item' => __('Edit Team Category'),
-       'update_item' => __('Update Team Category'),
-       'add_new_item' => __('Add New Team Category'),
-       'new_item_name' => __('New Job Type'),
-       'menu_name' => __('Team Categories'),
-      ),
-      'rewrite' => array(
-       'slug' => 'team-categories', // This controls the base slug that will display before each term
-       'with_front' => false, // Don't display the category base before "/locations/"
-       'hierarchical' => false // This will allow URL's like "/locations/boston/cambridge/"
-      ),
-  ));
-}
-add_action( 'init', 'team_category_taxonomy');
+?>

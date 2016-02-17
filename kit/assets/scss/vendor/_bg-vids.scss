@@ -1,0 +1,20 @@
+/*----------------------------------------------   
+  bg-vids.js
+-----------------------------------------------  */
+.bg-vid {
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  & > video {
+    position: absolute !important;
+    top: 0 !important;
+  }
+}

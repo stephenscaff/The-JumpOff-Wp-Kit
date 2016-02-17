@@ -1,0 +1,142 @@
+/*----------------------------------------------
+--Butan
+-----------------------------------------------*/
+
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  width: auto;
+  padding: 1em 2em 0.85em;
+  background-color: #fff;
+  border: 2px solid;
+  font-family: $font-header;
+  text-align: center;
+  font-size: 0.6em;
+  font-weight: 400;
+  line-height: 1;
+  text-transform:uppercase;
+  letter-spacing: 0.1em;
+  border: 2px solid;
+  border-radius: $base-borderradius;
+  transition: background-color .25s ease-in;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: all 0.6s ease;
+
+  &:hover{
+    transition: all 0.6s ease;
+  }
+}
+
+
+.btn--white{
+  color: $color-dark;
+  background-color: #fff;
+  border-color: $color-dark;
+
+  &:hover{
+    color: #fff;
+    background-color: $color-dark;
+    border-color: #fff;
+  }
+}
+
+.btn--dark{
+  color: #fff;
+  background-color: $color-dark;
+  border-color: $color-dark;
+
+  &:hover{
+    color: $color-dark;
+    background-color: #fff;
+    border-color: $color-dark;
+  }
+}
+
+
+/*----------------------------------------------
+--Size modifiers
+-----------------------------------------------*/
+.btn--small {
+  font-size: .9em;
+  padding: .5em 1.5em;
+}
+
+.btn--full {
+  display: block;
+  width: 100%;
+}
+
+/*----------------------------------------------
+--Color modifiers
+-----------------------------------------------*/
+@mixin btn-theme($btn-bg, $btn-color, $btn-bordercolor, $btn-hoverbg:"", $btn-hover-color:"", $btn-hover-bordercolor:"") {
+  color: $btn-color;
+  background-color: $btn-bg;
+
+  &:hover {
+    cursor: pointer;
+    color: $btn-color;
+    border-color: $btn-bordercolor;
+    @if $btn-hoverbg != "" {
+      background-color: $btn-hoverbg;
+    } 
+    @else{
+      background-color: lighten($btn-bg, 10%);
+    }
+    @if $btn-hover-color != "" {
+      color: $btn-hover-color;
+    }
+  }
+
+  &:active {
+    background-color: darken($btn-bg, 5%); 
+  }
+}
+
+
+
+
+.btn-line{
+  position: relative;
+  display:inline-block;
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-size: $font-small;
+  font-weight: 600;
+  color: $color-dark;
+  transition: all 0.7s ease;
+ 
+ &:before, &:after{
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  transition: all 1s ease;
+ }
+ &:after{
+  width: 100%;
+  opacity: 1;
+  background-color: $color-dark;
+  z-index: 2;
+ }
+ &:before{
+  width: 0%;
+  opacity: 1;
+  z-index: 3;
+  background-color: $color-alpha;
+ }  
+ &:hover{
+  color: $color-alpha;
+  cursor: pointer !important;
+  transition: all 0.7s ease;
+
+ &:before{
+  width: 100%;
+  opacity: 1;
+  transition: all 1s ease;
+ }
+}
+}

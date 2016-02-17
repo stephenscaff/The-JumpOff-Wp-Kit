@@ -1,0 +1,16 @@
+
+
+.author__credit{
+ display:block;
+ margin: 0 0 1em;
+ font-size: $font-xxsmall;
+ @extend %font-uppercase;
+ color: $color-grey;
+}
+
+
+.archive{ 
+ .author__name{
+  @extend %font-h3;
+ }
+}

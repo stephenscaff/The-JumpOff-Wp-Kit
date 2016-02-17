@@ -13,6 +13,14 @@ add_action('after_setup_theme', 'jumpoff_setup');
 /*-----------------------------------------------*/
 require_once('inc/functions/styles-scripts.php');
 /*-----------------------------------------------*/
+/* Includes: Settings
+/*-----------------------------------------------*/
+require_once('inc/functions/settings.php');
+/*-----------------------------------------------*/
+/* Includes: Theme Support
+/*-----------------------------------------------*/
+require_once('inc/functions/theme-support.php');
+/*-----------------------------------------------*/
 /* Includes: CleanUp
 /*-----------------------------------------------*/
 require_once('inc/functions/cleanup.php');
@@ -35,11 +43,11 @@ require_once('inc/functions/helpers.php');
 /*-----------------------------------------------*/
 /* Includes: Custom Fields
 /*-----------------------------------------------*/
-require_once('inc/customfields/custom-fields.php');
+require_once('inc/customfields/custom-fields-seo.php');
 /*-----------------------------------------------*/
-/* Includes: Custom Post Types (CPTs)
+/* Includes: Custom Post Types (CPTs) & Taxonomies
 /*-----------------------------------------------*/
-//require_once('inc/cpts/post-types.php');
+require_once('inc/cpts/post-types.php');
 /*-----------------------------------------------*/
 /* Includes: Circular Post Nav
 /*-----------------------------------------------*/

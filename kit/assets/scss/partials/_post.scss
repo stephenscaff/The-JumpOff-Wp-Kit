@@ -1,0 +1,40 @@
+/*----------------------------------------------
+-Single Post
+-----------------------------------------------*/ 
+
+/*----------------------------------------------
+-Post Footer
+-----------------------------------------------*/ 
+.post-mast{
+  .mast__date{
+    display:block;
+    margin: 0 0 1em;
+    font-size: $font-small;
+    color: $color-grey;
+  }
+}
+
+/*----------------------------------------------
+-Post Footer
+-----------------------------------------------*/ 
+.post-content{
+  
+}
+
+
+/*----------------------------------------------
+-Post Footer
+-----------------------------------------------*/ 
+.post-footer{
+  padding: 3em 0 4em;
+  border-top: 1px solid #ddd;
+}
+
+.post-tags{
+  @extend %section--padded-small;
+  @include unstyled-list;
+  text-transform: capitalize;
+}
+
+
+

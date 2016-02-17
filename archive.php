@@ -14,61 +14,38 @@ get_header(); ?>
 
 <!-- Archive hero
 ================================================== -->
-<section class="sect-archive-hero">
-  <div class="row">
-    <div class="g-7 cols centered">
-      <img class="post-archive-avatar" src="<?php the_author_meta( 'profilepic' ); ?>"/>
-      <h2><?php $author = get_userdata(get_query_var('author'));?>      
-      <?php echo htmlspecialchars($author->display_name);?></h2>
-      <p><?php the_author_meta('description'); ?></p>
-      <!--<?php if (is_day()) : ?>
-      <?php else : ?>
-      <?php single_cat_title(); ?>
-      <?php endif; ?>-->
-    </div>
-</div>
-</section>
-
-<!-- Blog Posts Grid
-================================================== -->
-<section class="sect-posts-simple sect-content">
-  <div class="row">
-    <div class="g-7 cols centered">
-
-    <div class="archive-info"><?php the_author() ?> Has <?php the_author_posts(); ?> Posts</div>
-    	<?php if ( have_posts() ) : ?>
-    	  <?php /* Start the Loop */ ?>
-    	    <?php while ( have_posts() ) : the_post(); ?>
-    	    <?php get_template_part( 'content-simple', get_post_format() ); ?>
-    	    <?php endwhile; ?>
-    	    <?php else : ?>
-    	  <?php get_template_part( 'content-simple', 'none' ); ?>
-    	<?php endif; // end have_posts() check ?>
-    </div>
+<section class="mast mast--archive">
+  <div class="row u-center-all">
+    <header class="g-8 cols">
+      <span class="mast__pretitle">More From</span>
+      <h2 class="mast__title"><?php single_cat_title( '', true ); ?></h2>
+     </header>
   </div>
 </section>
 
-<!-- Pagination-Section
-================================================== -->	
-<?php get_template_part( 'partials/sect', 'signup' );?>
-
-<!-- Pagination-Section
-================================================== -->	
-<section class="sect-postnav sect-dark">
- <div class="block-wrap  bg-alpha cf">
-  <div class="block-half bg-alpha-drk">
-      <div>
-        <?php next_posts_link( '<span class="icon-chev-left"></span> Older posts' ); ?>
-      </div>
-    </div>  
-  
-  <div class="block-half">
-    <div>
-      <?php previous_posts_link( 'Newer posts <span class="icon-chev-right"></span>' ); ?>
-    </div>
-  </div> 
-</div>
+<!-- Section Content
+================================================== -->
+<section class="section-posts section--padded">
+ <div class="row">
+  <div class="g-8 cols u-centered">
+  <?php
+    if ( have_posts() ) {
+      while ( have_posts() ) {
+        the_post();
+        get_template_part( 'partials/content/content', 'posts' );
+      }
+    } else {
+      get_template_part( 'partials/content/content', 'none' );
+    }
+    ?>
+  </div>
+ </div>
 </section>
+
+
+<!-- Section Pagination
+================================================== -->
+<?php get_template_part( 'partials/posts', 'pagination' );?>
 
 <!-- Footer
 ================================================== --> 

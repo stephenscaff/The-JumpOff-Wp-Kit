@@ -1,123 +1,112 @@
-/*----------------------------------------------   
+/*----------------------------------------------
+--Header-specific vars
+-----------------------------------------------*/
+$header-height: 4em;
+
+
+main{
+  margin-top: 4em;
+}
+/*----------------------------------------------
 --Header + Nav
------------------------------------------------  */
-header.header-main{
-  position: absolute;
-  width: 100%;
- //background: #fff;
- //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-  display: block;
+-----------------------------------------------*/
+.site-header {
   z-index: 9;
+  position: absolute;
+  display: block;
+  width: 100%;
   height: $header-height;
-  line-height:  $header-height;
-  @include transition(all 1s ease);
+  line-height: $header-height;
+  color: $color-white;
+  transition: all 1s ease;
  
- .row {
-   max-width: 98%;
-   @media (min-width: $mq-large){
-    max-width: 90%;
-   }
- }
+  .row {
+    max-width: 98%;
+    width: 98%;
+  }
  
-/*----------------------------------------------   
---Header - Sticky
------------------------------------------------  */ 
-.scrolling-down &{
-  position: fixed;
-  background: #fff;
-  box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
-  @include animation(nav-down ease-in-out 0.3s .1s both);
-  @include engine3d;
-  @include transition(transform 0.5s ease, background 0.1s ease);
+  /*----------------------------------------------
+  --Header - Sticky
+  -----------------------------------------------*/ 
+  .scrolling-down & {
+    position: fixed;
+    background: $color-white;
+    box-shadow: 0 1px 1px rgba($color-dark, .1);
+    transition: transform .5s ease, background .1s ease;
+    animation: nav-down ease-in-out .3s .1s both;
+    @include engine3d;
 
-  .header-main__logo {
-    //background-image: url(../images/logo-jumpoff-alpha.png);
-  }
-  nav a:not(.btn){
-    display:inline-block;
-    vertical-align:middle;
-    color: $color-grey;
-  }
- } 
-
-
-/*----------------------------------------------   
---Header-main Logo
------------------------------------------------  */
- .header-main__logo {
-    background-image: url(../images/logo-jumpoff.png);
-    background-size: 8em;
-    height: 4em;
-    width: 8.25em;
-    background-repeat: no-repeat;
-    background-position: 0 50%;
-    display: inline-block;
-    @include transition(all 0.5s ease);
-    
-    @media (min-width: $mq-med){
-      background-size: 9.25em;
-      width: 9.75em;
+    nav a:not(.btn){
+      display: inline-block;
+      vertical-align: middle;
+      color: $color-grey;
     }
+  } 
+}
 
-    &:hover{
-     background-image: url(../images/logo-jumpoff-alpha.png);
-     @include transition(all 0.5s ease);
-    }
-  img{
-    width: 8em;
-    display: inline-block;
+@keyframes nav-down {
+  0%   { transform: translateY(-$header-height); }
+  100% { transform: translateY(0px); }
+}
+
+
+/*----------------------------------------------
+--Logo
+-----------------------------------------------*/
+.site-header__logo {
+  display: inline-block;
+  width: 8.25em;
+  height: 4em;
+  line-height: 0;
+  font-family: $font-header;
+  transition: all .5s ease;
+  
+  @media (min-width: $mq-med) {
+    width: 9.75em;
+  }
+
+  &:hover {
+    opacity: .8;
+  }
+
+  img {
     vertical-align: middle;
   }
 }
-/*----------------------------------------------   
+
+/*----------------------------------------------
 --Header-main--nav
------------------------------------------------  */ 
- nav {
-  text-align: right;
+-----------------------------------------------*/ 
+.site-header__nav {
   display: none; 
+  text-align: right;
 
   @media (min-width: $mq-med) {
-   float: right; 
-   display: inline-block; 
+    display: inline-block;
+    float: right; 
   }
 
-  ul{padding: 0;}
- 
-  ul > li{
-   position: relative;
-   display: inline-block;
-   padding: 0;
-   margin-left: .7em;
-   vertical-align: middle;
+  ul {
+    @include unstyled-list;
+    padding: 0;
   }
  
-  a{
+  ul > li {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: .7em;
+    padding: 0;
+  }
+ 
+  a {
+    display: inline-block;
     font-family: $font-header;
-    font-weight: 600;
-    display:inline-block;
-    color: #fff;
+    font-weight: 400;
+    @include link-styles($color-grey, $color-alpha)
   }
    
-  a:hover,  a:active  {
-    color: $color-alpha !important;
-  }
-
-  [class*="btn"]{
-    margin: 0;
-    color: #fff;
-    font-size: $font-small;
-    margin-left: 0.25em;
-    padding: .2em 1.85em;
-    color: #fff !important;
-  }
- }
-}
-
-/*----------------------------------------------   
---header-light
------------------------------------------------  */ 
-.header-light .header-main{
-  a{
-    color: $color-grey;
+  a:hover, a:focus, a:active  {
+    color: $color-alpha;
   }
 }

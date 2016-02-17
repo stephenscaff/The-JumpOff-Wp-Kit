@@ -1,8 +1,9 @@
-/*----------------------------------------
+/*-----------------------------------------
 Simple Alerts via data-atts
 Author: Stephen Scaff
 Dependancies: _alerts.scss
 ------------------------------------------*/
+
 (function() {
 	//trigger alert via data-attribute
 	$('.js-alert-trigger').click(function (e) {

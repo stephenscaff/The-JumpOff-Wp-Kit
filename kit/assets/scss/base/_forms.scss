@@ -1,0 +1,220 @@
+/*----------------------------------------------
+--Forms
+-----------------------------------------------*/
+
+/*----------------------------------------------
+--Inputs - all
+-----------------------------------------------*/
+input, textarea, select {
+  display: block;
+  width: 100%;
+  padding: 0.95em 0.5em 1em;
+  font-family: $font-paragraph;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: $color-dark;
+  background: $color-white;
+  border: $form-borderwidth solid $form-bordercolor;
+  border-radius: $base-borderradius;
+  box-shadow: none;
+  outline: 0;
+  transition: all .25s ease-in;
+  -webkit-appearance: none;
+ 
+	&:focus {
+    border-color: $color-alpha;
+  }
+}
+
+/*----------------------------------------------
+--Labels
+Need to a hide a label? Use .u-off-screen
+-----------------------------------------------*/
+label {
+  display: inline;
+  font-family: $font-paragraph;
+  font-size: 1em;
+}
+
+/*----------------------------------------------
+--Helper class for input groups
+-----------------------------------------------*/
+.input-group {
+  margin: 1em auto;
+
+  input:first-child{
+    border-right: 0;
+  }
+}
+
+/*----------------------------------------------
+--Placeholders
+-----------------------------------------------*/
+::placeholder {
+  color: $form-placeholdercolor;
+  //font-size: 0.8em;
+
+}
+
+/*----------------------------------------------
+--Checkboxes
+-----------------------------------------------*/
+/* Base for label styling */
+
+[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+
+[type="checkbox"] + label {
+  position: relative;
+  display: inline;
+  font-size: .85em;
+  font-weight: 400;
+  color: #999;
+  cursor: pointer;
+  transition: color .4s ease;
+  
+  &:hover {
+    color: $color-alpha;
+  }
+}
+
+/* checkbox aspect */
+[type="checkbox"] + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 1.2em;
+  height: 1.2em;
+  border: 1px solid #ccc;
+  background: #ddd;
+  border-radius: 4px;
+}
+[type="checkbox"] + label:after {
+  content: '✔';
+  position: absolute;
+  top: 0;
+  left: .3em;
+  font-size: 1em;
+  color: #fff;
+  transition: all .2s;
+}
+
+/* Hover */
+[type="checkbox"]+ label:hover:before,
+[type="checkbox"]:focus + label:before {
+  border: 1px solid $color-alpha;
+  transition: border .4s ease;
+}
+
+/* Checked */
+[type="checkbox"]:checked + label:before {
+  background: $color-alpha;
+  border: 1px solid $color-alpha;
+}
+
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* disabled checkbox */
+[type="checkbox"]:disabled + label {
+  color: #ccc; 
+  cursor: not-allowed;
+
+  &:before {
+    border-color: #e9e9e9;
+    background-color: #e9e9e9;
+  }
+  &:after {
+    color: #eee;
+    background: #ccc;
+  }
+}
+
+/*----------------------------------------------
+--Radios
+-----------------------------------------------*/
+/* Base for label styling */
+[type="radio"] {
+  position: absolute;
+  left: -9999px;
+}
+
+[type="radio"] + label {
+  position: relative;
+  display: inline;
+  padding-left: 30px;
+  font-size: .85em;
+  font-weight: 400;
+  color: #999;
+  cursor: pointer; 
+  
+  &:hover {
+    color: $color-alpha;
+    transition: color .4s ease;
+  }
+}
+
+/* radio dot */
+[type="radio"] + label:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+/* Hover */
+[type="radio"]+ label:hover:before,
+[type="radio"]:focus + label:before {
+  border: 3px solid $color-alpha;
+  transition: border .4s ease;
+}
+
+/* Checked */
+input[type="radio"]:checked + label:before {
+  background: $color-alpha;
+  border: 3px solid $color-alpha;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+
+/* disabled radio */
+[type="radio"]:disabled + label {
+  color: #ccc; 
+  cursor: not-allowed;
+
+  &:before {
+    box-shadow: none;
+    border-color: #e9e9e9;
+    background-color: #e9e9e9;
+  }
+  &:after {
+    color: #eee;
+    background: #ccc;
+  }
+}
+
+/*----------------------------------------------
+--Misc
+-----------------------------------------------*/
+
+fieldset {
+  margin: 1em 0;
+}
+legend {
+  margin-left: -.75em;
+}

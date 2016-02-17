@@ -1,70 +1,40 @@
-// IIFE - Immediately Invoked Function Expression
-(function($, window, document, undefined) {
+ /*jshint -W030*/
+ /*globals feature: false */
 
-/*------------------------------------------ 
-ON DOC READY (The $ is now locally scoped)
-=============================================  */
-  $(function() {
+ /* This script wrapped in a Immediately-Invoked Function Expression (IIFE) to
+ * prevent variables from leaking onto the global scope. For more information
+ * on IIFE visit the link below.
+ * @see http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+ */
+(function() {
 
 
+/*---------------------------------------------
+Feature.js - browser feature detection
+See http://featurejs.com/ for full API reference
+----------------------------------------------*/
+$("html").removeClass("no-js");
 
-
-  }); // close doc readys
-/*-------------------------------------------  
-IMMEDIATELY INVOKE
-=============================================  */
-
-/*-------------------------------------------   
---Sticky Nav
----------------------------------------------  */ 
-var  scrolledDown;
-
-$(window).scroll(function(){
-  scrolledDown = true;
-});
-
-setInterval(function() {
- if (scrolledDown) {
-  hasScrolled();
-  scrolledDown = false;
- }
-}, 350);
-
-function hasScrolled() {
- var scrollDistance = 70;
- var scrolling = $(window).scrollTop();
-
- // Scroll-down
- if (scrolling >= scrollDistance) {
-  $('body').addClass('scrolling-down');
- } else {
- // Scroll-Up
-  $('body').removeClass('scrolling-down');
-  }
+if (!feature.svg) {
+  $("html").addClass("no-svg");
+}
+if (!feature.cssFlexbox) {
+  $("html").addClass("no-flexbox");
 }
 
 
 /*---------------------------------------------
-Function above mobile
+Document
 ----------------------------------------------*/
-if ($(window).width() > 767) {
-}
+
+/*-- functions above tablet --*/
+if ($(window).width() > 767) {}
 
 
-}(jQuery, window, document));  
+/*--DOC READY--*/
+$(function() { });
 
 
+})(jQuery);
 
 
-
-/*---------------------------------------------
-Modernizer Load ex
-----------------------------------------------*/
-Modernizr.load([
-  {
-    // The test: does the browser understand Media Queries?
-    test : Modernizr.mq('only all'),
-    // If not, load the respond.js file
-    nope : 'js/respond.js'
-  }
-]);

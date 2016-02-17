@@ -1,4 +1,16 @@
-<?php get_header(); ?>
+<?php
+/**
+ * The template for displaying 404s
+ *
+ *
+ * @author    Stephen Scaff
+ * @package   jumpoff/404
+ * @version   1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+  exit; // Exit if accessed directly
+}
+get_header(); ?>
 
 <!-- Man
 ================================================== -->
@@ -6,14 +18,15 @@
 
 <!-- Mast
 ================================================== -->
- <section class="sect-mast center-all">
-   <div class="vcenter">
-     <div class="mast-content row">
-       <h1>Um...<br/> I Think You're Lost</h1>
-       
-       <a class="btn-alpha" href="/">Take Me Home</a>
-     </div>
-   </div>
+ <section class="mast mast--404">
+   <div class="row u-center-all">
+    <header class="g-8 cols">
+    <h1>Damn Sam.</h1>
+    <h3>Yo Ass got lost</h1>
+     
+     <a href="/">Take Me Home</a>
+   </header>
+  </div>
  </section> 
 
 </main>

@@ -1,0 +1,129 @@
+/*----------------------------------------------
+--Modals: box
+-----------------------------------------------*/
+.modal {
+  z-index: 99999;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 98%;
+  margin: 0 auto;
+  background: rgba($color-white, 1);
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0, .1);
+  border-bottom: 1px solid #aaa;
+  border-radius: $base-borderradius;
+  box-shadow: 0 3px 9px rgba(0,0,0, .5);
+ 
+  @media (min-width: $mq-small) {
+    width: 70%;
+  }
+  @media (max-width: $mq-small) {
+    left: 2%;
+    width: 97%;
+    margin: 0 auto;
+  }
+}
+
+/*----------------------------------------------
+--Modal Sizes
+-----------------------------------------------*/
+.modal--large {
+  max-width: 40em;
+}
+.modal--med {
+  max-width: 34em;
+}
+.modal--small {
+  max-width: 28em;
+}
+
+/*----------------------------------------------
+--Modal: Header
+-----------------------------------------------*/ 
+.modal__header {
+  padding: .5em 1.15em;
+  border-bottom: 1px solid #ddd;
+    
+  h3, h4, h5 {
+    margin: 0;
+  }
+}
+
+/*----------------------------------------------
+--Modal: Body
+-----------------------------------------------*/
+.modal__body {
+  padding: 1.6em 1.15em;
+}
+
+.modal__footer {
+  padding: 1em 1.15em;
+  text-align: right;
+  background: rgba(0,0,0, .02);
+  border-top: 1px solid #ddd;
+}
+
+/*----------------------------------------------
+--Modal Overlay
+-----------------------------------------------*/
+.modal__overlay {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0, .9);
+  opacity: 0;
+}
+
+/*----------------------------------------------
+--Close Button
+-----------------------------------------------*/
+.modal__close, .js-close {
+ position: absolute;
+ top: 3%;
+ right: 2%;
+ font-size: 1em;
+ line-height: 1;
+ color: #bbb;
+  
+ &:hover {
+    color: #222;
+    cursor: pointer;
+    @include transition(color 1s ease);
+  }
+}
+
+/*----------------------------------------------
+--Modal: Full height X width (for video)
+-----------------------------------------------*/
+.modal--video {
+  z-index: 1000;
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  
+
+  &.is-open {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+
+  // center the video element
+  & > * {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}

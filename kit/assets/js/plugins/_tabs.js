@@ -3,13 +3,13 @@
 -----------------------------------------------  */
 
 $('.js-tabs').each(function(){
-   var $tabs = $(this);
+  var $tabs = $(this);
 
-    $tabs.find('.tab-viewer li').hide();
-    $tabs.find('.tab-viewer li:first-child').show();
-    $tabs.find('li:first-child').addClass("selected");
+  $tabs.find('.tab-viewer li').hide();
+  $tabs.find('.tab-viewer li:first-child').show();
+  $tabs.find('li:first-child').addClass("selected");
     
-    $tabs.find('.tab-nav li').on('click', function () {
+  $tabs.find('.tab-nav li').on('click', function () {
     $tabs.find('ul.tab-viewer li').addClass('fade-in');
     $tabs.find('.tab-nav li').removeClass("selected");
     $(this).addClass("selected");

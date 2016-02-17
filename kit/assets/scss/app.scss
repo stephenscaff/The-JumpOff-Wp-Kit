@@ -2,36 +2,52 @@
 =======================================*/
 @import 'bourbon';
 
-/* --settings: configs
-=======================================*/
-@import 'settings/_config';
-@import 'settings/_mixins';
+/* --Config
+========================================*/
+@import 'base/_config';
 
 /* --Vendor
 ========================================*/
 @import 'vendor/_normalizer';
 
-/* --Modules: Reuseable UI elements
+/* --Base: Variables, mixins, base elements, etc.
 =======================================*/
-@import 'modules/_media';
-@import 'modules/_decor';
-@import 'modules/_forms';
-@import 'modules/_buttons';
-@import 'modules/_colors';
-@import 'modules/_grid';
-@import 'modules/_layouts';
-@import 'modules/_typography';
-@import 'modules/_animations';
-@import 'modules/_lists';
+@import 'base/_mixins';
+@import 'base/_helpers';
+@import 'base/_typography';
+@import 'base/_colors';
+@import 'base/_media';
+@import 'base/_forms';
 
-/* --Partial: page components
+/* --Components: Reuseable UI elements
+=======================================*/
+@import 'components/_sticky-footer';
+@import 'components/_sections';
+@import 'components/_blocks';
+@import 'components/_mastheads';
+@import 'components/_grid';
+@import 'components/_flex-grid';
+@import 'components/_buttons';
+@import 'components/_animations';
+@import 'components/_pagination';
+//@import 'components/_preloader';
+//@import 'components/_alerts';
+//@import 'components/_modals';
+//@import 'components/_tables';
+//@import 'components/_validation';
+
+
+/* --Partials: Partial includes
 =======================================*/
 @import 'partials/_offcanvas-nav';
 @import 'partials/_header';
 @import 'partials/_footer';
-@import 'partials/_sections';
-@import 'partials/_blocks';
+@import 'partials/_posts';
+@import 'partials/_post';
+@import 'partials/_post-next';
+@import 'partials/_post-author';
 
-/* --Pages
+/* --Pages: Specific/one-off styles
 =======================================*/
 @import 'pages/_home';
+@import 'pages/_error-404';

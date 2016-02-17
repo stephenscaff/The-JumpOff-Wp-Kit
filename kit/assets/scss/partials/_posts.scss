@@ -1,0 +1,48 @@
+.post{
+  padding: 3em 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  transition: color 0.6s ease;
+
+  &:last-child{
+    border-bottom: 0;
+  }
+  &__link{
+    @include link-styles($color-grey, $color-alpha)
+  }
+
+  &__content{}
+
+  &__title{
+    color: $color-dark;
+    transition: color 0.6s ease;
+  }
+
+  &__date{
+    display:block;
+    margin: 0 0 1em;
+    @extend %font-uppercase;
+    
+    font-size: $font-xxsmall;
+
+  }
+
+  &__excerpt{
+    color: $color-grey;
+    font-size: $font-small;
+  }
+
+  &__more{
+    @extend %font-uppercase;
+    font-size: $font-xsmall;
+    font-weight: 600;
+    color: $color-dark;
+    transition: color 0.6s ease;
+  }
+
+  &:hover{
+    .post__title, .post__more{
+      color: $color-alpha;
+      transition: color 0.6s ease;
+    }
+  }
+}

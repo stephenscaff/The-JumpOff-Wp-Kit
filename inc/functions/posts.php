@@ -1,61 +1,51 @@
 <?php
 /*-----------------------------------------------*/
 /* POST FUNCTIONS:
-/* Post Formats
 /* Post Images
 /* Post Excerpts
 /* Post Metas
 /* Pagination
-/* Popular Posts
-/*-----------------------------------------------*/
+/*-----------------------------------------------*/ 
+
 
 /*-----------------------------------------------*/
-/* Post Formats
-/*-----------------------------------------------*/
-add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'status', 'video', 'audio'));
-
-/*----------------------------------------------*/
-/* Images: Remove auto HxW
-/*----------------------------------------------*/
-function jumpoff_remove_width_attribute( $html ) {
- $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
- return $html;
+/* COntent Image Figure Wrap
+/* Unauto p's content images, and wraps in a figure element.
+/* Uses the_content filter.
+/*-----------------------------------------------
+function jumpoff_img_figure_wrap($figureimg) {
+$figureimg = preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $figureimg);
+return $figureimg;
 }
-add_filter( 'post_thumbnail_html', 'jumpoff_remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'jumpoff_remove_width_attribute', 10 );
+add_filter( 'the_content', 'jumpoff_img_figure_wrap', 10 );
+*/
 
 /*-----------------------------------------------*/
-/* Images: Stop autolinking
+/* Wrap images in figure, captions in a figcap
+/* Happens in the editor (image_send_to_editor)
 /*-----------------------------------------------*/
-update_option('image_default_link_type','none');
-
-/*-----------------------------------------------*/
-/* Images: img unautop - 
-/* Stops Wp from wrapping images in a p tag
-/*-----------------------------------------------*/
-function jumpoff_img_unautop($pee) {
-$pee = preg_replace('/<p>\\s*?(<a .*?><img.*?><\\/a>|<img.*?>)?\\s*<\\/p>/s', '<figure>$1</figure>', $pee);
-return $pee;
+function jumpoff_html5_insert_image($html, $id, $caption, $title, $align, $url, $size, $alt) {
+  $src  = wp_get_attachment_image_src( $id, $size, false );
+  $html5_str = "<figure id='media-" .$id . "' class='align-" . $align . "'>";
+  $html5_str .= "<img src='" . $src[0] . "' alt='" . $alt . "' />";
+  if ($caption) {
+    $html5_str .= "<figcaption>" . $caption ."</figcaption>";
+  }
+  $html5_str .= "</figure>";
+  return $html5_str;
 }
-add_filter( 'the_content', 'jumpoff_img_unautop', 10 );
+add_filter( 'image_send_to_editor', 'jumpoff_html5_insert_image', 10, 9 );
 
 /*-----------------------------------------------*/
-/*	Images - Grab first image in post
+/* jumpoff Title - 
+/* Outputs a shortened the_title via length arg (by char)
+/* @example jumpoff_title(100);
 /*-----------------------------------------------*/
-function catch_that_image() {
- global $post, $posts;
- $first_img = '';
- ob_start();
- ob_end_clean();
- $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
- $first_img = $matches [1] [0];
- $url =  get_template_directory_uri();
- if(empty($first_img)){ //Defines a default image
-   $first_img = "$url/assets/images/nopic.jpg";
- }
- return $first_img;
+function jumpoff_title($characters, $rep='...') {
+ $title = the_title('','',false);
+ $shortened_title = jumpoff_text_limit($title, $characters, $rep);
+ echo $shortened_title;
 }
-
 
 /*-----------------------------------------------*/
 /* Excerpts: Kick Rocks Read More
@@ -65,132 +55,90 @@ function jumpoff_new_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'jumpoff_new_excerpt_more');
 
-
 /*-----------------------------------------------*/
-/* Excerpt: by character or work
-/* Usage: <?php the_excerpt('...'); ?>
+/* Excerpt: Limit Default excerpt, 
+/* if excerpt field is not completed
+/* @example jumpoff_short_excerpt(get_the_excerpt());
 /*-----------------------------------------------*/
-function jumpoff_custom_excerpt_length( $length ) {
- return 26;
+function jumpoff_short_excerpt($string) {
+   echo substr($string, 0, 200); 
 }
-add_filter( 'excerpt_length', 'jumpoff_custom_excerpt_length', 999 );
 
+/*-----------------------------------------------*/
+/* jumpoff Excerpt - 
+/* Outputs a shortened get_the_excerpt via length arg (by char)
+/* @example jumpoff_excerpt(100);
+/*-----------------------------------------------*/
+function jumpoff_excerpt($characters, $rep='...') {
+ $excerpt = get_the_excerpt('','',false);
+ $shortened_excerpt = jumpoff_text_limit($excerpt, $characters, $rep);
+ echo $shortened_excerpt;
+}
 
 /*-----------------------------------------------*/
 /* Excerpt: by character 
 /* Useage: <?php echo jumpoff_get_excerpt(); ?>
 /*-----------------------------------------------*/
-function jumpoff_get_excerpt(){
+function jumpoff_get_excerpt($characters){
+ if ( !empty( $post->post_excerpt ) ) :
  $excerpt = get_the_content();
+else :
+ $excerpt = get_the_excerpt();
+endif;
+ $characters = 200;
  $excerpt = preg_replace(" (\[.*?\])",'',$excerpt);
  $excerpt = strip_shortcodes($excerpt);
  $excerpt = strip_tags($excerpt);
- $excerpt = substr($excerpt, 0, 120);
+ $excerpt = substr($excerpt, 0, $characters);
  $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
  $excerpt = trim(preg_replace( '/\s+/', ' ', $excerpt));
- $excerpt = $excerpt.'...';
+ if(strlen($excerpt) > 200) :
+
+ $excerpt = substr($excerpt, 0,  200) . '&#8230;';
+
+endif;
  //$excerpt = $excerpt.'... <a href="'.$permalink.'">...</a>';
 return $excerpt;
 }
 
 
 /*-----------------------------------------------*/
-/* Get Excerpt from custom fields, declared inline
-/*-----------------------------------------------*/
-function custom_field_excerpt($field) {
- global $post;
- $text = get_field($field);
- if ( '' != $text ) {
-  $text = strip_shortcodes( $text );
-  $text = apply_filters('the_content', $text);
-  $text = str_replace(']]>', ']]>', $text);
-  $excerpt_length = 25; // 20 words
-  $excerpt_more = apply_filters('excerpt_more', ' ' . '[...]');
-  $text = wp_trim_words( $text, $excerpt_length, $excerpt_more );
- }
- return apply_filters('the_excerpt', $text);
-}
-
-/*-----------------------------------------------*/
-/*	Metas: Date/Time
+/* Metas: Date/Time
 /*-----------------------------------------------*/
 function jumpoff_entry_meta() {
-	echo ' <time class="updated date big grey" datetime=" '. get_the_time('c') .'" pubdate>'. sprintf(__('Published on %s', 'jumpoff'), get_the_time('M d Y'), get_the_time()) .'</time>'; 
+ echo ' <time class="updated date big grey" datetime=" '. get_the_time('c') .'" pubdate>'. sprintf(__('Published on %s', 'jumpoff'), get_the_time('M d Y'), get_the_time()) .'</time>'; 
 }
 
 
 /*-----------------------------------------------*/
-/*	Pagination
+/* Pagination
 /*-----------------------------------------------*/
 function jumpoff_pagination() {
-	global $wp_query;
+ global $wp_query;
  
-	$big = 999999999; // This needs to be an ekely integer
+ $big = 999999999; // This needs to be an unlikely integer
  
-	// For more options and info view the docs for paginate_links()
-	// http://codex.wordpress.org/Function_Reference/paginate_links
-	$paginate_links = paginate_links( array(
-		'base' => str_replace( $big, '%#%', get_pagenum_link($big) ),
-		'current' => max( 1, get_query_var('paged') ),
-		'total' => $wp_query->max_num_pages,
-		'mid_size' => 5,
-		'prev_next' => True,
-	    'prev_text' => __('<span aria-hidden="true" class="icon-left-chev"></span>'),
-	    'next_text' => __('<span aria-hidden="true" class="icon-right-chev"></span>'),
-		'type' => 'list'
-	) );
+ // For more options and info view the docs for paginate_links()
+ // http://codex.wordpress.org/Function_Reference/paginate_links
+ $paginate_links = paginate_links( array(
+  'base' => str_replace( $big, '%#%', get_pagenum_link($big) ),
+  'current' => max( 1, get_query_var('paged') ),
+  'total' => $wp_query->max_num_pages,
+  'mid_size' => 5,
+  'prev_next' => True,
+     'prev_text' => __('‹ Prev'),
+     'next_text' => __('Next ›'),
+  'type' => 'list'
+ ) );
  
-	// Display the pagination if more than one page is found
-	if ( $paginate_links ) {
-		echo '<div class="jumpoff-pagination">';
-		echo $paginate_links;
-		echo '</div><!--// end .pagination -->';
-	}
+ // Display the pagination if more than one page is found
+if ( $paginate_links ) {
+  //echo '<div class="pagination__links">';
+  echo $paginate_links;
+  //echo '</div><!--// end .pagination -->';
+ }
 }
 
 
-
-
-/*------------------------------------------------------*/
-/*	Popular Posts Dopeness - Track by page views
-/*-------------------------------------------------------
-function getPostViews($postID){
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-        return "0 View";
-    }
-    return $count.' Views';
-}
-function setPostViews($postID) {
-    $count_key = 'post_views_count';
-    $count = get_post_meta($postID, $count_key, true);
-    if($count==''){
-        $count = 0;
-        delete_post_meta($postID, $count_key);
-        add_post_meta($postID, $count_key, '0');
-    }else{
-        $count++;
-        update_post_meta($postID, $count_key, $count);
-    }
-}
-
-USEAGE:
-		<ul class="posts-list">
-		<?php
-			query_posts('meta_key=post_views_count&orderby=meta_value_num&order=DESC');
-			if (have_posts()) : while (have_posts()) : the_post(); ?>
-			<li>
-			<h5><a href="<? the_permalink()?>"><?php the_title(); ?></a></h5> 
-			<span class="meta-date"><?php echo get_the_time('M, j'); ?></span>		
-			</li>
-			<?php
-			endwhile; endif;
-			wp_reset_query();
-		?>
-		</ul>
-*/
 
 ?>

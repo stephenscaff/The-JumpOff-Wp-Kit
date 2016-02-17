@@ -1,0 +1,11 @@
+/*----------------------------------------------
+--Site footer
+-----------------------------------------------*/
+.site-footer {
+  position: relative;
+  @extend %section--padded;
+
+  p,small{
+    color: $color-grey;
+  }
+}

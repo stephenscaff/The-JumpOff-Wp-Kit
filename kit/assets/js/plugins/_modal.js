@@ -1,13 +1,13 @@
 /*----------------------------------------
 Stupid Simple Modals
 Author: Stephen Scaff
-------------------------------------------*/
+-----------------------------------------*/
 
-$(function(){
+$(function() {
 
-var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
-var modalBoxOverlay = (".modal-box, .modal-overlay");
-var removeOverlay = $(".modal-overlay").remove();
+  var appendthis = ("<div class='modal-overlay js-modal-close'></div>");
+  var modalBoxOverlay = (".modal-box, .modal-overlay");
+  var removeOverlay = $(".modal-overlay").remove();
 
 	$('a[data-modal-id]').click(function(e) {
 		e.preventDefault();
@@ -18,37 +18,26 @@ var removeOverlay = $(".modal-overlay").remove();
 		$('#'+modalBox).fadeIn($(this).data());
 	});  
   
-//close link
-$(".js-modal-close").click(function(e) {
-e.preventDefault();
-   $(modalBoxOverlay).fadeOut(500, function() {
+  //close link
+  $(".js-modal-close").click(function(e) {
+  e.preventDefault();
+     $(modalBoxOverlay).fadeOut(500, function() {
       removeOverlay();
-  });
-});
-//click anywhere to close appended overlay
-$("body").on('click', '.modal-overlay', function(){
-  $(modalBoxOverlay).fadeOut(500, function() {
-      removeOverlay();
-  });
-});
-//Close on control c for copy to clipboard close
- $("input").bind('copy', function() {
-   $(modalBoxOverlay).fadeOut(500, function() {
-       removeOverlay();
-   });
- }); 
- 
-
- //Maybe ditch this for pure css
-$(window).on("load resize scroll",function(){
-    $(".modal-box").css({
-        //top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
-        top: ((($(window).height() - $('.modal-box').outerHeight()) / 2) + $(window).scrollTop() + "px"),
-        //top: ($(window).height() - $(".modal-box").outerHeight().scrollTop()) / 2,
-        left: ($(window).width() - $(".modal-box").outerWidth()) / 4
     });
-});
- 
-$(window).resize();
+  });
+  //click anywhere to close appended overlay
+  $("body").on('click', '.modal-overlay', function(){
+    $(modalBoxOverlay).fadeOut(500, function() {
+      removeOverlay();
+    });
+  });
+  //Close on control c for copy to clipboard close
+  $("input").bind('copy', function() {
+    $(modalBoxOverlay).fadeOut(500, function() {
+      removeOverlay();
+    });
+  });
+   
+  $(window).resize();
 
 });

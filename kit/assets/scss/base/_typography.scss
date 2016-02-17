@@ -1,0 +1,259 @@
+/*----------------------------------------------
+-Typography
+-----------------------------------------------*/
+body {
+  font-family: $font-paragraph;
+  line-height: $base-lineheight;
+  color: $color-dark;
+  background-color: $color-light;
+}
+
+/*----------------------------------------------
+-Fluid body sizing
+-----------------------------------------------*/
+body {
+  font-size: 100%;
+  
+  @media (min-width: $mq-small) {
+    font-size: 110%;
+  }
+  @media (min-width: $mq-med) {
+    font-size: 111%;
+  }
+  @media (min-width: $mq-large) {
+    font-size: 115%;
+  }
+  @media (min-width: 75em) {
+    font-size: 120%;
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: 135%;
+  }
+  @media (min-width: $mq-xxlarge) {
+    font-size: 145%;
+  }
+  @media (min-width: $mq-xxxlarge) {
+    font-size: 160%;
+  }
+}
+
+/*----------------------------------------------   
+-Font-size variables
+-----------------------------------------------  */
+$font-xxsmall: .6em;
+$font-xsmall: .8em;
+$font-small: .9em;
+
+
+/*----------------------------------------------   
+-H1 Theme
+-----------------------------------------------  */
+%font-h1 {
+  margin-bottom: .25em;
+  $fontSize: 3.5em;
+  font-size: $fontSize - 1em; 
+  line-height: 1;
+
+  @media (min-width: $mq-med) {
+    font-size: $fontSize;  
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + .25em;
+  }
+}
+
+/*----------------------------------------------
+-H2 Theme
+-----------------------------------------------*/
+%font-h2 {
+  margin-bottom: .25em;
+  $fontSize: 1.75em; 
+  font-size: $fontSize;  
+  line-height: 1.2;
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + .25em;
+  }
+}
+
+/*----------------------------------------------
+-H3 Theme
+-----------------------------------------------*/
+%font-h3 {
+  margin-bottom: .4em;
+  $fontSize: 1.5em;
+  font-size: $fontSize;  
+  line-height: 1.2;
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + .25em;
+  }
+}
+/*----------------------------------------------
+-H4 Theme
+-----------------------------------------------*/
+%font-h4 {
+  margin-bottom: .5em;
+  $fontSize: 1.2em; 
+  font-size: $fontSize;  
+  font-weight: 400;
+  line-height: 1.4;
+
+  @media (min-width: $mq-xlarge) {
+   font-size: $fontSize + .25em;
+  }
+}
+
+/*----------------------------------------------   
+-H5 Theme
+-----------------------------------------------  */
+%font-h5 {
+  margin-bottom: .4em;
+  $fontSize: 1em;
+  font-size: $fontSize;  
+  line-height: 1.4;
+
+  @media (min-width: $mq-xlarge) {
+    font-size: $fontSize + .25em;
+  }  
+}
+
+/*----------------------------------------------   
+-Headings
+-----------------------------------------------  */
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-header;
+  font-weight: 700;
+}
+
+h1, .font-h1 {
+  @extend %font-h1;
+}
+
+h2, .font-h2 {
+  @extend %font-h2;
+}
+
+h3, .font-h3 {
+  @extend %font-h3;
+}
+
+h4, .font-h4 {
+  @extend %font-h4;
+}
+
+h5, .font-h5 {
+  @extend %font-h5;
+}
+
+/*----------------------------------------------   
+-Paragraph
+-----------------------------------------------  */
+
+p {
+  margin-top: 0;
+  margin-bottom: .75em;
+}
+
+small {
+  display: block;
+  margin-bottom: 1em;
+  font-size: 80%;
+}
+
+/*----------------------------------------------   
+-Font Lead
+-----------------------------------------------  */
+%font-lead, .font-lead {
+  margin-bottom: .8em;
+  font-size: 1.2em;
+  line-height: 1.6;
+}
+
+/*----------------------------------------------   
+-Uppercase extend
+-----------------------------------------------  */
+%font-uppercase, .font-uppercase{
+  font-family: $font-header;
+  text-transform:uppercase;
+  letter-spacing: 0.1em;
+}
+
+/*--------------------------------------------------- 
+-Quotes
+---------------------------------------------------  */
+q, blockquote {
+  margin: 1em auto;
+  padding: .5em;
+  font-family: $font-paragraph;
+  font-size: 1.1em;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: inherit;
+  line-height: 1.5;
+  text-align: center;
+  color: $color-alpha;
+}
+cite {
+  display: block;
+  font-size: 1rem;
+  color: $color-grey;
+
+  &:before {
+    content: "\2014 \0020";
+  }
+}
+
+/*----------------------------------------
+-Code text
+-----------------------------------------*/
+code, kbd, pre, samp {
+  font-family: monospace, sans-serif;
+  font-size: 1em;
+}
+pre {
+  margin: 0 0 2em;
+  padding: 1.4em 1em 1.6em 2em;
+  font-family: monospace;
+  line-height: 1.9;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-shadow: -1px 1px 0px rgba(255, 255, 255, 0.3);
+  color: #1E315A;
+  background: #B6DBE4;
+  overflow: hidden;
+}
+
+
+/*--------------------------------------------------- 
+-List: Ordered
+---------------------------------------------------  */
+ol li{
+  padding-bottom:.5em
+}
+
+ol{
+  counter-reset: li;
+}
+
+ol > li {
+  position: relative;
+  margin-left: -.5em;
+  padding-bottom: 0.75em;
+  list-style: none;
+  line-height: 1.6;
+ 
+}
+
+ol > li:before {
+ content: counter(li) ".";
+ counter-increment: li;
+ position:absolute;
+ top: -.03em;
+ left: -1.2em;
+ width: 1em;
+ font-family: $font-header;
+ font-weight: 600;
+ color: $color-grey;
+}

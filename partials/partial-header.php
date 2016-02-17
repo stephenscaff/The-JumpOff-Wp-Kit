@@ -16,48 +16,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- Mobile Nav
 ================================================== -->
 <!-- Nav Toggle -->
-<a class='toggle-offcanvas'>
-  <div class='menubars'></div>
+<a class='offcanvas-toggle js-offcanvas-toggle'>
+  <div class='offcanvas-toggle__menubars'></div>
 </a>
 
-<section class="offcanvas-bg">
-<!-- Footer-nav -->
-  <nav class='mobile-nav'>
+<section class="offcanvas-menu">
+  <!-- Footer-nav -->
+  <nav class='offcanvas-menu__nav'>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <li><a href="index">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="services">Services</a></li>
+      <li><a href="blog">Blog</a></li>
     </ul>
   </nav>
-
-  <!-- Footer-nav -->
-  <footer class="footer-nav">
-    <ul>
-      <li><a href="#">Twitter</a></li>
-      <li><a href="#">Instagram</a></li>
-      <li><a href="#">Github</a></li>
-    </ul>
-  </footer> 
 </section>
 
 <!-- Header
 ================================================== -->
-<header class="header-main">
- <div class="row">
+<header class="site-header">
+  <div class="row">
     <!-- Logo -->
-  <a href="/"><h1 id="logo">TheJumpOff</h1></a>
+    <a href="/" class="site-header__logo">
+      JumpOff
+    </a>
 
     <!-- Main Nav-->
-  <nav role="navigation">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/about">About</a></li>
-      <li><a href="/services">Services</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/blog">Blog</a></li>
-    </ul>  
-  </nav>
+    <nav role="navigation" class="site-header__nav">
+      <ul>
+        <li><a href="index">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="services">Services</a></li>
+        <li><a href="blog">Blog</a></li>
+      </ul>  
+    </nav>
   </div>
 </header>

@@ -1,0 +1,46 @@
+/*----------------------------------------------   
+--Tables
+-----------------------------------------------  */
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $base-lineheight;
+
+  th, td {
+    padding: $base-gutter;
+    vertical-align: top;
+    line-height: $base-lineheight;
+    text-align: left; 
+    border-top: 1px solid $color-lightgrey;
+  }
+
+  th {
+    font-weight: bold;
+  }
+
+  thead th {
+    vertical-align: bottom;
+  }
+
+  colgroup + thead tr:first-child th,
+  colgroup + thead tr:first-child td,
+  thead:first-child tr:first-child th,
+  thead:first-child tr:first-child td {
+    border-top : 0;
+  }
+
+  tbody + tbody {
+    border-top : 2px solid
+  }
+
+  tbody tr:hover td,
+  tbody tr:hover th {
+    background-color: lighten($color-alpha,10);
+    transition: background-color .6s ease-in;
+  }
+}
+
+.table--striped tr:nth-child(2n+2) { 
+  background-color: $color-lightgrey;
+  transition: background-color .6s ease-in;
+}

@@ -1,0 +1,38 @@
+/*----------------------------------------------
+--Preloading graphic/animation
+-----------------------------------------------*/
+.preloader {
+  position: absolute;
+  top: 40%;
+  right: 0;
+  bottom: 50%;
+  left: 0;
+  width: 4em;
+  height: 4em;
+  margin: 0 auto;
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4em;
+    height: 4em;
+    background-color: $color-alpha;
+    border-radius: 50%;
+    opacity: .6;
+    animation: preloader-bounce 2s infinite ease;
+  }
+  &:after {
+    animation-delay: -1s;
+  }
+}
+
+@keyframes preloader-bounce {
+  0%, 100% {
+    transform: scale(1.4) rotate(3.2deg);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+}

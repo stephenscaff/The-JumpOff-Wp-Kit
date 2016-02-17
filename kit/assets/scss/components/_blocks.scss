@@ -1,0 +1,47 @@
+/*----------------------------------------------
+-Blocks
+-----------------------------------------------*/
+
+.block-img{
+ @extend %banner-theme;
+ background-color: #fff;
+ height: 25em;
+ margin: 0 auto;
+ z-index: 4;
+ position: relative;
+ overflow: hidden;
+ outline: 0px;
+ @media (min-width:$mq-med){
+  height: 34em;
+ } 
+
+ &__content{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+
+  .icon-play{
+   font-size: 3em;
+   position: relative;
+   width: 100%;
+   text-align:center;
+  }
+ }
+}
+
+.block-text{
+  max-width: 24em;
+  margin: 10% 2.5%;
+  padding: 2.5%;
+  @media (min-width:$mq-med){
+   padding: 5%;
+   margin: 20% 10%;
+  }
+
+  p{
+   margin: 2.5rem 0;
+  }
+}
+

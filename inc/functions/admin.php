@@ -1,17 +1,82 @@
 <?php
 /*-----------------------------------------------*/
-/* HAdmin FUNCTIONS:
-/* Hide admin bar
-/* Admin Footer
-/* Visual Editor
-/* Editor Toolbar
-/* Remove P funcitons
+/*	ADMIN FUNCTIONS
 /* Admin Appearance
+/* Admin Widgets
+/* Admin Editor
+/* Admin Post Filters
 /*-----------------------------------------------*/
+
 /*-----------------------------------------------*/
-/*	Remove FrontEnd Admin bar
+/*	Editor: Remove Visual Editor form Admin
+/*-----------------------------------------------*/
+//add_filter ( 'user_can_richedit' , create_function ( '$a' , 'return false;' ) , 50 );
+
+/*-----------------------------------------------*/
+/*	Admin Appearance: Remove FrontEnd Admin bar
 /*-----------------------------------------------*/
 add_filter('show_admin_bar', '__return_false');  
+
+/*-----------------------------------------------*/
+/*	Admin Appearance: Remove Color Picker
+/*-----------------------------------------------*/
+remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+remove_action( 'additional_capabilities_display', 'additional_capabilities_display' );
+
+/*-----------------------------------------------*/
+/*	Admin Appearance: Remove via css where no hooks exist
+/*-----------------------------------------------*/
+function jumpoff_admin_hides() {
+ echo '<style type="text/css">
+         .user-comment-shortcuts-wrap,
+         .show-admin-bar,
+         .user-rich-editing-wrap,
+         .user-description-wrap,.user-url-wrap{display:none}
+       </style>';
+}
+
+add_action('admin_head', 'jumpoff_admin_hides');
+
+
+/*-----------------------------------------------*/
+/*	Admin Appearance: Disable default dashboard widgets
+/*-----------------------------------------------*/
+function jumpoff_disable_default_dashboard_widgets() {
+	global $wp_meta_boxes;
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);       // Right Now Widget
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);        // Activity Widget
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // Comments Widget
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);  // Incoming Links Widget
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);         // Plugins Widget
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);       // Quick Press Widget
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);     // Recent Drafts Widget
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);           //
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']); 
+}
+add_action('admin_head', 'jumpoff_disable_default_dashboard_widgets');
+
+
+/*-----------------------------------------------*/
+/* Welcome Dash - Add a welcome widget
+/*-----------------------------------------------*/
+function jumpoff_add_dashboard_widgets() {
+  wp_add_dashboard_widget( 'jumpoff_dashboard_welcome', 'Welcome to Your Site', 'jumpoff_welcome_widget' );
+}
+
+function jumpoff_welcome_widget() { ?>
+   <div class="box">
+    <div class="box-content" style="background-color: #1f2d36;">
+     <a href="/"><img src="/wp-content/themes/wallbed/assets/images/logo-jumpoff.png" width="320"></a>
+    </div>
+    <div class="box-footer">
+     <p><a class="" href="edit.php">Create a Blog Post</a></p>
+     <p><a class="" href="edit.php?post_type=page">Edit a Page / Page Copy</a></p>
+    </div>
+   </div>
+<?php }
+
+add_action( 'wp_dashboard_setup', 'jumpoff_add_dashboard_widgets' );
+
 
 /*-----------------------------------------------*/
 /*	Admin Footer: Replace Wp text
@@ -23,12 +88,7 @@ function jumpoff_custom_admin_footer() {
 add_filter( 'admin_footer_text', 'jumpoff_custom_admin_footer' );
 
 /*-----------------------------------------------*/
-/*	Editor: Remove Visual Editor form Admin
-/*-----------------------------------------------*/
-add_filter ( 'user_can_richedit' , create_function ( '$a' , 'return false;' ) , 50 );
-
-/*-----------------------------------------------*/
-/*	Customize Output of Editor QuickTags
+/*	Editor: Customize Output of Editor QuickTags
 /*-----------------------------------------------*/
 function jumpoff_show_quicktags( $qtInit ) {
  $qtInit['buttons'] = 'strong,em,block,ul,ol,li,link,fullscreen';
@@ -53,165 +113,64 @@ function jumpoff_add_quicktags() {
 add_action( 'admin_print_footer_scripts', 'jumpoff_add_quicktags' );
 
 /*-----------------------------------------------*/
-/*	Remove P: Add Remove P Metas to Pages, Posts, CPTs, etc
+/* Post Filters: Add to Query for post filter
 /*-----------------------------------------------*/
-function jumpoff_removep_meta_box_add() {
-	if ( function_exists('add_meta_box') ) {
-		//add_meta_box('removep',__('Remove P', 'removep'),'jumpoff_removep_meta','post');
-		add_meta_box('removep',__('Remove P', 'removep'),'jumpoff_removep_meta','page');
-		//add_meta_box('removep',__('Remove P', 'removep'),'jumpoff_removep_meta','portfolio');
-	}
+function jumpoff_admin_posts_filter( &$query )
+{
+ if ( 
+  is_admin() 
+  AND 'edit.php' === $GLOBALS['pagenow']
+  AND isset( $_GET['p_format'] )
+  AND '-1' != $_GET['p_format']
+     )
+ {
+  $query->query_vars['tax_query'] = array( array(
+   'taxonomy' => 'post_format'
+  ,'field'    => 'ID'
+  ,'terms'    => array( $_GET['p_format'] )
+  ) );
+ }
 }
-add_action('admin_menu', 'jumpoff_removep_meta_box_add');
+add_filter( 'parse_query', 'jumpoff_admin_posts_filter' );
 
 /*-----------------------------------------------*/
-/*	Removep: post Meta Tags
+/* Post Filters: Add Taxonomies to Post Filter
 /*-----------------------------------------------*/
-function jumpoff_removep_post_meta_tags($id) {
-	//$removep_edit = $_POST["removep_edit"];
-	if (isset($removep_edit) && !empty($removep_edit)) {
-	$removep_edit = $_POST["removep_edit"];
-	$status = $_POST["removep"];
-	delete_post_meta($id, '_removep');
-	$br = $_POST["removep_br"];
-	delete_post_meta($id, '_removep_br');
-		if (isset($status) && !empty($status)) {
-			add_post_meta($id, '_removep', $status);
-		    }
-		if (isset($br) && !empty($br)) {
-			add_post_meta($id, '_removep_br', $br);
-		   }
-	  }
-	}
-add_action('edit_post', 'jumpoff_removep_post_meta_tags');
-add_action('publish_post', 'jumpoff_removep_post_meta_tags');
-add_action('save_post', 'jumpoff_removep_post_meta_tags');
-add_action('edit_page_form', 'jumpoff_removep_post_meta_tags');
-
-/*-----------------------------------------------*/
-/*	RemoveP: Build admin metas
-/*-----------------------------------------------*/
-function jumpoff_removep_meta() {
-	global $post;
-	$post_id = $post;
-	if (is_object($post_id)){
-		$post_id = $post_id->ID;
-	}
- 	$status = get_post_meta($post_id, '_removep', true);
- 	$br = get_post_meta($post_id, '_removep_br', true);
-	?>
-	<input type="hidden" value="1" name="removep_edit">
-	<table >
-	<tr>
-	<td scope="row" style="text-align:left;"><input type="checkbox" name="removep" id="removepp" value="1" <?php  if ($status) echo 'checked="checked"'; ?> /><label for="removepp"> Remove Extra Paragraphs in this <?php  if($post->post_type=='page'){ ?>page<?php  } else { ?>post<?php  } ?>.</label></td>
-	</tr>
-	<tr>
-	<td scope="row" style="text-align:left;"><input type="checkbox" name="removep_br" id="removep_br" value="1" <?php  if ($br) echo 'checked="checked"'; ?> /><label for="removep_br"> Also convert line breaks to br tags ( only work if Remove Extra Paragraphs is enabled ).</label></td>
-	</tr>
-	</table>
-<?php
+function jumpoff_restrict_manage_posts_format()
+{
+  wp_dropdown_categories( array(
+   'taxonomy'         => 'post_format',
+   'hide_empty'       => 0,
+   'name'             => 'p_format',
+   'show_option_none' => 'Select Post Format'
+  ) );
 }
+add_action( 'restrict_manage_posts', 'jumpoff_restrict_manage_posts_format' );
 
 /*-----------------------------------------------*/
-/*	Removep:  un auto p
+/* Post Filters: Add Taxonomies to Post Filter
 /*-----------------------------------------------*/
-function jumpoff_removep_wpautop($content) {
-	global $post;
-	
-	if (is_page() || is_object($post)){
-		
-		if (get_post_meta($post->ID, '_removep', true)&&!function_exists('add_meta_box'))    {
-			remove_filter('the_content', 'wpautop');
-			
-			if (get_post_meta($post->ID, '_removep_br', true)){
-				$content=nl2br($content);
-			}
-		}
-	}
-	return $content;
+function jumpoff_add_taxonomy_filters() {
+  global $typenow;
+ 
+  // an array of all the taxonomyies you want to display. Use the taxonomy name or slug
+  $taxonomies = array('post-functions'); //arry of the post functions to add
+ 
+  foreach ($taxonomies as $tax_slug) {
+    $tax_obj = get_taxonomy($tax_slug);
+    $tax_name = $tax_obj->labels->name;
+    $terms = get_terms($tax_slug);
+    
+    if(count($terms) > 0) {
+      echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+      echo "<option value=''>Show All $tax_name</option>";
+      foreach ($terms as $term) { 
+        echo '<option value='. $term->slug, isset($_GET[$tax_slug]) == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
+      }
+      echo "</select>";
+    }
+  }
 }
-add_filter('the_content', 'jumpoff_removep_wpautop', 9);
-
-
-/*-----------------------------------------------*/
-/*	Admin Appearance: Remove Color Picker
-/*-----------------------------------------------*/
-remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
-remove_action( 'additional_capabilities_display', 'additional_capabilities_display' );
-
-
-/*-----------------------------------------------*/
-/*	Admin Appearance: Remove via css where no hooks exist
-/* More stable than hacky php 
-/*-----------------------------------------------*/
-function jumpoff_admin_hides() {
-   echo '<style type="text/css">
-           .user-comment-shortcuts-wrap,
-           .show-admin-bar,
-           .user-rich-editing-wrap,
-           .user-description-wrap,.user-url-wrap{display:none}
-         </style>';
-}
-
-add_action('admin_head', 'jumpoff_admin_hides');
-
-
-/*-----------------------------------------------*/
-/*	Admin Appearance: Disable default dashboard widgets
-/*-----------------------------------------------*/
-
-function jumpoff_disable_default_dashboard_widgets() {
-	global $wp_meta_boxes;
-	// unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);    // Right Now Widget
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);        // Activity Widget
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']); // Comments Widget
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);  // Incoming Links Widget
-	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);         // Plugins Widget
-	// unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);    // Quick Press Widget
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);     // Recent Drafts Widget
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);           //
-	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);         //
-
-
-}
-add_action('admin_head', 'jumpoff_disable_default_dashboard_widgets');
-
-
-
-
-/*-----------------------------------------------*/
-/*	Retard Restrictions: Remove Admin Menu Items for retards
-/*-----------------------------------------------
-function remove_admin_menus () {
-	global $menu;
-	// all users
-	$restrict = explode(',', 'Links,Comments,Posts');
-	// non-administrator users
-	$restrict_user = explode(',', 'Appearance,Plugins,Posts,Users,Tools,Settings');
-	// WP localization
-	$f = create_function('$v,$i', 'return __($v);');
-	array_walk($restrict, $f);
-	if (!current_user_can('activate_plugins')) {
-		array_walk($restrict_user, $f);
-		$restrict = array_merge($restrict, $restrict_user);
-	}
-	// remove menus
-	end($menu);
-	while (prev($menu)) {
-		$k = key($menu);
-		$v = explode(' ', $menu[$k][0]);
-		if(in_array(is_null($v[0]) ? '' : $v[0] , $restrict)) unset($menu[$k]);
-	}
-}
-add_action('admin_menu', 'remove_admin_menus');
-
-add_action( 'admin_menu', function() {
-if (! current_user_can('administrator')) {
-remove_menu_page('edit.php?post_type=acf');
-} 
-});
-*/
-
-
+add_action( 'restrict_manage_posts', 'jumpoff_add_taxonomy_filters' );
 
 ?>

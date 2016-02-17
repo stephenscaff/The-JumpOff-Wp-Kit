@@ -1,6 +1,7 @@
-/*----------------------------------------------   
+/*----------------------------------------------
 Mail Chimp Signup
------------------------------------------------  */
+-----------------------------------------------*/
+
 $(function () {
   var $form = $('#mc-embedded-subscribe-form');
 
@@ -17,27 +18,25 @@ function register($form) {
     data: $form.serialize(),
     cache       : false,
     dataType    : 'json',
-    contentType: "application/json; charset=utf-8",
+    contentType : "application/json; charset=utf-8",
     error       : function(err) { $('#notice-bar').html('<span class="alert">Could not connect to server. Please try again later.</span>'); },
     success     : function(data) {
-     
+
       if (data.result != "success") {
         var message = data.msg.substring(4);
         $('#notice-bar').addClass("error").fadeIn(300).html('<span class="alert">'+message+'</span>');
-      } 
+      }
 
       else {
         var message = data.msg;
         $('body').addClass("submit-success");
         $('.sect-form').addClass("fade-out-fast");
         $('#notice-bar').removeClass("error").addClass("success fade-in").html('<span class="success">'+message+'</span>');
-        
-        
+
         setTimeout(function(){
         $('.sect-yeah').addClass("fade-in");
           $('#notice-bar').addClass('fade-out').removeClass("fade-in"); 
-         },2700); 
-         
+        },2700);
       }
     }
   });

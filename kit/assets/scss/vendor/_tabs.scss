@@ -1,0 +1,22 @@
+/*----------------------------------------------
+--tabs: nav
+-----------------------------------------------*/
+.js-tabs {
+	.tab-nav {
+		li {
+			list-style: none;
+			display: inline-block;
+			padding-right: 1em;
+		}
+	
+  	li:hover {
+  		cursor: pointer;
+  	}
+  }
+  /*----------------------------------------------
+  --tabs: viewer
+  -----------------------------------------------*/
+	.tab-viewer li {
+		list-style: none;
+	}
+}

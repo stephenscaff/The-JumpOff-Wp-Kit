@@ -4,7 +4,6 @@ A Wordpress starter theme and front-end framework for CodeKit
 ## Dependencies
 -CodeKit: for minification, linting, and js + html includes (more on that below).
 -Wordpress: for, eh, Wordpress.
--Burbon: for mixin lib
 -Jquery: for js
 
 ## Transitioning from Static to WP
@@ -34,31 +33,27 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |           |-- app.scss      # main scss imports
 |           |-- fonts.scss    # font base64 imports
 |
-|           |-- fonts/
-|               |--- _iconfont.scss
-|               |--- _base64starter.scss
-|           |--modules/  
+|           |-- base/
+|               |--- _config.scss
+|               |--- _mixins.scss
+|               |--- _colors.scss
+|               |--  _media.scss  
+|               |--  typography.scss      
+|           |--components/  
 |               |-- _animations.scss  
 |               |-- _buttons.scss      
-|               |-- _code.scss  
-|               |-- _colors.scss 
-|               |-- _forms.scss  
-|               |-- _grid.scss 
-|               |-- _typography.scss      
+|               |-- _grid.scss    
 |               |-- etc...  
 |           |--partials/
 |               |-- _header.scss
 |               |-- _footer.scss       
-|               |-- _sections.scss     
+|               |-- _posts.scss     
 |           |--pages/
 |               |-- _home.scss      
 |               |-- _about.scss  
 |               |-- _etc...  
-|           |--settings/     
-|               |-- _config.scss   
-|               |-- _mixins.scss 
 |           |-- vendor/ 
-|               |-- _normalize.scss 
+|               |-- _normalizer.scss 
 |
 |       |-- js/             # js files
 |           |-- scripts.js  # working scripts
@@ -79,24 +74,27 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- admin-styles.scss        # Admin styles, working
 |
 |   |-- cpts 
-|       |-- post-types.php           # Custom Post Types
+|       |-- post-types.php           # Custom Post Types & Taxonomies
 |
 |   |-- customfields
 |       |-- custom-fields.php        # custom-fields saves
 |
 |   |-- functions                    # Functions, called in functions.php
-|       |-- admin.php                # admin related functions 
-|       |-- circular-post-nav.php    # Circular CPTS 
+|       |-- admin.php                # admin related functions (appearance, editor, post filters)
+|       |-- settings.php             # wp defulat settings (images, permalinks, etc)
+|       |-- theme-support.php        # register theme support (thumbnails, post formats, etc)
+|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
+|       |-- circular-post-nav.php    # Circular CPT nav 
 |       |-- cleanup.php              # Cleanups 
 |       |-- helpers.php              # Helper funcitons
+|       |-- helpers-loops.php        # Modular Loop helpers
 |       |-- nav.php                  # Nav functions
-|       |-- posts.php                # Post functions
+|       |-- posts.php                # Post functions (excerpts)
 |       |-- socials.php              # Social integration funcitons
-|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
-|       |-- usrs.php                 # User related functions 
+|       |-- users.php                # User related functions 
 |
 |-- page-templates/                  # Custom Page Templates
-|   |-- page-home.php                # Prefix page names with page-
+|   |-- home.php                
 |
 |-- partials/                        # Partials, Loops, and modular elements
 |   |-- content/                     # Loop content
@@ -105,7 +103,7 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |   |-- partials-head.php            # global head content, called in header.php
 |   |-- partials-header.php          # global header content, called in header.php
 |   |-- partials-footer.php          # global footer content, called in header.php
-|   |-- sect-signup.php              # modular sections, prefixed with sect-
+|   |-- post-author.php              # modular sections
 |
 |-- resources/                       # a place to save working files and notes, ie PSDs, Icon Project Json files, etc
 ```

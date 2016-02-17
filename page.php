@@ -15,24 +15,26 @@ get_header(); ?>
 ================================================== --> 
 <main role="main">
 
-<!-- Sect: Title
+<!-- Section: Title
 ================================================== --> 
-<section class="sect-title center-all">
-  <header class="content-title row">
-   <div class="g-8 cols centered">
-    <h1><?php the_title(); ?></h1>
-   </div>
-  </header>
+<section class="mast">
+  <div class="row">
+    <header class="mast__header  g-8 cols u-centered">
+      <h1><?php the_title(); ?></h1>
+    </header>
+  </div>
 </section>
 
-<!-- Page Content
+<!-- Section Content
 ================================================== -->
-<section class="sect-content post-content ">
+<section class="section--padded">
  <div class="row">
+  <div class="g-8 cols u-centered">
   <?php 
    while (have_posts()) : the_post();
     the_content();
    endwhile; // End content loop ?>
+  </div>
  </div>
 </section>
 </main>

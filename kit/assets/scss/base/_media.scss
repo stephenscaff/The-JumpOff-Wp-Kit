@@ -1,0 +1,65 @@
+/*----------------------------------------------
+--Responsive images/embeds
+-----------------------------------------------*/
+img, svg, figure, picture, object, embed, iframe, video {
+  max-width: 100%;
+  height: auto;
+}
+
+figure, picture {
+  margin-bottom: 1em;
+}
+figure img {
+  width: 100%;
+}
+
+/*----------------------------------------------
+--Helper classes
+-----------------------------------------------*/
+.u-centered-image {
+  display: block;
+  margin: 0 auto;
+}
+
+/*----------------------------------------------
+--Flexible Video: wrap video inside flex-vid div
+-----------------------------------------------*/
+.u-flex-vid {
+  position:relative;
+  height: 0;
+  margin-bottom: 1em;
+  padding-bottom: 56.5%; // Widescreen
+  overflow: hidden;
+
+  iframe, object, embed, video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/*----------------------------------------------
+--Maps
+-----------------------------------------------*/
+.u-map-canvas {
+  height: 100%; 
+  min-height: 30em;
+
+  &::after {
+    @media (max-width: $mq-med) {
+      z-index: 99;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+    }
+  }
+
+  img {
+    max-width: none !important;
+  }
+}

@@ -15,55 +15,44 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
 <!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
-
 <head>
-<!-- Title and Meta
-================================================== -->
 <meta charset="<?php bloginfo('charset'); ?>">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/><![endif]-->
 
-<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
-<meta name="author" content="Stephen Scaff">
-<?php if(get_field('seo_description')): ?>
-  <meta name="description" content="<?php the_field('seo_description');?>" />
-<?php else: ?>
-  <meta name="description" content="The JumpOff">
-<?php endif; ?>
-<?php if(get_field('seo_keywords')): ?>
-  <meta name="keywords" content="<?php the_field('seo_keywords');?>" />
-  <?php else: ?>
-  <meta name="keywords" content="jumpoff ">
-<?php endif; ?> 
+<?php
+// Meta/OG variables
+$meta_title = get_post_meta( get_the_ID(), 'seo_title', true ) ? get_post_meta( get_the_ID(), 'seo_title', true ) : wp_title('|', false, 'right') . get_bloginfo('name');
+$meta_author = "Urban Influence";
+$meta_site_name = get_bloginfo('name') .' - '. get_bloginfo('description');
+$meta_description = get_post_meta( get_the_ID(), 'seo_description', true ) ? get_post_meta( get_the_ID(), 'seo_description', true ) : "Urban Influence drops that goodie good";
+$meta_keywords = get_post_meta( get_the_ID(), 'seo_keywords', true ) ? get_post_meta( get_the_ID(), 'seo_keywords', true ) : "urbaninfluence, pigeon wisdom";
+?>
+
+<!-- Title and Meta
+================================================== -->
+<title><?php echo $meta_title ?></title>
+<meta name="author" content="<?php echo $meta_author ?>">
+<meta name="description" content="<?php echo $meta_description ?>">
+<meta name="keywords" content="<?php echo $meta_keywords ?>" />
 
 <!-- Facebook Open Graph Meta
 ================================================== -->
-<meta property="og:title" content="<?php wp_title('|', true, 'right'); bloginfo('name'); ?>"/>
-<meta property="og:url" content="<?php echo the_permalink() ?>"/>
-<meta property="og:site_name" content="The JumpOff"/>
-<?php if(get_field('seo_description')): ?>
-  <meta property="og:description" content="<?php the_field('seo_description');?>" />
-  <?php else: ?>
-  <meta property="og:description" content="The JumpOff">
-<?php endif; ?>
-<?php if(is_single()) : ?>
-  <meta property="og:image" content="<?php echo catch_that_image(); ?>"/>
-  <?php else: ?>
-  <meta property="og:image" content="<?php bloginfo('template_directory'); ?>/assets/images/screen.jpg"/>
-<?php endif; ?>
+<meta property="og:title" content="<?php echo $meta_title ?>">
+<meta property="og:url" content="<?php echo the_permalink() ?>">
+<meta property="og:site_name" content="<?php echo $meta_site_name ?>">
+<meta property="og:description" content="<?php echo $meta_description ?>">
+<meta property="og:image" content="<?php jumpoff_ftimg_fallbacks('large'); ?>">
 
 <!-- Twitter Meta
 ================================================== -->
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="<?php wp_title('|', true, 'right'); bloginfo('name'); ?>"/>
 <meta name="twitter:url" content="<?php echo the_permalink() ?>">
-<meta name="twitter:site" content="@jumpoff"/>
-<meta name="twitter:creator" content="@https://twitter.com/jumpoff">
-<meta name="twitter:domain" content="jumpoff"/>
-<?php if(is_single()) : ?>
-  <meta name="twitter:image" content="<?php echo catch_that_image(); ?>" />
-  <?php else: ?>
-  <meta name="twitter:image" content="<?php bloginfo('template_directory'); ?>/assets/images/screen.jpg"/>
-<?php endif; ?>
+<meta name="twitter:site" content="@pigeonwisdom"/>
+<meta name="twitter:creator" content="https://twitter.com/pigeonwisdom">
+<meta name="twitter:domain" content="http://urbaninfluence.com"/>
+<meta name="twitter:image" content="<?php jumpoff_ftimg_fallbacks('large'); ?>" />
+
 
 <!-- Mobile
 ================================================== -->
@@ -71,11 +60,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <!-- Fav and icons
 ================================================== -->  
-<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" type="image/ico" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-144x144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-114x114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php bloginfo('template_directory'); ?>/images/apple-touch-icon-72x72-precomposed.png">
-<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+<link rel="shortcut icon" href="<?php bloginfo('template_directory'); ?>/assets/images/favicon.ico" type="image/ico" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php bloginfo('template_directory'); ?>/assets/images/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="<?php bloginfo('template_directory'); ?>/assets/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="<?php bloginfo('template_directory'); ?>/assets/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" href="<?php bloginfo('template_directory'); ?>/assets/images/apple-touch-icon-152x152.png">
 
 <!-- Feed
 ================================================== -->  
@@ -85,20 +74,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 ================================================== -->
 <?php wp_head(); ?>
 
-<!-- Google Analytics
-================================================== -->
-<script> 
-var _gaq = _gaq || [];
-  _gaq.push(["_setAccount", "UA-12345678-X"]);
-  _gaq.push(["_setDomainName", "vrge.com"]);
-  _gaq.push(["_trackPageview"]);
-
-  (function() {
-    var ga = document.createElement("script"); ga.type = "text/javascript"; ga.async = true;
-    ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
-    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
 
 <!-- Script: Add fadein for page trans
 ================================================== -->

@@ -15,9 +15,9 @@
 html {
 	font-size: 100%; /* 1 */
 	overflow-y: scroll; /* 2 */
- font-family: sans-serif; /* 3 */
- -ms-text-size-adjust: 100%; /* 4 */
- -webkit-text-size-adjust: 100%; /* 4 */
+  font-family: sans-serif; /* 3 */
+  -ms-text-size-adjust: 100%; /* 4 */
+  -webkit-text-size-adjust: 100%; /* 4 */
 }
 
 
@@ -41,21 +41,21 @@ body {
 
 /*----------------------------------------------   
 -body, html
--Set 100% height if needed for full viewport stuff
--Prevent gaps in mobile layout
+1. Prevent horizontal scrolling.
+2. Set 100% height if needed for full viewport stuff
 -----------------------------------------------  */
-html, body{
-	//height:	100%;
-	position:	relative;	
-	//overflow-x: hidden;
+html, body {
+  /* 1. */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; // fix iOS lag
+  /* 2.
+	height: 100%; */
 }
 
 /*----------------------------------------------   
 -Defualt to border-box
 -----------------------------------------------  */
 *, *:before, *:after {
-  -webkit-box-sizing: border-box; 
-  -moz-box-sizing: border-box; 
   box-sizing: border-box; 
 }
 
@@ -188,19 +188,12 @@ h1, h2, h3, h4, h5, h6, ul, ol,dl, li,dd, small{
 
 
 /*----------------------------------------------   
-IMAGES & EMBEDDED CONTENT
--Responsive defualt
--IE Scaling fix
+Image IE Scaling fix
 -----------------------------------------------  */ 
-img,object,embed{
-  max-width:100%;
-  height:auto;
-}
 
-img{
+img {
   -ms-interpolation-mode:bicubic;
   border: 0;
-  outline:	none;
 }
 
 /**
@@ -212,13 +205,6 @@ SVG
 -----------------------------------------------  */ 
 svg:not(:root) {
   overflow: hidden;
-}
-/*----------------------------------------------   
-Google Maps responsive fix
------------------------------------------------  */ 
-#map_canvas img,
-.map_canvas img{
-  max-width:none !important;
 }
 
 
@@ -293,7 +279,7 @@ textarea {
 
 button, input {
   overflow: visible;
-  line-height:	normal;
+  line-height: normal;
 }
 
 /**
@@ -309,19 +295,23 @@ select {
 }
 
 /**
- * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
- *    and `video` controls.
- * 2. Correct inability to style clickable `input` types in iOS.
- * 3. Improve usability and consistency of cursor style between image-type
- *    `input` and others.
+ * Custom styling to get buttons to appear as normal text/links by default
  */
 
 button,
-html input[type="button"], /* 1 */
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button; /* 2 */
-  cursor: pointer; /* 3 */
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  color: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
 }
 
 /* Ensure pointer */
@@ -434,7 +424,7 @@ legend {
 textarea {
   overflow: auto;
   vertical-align:	text-bottom;
-  width:	100%;
+  width:100%;
 }
 /**
  * Don't inherit the `font-weight` (applied by a rule above).
@@ -453,6 +443,7 @@ TABLES
  */
 
 table {
+  max-width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 }

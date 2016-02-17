@@ -2,6 +2,7 @@
 Simple Drop Down
 Author: Stephen Scaff
 ------------------------------------------*/
+
 //Setup
 function DropDown(el) {
 	this.dd = el;

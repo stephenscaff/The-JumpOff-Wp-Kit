@@ -1,0 +1,40 @@
+/*----------------------------------------------   
+--Pagination - used on archive pages
+-----------------------------------------------  */
+.pagination {
+  font-family: $font-header;
+  ul{
+    margin: 1em auto;
+    padding: 0;
+    text-align: center;
+    color: $color-grey;
+    list-style-type: none;
+
+  a {
+    display: inline-block;
+    padding: .3em;
+    font-weight: 700;
+    color: $color-dark;
+
+    &:hover {
+      color: $color-alpha;
+    }
+  }
+
+  li {
+    display: inline-block;
+    padding: 0 .7em;
+    }
+  }
+
+  .current{
+    display: inherit;
+    height: 3rem;
+    width: 3rem;
+    line-height: 3.1rem;
+    border-radius: 4em;
+    border: 1px solid rgba(0,0,0,.05);
+    color: rgba(0,0,0,0.5);
+    background: rgba(255,255,255,0.9);
+  }
+}

@@ -1,0 +1,28 @@
+/*----------------------------------------------
+-Section-Next
+-----------------------------------------------*/ 
+.section-next{
+
+
+  a{
+   display:block;
+   @extend %section--padded;
+   background-color: lighten($color-alpha, 60);
+   transition: 0.6s ease;
+  }
+  .next__subtitle{
+    display:block;
+    margin: 0 0 1em;
+    font-size: $font-xsmall;
+    @extend %font-uppercase;
+  }
+
+  &:hover{
+
+   a{
+    color: #fff;
+    background-color: lighten($color-alpha, 10);
+    transition: 0.6s ease;
+   }
+  }
+}
