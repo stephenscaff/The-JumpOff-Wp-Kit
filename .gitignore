@@ -1,3 +1,13 @@
-.sass-cache
+# Misc
+/tmp
+.DS_Store
 
-*.scssc
+# Logging
+*.log
+
+# CodeKit
+.sass-cache
+.sass-cache/*
+.scssc
+.codekit-cache
+.codekit-cache/

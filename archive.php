@@ -32,7 +32,7 @@ get_header(); ?>
     if ( have_posts() ) {
       while ( have_posts() ) {
         the_post();
-        get_template_part( 'partials/content/content', 'posts' );
+        get_template_part( 'partials/content/content', 'post' );
       }
     } else {
       get_template_part( 'partials/content/content', 'none' );

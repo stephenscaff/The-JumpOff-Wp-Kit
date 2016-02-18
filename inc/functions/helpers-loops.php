@@ -1,14 +1,48 @@
 <?php
 /*-----------------------------------------------*/
 /*  POST LOOPS & QUERIES FUNCTIONS:
-/*  Get Posts by Cat, 2 templates
-/*  Get Posts Cat Module
-/*  Get Posts Video Module
-/*  Popular Posts Functions - counter and display
+/*  01. Modular Get Posts Function
+/*  02. EXAMPLE: Get Posts by Cat, using 2 templates (featured and list)
+/*  03. EXAMPLE: Get Posts Cat Module
+/*  04. EXAMPLE: Get Posts Video Module
+/*  05. Popular Posts Functions - view counter and display
 /*-----------------------------------------------*/
-
 /*------------------------------------------------------*/
-/*  Get Posts by Category
+/*  jumpoff_get_posts();
+/*
+/*  Modular Get Posts Function
+/*
+/*  @params:  $post_cat = ('category-nicename' or null for all posts), 
+/*            $num_posts = number of posts to show
+/*            $content_type = file name for content, ie; 'posts' = partials/content/content-posts
+/*
+/*  @return:  $posts
+/*  @example: jumpoff_get_posts('category-name', 7) or jumpoff_get_posts(null, 7) 
+/*-------------------------------------------------------*/
+function jumpoff_get_posts($post_cat, $num_posts, $content_type){
+  global $post ; 
+
+  $args = array(
+   'posts_per_page'   => $num_posts,
+   'offset'           => 0,
+   'category_name'    => $post_cat,
+  );
+
+  $posts = get_posts( $args );
+  // set_transient( 'posts_query', $posts, 12 * 60 * 60 );
+  foreach ( $posts as $post ) : setup_postdata( $post );
+    //Get template form partials/content/content-category-featured
+   get_template_part( 'partials/content/content', $content_type );
+
+  endforeach;
+  wp_reset_postdata();
+
+  return $posts;
+}
+/*------------------------------------------------------*/
+/*  jumpoff_get_posts_ft_list()
+/*
+/*  Get Posts by cat, 
 /*  Use featured template for first post
 /*  Use micro template for remaining via a simple counter
 /*
@@ -16,14 +50,12 @@
 /*  @return:  $posts
 /*  @example: jumpoff_get_cat_posts('category-name') or jumpoff_get_cat_posts($cat) 
 /*-------------------------------------------------------*/
-function jumpoff_get_cat_posts($postcat){
+function jumpoff_get_posts_ft_list($post_cat, $num_posts){
   global $post ; 
   $args = array(
-   'posts_per_page'   => 3,
+   'posts_per_page'   => $num_posts,
    'offset'           => 0,
-   'category_name'    => $postcat,
-   //'exclude'          => '26',
-   //'category__not_in' => array(26),
+   'category_name'    => $post_cat,
    'tax_query' => array(
    array(
    'taxonomy' => 'post_format',
@@ -53,7 +85,7 @@ function jumpoff_get_cat_posts($postcat){
 
 
 /*------------------------------------------------------*/
-/*  Jumpoff Category Module
+/*  EXAMPLE: Jumpoff Category Module
 /*  Wraps the 'jumpoff_get_cat_posts()' funciton with a header and footer via page templates
 /* 
 /*  @param:   $postcat (category_name slug) string
@@ -62,134 +94,32 @@ function jumpoff_get_cat_posts($postcat){
 function jumpoff_cat_module($postcat){
   $cat = get_term_by( 'slug', $postcat, 'category');
   // Get Section Heading
-  echo '<h4 class="section-heading">'.$cat->name.'</h4>';
+  echo '<h4>'.$cat->name.'</h4>';
 
   // Get cat posts function
-  jumpoff_get_cat_posts($postcat);
+  jumpoff_get_posts_ft_list($postcat);
   
   // Get Section Footer Link
   if (is_home()) {
-    echo '<a class="section-more-link" href="/blog/'.$postcat.'">See All '.$cat->name.'</a>';
+    echo '<a class="more__link" href="/blog/'.$postcat.'">See All '.$cat->name.'</a>';
   } else {
   // Get Section Footer Link
-    echo '<a class="section-more-link" href="/blog/category/'.$postcat.'">See All '.$cat->name.'</a>';
+    echo '<a class="more__link" href="/blog/category/'.$postcat.'">See All '.$cat->name.'</a>';
   }
 }
 
 
-/*------------------------------------------------------*/
-/*  Video Posts Module
-/*  Get Posts by Video Post Format and Cat
-/*  Use featured templatwe for first post
-/*  Use aside template for remaining
-/*  Adds wrapping markup
-/*  
-/*  @param:   $postcat (category_name slug) string
-/*  @return:  $posts
-/*  @todo:    replace echoed content with page templates
-/*  @example: jumpoff_videos_module('category-name')
-/*-------------------------------------------------------*/
-function jumpoff_videos_module($postcat){
- global $post ; 
- 
-// if is home  
-if ( is_home() ) {
-  $postcat = null;
-// else if is cat page  
-} else {
-  $postcat = $postcat;
-}  
-$args = array(
-  'posts_per_page'   => 4,
-  'category_name'    => $postcat,
-  'tax_query' => array(
-    array(
-    'taxonomy' => 'post_format',
-    'field' => 'slug',
-    'terms' => array( 'post-format-video' ),
-    'operator' => 'IN',
-  ),
-));
-//Counter 
-$counter = 1;
-$posts = get_posts( $args );
-foreach ( $posts as $post ) : setup_postdata( $post );
-
-// First Post
-if ($counter == 1) {
- echo '<div class="video-section--sssfeatured">';
-  get_template_part( 'partials/content/content', 'category-video-featured' );
-  echo '<h3 class="headline--normal"><a href="'.get_permalink().'">'.get_the_title().'</a></h3>';
-  echo '</div>'; 
-  echo '<div class="video-section--aside">';
-//Remaining Posts
-} else {
-  get_template_part( 'partials/content/content', 'category-video-aside' );
-}
-$counter++;
-endforeach;
-  echo '</div>'; 
-wp_reset_postdata();
-
-return $posts;
-}
 
 /*------------------------------------------------------*/
-/*  Video Posts Module - Aside
-/*  Get Posts by cat (via slug) in 'post-format-video' not in 'featured-video' taxonomy
-/*  Use category-video-aside template to display
-/* 
-/*  @param:   $postcat (category_name slug) string
-/*  @return:  $posts
-/*  @example: jumpoff_videos_aside_module('category-name')
-/*-------------------------------------------------------*/
-function jumpoff_videos_aside_module($postcat){
- global $post ; 
+/*  EXAMPLE: umpoff_get_featured_videos
 
-  // if is home  
-  if ( is_home() ) {
-    $postcat = null;
-  // else if is cat page  
-  } else {
-    $postcat = $postcat;
-  }  
-  $args = array(
-    'posts_per_page'   => 3,
-    'category_name'    => $postcat,
-    'tax_query' => array(
-      'relation' => 'AND',
-      array(
-        'taxonomy' => 'post_format',
-        'field' => 'slug',
-        'terms' => array( 'post-format-video' ),
-        'operator' => 'IN',
-      ),
-      array(
-        'taxonomy' => 'post-functions',
-        'field' => 'slug',
-        'terms' => array( 'featured-video' ),
-        'operator' => 'NOT IN',
-    ),
-  ));
-
-  $posts = get_posts( $args );
-  foreach ( $posts as $post ) : setup_postdata( $post );
-    get_template_part( 'partials/content/content', 'category-video-aside' );
-  endforeach;
-  wp_reset_postdata();
-return $posts;
-}
-
-/*------------------------------------------------------*/
-/*  Video Posts Module - Featured
-/*  Get Posts by cat (via slug) in 'post-format-video' and 'featured-video' taxonomy
-/*  Use category-video-featured template to display
+/*  Get featured Video format posts
 /* 
 /*  @param:   $postcat (category_name slug) string
 /*  @return:  $posts
 /*  @example: jumpoff_videos_featured_module('category-name')
 /*-------------------------------------------------------*/
-function jumpoff_videos_featured_module($postcat){
+function jumpoff_get_featured_videos($post_cat, $num_posts){
   global $post ; 
 
   // if is home  
@@ -200,7 +130,7 @@ function jumpoff_videos_featured_module($postcat){
     $postcat = $postcat;
   }  
   $args = array(
-    'posts_per_page'   => 1,
+    'posts_per_page'   => $num_posts,
     'category_name'    => $postcat,
     'tax_query' => array(
       'relation' => 'AND',
@@ -219,7 +149,7 @@ function jumpoff_videos_featured_module($postcat){
   ));
   $posts = get_posts( $args );
   foreach ( $posts as $post ) : setup_postdata( $post );
-    get_template_part( 'partials/content/content', 'category-video-featured' );
+    get_template_part( 'partials/content/content', 'video' );
   endforeach;
   wp_reset_postdata();
 return $posts;
@@ -228,13 +158,14 @@ return $posts;
 /*------------------------------------------------------*/
 /*  Popular Posts - Track by page views
 /*
-/* Counts post views via setPostViews(get_the_ID()) on single.php
+/* Counts post views by adding setPostViews(get_the_ID()) on single.php
 /* Then displays via args:
 /*    'meta_key' => 'post_views_count',
 /*    'orderby'  => 'meta_value_num',
 /*
 /*  @param:   $postID (post ID) 
 /*  @return:  $count.' Views';
+/*  
 /*
 /*-------------------------------------------------------*/
 function getPostViews($postID){

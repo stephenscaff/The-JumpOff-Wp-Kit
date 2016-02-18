@@ -41,6 +41,10 @@ require_once('inc/functions/posts.php');
 /*-----------------------------------------------*/
 require_once('inc/functions/helpers.php');
 /*-----------------------------------------------*/
+/* Includes: helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/helpers-loops.php');
+/*-----------------------------------------------*/
 /* Includes: Custom Fields
 /*-----------------------------------------------*/
 require_once('inc/customfields/custom-fields-seo.php');
