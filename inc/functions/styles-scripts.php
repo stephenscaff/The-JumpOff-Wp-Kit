@@ -11,8 +11,8 @@ function jumpoff_scripts_and_styles() {
 		
 		//Register scripts for head
 		wp_deregister_script( 'jquery' );
-		wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js' );
-		wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', array( 'jquery' ));
+		wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js' );
+		//wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/modernizr.js', array( 'jquery' ));
 		
 		//scripts for footer
 		wp_register_script( 'jumpoff_plugins', get_template_directory_uri() . '/assets/js/plugins.min.js', array( 'jquery' ), false, true );
@@ -23,7 +23,7 @@ function jumpoff_scripts_and_styles() {
 		wp_enqueue_style( 'jumpoff_fonts' );
 		
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'modernizr' );
+		//wp_enqueue_script( 'modernizr' );
 		wp_enqueue_script( 'jumpoff_plugins' );
 		wp_enqueue_script( 'jumpoff_scripts' );
 		

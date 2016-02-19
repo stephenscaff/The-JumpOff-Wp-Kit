@@ -73,6 +73,22 @@ function jumpoff_body_class($classes) {
 
 add_filter('body_class', 'jumpoff_body_class');
 
+
+/*-----------------------------------------------*/
+/*  jumpoff_imgpath()
+/*
+/*  An image path helper that gets template path
+/*  and out theme's images location (assets/images/)
+/*  Fallback to no-img.jpg
+/*  @example: <img src="<?php jumpoff_imgpath(); ?>/image.jpg"/>
+/*-----------------------------------------------*/
+function jumpoff_imgpath(){
+  $template_path = bloginfo('template_directory');
+  $img_path = $template_path . '/assets/images/';
+  echo $img_path;
+}
+
+
 /*-----------------------------------------------*/
 /*  jumpoff_first_img()
 /*
