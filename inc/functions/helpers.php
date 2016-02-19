@@ -1,13 +1,13 @@
 <?php
 /*-----------------------------------------------*/
 /* HELPER FUNCTIONS:
-/* Body Classes
-/* Class Names
-/* Dropdowns examples
-/* Post Metas
-/* Pagination
-/* Popular Posts
+/* Nav
+/* Body class
+/* Image Helpers
+/* Taxonomies and Cats
+/* Text Helpers
 /*-----------------------------------------------*/
+
 
 /*--------------------------------------------------*/
 /*  Nav - Add is-current class
