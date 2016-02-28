@@ -1,6 +1,7 @@
 # Misc
-/tmp
+tmp/
 .DS_Store
+*.DS_Store
 
 # Logging
 *.log
@@ -11,3 +12,5 @@
 .scssc
 .codekit-cache
 .codekit-cache/
+
+.DS_Store

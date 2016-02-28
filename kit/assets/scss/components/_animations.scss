@@ -4,17 +4,36 @@
 .ani-fade-in {
   animation: fade-in ease-in-out 1s both;
 }
+
 .ani-fade-in-page {
-  animation: fade-in ease-in-out 1.3s both;
-  .no-js & {
-    animation: none;
+  animation: fade-in ease-in-out 1.3s forwards;
+}
+
+.js-fade-in{
+  @media(min-width: $mq-med){
+    opacity:0;
+    //animation: fade-in ease-in-out 1s both;
   }
 }
+
+.no-js{
+  .js-fade-in{
+    opacity:1;
+  }
+  li{
+    opacity:1;
+  }
+}
+
 @keyframes fade-in {
   0%   { opacity: 0; }
   100% { opacity: 1; }
 }
 
+
+/*----------------------------------------------
+--Fade Out
+-----------------------------------------------*/
 .ani-fade-out {
   animation: fade-in ease-in-out 1s both;
 }
@@ -83,6 +102,18 @@
   }
 }
 
+/*----------------------------------------------
+--Zoom
+-----------------------------------------------*/
+.ani-scale-in {
+  @include engine3d;
+  animation: zoom-in ease-in-out 5s 0s;
+}
+
+@keyframes scale-in {
+  0%   { transform: scale(0); }
+  100% { transform: scale(1); }
+}
 /*----------------------------------------------
 --Zoom
 -----------------------------------------------*/

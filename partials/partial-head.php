@@ -74,10 +74,4 @@ $meta_keywords = get_post_meta( get_the_ID(), 'seo_keywords', true ) ? get_post_
 ================================================== -->
 <?php wp_head(); ?>
 
-
-<!-- Script: Add fadein for page trans
-================================================== -->
-<script>
-$('body').addClass('fade-in-page');
-</script>
 </head>
