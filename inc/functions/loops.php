@@ -133,7 +133,7 @@ function jumpoff_get_featured_videos($post_cat, $num_posts){
     'posts_per_page'   => $num_posts,
     'category_name'    => $postcat,
     'tax_query' => array(
-      'relation' => 'AND',
+    'relation' => 'AND',
       array(
         'taxonomy' => 'post_format',
         'field' => 'slug',
@@ -152,23 +152,22 @@ function jumpoff_get_featured_videos($post_cat, $num_posts){
     get_template_part( 'partials/content/content', 'video' );
   endforeach;
   wp_reset_postdata();
-return $posts;
+  
+  return $posts;
 }
 
 /*------------------------------------------------------*/
 /*  Popular Posts - Track by page views
 /*
-/* Counts post views by adding setPostViews(get_the_ID()) on single.php
+/* Counts post views by adding jumpoff_set_post_views(get_the_ID()) on single.php
 /* Then displays via args:
 /*    'meta_key' => 'post_views_count',
 /*    'orderby'  => 'meta_value_num',
 /*
 /*  @param:   $postID (post ID) 
 /*  @return:  $count.' Views';
-/*  
-/*
 /*-------------------------------------------------------*/
-function getPostViews($postID){
+function jumpoff_get_post_views($postID){
   $count_key = 'post_views_count';
   $count = get_post_meta($postID, $count_key, true);
   if($count==''){
@@ -180,22 +179,18 @@ function getPostViews($postID){
 }
 
 //Set Posts Views
-function setPostViews($postID) {
+function jumpoff_set_post_views($postID) {
   $count_key = 'post_views_count';
   $count = get_post_meta($postID, $count_key, true);
   if($count==''){
-      $count = 0;
-      delete_post_meta($postID, $count_key);
-      add_post_meta($postID, $count_key, '0');
+    $count = 0;
+    delete_post_meta($postID, $count_key);
+    add_post_meta($postID, $count_key, '0');
   }else{
-      $count++;
-      update_post_meta($postID, $count_key, $count);
+    $count++;
+    update_post_meta($postID, $count_key, $count);
   }
 }
 
-function first_img_featured(){
-  $repeater = get_field('post_slider');
-  $first_img = $repeater[0]['slider_image'];
-}
 
 ?>

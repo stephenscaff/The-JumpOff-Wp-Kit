@@ -1667,15 +1667,25 @@ Usage: Nested grids
   animation: fade-in ease-in-out 1s both; }
 
 .ani-fade-in-page {
-  animation: fade-in ease-in-out 1.3s both; }
-  .no-js .ani-fade-in-page {
-    animation: none; }
+  animation: fade-in ease-in-out 1.3s forwards; }
+
+@media (min-width: 54em) {
+  .js-fade-in {
+    opacity: 0; } }
+
+.no-js .js-fade-in {
+  opacity: 1; }
+.no-js li {
+  opacity: 1; }
 
 @keyframes fade-in {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
+/*----------------------------------------------
+--Fade Out
+-----------------------------------------------*/
 .ani-fade-out {
   animation: fade-in ease-in-out 1s both; }
 
@@ -1732,6 +1742,20 @@ Usage: Nested grids
   100% {
     opacity: 1;
     transform: translateX(0px); } }
+/*----------------------------------------------
+--Zoom
+-----------------------------------------------*/
+.ani-scale-in {
+  -webkit-transform: translateZ(0);
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+  animation: zoom-in ease-in-out 5s 0s; }
+
+@keyframes scale-in {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
 /*----------------------------------------------
 --Zoom
 -----------------------------------------------*/
@@ -2084,7 +2108,7 @@ main {
   color: #9a9a9a; }
 
 /*----------------------------------------------
--Post Footer
+-Post Content
 -----------------------------------------------*/
 /*----------------------------------------------
 -Post Footer

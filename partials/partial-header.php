@@ -24,10 +24,10 @@ if ( ! defined( 'ABSPATH' ) ) {
   <!-- Footer-nav -->
   <nav class='offcanvas-menu__nav'>
     <ul>
-      <li><a href="index">Home</a></li>
-      <li><a href="about">About</a></li>
-      <li><a href="services">Services</a></li>
-      <li><a href="blog">Blog</a></li>
+      <li><a href="<?php jumpoff_page_link('home'); ?>">Home</a></li>
+      <li><a href="<?php jumpoff_page_link('about'); ?>">About</a></li>
+      <li><a href="<?php jumpoff_page_link('services'); ?>">Services</a></li>
+      <li><a href="<?php jumpoff_page_link('blog'); ?>">Blog</a></li>
     </ul>
   </nav>
 </section>
@@ -44,10 +44,10 @@ if ( ! defined( 'ABSPATH' ) ) {
     <!-- Main Nav-->
     <nav role="navigation" class="site-header__nav">
       <ul>
-        <li><a href="index">Home</a></li>
-        <li><a href="about">About</a></li>
-        <li><a href="services">Services</a></li>
-        <li><a href="blog">Blog</a></li>
+        <li><a href="<?php jumpoff_page_link('home'); ?>">Home</a></li>
+        <li><a href="<?php jumpoff_page_link('about'); ?>">About</a></li>
+        <li><a href="<?php jumpoff_page_link('services'); ?>">Services</a></li>
+        <li><a href="<?php jumpoff_page_link('blog'); ?>">Blog</a></li>
       </ul>  
     </nav>
   </div>
