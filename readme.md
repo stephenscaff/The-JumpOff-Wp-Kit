@@ -84,12 +84,14 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- settings.php             # wp defulat settings (images, permalinks, etc)
 |       |-- theme-support.php        # register theme support (thumbnails, post formats, etc)
 |       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
-|       |-- circular-post-nav.php    # Circular CPT nav 
 |       |-- cleanup.php              # Cleanups 
+|       |-- users.php                # User related functions 
+|       |-- dash.php                 # Dashboard related functions 
+|       |-- editor.php               # Post Editor 
 |       |-- helpers.php              # Helper funcitons
-|       |-- helpers-loops.php        # Modular Loop helpers
+|       |-- loops.php                # Modular Loop helpers
 |       |-- nav.php                  # Nav functions
-|       |-- posts.php                # Post functions (excerpts)
+|       |-- pagination.php           # Paginaiton
 |       |-- socials.php              # Social integration funcitons
 |       |-- users.php                # User related functions 
 |
