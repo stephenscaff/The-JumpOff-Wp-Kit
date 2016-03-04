@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    setup_postdata($post);
  ?>
 <article class="section-next">
- <a href="<?php the_permalink(); ?>" style="background-image: url(<?php jumpoff_ftimg_fallbacks('fullsize'); ?>)"> 
+ <a href="<?php the_permalink(); ?>" style="background-image: url(<?php //jumpoff_ftimg_fallbacks('fullsize'); ?>)"> 
    <div class="row-xl">
     <header class="g-8 cols u-centered">
      <span class="next__subtitle">Read Next</span>

@@ -5,7 +5,7 @@
  * The section for Related Posts.
  *
  * @author    Stephen Scaff and Constance Chen
- * @package   redfin/content/posts-related
+ * @package   rjumpoff/content/posts-related
  * @version     1.0
  */
 

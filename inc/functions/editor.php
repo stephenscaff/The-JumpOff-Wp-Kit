@@ -43,6 +43,6 @@ function jumpoff_format_TinyMCE( $in ) {
   $in['toolbar2'] = '';
   return $in;
 }
-add_filter( 'tiny_mce_before_init', 'redfin_format_TinyMCE' );
+add_filter( 'tiny_mce_before_init', 'jumpoff_format_TinyMCE' );
 
 ?>
