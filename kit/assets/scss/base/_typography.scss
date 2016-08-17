@@ -1,58 +1,50 @@
 /*----------------------------------------------
--Typography
+--Typography
 -----------------------------------------------*/
 body {
   font-family: $font-paragraph;
   line-height: $base-lineheight;
-  color: $color-dark;
-  background-color: $color-light;
+  color: $color-grey;
+  background-color: #fff;
 }
 
 /*----------------------------------------------
--Fluid body sizing
+--Fluid body sizing
 -----------------------------------------------*/
 body {
   font-size: 100%;
   
   @media (min-width: $mq-small) {
-    font-size: 110%;
+    font-size: 105%;
   }
   @media (min-width: $mq-med) {
-    font-size: 111%;
+    font-size: 107%;
   }
   @media (min-width: $mq-large) {
-    font-size: 115%;
+    font-size: 110%;
   }
   @media (min-width: 75em) {
-    font-size: 120%;
+    font-size: 117%;
   }
   @media (min-width: $mq-xlarge) {
-    font-size: 135%;
+    font-size: 125%;
   }
   @media (min-width: $mq-xxlarge) {
-    font-size: 145%;
+    font-size: 135%;
   }
   @media (min-width: $mq-xxxlarge) {
-    font-size: 160%;
+    font-size: 150%;
   }
 }
 
 /*----------------------------------------------   
--Font-size variables
------------------------------------------------  */
-$font-xxsmall: .6em;
-$font-xsmall: .8em;
-$font-small: .9em;
-
-
-/*----------------------------------------------   
--H1 Theme
+--H1 Theme
 -----------------------------------------------  */
 %font-h1 {
   margin-bottom: .25em;
-  $fontSize: 3.5em;
+  $fontSize: 3.2em;
   font-size: $fontSize - 1em; 
-  line-height: 1;
+  line-height: 1.25;
 
   @media (min-width: $mq-med) {
     font-size: $fontSize;  
@@ -63,11 +55,11 @@ $font-small: .9em;
 }
 
 /*----------------------------------------------
--H2 Theme
+--H2 Theme
 -----------------------------------------------*/
 %font-h2 {
   margin-bottom: .25em;
-  $fontSize: 1.75em; 
+  $fontSize: 1.8em; 
   font-size: $fontSize;  
   line-height: 1.2;
 
@@ -77,11 +69,11 @@ $font-small: .9em;
 }
 
 /*----------------------------------------------
--H3 Theme
+--H3 Theme
 -----------------------------------------------*/
 %font-h3 {
-  margin-bottom: .4em;
-  $fontSize: 1.5em;
+  margin-bottom: .6em;
+  $fontSize: 1.3em;
   font-size: $fontSize;  
   line-height: 1.2;
 
@@ -90,11 +82,11 @@ $font-small: .9em;
   }
 }
 /*----------------------------------------------
--H4 Theme
+--H4 Theme
 -----------------------------------------------*/
 %font-h4 {
   margin-bottom: .5em;
-  $fontSize: 1.2em; 
+  $fontSize: 1.25em; 
   font-size: $fontSize;  
   font-weight: 400;
   line-height: 1.4;
@@ -105,25 +97,23 @@ $font-small: .9em;
 }
 
 /*----------------------------------------------   
--H5 Theme
+--H5 Theme
 -----------------------------------------------  */
 %font-h5 {
   margin-bottom: .4em;
   $fontSize: 1em;
   font-size: $fontSize;  
   line-height: 1.4;
-
-  @media (min-width: $mq-xlarge) {
-    font-size: $fontSize + .25em;
-  }  
 }
 
 /*----------------------------------------------   
--Headings
+--Headings
 -----------------------------------------------  */
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-header;
-  font-weight: 700;
+  font-weight: 600;
+  color: $color-darkgrey;
+
 }
 
 h1, .font-h1 {
@@ -146,8 +136,10 @@ h5, .font-h5 {
   @extend %font-h5;
 }
 
+
+
 /*----------------------------------------------   
--Paragraph
+--Paragraph
 -----------------------------------------------  */
 
 p {
@@ -161,99 +153,47 @@ small {
   font-size: 80%;
 }
 
-/*----------------------------------------------   
--Font Lead
------------------------------------------------  */
-%font-lead, .font-lead {
-  margin-bottom: .8em;
-  font-size: 1.2em;
-  line-height: 1.6;
-}
-
-/*----------------------------------------------   
--Uppercase extend
------------------------------------------------  */
-%font-uppercase, .font-uppercase{
-  font-family: $font-header;
-  text-transform:uppercase;
-  letter-spacing: 0.1em;
-}
-
 /*--------------------------------------------------- 
--Quotes
+Quotes
 ---------------------------------------------------  */
 q, blockquote {
   margin: 1em auto;
   padding: .5em;
   font-family: $font-paragraph;
   font-size: 1.1em;
-  font-weight: 600;
-  font-style: normal;
+  font-weight: 400;
+  font-style: italic;
   letter-spacing: inherit;
   line-height: 1.5;
   text-align: center;
-  color: $color-alpha;
+  color: $color-grey;
+
 }
 cite {
   display: block;
-  font-size: 1rem;
+  font-family:$font-header;
+  font-size: 0.6rem;
+  font-weight: 600;
+  font-style:normal;
+  text-transform:uppercase;
+  letter-spacing: 0.2em;
   color: $color-grey;
 
+  @media(min-width:$mq-med){
+    font-size: 1rem;
+  }
+
   &:before {
-    content: "\2014 \0020";
+    //content: "\2014 \0020";
   }
 }
 
-/*----------------------------------------
--Code text
------------------------------------------*/
-code, kbd, pre, samp {
-  font-family: monospace, sans-serif;
-  font-size: 1em;
-}
-pre {
-  margin: 0 0 2em;
-  padding: 1.4em 1em 1.6em 2em;
-  font-family: monospace;
-  line-height: 1.9;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  text-shadow: -1px 1px 0px rgba(255, 255, 255, 0.3);
-  color: #1E315A;
-  background: #B6DBE4;
-  overflow: hidden;
-}
 
-
-/*--------------------------------------------------- 
--List: Ordered
----------------------------------------------------  */
-ol li{
-  padding-bottom:.5em
-}
-
-ol{
-  counter-reset: li;
-}
-
-ol > li {
-  position: relative;
-  margin-left: -.5em;
-  padding-bottom: 0.75em;
-  list-style: none;
-  line-height: 1.6;
- 
-}
-
-ol > li:before {
- content: counter(li) ".";
- counter-increment: li;
- position:absolute;
- top: -.03em;
- left: -1.2em;
- width: 1em;
- font-family: $font-header;
- font-weight: 600;
- color: $color-grey;
+/*----------------------------------------------   
+--Selection
+-----------------------------------------------  */
+::selection {
+  color: white;
+  background: $color-alpha;
+  text-shadow: none;
 }

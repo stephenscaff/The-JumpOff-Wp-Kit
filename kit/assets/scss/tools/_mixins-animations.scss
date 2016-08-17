@@ -1,0 +1,80 @@
+
+//  0.6 Animations
+
+//----------------------------------------------
+//  nth-trans-delay()
+//  @description: Transition Delay on nth-childs
+//  @param: $delay_items: [7]    - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s]   - transition-dealy value
+//----------------------------------------------
+@mixin nth-trans-delay($delay_items: 7, $delay_time: 0.2s){
+@for $i from 1 through $delay_items {
+  &:nth-child(#{$i}) {   
+   transition-delay: $delay_time * $i; 
+  }
+ }
+}
+
+//----------------------------------------------
+//  nth-ani-delay()
+//  @description: Animation Delay on nth-childs
+//  @param: $delay_items: [7] - number of nth-of-type items to create
+//  @param: $delay_time:[1.5s] - transition-dealy value
+//----------------------------------------------
+@mixin nth-ani-delay($delay_items: 7, $delay_time: 0.2s){
+@for $i from 1 through $delay_items {
+  &:nth-child(#{$i}) {   
+   animation-delay: $delay_time * $i; 
+  }
+ }
+}
+
+//----------------------------------------------
+//  nth-fade-ins()
+//  @description: Sequential Fadein Animation via nth-of-type
+//  @param:  $aniItems: [4]    - number of nth-of-type items to create
+//  @param:  $aniDuration:[0.6s]   - animation duration
+//  @param:  $aniStart:[0.6s]   -   animation start
+//----------------------------------------------
+@mixin nth-fade-ins($ani_tems: 4, $ani_duration: 0.6s, $ani_start: 0.6s){
+@for $i from 1 through $ani_items {
+  &:nth-child(#{$i}) {   
+   animation: fade-in $ani_duration $ani_start * $i both; 
+  }
+ }
+}
+
+/*----------------------------------------------
+-Seperator Width animation
+-----------------------------------------------*/
+@mixin sep-width($speed: 1s, $start: 0s, $width: '100%'){
+  animation: sep-width $speed $start $ease-cb  both;
+  max-width: $width;
+  @include engineGPU('width');
+
+  @keyframes sep-width{
+    0%   { width: 0;}
+    100% { width: 100%;}
+  }
+}
+
+
+//----------------------------------------------
+//  engine3d()
+//  @decrption: Activate browser's 3d engine for smoother FPS
+//              But, use will-change first
+//----------------------------------------------
+@mixin engine3d($type: '') {
+  transform: translateZ(0);
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+}
+//----------------------------------------------
+//  engineGPU()
+//  @decrption: Trigger GPU, sans transform
+//----------------------------------------------
+@mixin engineGPU($type: ''){
+  will-change: $type;
+  visibility: visible;
+  -webkit-backface-visibility: hidden;
+}

@@ -59,12 +59,27 @@ require_once('inc/functions/comments.php');
 require_once('inc/functions/nav.php');
 
 /*-----------------------------------------------*/
-/* Includes: Posts
+/* Includes: Nav
+/*-----------------------------------------------*/
+require_once('inc/functions/paths.php');
+
+/*-----------------------------------------------*/
+/* Includes: Post tempalte parts
+/*-----------------------------------------------*/
+require_once('inc/functions/post-templates.php');
+
+/*-----------------------------------------------*/
+/* Includes: Cats and Taxes
+/*-----------------------------------------------*/
+require_once('inc/functions/taxonomies.php');
+
+/*-----------------------------------------------*/
+/* Includes: Pagination
 /*-----------------------------------------------*/
 require_once('inc/functions/pagination.php');
 
 /*-----------------------------------------------*/
-/* Includes: Posts
+/* Includes: Image
 /*-----------------------------------------------*/
 require_once('inc/functions/images.php');
 
@@ -78,18 +93,27 @@ require_once('inc/functions/helpers.php');
 /*-----------------------------------------------*/
 require_once('inc/functions/loops.php');
 
-/*-----------------------------------------------*/
-/* Includes: Custom Fields
-/*-----------------------------------------------*/
-require_once('inc/customfields/custom-fields-seo.php');
 
 /*-----------------------------------------------*/
 /* Includes: Custom Post Types (CPTs) & Taxonomies
 /*-----------------------------------------------*/
-require_once('inc/cpts/post-types.php');
+require_once('inc/post-types/post-types.php');
+
+/*-----------------------------------------------*/
+/* ACF Module loader
+/*-----------------------------------------------*/
+require_once('inc/functions/modules.php');
 
 /*-----------------------------------------------*/
 /* Includes: Circular Nav
 /*-----------------------------------------------*/
-//require_once('inc/functions/cpt-nav.php');
-?>
+require_once('inc/functions/cpt-nav.php');
+
+/*-----------------------------------------------*/
+/* Post Order (drag and drop)
+/*-----------------------------------------------*/
+require_once('inc/functions/post-order/post-order.php');
+
+
+?> 
+

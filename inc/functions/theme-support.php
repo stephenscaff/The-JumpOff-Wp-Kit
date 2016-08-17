@@ -6,7 +6,6 @@
 
 /*-----------------------------------------------*/
 
-
 /*-----------------------------------------------*/
 /* Add Support: Featured Images
 /*-----------------------------------------------*/
@@ -31,4 +30,4 @@ add_theme_support('post-formats', array('video', 'image'));
 /* Add html5 Theme Support
 /*-----------------------------------------------*/
 add_theme_support( 'html5', array( 'search-form', 'caption' ) );
-
+?>

@@ -1,0 +1,105 @@
+
+
+
+#wpadminbar {
+
+  &{
+    background:$color-alpha;
+    height:auto
+  }
+  .quicklinks .menupop ul li a:focus,
+  .quicklinks .menupop ul li a:focus strong,
+  .quicklinks .menupop ul li a:hover,
+  .quicklinks .menupop ul li a:hover strong,
+  .quicklinks .menupop.hover ul li a:focus,
+  .quicklinks .menupop.hover ul li a:hover,
+  li .ab-item:focus:before,
+  li a:focus .ab-icon:before,
+  li.hover .ab-icon:before,
+  li.hover .ab-item:before,
+  li:hover #adminbarsearch:before,
+  li:hover .ab-icon:before,
+  li:hover .ab-item:before,
+  &.nojs .quicklinks .menupop:hover ul li a:focus,
+  &.nojs .quicklinks .menupop:hover ul li a:hover {
+    color:#FFF
+  }
+
+  .quicklinks li#wp-admin-bar-my-account.with-avatar>a img {
+    float:left;
+    margin:3px 15px;
+    width:24px;
+    height:24px;
+    border:1px solid #FFF;
+    border-radius:50%
+  }
+
+  ul li {
+    padding:7px 4px;
+    
+    &:hover {
+      background:darken($color-alpha, 20);
+    }
+  }
+
+  .menupop .ab-sub-wrapper,
+  .shortlink-input {
+    margin-top:7px;
+    left:0
+  }
+
+  .ab-submenu {
+    padding:0
+  }
+
+  #adminbarsearchccX:before,
+  .ab-icon:before, 
+  .ab-item:before,
+  #wp-admin-bar-user-info .username {
+    color:#FFF
+  }
+
+  .ab-top-menu>li.hover>.ab-item,
+  .ab-top-menu>li:hover>.ab-item,
+  .ab-top-menu>li>.ab-item:focus,
+  &.nojq .quicklinks .ab-top-menu>li>.ab-item:focus {
+    background:transparent
+  }
+
+  .ab-top-menu>li.hover>.ab-item, 
+  &.nojq .quicklinks .ab-top-menu>li>.ab-item:focus, 
+  &:not(.mobile) .ab-top-menu>li:hover>.ab-item, 
+  &:not(.mobile) .ab-top-menu>li>.ab-item:focus{
+    background-color: transparent;
+  }
+
+
+  .menupop .ab-sub-wrapper,
+  .shortlink-input {
+    background:$color-alpha;
+  }
+
+  a.ab-item,
+  &>#wp-toolbar span.ab-label,
+  &>#wp-toolbar span.noticon {
+    color:#FFF!important
+  }
+
+  ul#wp-admin-bar-root-default>li#wp-admin-bar-wp-logo {
+    display:none
+  }
+
+
+  .dashicons,
+  .dashicons-before:before {
+    font-size:30px;
+    height:30px;
+    width:30px
+  }
+
+  a.ab-item .icon:before {
+    font-size:20px;
+    vertical-align:middle!important;
+    padding:6px 4px 0 0
+  }
+}

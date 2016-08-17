@@ -1,0 +1,47 @@
+/*----------------------------------------------   
+-POST CONTENT
+@description: content like on blog posts and other single post bits
+@see scss/base/_lists.scss for post-content lists
+@see scss/base/_typography.scss for global type stuff
+-----------------------------------------------  */
+.content{
+  padding: $section-padded--small;
+  font-family: $font-paragraph;
+
+  @media (min-width: $mq-med){
+    padding: 4em 0;
+  }
+  a{
+    @include link-styles($color-alpha, $color-darkgrey);
+  }
+
+  h2{
+    @extend %font-h3;
+  }
+  // Lead Paragraph
+  p:first-of-type{
+    @extend %font-lead;
+  }
+  // Meh... but, improves readability with this font
+  p{
+    font-size: 0.95em;
+    @media (min-width: $mq-med){
+      font-size: 0.9em;
+    }
+  }
+
+  img{
+    width: 100%;
+  }
+  // Hoot! trying the owl selector for post content
+  * + * {
+    margin: 1em 0 0.75em;
+  }
+
+  blockquote{
+    @media (min-width: $mq-med){
+      margin-left: -10%;
+      margin-right: -10%;
+    }
+  }
+}

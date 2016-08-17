@@ -1,5 +1,5 @@
 /*----------------------------------------------
---Forms
+-Forms
 -----------------------------------------------*/
 
 /*----------------------------------------------
@@ -20,10 +20,16 @@ input, textarea, select {
   outline: 0;
   transition: all .25s ease-in;
   -webkit-appearance: none;
+
  
-	&:focus {
+  &:focus {
     border-color: $color-alpha;
   }
+}
+
+.field--minimal{
+  border: 0;
+  border-bottom: $form-borderwidth solid $form-bordercolor;
 }
 
 /*----------------------------------------------
@@ -41,9 +47,16 @@ label {
 -----------------------------------------------*/
 .input-group {
   margin: 1em auto;
+  display: flex;
 
   input:first-child{
     border-right: 0;
+
+  }
+  &__btn{
+    flex-basis: 15%;
+  }
+  input[type="submit"]{
   }
 }
 

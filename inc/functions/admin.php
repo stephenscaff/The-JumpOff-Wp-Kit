@@ -37,6 +37,10 @@ function jumpoff_admin_hides() {
 
 add_action('admin_head', 'jumpoff_admin_hides');
 
+
+
+
+
 /*-----------------------------------------------*/
 /*  Remove Admin Bar stuffs
 /*-----------------------------------------------*/
@@ -129,5 +133,6 @@ function jumpoff_add_taxonomy_filters() {
   }
 }
 add_action( 'restrict_manage_posts', 'jumpoff_add_taxonomy_filters' );
+
 
 ?>

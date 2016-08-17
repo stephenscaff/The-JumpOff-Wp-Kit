@@ -1,0 +1,57 @@
+/*--------------------------------------------------- 
+Lists
+---------------------------------------------------  */
+.list-unstyled {
+  @include unstyled-list;
+}
+
+.list-vert {
+  @extend .list-unstyled;
+
+  li {
+    display: inline-block;
+  }
+}
+
+ol li{
+  padding-bottom:.5em
+}
+
+
+/*--------------------------------------------------- 
+Post Content Lists
+---------------------------------------------------  */
+.post-content{
+
+  ul{
+    margin-left: 1.2em;
+
+    & > li{
+      margin: 0.5em 0;
+    font-size: 0.95em;
+    }
+  }
+  ol{
+    counter-reset: li;
+    margin-left: 1.2em;
+  }
+
+  ol > li {
+    position: relative;
+    list-style: none;
+    margin: 0.5em 0;
+    font-size: 0.95em; 
+   
+  }
+
+  ol > li:before {
+   content: counter(li) ".";
+   counter-increment: li;
+   position:absolute;
+   left: -1.2em;
+   width: 1em;
+   font-family: $font-header;
+   font-weight: 600;
+   color: $color-midgrey;
+  }
+}

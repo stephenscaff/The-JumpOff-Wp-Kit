@@ -1,0 +1,159 @@
+/*----------------------------------------------
+-Signup
+@description: MC signup ajax/json + interactions
+@see: kit/assets/js/components/_signup.js
+@see: partials/modules/signup-module.php
+-----------------------------------------------*/
+.signup{
+  padding: $section-pad 0;
+  
+  &__title{
+    @extend %font-title-sans;
+  }
+  &__form{
+    max-width: 35em;
+    margin: 0 auto;
+  }
+  &__input{
+    padding: 1.2rem 0.5rem 0.9rem;
+  }
+  
+  &__inputs{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+  }
+
+   &__submit{
+    white-space: nowrap;
+    min-width: 13em;
+  }
+
+  &__message{
+    opacity: 0;
+  }
+}
+/*----------------------------------------------
+-ON Success
+-----------------------------------------------*/
+.submit-success{
+  .signup{
+
+  }
+  .signup__message{
+    opacity: 1;
+    animation: fade-in 1.5s 1s ease;
+    transition: opacity 1s ease;
+  }  
+}
+/*--------------------------------------------------- 
+SIGNUP
+@description: Signup Notice
+---------------------------------------------------  */
+.signup-notice{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  padding: 5%;
+  text-align: center;
+  color: #fff;
+  z-index: -1;
+  transition: opacity 0.5s ease, z-index 1s 0.5s ease;
+
+  span{
+    text-align:center;
+    display: block;
+    margin: 0 auto;
+
+    @media (min-width: $mq-med){
+      max-width: 70%;
+    }
+  }
+  
+  //signup-notice - success
+  &.success{
+    opacity:  1;
+    z-index: 999;
+    height: 100vh;
+    width: 100%;
+    background-color: #111;
+    width:  100%;
+    top:  0;
+    bottom: 0;
+    left: 0;
+    right:  0;
+    will-change: opacity;
+    transform: translateY(0);
+    animation: signup-success 2s ease both;
+  }
+
+  //signup-notice - error
+  &.error{
+    z-index: 999;
+    background: $color-alpha;
+    height: 5em;
+    max-height: 5em;
+    will-change: opacity;
+    transform: translateY(0);
+    animation: fade-in 2s ease;
+    transition: all 1s ease;
+  }
+}
+@keyframes signup-success{
+  0%{
+    z-index: -1;
+    opacity: 0;
+  }
+  50%{
+    z-index: 999;
+    opacity: 0;
+  }
+
+  100%{
+    z-index: 999;
+    opacity: 1
+
+  }
+}
+
+@keyframes signup-success-out{
+  0%{
+    z-index: 999;
+    opacity: 1
+  }
+  50%{
+    z-index: 999;
+    opacity: 0;
+  }
+
+  100%{
+    z-index: -1;
+    opacity: 0;
+
+  }
+}
+/*--------------------------------------------------- 
+signup-message
+---------------------------------------------------  */
+.signup-message{
+  opacity: 0;
+
+  p{
+    font-size: 1em;
+  }
+}
+
+.submit-success{
+  .signup{
+
+  }
+  .signup-message{
+    opacity: 1;
+    animation: fade-in 1.5s 1s ease;
+    transition: opacity 1s ease;
+  }  
+}

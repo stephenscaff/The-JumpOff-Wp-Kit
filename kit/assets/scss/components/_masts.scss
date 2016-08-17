@@ -1,0 +1,103 @@
+/*----------------------------------------------
+-Masts
+@description: for top of page mastheads.
+@see: scss/tools/mixins.scss for the 'mast' mixin
+-----------------------------------------------*/
+.mast{
+  position: relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height: 35em;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 6em;
+  padding-bottom: 4em;
+  text-align:center;
+  overflow: hidden;
+
+  @media (min-width: $mq-med){
+    min-height: 65vh;
+  }
+
+  // Background-Image holder
+  &__bg{
+    @include bg-img-abs();
+    z-index: 0;
+    animation: fade-in 5s ease;
+  }
+
+  // Grid
+  [class*='grid']{
+    position: relative;
+    align-self:center;
+  }
+
+  // Mast Content Wrapper
+  &__content, &__header{
+    position: relative;
+    z-index: 4;
+    margin: 0 auto;
+    padding: 0 $grid-col-pad;
+  }
+
+  &__pretitle{
+    @extend %font-subtitle;
+    margin-bottom: 1em;
+  }
+
+  // Mast Title
+  &__title{
+
+  }
+  // Mast paragraph / text
+  &__text{
+    font-weight: 400;
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Mast Subtitle
+  &__subtitle{
+    @extend %font-subtitle;
+    font-size: $font-small;
+  }
+  &__icon{
+    display:block;
+    color: #fff;
+    font-size: 2.75em;
+  }
+  .btn{
+    margin: 1.5em auto;
+  }
+  // No brs on mobile
+  br {
+    display: none;
+
+    @media (min-width: $mq-small) {
+      display: block;
+    }
+  }
+  video{
+    object-fit: cover;
+  }
+}
+
+/*----------------------------------------------
+-Masts Modifier: full height
+-----------------------------------------------*/
+%mast--vh,
+.mast--vh{
+  @media (min-width: $mq-small) {
+    min-height: 100vh;
+  }
+}
+/*----------------------------------------------
+-Mast Pages
+-----------------------------------------------*/
+.mast--page{
+  min-height: auto;
+  padding: 8em 0 4em;
+}
+

@@ -1,53 +1,85 @@
- /* --Bourbon from CodeKit
-=======================================*/
-@import 'bourbon';
+//----------------------------------------------   
+//  Main app.css build
+//  --
+//  Tools:        configs, mixins, extends
+//  Base:         Styles for base level elements           
+//  Vendor:       Vendor specific styles
+//  Regions:      Main Layouts and Regions
+//  Components:   Modular components. Most styles will go here
+//  Utils:        Helpers, Utilities, Animations
+//---------------------------------------------- 
 
-/* --Config
-========================================*/
-@import 'base/_config';
+//----------------------------------------------   
+// Tools: Main config & GLobal variables
+//---------------------------------------------- 
+@import 'tools/_config';
 
-/* --Vendor
-========================================*/
-@import 'vendor/_normalizer';
+//----------------------------------------------   
+// Tools: Mixins
+//---------------------------------------------- 
+@import 'tools/_mixins-type';
+@import 'tools/_mixins-grids';
+@import 'tools/_mixins-modules';
+@import 'tools/_mixins-animations';
 
-/* --Base: Variables, mixins, base elements, etc.
-=======================================*/
-@import 'base/_mixins';
-@import 'base/_helpers';
+//----------------------------------------------   
+// Tools: Extends
+//---------------------------------------------- 
+@import 'tools/_extends-type';
+@import 'tools/_extends-sections';
+
+/*----------------------------------------------   
+Normalizer
+-----------------------------------------------  */ 
+@import 'base/_normalizer';
+
+/*----------------------------------------------   
+-Base
+-----------------------------------------------  */
+@import 'base/_links';
 @import 'base/_typography';
-@import 'base/_colors';
+@import 'base/_lists';
 @import 'base/_media';
 @import 'base/_forms';
+@import 'base/_code';
+@import 'base/_tables';
 
-/* --Components: Reuseable UI elements
-=======================================*/
-@import 'components/_sticky-footer';
-@import 'components/_sections';
-@import 'components/_blocks';
-@import 'components/_mastheads';
-@import 'components/_grid';
-@import 'components/_flex-grid';
+
+/*----------------------------------------------   
+Vendor
+-----------------------------------------------  */ 
+
+
+/*----------------------------------------------   
+-Layouts & Regions
+-----------------------------------------------  */
+@import 'regions/_site-menu-sm';
+@import 'regions/_header';
+@import 'regions/_footer';
+
+/*----------------------------------------------   
+-Components: Modular components
+-----------------------------------------------  */
 @import 'components/_buttons';
-@import 'components/_animations';
-@import 'components/_pagination';
-//@import 'components/_preloader';
-//@import 'components/_alerts';
-//@import 'components/_modals';
-//@import 'components/_tables';
-//@import 'components/_validation';
+@import 'components/_sections';
+@import 'components/_masts';
+@import 'components/_titles';
+@import 'components/_ctas';
+@import 'components/_auto-grid';
+@import 'components/_popups';
 
+//@import 'components/_posts';
+//@import 'components/_post';
+//@import 'components/_post-content';
+//@import 'components/_bylines';
 
-/* --Partials: Partial includes
-=======================================*/
-@import 'partials/_offcanvas-nav';
-@import 'partials/_header';
-@import 'partials/_footer';
-@import 'partials/_posts';
-@import 'partials/_post';
-@import 'partials/_post-next';
-@import 'partials/_post-author';
+/*----------------------------------------------   
+Utils
+-----------------------------------------------  */
+@import 'utils/_grid'; 
+@import 'utils/_helpers-colors';
+@import 'utils/_helpers';
+@import 'utils/_decor';
+@import 'utils/_animations-keyframes';
+@import 'utils/_animations-scrolling';
 
-/* --Pages: Specific/one-off styles
-=======================================*/
-@import 'pages/_home';
-@import 'pages/_error-404';

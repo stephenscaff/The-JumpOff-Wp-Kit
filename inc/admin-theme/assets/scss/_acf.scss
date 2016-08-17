@@ -1,0 +1,113 @@
+
+/*----------------------------------------------   
+--Advanced Custom Fields Styles: Box Headers
+*Useage - ACF Message type, value: <h2>Box Title</h2>
+-----------------------------------------------  */
+#poststuff{
+ 
+ h2 {
+  font-size:1.55em;
+  font-weight:400;
+  padding:.5em .7em;
+  //background:#060d15;
+  //color:#FFF;
+ }
+}
+#poststuff .inside #page_template, #poststuff .inside #parent_id {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 0;
+    border: 2px solid #ddd;
+    height: 40px;
+}
+
+.acf-field .acf-label label {
+    font-size: 1.1rem;
+    margin: .5em 0 0.5em;
+}
+
+.acf-field .acf-label p {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+
+
+
+/*----------------------------------------------   
+-ACF: Inputs
+-----------------------------------------------  */
+.acf_postbox .field input[type="text"],
+.acf_postbox .field input[type="number"],
+.acf_postbox .field input[type="password"],
+.acf_postbox .field input[type="email"],
+.acf_postbox .field textarea {
+  width:100%;
+  padding:6px;
+  resize:none;
+  margin:0;
+  min-height: 3em;
+  box-shadow:none;
+  border:2px solid #ddd
+}
+
+#acf-field-group-fields{
+  .acf-input-prepend, .acf-input-append{
+    height: 2rem;
+    line-height: 2rem;
+  }
+}
+/*----------------------------------------------   
+--Advanced Custom Fields: Post Boxes
+-----------------------------------------------  */
+.acf_postbox{
+ 
+ p.label label {
+    font-size: 1.2em !Important;
+    font-weight: 700 !important;
+    //padding: 1em 1em 1em;
+    //margin: 0 -1em 1em !important;
+    //border-bottom: 1px solid #ddd;
+    //border-top: 6px solid #F1F1F1;
+ }
+
+ p.label {
+  font-size:1.1em;
+  line-height:1.6;
+  padding:1em 0 0;
+ }
+}
+
+
+.acf_postbox > .inside > .field {
+  padding-top: 0;
+ }
+img.acf-image-image,
+.acf-image-uploader img {
+    max-width: 15em;
+}
+
+table.acf_input tbody tr td.label{
+  background-color: #fff;
+}
+
+#acf-col-right {
+display:none
+}
+
+#acf-col-left {
+margin:0!important
+}
+
+
+
+/*----------------------------------------------   
+-ACF: Repeaters
+-----------------------------------------------  */
+.acf-repeater.-row label {
+    font-size: 0.9rem;
+}
+.acf-fields.-left > .acf-field:before{
+  background-color: #fff;
+  width: auto;
+}

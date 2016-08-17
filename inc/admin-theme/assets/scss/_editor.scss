@@ -1,0 +1,180 @@
+/*----------------------------------------------   
+--Admin: Text Editor Q Tags Toolbar
+-----------------------------------------------  */
+div#ed_toolbar {
+  background:#fff;
+  background:#111
+}
+
+.wp-core-ui .quicktags-toolbar input.button.button-small {
+  font-size:1em!important;
+  height:3em!important;
+  line-height:3em!important;
+  min-width:5em!important;
+  background:#111;
+  border:1px solid #000;
+  color:#fff;
+  letter-spacing:.1em;
+  box-shadow:none
+}
+
+.wp-media-buttons .button {
+    margin-right: 5px;
+    margin-bottom: 4px;
+    padding-left: 7px;
+    padding-right: 7px;
+    background: #000;
+    height: auto;
+    padding: 0.3em 2em;
+    box-sizing: none;
+    box-shadow: none;
+    color: #fff;
+    border: 1px;
+    text-align: center;
+
+    &:hover{
+      background: #222;
+    }
+}
+
+/*----------------------------------------------   
+--Admin - Toolbar Buttons
+-----------------------------------------------  */
+.postarea{
+ 
+ .wp-core-ui .quicktags-toolbar input.button.button-small:hover {
+  background:#09f
+ }
+ 
+ a#insert-media-button {
+  background:#000;
+  box-shadow:none;
+  color:#fff;
+  min-height:3em;
+  line-height:1em;
+  padding:1em 3em
+ }
+
+ a#insert-media-button:hover {
+  background:#09f
+ }
+
+.wp-media-buttons .add_media span.wp-media-buttons-icon:before {
+  font:400 18px/1 dashicons;
+  speak:none;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  content:'\f104';
+  color:#fff;
+  top:-3px;
+  position:relative
+ }
+}
+
+
+.user-comment-shortcuts-wrap, .show-admin-bar, .user-rich-editing-wrap, .user-description-wrap, .user-url-wrap {
+  display:block !Important;
+}
+
+/*----------------------------------------------   
+--TINY MCE STYLES: Toolbar buttons
+-----------------------------------------------  */
+#wp-content-wrap{
+  
+  //toolbar
+  div.mce-toolbar-grp {
+    background:#111;
+  }
+  //button color
+  .mce-menubtn button{
+    color: #fff;
+  }
+  // toolbar button icons
+  .mce-toolbar .mce-btn i {
+    text-shadow: none;
+    color: #fff;
+    font-size: 1.25rem;
+    transition: color 0.5s ease;
+  }
+  /* toolbar button icons hover */
+  .mce-btn:hover i,  .mce-btn:hover button {
+    color: #77BCEA !Important;
+    transition: color 0.5s ease;
+  }
+  /* toolbar button hover */
+  .mce-toolbar .mce-btn-group .mce-btn:focus, .mce-toolbar .mce-btn-group .mce-btn:hover, .qt-dfw:focus, .qt-dfw:hover {
+    background: #111 !Important;
+    border-color: transparent !Important;
+    color: #77BCEA;
+    -webkit-box-shadow: !Important;
+    box-shadow: none !Important;
+    outline: 0;
+  }
+
+  /* Increase padding of toolbar icons, since now we only have a few */
+  .mce-toolbar .mce-btn button, .qt-dfw {
+    padding: 3px 6px !important;
+  }
+  /* dropdown color */
+  button#mceu_0-open {
+    color: #fff;
+  }
+
+/* dropdown bg and border */
+  .mce-toolbar .mce-btn-group .mce-btn.mce-listbox {
+    background: #111 !Important;
+    border: 1px solid rgba(255,255,255,0.5) !Important;
+    color: #fff !important;
+  }
+  .mce-panel.mce-menu  {
+    background: #000;
+  }
+  /* dropdown border */
+  .mce-panel.mce-menu {
+    border: transparent !important;
+  }
+  /* dropdown carent */
+  .mce-panel .mce-btn i.mce-caret {
+    border-top: 6px solid #fff !important;
+  } 
+  /* dropdown content */
+  .mce-menu-item .mce-ico, .mce-menu-item .mce-text {
+    color: #fff !important;
+    font-size: 1em !Important;
+    font-family: helvetica, arial, sans-serif !important;
+    font-weight: 400 !important;
+  }
+
+}
+
+#poststuff{
+
+  .quicktags-toolbar{
+    background-color: #111;
+  }
+  input#qt_content_code,
+  input#qt_content_figcaption,
+  input#qt_content_close,
+  input#qt_content_more,
+  input#qt_content_ins,
+  input#qt_content_del,
+  input#qt_content_figcaption
+   {
+      display: none;
+  }
+
+
+  .acf-input{
+    [value="ins"],
+    [value="Caption"],
+    [value="del"],
+    [value="more"],
+    [value="code"],
+    [value="close tags"],
+    [value="img"]
+    {
+      display: none;
+    }
+  }
+
+}

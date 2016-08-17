@@ -1,8 +1,9 @@
 <?php
 /*-----------------------------------------------*/
 /* Pagination
+/* For traditional pagination using a list of numbers
 /*-----------------------------------------------*/
-function jumpoff_pagination() {
+function jumpoff_pagination_list() {
   global $wp_query;
 
   $big = 999999999; // This needs to be an unlikely integer
@@ -27,5 +28,71 @@ function jumpoff_pagination() {
     //echo '</div><!--// end .pagination -->';
   }
 }
+
+
+/*-----------------------------------------------*/
+/* Pagination LInks Setup
+/*-----------------------------------------------*/
+function posts_link_class() {
+    return 'class="pagination__link"';
+}
+add_filter('next_posts_link_attributes', 'posts_link_class');
+add_filter('previous_posts_link_attributes', 'posts_link_class');
+
+function posts_next_link_class() {
+  return 'class="pagination__link--next"';
+}
+add_filter('next_posts_link_attributes', 'posts_next_link_class');
+
+function posts_previous_link_class() {
+    return 'class="pagination__link--previous"';
+}
+add_filter('previous_posts_link_attributes', 'posts_previous_link_class');
+
+/*-----------------------------------------------*/
+/* Pagination - Just Previous / Next instead of numbers
+/*-----------------------------------------------*/
+function jumpoff_pagination() {
+  global $wp_query;
+
+  if ( $wp_query->max_num_pages > 1 && is_home() ) : ?>
+    <section class="pagination">
+      <?php previous_posts_link( '
+      <div class="pagination__content">
+        <span class="pagination__title">Previous</span>
+
+      </div>
+      ' ); ?>
+
+      <?php next_posts_link( '
+      <div class="pagination__content ">
+        <span class="pagination__title">Next</span>
+      </div>
+      ' ); ?>
+    </section>
+<?php elseif ( $wp_query->max_num_pages > 1 ) : ?>
+    <section class="pagination pagination--dark">
+
+      <?php previous_posts_link( '
+      <div class="pagination__content">
+        <span class="pagination__title">Previous</span>
+
+      </div>
+      ' ); ?>
+
+      <?php next_posts_link( '
+      <div class="pagination__content">
+        <span class="pagination__title">Next</span>
+
+      </div>
+      ' ); ?>
+
+    </section>
+
+<?php endif;
+} ?>
+
+
+
 
 ?>

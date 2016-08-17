@@ -24,9 +24,16 @@ if (is_page( $page_name ))
 /*  jumpoff_get_page_link('page name')
 /*  gets and echos the page link by page name
 /*--------------------------------------------------*/ 
-function jumpoff_page_link($page_name){
-  $page_link = esc_url( get_permalink( get_page_by_title( $page_name ) ) );
-  echo $page_link;
+function jumpoff_page_url($page_name, $cpt=''){
+  if ($cpt == true) {
+    $page_url = esc_url( get_post_type_archive_link($page_name) );
+  } else {
+    $page_url = esc_url( get_permalink( get_page_by_title( $page_name ) ) );
+  }
+  return $page_url;
+    if (is_page( $page_name )){
+     echo '" class="is-active';
+  }
 }
 
 /*-----------------------------------------------*/

@@ -1,11 +1,12 @@
 <?php
 /*-----------------------------------------------*/
-/* IMAGES
-/* Get First Image helper
-/* Ft Image with fallbacks and sizing
-/* html5 image wrapping in the_content
+/*  IMAGES
+/*  jumpoff_img()
+/*  jumpoff_first_img()
+/*  jumpoff_ft_cimg()
+/*  html5 image wrapping in the_content
+/*  Image url from ID
 /*-----------------------------------------------*/ 
-
 
 /*-----------------------------------------------*/
 /*  jumpoff_first_img()
@@ -29,7 +30,6 @@ function jumpoff_first_img() {
   return $first_img;
 }
 
-
 /*--------------------------------------------------*/
 /* Featured Image with fallbacks (4)
 /*  Used as the primary way to call images in loops/queries
@@ -40,10 +40,15 @@ function jumpoff_first_img() {
 /*  
 /*  @example: jumpoff_ftimg_fallbacks('full')
 /*  @param $imgSize (images size - ie; full, medium, small)
+/*  @param $postId  (image id)
 /*--------------------------------------------------*/ 
-function jumpoff_ftimg_fallbacks($imgSize){
+function jumpoff_ft_img($imgSize, $postId = '') {
   global $post, $posts;
-  $image_id = get_post_thumbnail_id();  //read featured image data for image url
+  // Allow loading posts by ID instead of relying on global $post/the loop
+  if ($postId) { $post = get_post($postId); }
+
+  // read featured image data for image url
+  $image_id = get_post_thumbnail_id();
   $attached_to_post = wp_get_attachment_image_src( get_post_thumbnail_id(), $imgSize, false);
   $related_img =  $attached_to_post[0];                         
 
@@ -73,7 +78,7 @@ function jumpoff_ftimg_fallbacks($imgSize){
       if(!empty($first_img)):
           $related_img = $first_img;
       else:
-          $related_img = bloginfo('template_directory')."/assets/images/no-img.jpg";    //define default thumbnail, you can use full url here.
+          $related_img = bloginfo('template_directory')."/assets/images/placeholder.jpg";    //define default thumbnail, you can use full url here.
       endif;
     endif;   
   endif;  
@@ -113,4 +118,5 @@ function jumpoff_img_id_url($imgField, $imgSize) {
   $image_url = $image_array[0];
  return $image_url;
 }
+
 ?>

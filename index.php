@@ -1,6 +1,6 @@
 <?php
 /**
- * The defualt tempalte for pages
+ * Template for iconv(in_charset, out_charset, str)                                                                                                                       n
  *
  * @author    Stephen Scaff
  * @package   page
@@ -13,32 +13,29 @@ get_header(); ?>
 
 <!-- Main
 ================================================== --> 
-<main role="main" class="bg--lightgrey section--padded">
+<main role="main" class="">
 
-<!-- Section: Title
+<!-- Mast
 ================================================== --> 
-<section class="title">
-  <header class="content-title row">
-   <div class="g-8 cols u-centered">
-    <h1>Blog</h1>
-   </div>
+<section class="mast">
+  <figure class="mast__bg"></figure>
+  <header class="mast__header">
+    <h1 class="mast__title"><?php the_title(); ?></h1>
+    <hr class="sep-center sep--white">
   </header>
 </section>
 
 <!-- Section Content
 ================================================== -->
-<section class="section--padded">
- <div class="row">
-  <div class="g-8 cols u-centered">
+<section class="posts">
+ <div class="grid">
+  <div class="grid__col g-8 centered">
   <?php
-    if ( have_posts() ) {
-      while ( have_posts() ) {
-        the_post();
-        get_template_part( 'partials/content/content', 'posts' );
-      }
-    } else {
+    if ( have_posts() ): while ( have_posts() ) : the_post();
+      get_template_part( 'partials/content/content', 'posts' );
+    endwhile; else: 
       get_template_part( 'partials/content/content', 'none' );
-    }
+    endif;
     ?>
   </div>
  </div>
@@ -46,7 +43,7 @@ get_header(); ?>
 
 <!-- Sect: Pagination
 ================================================== -->
-<?php get_template_part( 'partials/posts', 'pagination' );?>
+<?php get_template_part( 'partials/partial', 'pagination' );?>
 
 </main>
 

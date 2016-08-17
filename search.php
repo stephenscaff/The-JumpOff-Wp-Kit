@@ -17,7 +17,7 @@ get_header();
 <!-- Search Mast
 ================================================== -->
 <section class="mast mast--search">
-  <div class="row u-center-all">
+  <div class="row center-all">
     <header class="g-8 cols">
       <span class="mast__pretitle"><?php _e('Search Results for', 'jumpoff'); ?></span>
       <h3 class="mast__title"><?php echo htmlspecialchars(get_search_query()); ?></h3>
@@ -27,18 +27,15 @@ get_header();
 
 <!-- Section Search Results
 ================================================== -->
-<section class="section-posts section--padded">
- <div class="row">
-  <div class="g-8 cols u-centered">
+<section class="posts">
+ <div class="grid">
+  <div class="grid__col g-8 centered">
   <?php
-    if ( have_posts() ) {
-      while ( have_posts() ) {
-        the_post();
-        get_template_part( 'partials/content/content', 'posts' );
-      }
-    } else {
+    if ( have_posts() ): while ( have_posts() ) : the_post();
+      get_template_part( 'partials/content/content', 'posts' );
+    endwhile; else: 
       get_template_part( 'partials/content/content', 'none' );
-    }
+    endif;
     ?>
   </div>
  </div>

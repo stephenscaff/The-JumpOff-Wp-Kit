@@ -1,1 +1,0 @@
-!function(){$("html").removeClass("no-js"),feature.svg||$("html").addClass("no-svg"),feature.cssFlexbox||$("html").addClass("no-flexbox"),$(window).width()>767,$(function(){})}(jQuery);

@@ -6,6 +6,19 @@ A Wordpress starter theme and front-end framework for CodeKit
 -Wordpress: for, eh, Wordpress.
 -Jquery: for js
 
+
+
+## Modules
+functions/modules is a module loader for ACF Flexible Content Fields which enables drag and drop content creation. Just name your Flexible Content Fields after your related module file (ie; content-module.php). 
+
+Call modules inside templates like so:
+
+```
+<?php while (has_sub_field('modules')) : ?>
+  <?php ACF_Modules::render(get_row_layout()); ?>
+<?php endwhile; ?>
+```
+
 ## Transitioning from Static to WP
 Simple take the kit folder form the static projects and replace the kit folder in the wp project. Then replace global headers and footers and create page tempaltes from each static page.
 
@@ -32,36 +45,44 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- scss/             # scss files
 |           |-- app.scss      # main scss imports
 |           |-- fonts.scss    # font base64 imports
-|
+|      
+|           |--tools/
+|               |--- _config.scss # master config and sass vars 
+|               |--- _mixins.scss # global mixins
+|               |--- _extends.scss # global extends and themes
+|           |-- fonts/
 |           |-- base/
-|               |--- _config.scss
-|               |--- _mixins.scss
+|               |--  _typography.scss    
+|               |--- _media.scss # global mixins
 |               |--- _colors.scss
-|               |--  _media.scss  
-|               |--  typography.scss      
+|               |--  _decor.scss  
+|               |--  _forms.scss       
 |           |--components/  
-|               |-- _animations.scss  
 |               |-- _buttons.scss      
-|               |-- _grid.scss    
+|               |-- _feeds.scss    
+|               |-- _ctas.scss    
+|               |-- _folio.scss    
+|               |-- _intros.scss  
+|               |-- _jobs.scss    
 |               |-- etc...  
-|           |--partials/
+|           |--regions/
 |               |-- _header.scss
-|               |-- _footer.scss       
-|               |-- _posts.scss     
-|           |--pages/
-|               |-- _home.scss      
-|               |-- _about.scss  
-|               |-- _etc...  
+|               |-- _header-menu.scss
+|               |-- _footer.scss            
+|           |--utils/
+|               |-- _grid.scss      
+|               |-- _helpers.scss  
+|               |-- _animations.scss   
+|               |-- etc... 
 |           |-- vendor/ 
 |               |-- _normalizer.scss 
 |
-|       |-- js/             # js files
-|           |-- scripts.js  # working scripts
-|           |-- plugins.js  # imported plugins
-|           |-- plugins/    # plugin import files
-|               |-- _easings.js   
-|               |-- _tabs.js
-|               |-- _etc...   
+|       |-- js/               # js files
+|           |-- jquery.js     # yep... still rocking jquery
+|           |-- app.js        # script appends/prepends/includes
+|           |-- _init.js      # inits
+|           |-- vendor/       # vendor libs
+|           |-- components/   # js components
 |
 ```
 
@@ -76,9 +97,6 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |   |-- cpts 
 |       |-- post-types.php           # Custom Post Types & Taxonomies
 |
-|   |-- customfields
-|       |-- custom-fields.php        # custom-fields saves
-|
 |   |-- functions                    # Functions, called in functions.php
 |       |-- admin.php                # admin related functions (appearance, editor, post filters)
 |       |-- settings.php             # wp defulat settings (images, permalinks, etc)
@@ -88,12 +106,13 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- users.php                # User related functions 
 |       |-- dash.php                 # Dashboard related functions 
 |       |-- editor.php               # Post Editor 
-|       |-- helpers.php              # Helper funcitons
+|       |-- helpers.php              # Helpers (excerpts, paths, cats, etc)
 |       |-- loops.php                # Modular Loop helpers
 |       |-- nav.php                  # Nav functions
 |       |-- pagination.php           # Paginaiton
 |       |-- socials.php              # Social integration funcitons
 |       |-- users.php                # User related functions 
+|       |-- modules.php              # Module loader class for ACF Flexible Content
 |
 |-- page-templates/                  # Custom Page Templates
 |   |-- home.php                
@@ -102,10 +121,13 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |   |-- content/                     # Loop content
 |       |-- content-posts.php        # scss files
 |       |-- content-etc.php         
+|       |-- etc...
+|   |-- modules/                     # Modules (via ACF and module loader at inc/functions/modules)
+|       |-- content-module.php 
+|       |-- image-module.php 
+|       |-- etc...
 |   |-- partials-head.php            # global head content, called in header.php
 |   |-- partials-header.php          # global header content, called in header.php
 |   |-- partials-footer.php          # global footer content, called in header.php
-|   |-- post-author.php              # modular sections
-|
-|-- resources/                       # a place to save working files and notes, ie PSDs, Icon Project Json files, etc
+|       |-- etc...
 ```

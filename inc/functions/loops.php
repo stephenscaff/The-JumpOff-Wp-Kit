@@ -39,44 +39,68 @@ function jumpoff_get_posts($post_cat, $num_posts, $content_type){
 
   return $posts;
 }
-/*------------------------------------------------------*/
-/*  jumpoff_get_posts_ft_list()
-/*
-/*  Get Posts by cat, 
-/*  Use featured template for first post
-/*  Use micro template for remaining via a simple counter
-/*
-/*  @param:   $postcat (category_name slug)
-/*  @return:  $posts
-/*  @example: jumpoff_get_cat_posts('category-name') or jumpoff_get_cat_posts($cat) 
-/*-------------------------------------------------------*/
-function jumpoff_get_posts_ft_list($post_cat, $num_posts){
-  global $post ; 
-  $args = array(
-   'posts_per_page'   => $num_posts,
-   'offset'           => 0,
-   'category_name'    => $post_cat,
-   'tax_query' => array(
-   array(
-   'taxonomy' => 'post_format',
-   'field' => 'slug',
-   'terms' => array( 'post-format-video','post-format-link' ),
-   'operator' => 'NOT IN',
-   ),
-  ));
 
+/*------------------------------------------------------*/
+/*  jumpoff_ft_posts()
+/*
+/*  Get Posts by term under custom taxonomy 'post-functions', 
+/*
+/*  @param:  $post_term = term under taxonomy 'post-functions'
+/*  @param:  $num_posts = number of posts. use -1 for all.
+/*  @param:  $content_type = content loop file name (all are prefixed with 'content-'')
+/*  @return: $posts
+/*  @example: jumpoff_ft_posts('featured', '10', 'feed')
+/*-------------------------------------------------------*/
+function jumpoff_ft_posts($post_term, $num_posts, $content_type){
+  global $post ; 
+
+  $args = array(
+    'posts_per_page'   => $num_posts,
+    'offset'           => 0,
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'post-functions',
+        'field' => 'name',
+        'terms' => $post_term,
+      ),
+    )
+  );
+  $posts = get_posts( $args );
+  // set_transient( 'posts_query', $posts, 12 * 60 * 60 );
+  foreach ( $posts as $post ) : setup_postdata( $post );
+   get_template_part( 'partials/content/content', $content_type );
+  endforeach;
+  wp_reset_postdata();
+
+  return $posts;
+}
+
+/*------------------------------------------------------*/
+/*  jumpoff_cpts()
+/*
+/*  Get Custom Post Types
+/*
+/*  @param:  $post_type = name of custom post type
+/*  @param:  $num_posts = number of posts. use -1 for all.
+/*  @param:  $content_type = content loop file name (all are prefixed with 'content-'')
+/*  @return: $posts
+/*  @example: jumpoff_cpt('work', '-1', 'folio')
+/*-------------------------------------------------------*/
+function jumpoff_cpt($post_type, $num_posts, $content_type){
+  global $post ; 
+
+  $args = array(
+    'posts_per_page'   => $num_posts,
+    'post_type'        => $post_type,
+    'orderby'          => 'date',
+    'order'            => 'DESC',
+  );
   $counter = 1;
   $posts = get_posts( $args );
   // set_transient( 'posts_query', $posts, 12 * 60 * 60 );
   foreach ( $posts as $post ) : setup_postdata( $post );
-  if ($counter == 1) {
-    //Get template form partials/content/content-category-featured
-   get_template_part( 'partials/content/content', 'category-featured' );
-  } else {
-    //Get template form partials/content/content-category-list
-   get_template_part( 'partials/content/content', 'category-list' );
-  }
-  $counter++;
+   get_template_part( 'partials/content/content', $content_type );
+  $counter++; 
   endforeach;
   wp_reset_postdata();
 
@@ -108,66 +132,20 @@ function jumpoff_cat_module($postcat){
   }
 }
 
-
-
-/*------------------------------------------------------*/
-/*  EXAMPLE: umpoff_get_featured_videos
-
-/*  Get featured Video format posts
-/* 
-/*  @param:   $postcat (category_name slug) string
-/*  @return:  $posts
-/*  @example: jumpoff_videos_featured_module('category-name')
-/*-------------------------------------------------------*/
-function jumpoff_get_featured_videos($post_cat, $num_posts){
-  global $post ; 
-
-  // if is home  
-  if ( is_home() ) {
-    $postcat = null;
-  // else if is cat page  
-  } else {
-    $postcat = $postcat;
-  }  
-  $args = array(
-    'posts_per_page'   => $num_posts,
-    'category_name'    => $postcat,
-    'tax_query' => array(
-    'relation' => 'AND',
-      array(
-        'taxonomy' => 'post_format',
-        'field' => 'slug',
-        'terms' => array( 'post-format-video' ),
-        'operator' => 'IN',
-      ),
-      array(
-        'taxonomy' => 'post-functions',
-        'field' => 'slug',
-        'terms' => array( 'featured-video' ),
-        'operator' => 'IN',
-    ),
-  ));
-  $posts = get_posts( $args );
-  foreach ( $posts as $post ) : setup_postdata( $post );
-    get_template_part( 'partials/content/content', 'video' );
-  endforeach;
-  wp_reset_postdata();
-  
-  return $posts;
-}
-
 /*------------------------------------------------------*/
 /*  Popular Posts - Track by page views
 /*
-/* Counts post views by adding jumpoff_set_post_views(get_the_ID()) on single.php
+/* Counts post views by adding setPostViews(get_the_ID()) on single.php
 /* Then displays via args:
 /*    'meta_key' => 'post_views_count',
 /*    'orderby'  => 'meta_value_num',
 /*
 /*  @param:   $postID (post ID) 
 /*  @return:  $count.' Views';
-/*-------------------------------------------------------*/
-function jumpoff_get_post_views($postID){
+/*  
+/*
+/*-------------------------------------------------------
+function getPostViews($postID){
   $count_key = 'post_views_count';
   $count = get_post_meta($postID, $count_key, true);
   if($count==''){
@@ -179,18 +157,22 @@ function jumpoff_get_post_views($postID){
 }
 
 //Set Posts Views
-function jumpoff_set_post_views($postID) {
+function setPostViews($postID) {
   $count_key = 'post_views_count';
   $count = get_post_meta($postID, $count_key, true);
   if($count==''){
-    $count = 0;
-    delete_post_meta($postID, $count_key);
-    add_post_meta($postID, $count_key, '0');
+      $count = 0;
+      delete_post_meta($postID, $count_key);
+      add_post_meta($postID, $count_key, '0');
   }else{
-    $count++;
-    update_post_meta($postID, $count_key, $count);
+      $count++;
+      update_post_meta($postID, $count_key, $count);
   }
 }
 
-
+function first_img_featured(){
+  $repeater = get_field('post_slider');
+  $first_img = $repeater[0]['slider_image'];
+}
+*/
 ?>

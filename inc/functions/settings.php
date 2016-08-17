@@ -14,7 +14,7 @@
 /*-----------------------------------------------*/
 function jumpoff_set_permalinks() {
   global $wp_rewrite;
-  $wp_rewrite->set_permalink_structure( '/%year%/%monthnum%/%postname%/' );
+  $wp_rewrite->set_permalink_structure( '/blog/%year%/%monthnum%/%postname%/' );
 }
 add_action( 'init', 'jumpoff_set_permalinks' );
 
@@ -36,12 +36,17 @@ update_option( 'medium_size_h', 578 );
 /* Defualt Images - Large
 /*-----------------------------------------------*/
 update_option( 'large_size_w', 1250 );
-update_option( 'large_size_h', 850 );
+update_option( 'large_size_h', 815 );
 
 /*-----------------------------------------------*/
 /* Masthead Image Size - For Mastheads
 /*-----------------------------------------------*/
-add_image_size( 'masthead-image', 2000, 1400);
+add_image_size( 'team-profile', 1250, 1200);
+
+/*-----------------------------------------------*/
+/* Masthead Image Size - For Mastheads
+/*-----------------------------------------------*/
+add_image_size( 'mast-image', 2000, 1250);
 
 /*-----------------------------------------------*/
 /* Add custom images to Admin
@@ -89,6 +94,9 @@ function jumpoff_default_img_settings() {
 add_action('after_setup_theme', 'jumpoff_default_img_settings');
 
 
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
 
 
 /*-----------------------------------------------*/

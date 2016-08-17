@@ -1,0 +1,102 @@
+
+
+
+#adminmenu {
+  div.wp-menu-image:before {
+    color: #a0a5aa;
+    color: rgb(160,165,170);
+  }
+  &{
+    margin: 0;
+  }
+
+  li a:focus div.wp-menu-image:before,
+  li.opensub div.wp-menu-image:before,
+  li:hover div.wp-menu-image:before {
+    color: $color-alpha !important;
+  }
+
+  &,
+  .wp-submenu,
+  #adminmenuback, 
+  #adminmenuwrap,/* Sub Menu */
+  .wp-has-current-submenu .wp-submenu,
+  .wp-has-current-submenu .wp-submenu.sub-open,
+  .wp-has-current-submenu.opensub .wp-submenu,
+  a.wp-has-current-submenu:focus+.wp-submenu,
+  .no-js li.wp-has-current-submenu:hover .wp-submenu {
+    background:#f5f5f5
+  }
+
+  .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+  .wp-menu-arrow,
+  .wp-menu-arrow div,
+  li.current a.menu-top, li.wp-has-current-submenu a.wp-has-current-submenu,
+  .folded  li.current.menu-top,
+  .folded  li.wp-has-current-submenu,/* Hover actions */
+  li.menu-top:hover,
+  li.opensub>a.menu-top, li>a.menu-top:focus {
+    background:$color-alpha;
+    background:#FFF
+  }
+
+   .opensub .wp-submenu li.current a, 
+   .wp-submenu li.current, 
+   .wp-submenu li.current a, 
+   .wp-submenu li.current a:focus, 
+   .wp-submenu li.current a:hover, 
+   a.wp-has-current-submenu:focus+.wp-submenu li.current a, 
+   .wp-submenu .wp-submenu-head,/* Dashicons */
+   .current div.wp-menu-image:before, 
+   .wp-has-current-submenu div.wp-menu-image:before, 
+   a.current:hover div.wp-menu-image:before, 
+   a.wp-has-current-submenu:hover div.wp-menu-image:before, 
+   li.wp-has-current-submenu:hover div.wp-menu-image:before,  
+   li:hover div.wp-menu-image:before {
+    color: $color-alpha
+  }
+
+  li.wp-menu-separator {
+    display: none
+  }
+
+  .wp-submenu-head, a.menu-top {
+    padding:7px 0
+  }
+
+  .folded  .wp-submenu-head,.folded  a.menu-top {
+    padding:5px 0
+  }
+
+ .wp-not-current-submenu .wp-submenu,.folded  .wp-has-current-submenu .wp-submenu {
+    padding:10px
+  }
+
+ li.wp-has-current-submenu a.wp-has-current-submenu div.wp-menu-name {
+    color:#FFF;
+    color:$color-alpha;
+  } 
+
+  ul a.wp-has-current-submenu:after,ul>li.current>a.current:after, li.wp-has-submenu.wp-not-current-submenu.opensub:hover:after {
+    display:none
+  }
+
+  li.menu-top {
+    border-bottom:1px solid #e4e4e4
+  }
+
+  div.wp-menu-name,  .wp-submenu a  {
+    color:#666
+  }
+ .wp-submenu, .wp-has-current-submenu .wp-submenu {
+    background:#FFF!important
+  }
+
+ li.wp-has-current-submenu a.wp-has-current-submenu {
+    padding-bottom:0
+  }
+
+ .wp-has-current-submenu ul>li>a {
+    padding-left:34px
+  }
+}

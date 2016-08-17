@@ -8,9 +8,8 @@
  * @version     1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 ?>
 <?php if (is_author()) : // is Author Archive Page  ?>
 

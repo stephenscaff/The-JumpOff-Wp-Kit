@@ -1,0 +1,42 @@
+/*----------------------------------------------
+-BLock-Grid
+@description: simple grid based on number of child blocks
+              Used for the image-module
+              Feel free to use flex-basis for a flexy system
+              1 - 100%
+              2 - 50%
+              3 - 33.333%
+-----------------------------------------------*/
+.auto-grid{
+  @include cf;
+  
+  &__item{
+    max-width: 100%;
+    margin-bottom: 0;
+    @media (min-width: $mq-med){
+      float: left;
+    }  
+  }
+  // if 1 child, 100%
+  &__item:first-child:nth-last-child(1){
+    width: 100%;
+  }
+
+  // if 2 children, 50%
+  &__item:first-child:nth-last-child(2),
+  &__item:first-child:nth-last-child(2) ~ &__item{
+
+    @media (min-width: $mq-med){
+      width: 50%;
+    }
+  }
+
+  // if 3 children, 33.333%
+  &__item:first-child:nth-last-child(3),
+  &__item:first-child:nth-last-child(3) ~ &__item{
+    @media (min-width: $mq-med){
+      width: 33.3333%;
+    }
+  }
+
+}

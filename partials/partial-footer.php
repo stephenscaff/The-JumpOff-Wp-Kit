@@ -6,19 +6,16 @@
  * @package   jumpoff/partials/partial-footer
  * @version   1.0
  */
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 ?>
 <footer class="site-footer">
- <div class="row-xxl u-center-all">
-  <div class="g-8 cols">
+ <div class="grid-xl grid--pad center-all">
     <h4>The JumpOff</h4>
   <small class="credits">© The Jumpoff. All rights reserved.<br/>
   Made by Urban Influence in Seattle, WA. <br/>
   Ph. (425) 213-0804. XLI rules. <br/>
-  </small>
-  </div>  
+  </small> 
  </div>
 </footer>
 

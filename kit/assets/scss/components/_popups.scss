@@ -1,0 +1,91 @@
+/*----------------------------------------------
+-Pop Overs
+-----------------------------------------------*/
+.popup{
+  z-index: -2;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  overflow-y: auto;
+  opacity: 0;
+  color: #fff;
+  background: rgba(0,0,0,0.8);
+  transition: all 0.5s ease;
+
+  //List Items animation setup
+  li{
+    color: #fff;
+    opacity: 0;
+    transform: translateY(-1.5em);
+  }
+
+  //Open
+  &.popup--is-open{
+    z-index: $z-overlays !important;
+    height: 100%;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+
+    //List items animate in
+    li{
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.3s ease;
+      @include nth-trans-delay(8, 0.1s)
+    }
+  }
+}
+
+.popup--is-open{
+  .site-header{
+    z-index: 0;
+  }
+}
+/*----------------------------------------------
+-Pop Overs - CLose
+-----------------------------------------------*/
+.popup__close {
+  z-index: $z-overlays;
+  position:fixed;
+  height: 3rem;
+  width: 2rem;
+  top: 1em;
+  right: 1em;
+
+  &:active{
+    border: none;
+  }
+}
+
+.popup__x{
+  display: block;
+  position: absolute;
+  top: 1em;
+ 
+  &:hover{
+    cursor: pointer;
+  }
+  &:after, &:before {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: 0 !important;
+    width: 1.855555rem;
+    height: 1px;
+    display: block;
+    background: #fff !important;
+    zoom: 1;
+    transition: all 0.4s ease-in-out;
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before {
+    transform: rotate(-45deg);
+  }
+}

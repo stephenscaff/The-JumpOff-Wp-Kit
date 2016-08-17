@@ -1,0 +1,174 @@
+/*----------------------------------------------   
+--Custom Login Screen (add custom admin bg image)
+-----------------------------------------------  */
+body.login {
+  //background-image:url(/wp-content/themes/wallbed/assets/images/login-bg.jpg)!important;
+  height:100%;
+  background-size:cover!important;
+  background-position:50% top;
+  background-repeat:no-repeat;
+  background-color: #333;
+
+  * {
+    margin:0;
+    padding:0
+  }
+
+  /*-- Overlay Tint --*/
+  &::after {
+    content:'';
+    position:absolute;
+    background:rgba(#000, 0.4);
+    top:0;
+    height:100%;
+    width:100%;
+    z-index:0;
+    opacity:1;
+  }
+}
+
+/*----------------------------------------------   
+--Login Box
+-----------------------------------------------  */
+body.login #login{ 
+  z-index:9;
+  position:absolute;
+  left:0;
+  right:0;
+  top:20%;
+  width:400px;
+  margin:auto;
+  padding:1em 1em 2em;
+  background: rgba(0,0,0,0);
+  border-radius:4px;
+  border: 1px solid rgba(255,255,255,0.3);
+  //box-shadow:0 2px 1px rgba(0,0,0,0.2);
+
+  @media (max-width: 32em){
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+
+/*----------------------------------------------   
+--Login Logo
+-----------------------------------------------  */
+.login h1 {
+  text-align: center;
+  margin: 0 auto;
+  display: table; 
+
+/*----------------------------------------------   
+--Login Logo Image (add custom logo url here)
+-----------------------------------------------  */
+   a {
+    display: table;
+    margin: 1em auto -2.25em;
+    color: $color-alpha;
+    width: 21em !important;
+    height: 4em;
+    font-weight: 400;
+    text-decoration: none;
+    text-indent: -9999px;
+    outline: none;
+    overflow: visible;
+    opacity: 1;
+    background-image: url(/wp-content/themes/spark/assets/images/logo-jumpoff.png) !important;
+    background-size: 10em; 
+  }
+}
+
+ 
+/*----------------------------------------------   
+--Login Form
+-----------------------------------------------  */
+body.login #login form#loginform{
+  width:90%;
+  display:table;
+  padding:3em 1.7em 4em;
+  background:rgba(255,255,255,0);
+  box-shadow:none;
+  font-weight:400;
+
+  label {
+    color:$color-form-label;
+    font-size:1em;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+
+  p {
+    margin-bottom:0
+  }
+
+/*----------------------------------------------   
+--Login Form: Form elements
+-----------------------------------------------  */ 
+  input:not(#wp-submit), input#user_pass {
+    background: $color-inputs-bg !important;
+    border-color: $color-form-border !important;
+    border-radius:  1px !important;
+    color: $color-light;
+
+  &:focus{
+    border-color: $color-light !important;
+  }
+} 
+
+input[type="text"] {
+  width:100%;
+  padding:0.8em 0.3em;
+  margin-top:0.2em;
+  color:#9C9C9C;
+  background:$color-inputs-bg !important;
+  border:1px solid $color-form-border !important;
+  border-radius:2px!important;
+  outline:none;
+  font-size:1em;
+  font-weight:400;
+  line-height:1;
+}
+input[type=submit].button {
+  height:36px;
+  line-height:28px;
+  padding:.3em 3.5em 1.8em!important;
+  color:$color-light;
+  background:transparent;
+  border:0;
+  border:1px solid $color-light;
+  float:right!important;
+  box-shadow:none!important;
+}
+p.submit {
+  border:none;
+  margin:-10px 0 20px;
+  padding:  0;
+  /* May want to revisit this */
+}
+.button-primary {
+  float:right
+}
+
+
+.forgetmenot {
+  float:left;
+  margin-bottom:0;
+  font-weight:400;
+
+  label#rememberme {
+    font-size:1em!important;
+    line-height:1.4em;
+    width:1.4em!important;
+    height:1.4em;
+    margin:.1em .3em 0 0;
+    float:left;
+    display: inline;
+    color:$color-light;
+    background:transparent!important;
+    border-color:$color-light;
+    border-radius:3px;
+  }
+}
+}
+

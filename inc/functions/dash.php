@@ -2,7 +2,7 @@
 /*-----------------------------------------------*/
 /*  DASH
 /*  Widgets - remove
-/*  Widgets - add
+/*  Widgets - add custom
 /*-----------------------------------------------*/
 
 
@@ -33,7 +33,7 @@ function jumpoff_add_dashboard_widgets() {
 
 function jumpoff_welcome_widget() { ?>
    <div class="box">
-    <div class="box-content" style="background-color: #1f2d36;">
+    <div class="box-content">
      <a href="/"><img src="/wp-content/themes/wallbed/assets/images/logo-jumpoff.png" width="320"></a>
     </div>
     <div class="box-footer">

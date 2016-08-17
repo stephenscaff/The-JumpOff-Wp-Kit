@@ -1,0 +1,49 @@
+/*----------------------------------------------   
+--Tables
+-----------------------------------------------  */
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $base-lineheight;
+
+  td {
+    padding: 2% 0;
+    vertical-align: middle;
+    line-height: $base-lineheight;
+    text-align: left; 
+  }
+
+  th{
+    padding: 1% 0 0.5%;
+  }
+
+  thead {
+    //font-weight: 600;
+    text-align: left; 
+    vertical-align: bottom;
+    border-bottom: 1px solid $color-dark;
+
+  }
+
+  colgroup + thead tr:first-child th,
+  colgroup + thead tr:first-child td,
+  thead:first-child tr:first-child th,
+  thead:first-child tr:first-child td {
+    border-top : 0;
+  }
+
+  tbody tr{
+    border:0;
+    border-bottom: 1px solid $color-grey;
+  }
+  tbody tr:hover td,
+  tbody tr:hover th {
+    background-color: $color-lightgrey;
+    transition: background-color .6s ease-in;
+  }
+}
+
+.table--striped tr:nth-child(2n+2) { 
+  background-color: $color-lightgrey;
+  transition: background-color .6s ease-in;
+}

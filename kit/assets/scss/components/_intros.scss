@@ -1,0 +1,14 @@
+/*----------------------------------------------   
+-Intro Text Sections
+-----------------------------------------------  */
+
+.intro{
+  margin: 0 auto;
+  padding: $section-padded;
+  text-align: center;
+  background-color: $color-lightgrey;
+  p{
+    margin: 0 auto;
+    max-width: 40em;
+  }
+}

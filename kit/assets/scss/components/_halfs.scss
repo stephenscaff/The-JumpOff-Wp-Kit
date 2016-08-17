@@ -1,0 +1,55 @@
+/*----------------------------------------------
+-Halfs - 50 / 50 layouts
+-----------------------------------------------*/
+.halfs{
+  display:flex;
+  flex-direction: column;
+  @media (min-width: $mq-med){
+    flex-direction: row;
+  }  
+
+  &__col{
+    display:flex;
+    align-items:center;
+    
+    min-height: 15em;
+    @media (min-width: $mq-med){
+      width: 50%;
+    }
+  }
+  
+  &__content{
+    padding: 15% 10%;
+    margin: 0 auto;
+    @media (min-width: $mq-med){
+      max-width:38em;
+      padding: 20% 7%;
+    }  
+  }
+
+  blockquote{
+    cite{
+      margin-top: 3em;
+      font-style: normal;
+      @extend %font-subtitle;
+    }
+  }
+}
+
+.halfs--centered{
+  background-color: $color-black;
+  color: $color-light;
+  .halfs__col{
+    width: 100%;
+    @media(min-width: $mq-med){
+      min-height: 30em;
+    } 
+  }
+  .halfs__content{
+    margin: 0 auto;
+    @media(min-width: $mq-med){
+      max-width:40em;
+      padding: 10% 5%;
+    } 
+  }
+}

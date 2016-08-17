@@ -1,49 +1,50 @@
 <?php
 /**
- * The template for displaying archives
+ * The template for displaying Archives
  *
  *
  * @author    Stephen Scaff
  * @package   jumpoff/archive
  * @version   1.0
  */
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 get_header(); ?>
 
 <!-- Archive hero
 ================================================== -->
 <section class="mast mast--archive">
+  <header class="mast__header row g-full">
+    <span class="mast__subtitle">More From</span>
+    <h2 class="mast__title"><?php single_cat_title( '', true ); ?></h2>
+  </header>
+</section>
+
+<section class="mast mast--archive">
   <div class="row u-center-all">
     <header class="g-8 cols">
-      <span class="mast__pretitle">More From</span>
-      <h2 class="mast__title"><?php single_cat_title( '', true ); ?></h2>
+       <?php get_template_part( 'partials/post', 'author' );?>
      </header>
   </div>
 </section>
 
-<!-- Section Content
+<!-- Posts
 ================================================== -->
-<section class="section-posts section--padded">
- <div class="row">
-  <div class="g-8 cols u-centered">
+<section class="posts">
+ <div class="grid">
+  <div class="grid__col g-8 centered">
   <?php
-    if ( have_posts() ) {
-      while ( have_posts() ) {
-        the_post();
-        get_template_part( 'partials/content/content', 'posts' );
-      }
-    } else {
+    if ( have_posts() ): while ( have_posts() ) : the_post();
+      get_template_part( 'partials/content/content', 'posts' );
+    endwhile; else: 
       get_template_part( 'partials/content/content', 'none' );
-    }
+    endif;
     ?>
   </div>
  </div>
 </section>
 
-
-<!-- Section Pagination
+<!-- Pagination
 ================================================== -->
 <?php get_template_part( 'partials/posts', 'pagination' );?>
 

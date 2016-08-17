@@ -1,0 +1,126 @@
+/*----------------------------------------------
+-Grid 
+-----------------------------------------------*/
+.grid {
+  width: 92%;
+  max-width: $grid-max-width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  @include cf; 
+  @media (min-width: $mq-med){
+    width: 100%;
+  }
+}
+
+/*----------------------------------------------
+-FLex Grid
+-----------------------------------------------*/
+.grid--flex{
+  @media (min-width: $mq-med){
+    display: flex;
+  }
+}
+/*----------------------------------------------
+-GRID : Add col padding if no cols
+-----------------------------------------------*/
+.grid--pad{
+  padding-left:   $grid-col-pad;
+  padding-right:  $grid-col-pad;
+}
+
+/*----------------------------------------------
+-GRID Large
+-----------------------------------------------*/
+.grid-lg,
+.grid--lg {
+  @extend .grid;
+  max-width: $grid-max-width-lg;
+}
+
+/*----------------------------------------------
+-GRID XL
+-----------------------------------------------*/
+.grid-xl,
+.grid--xl {
+  @extend .grid;
+  max-width: $grid-max-width-xl;
+}
+
+/*----------------------------------------------
+-GRID : Full Width
+-----------------------------------------------*/
+.grid--full {
+  @extend .grid;
+  width: 100%;
+  max-width: 100%;
+}
+
+/*----------------------------------------------
+-GRID : Full width Small
+-----------------------------------------------*/
+.grid--full-small{
+  @media(max-width:$mq-med){
+    width: 100%;
+  }
+}
+
+
+/*----------------------------------------------
+-Grid : Nested
+-----------------------------------------------*/
+.grid .grid{
+  width: auto;
+  max-width: none;
+  min-width: 0;
+  margin-left: -$grid-col-pad;
+  margin-right: -$grid-col-pad;
+}
+
+/*----------------------------------------------
+-Grid: Columns
+-----------------------------------------------*/
+.grid__col { 
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  padding-left: $grid-col-pad;
+  padding-right: $grid-col-pad;
+}
+
+/*----------------------------------------------
+-Cols: Float last col right
+-----------------------------------------------*/
+.grid__cols + .cols:last-child { 
+  @media (min-width: $mq-med) { 
+    float: right;
+  }
+}
+
+/*----------------------------------------------   
+-Grid System: old school
+-----------------------------------------------*/
+@for $i from 1 through $grid-cols {
+ //Columns "xsm-*"  
+ .g-xsm-#{$i} {
+  max-width: ((100 / $grid-cols) * $i) * 1%;
+  flex-basis: ((100 / $grid-cols) * $i) * 1%;
+ }
+}
+/*----------------------------------------------
+-Grid Cols Main: after med
+-----------------------------------------------*/
+@media (min-width: $mq-med) {
+  @for $i from 1 through $grid-cols {
+    //Columns "g-*"  
+    .g-#{$i} {
+      max-width: ((100 / $grid-cols) * $i) * 1%;
+      flex-basis: ((100 / $grid-cols) * $i) * 1%;
+    }
+    // Offsets "os-*"
+    .g-offset-#{$i}{
+      margin-left: ((100 / $grid-cols) * $i) * 1%;
+    }
+  }
+}

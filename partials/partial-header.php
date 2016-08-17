@@ -7,27 +7,22 @@
  * @version    1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 ?>
 <body id="top" <?php body_class(); ?>>
 
-<!-- Mobile Nav
+<!-- Header
 ================================================== -->
-<!-- Nav Toggle -->
-<a class='offcanvas-toggle js-offcanvas-toggle'>
-  <div class='offcanvas-toggle__menubars'></div>
-</a>
-
-<section class="offcanvas-menu">
+<section class="site-menu-sm">
   <!-- Footer-nav -->
-  <nav class='offcanvas-menu__nav'>
+  <nav class='site-menu-sm__nav'>
     <ul>
-      <li><a href="<?php jumpoff_page_link('home'); ?>">Home</a></li>
-      <li><a href="<?php jumpoff_page_link('about'); ?>">About</a></li>
-      <li><a href="<?php jumpoff_page_link('services'); ?>">Services</a></li>
-      <li><a href="<?php jumpoff_page_link('blog'); ?>">Blog</a></li>
+      <li><a href="<?php jumpoff_page_url('home') ?>">Home</a></li>
+      <li><a href="<?php jumpoff_page_url('work') ?>">Work</a></li>
+      <li><a href="<?php jumpoff_page_url('about') ?>">About</a></li>
+      <li><a href="<?php jumpoff_page_url('careers') ?>">Careers</a></li>
+      <li><a href="<?php jumpoff_page_url('blog') ?>">News</a></li>
     </ul>
   </nav>
 </section>
@@ -35,19 +30,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 <!-- Header
 ================================================== -->
 <header class="site-header">
-  <div class="row">
+  <div class="grid-xl">
     <!-- Logo -->
     <a href="/" class="site-header__logo">
-      JumpOff
+    <span class="">The JumpOff</span>
     </a>
 
+    <a class='site-header__menu-toggle js-menu-toggle'>
+      <div class='site-header__menu-bars'></div>
+    </a> 
     <!-- Main Nav-->
     <nav role="navigation" class="site-header__nav">
       <ul>
-        <li><a href="<?php jumpoff_page_link('home'); ?>">Home</a></li>
-        <li><a href="<?php jumpoff_page_link('about'); ?>">About</a></li>
-        <li><a href="<?php jumpoff_page_link('services'); ?>">Services</a></li>
-        <li><a href="<?php jumpoff_page_link('blog'); ?>">Blog</a></li>
+        <li><a href="<?php jumpoff_page_url('home') ?>">Home</a></li>
+          <li><a href="<?php jumpoff_page_url('work') ?>">Work</a></li>
+          <li><a href="<?php jumpoff_page_url('about') ?>">About</a></li>
+          <li><a href="<?php jumpoff_page_url('careers') ?>">Careers</a></li>
+          <li><a href="<?php jumpoff_page_url('blog') ?>">News</a></li>
       </ul>  
     </nav>
   </div>

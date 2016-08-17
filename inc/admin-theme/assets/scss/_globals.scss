@@ -1,0 +1,61 @@
+#wpwrap{
+  margin-top: 1.3em;
+}
+
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    background-color: #fff !important;
+    width: $sidebar-width;
+}
+
+#adminmenu .wp-submenu{
+  left: $sidebar-width - 0.75em;
+  transition: opacity 0.5s ease;
+}
+
+
+#wpcontent{
+  margin-left: $sidebar-width;
+}
+
+/*-----------------------------------------------*/
+/* Edit Pages: url/slug box below title
+/*-----------------------------------------------*/
+#edit-slug-box {
+    margin: 1em 0 1.5em;
+}
+
+
+/*-----------------------------------------------*/
+/*Global Form elements
+/*-----------------------------------------------*/
+#wpwrap{
+  input[type=text], 
+  input[type=password],
+  input[type=email], 
+  input[type=number], 
+  input[type=tel], 
+  input[type=url], 
+  input[type=search], 
+  select, 
+  textarea {
+    border: 2px solid #ddd;
+    box-shadow: none;
+    min-height: 2.5rem;
+    line-height: 2rem;
+    font-size: 0.9rem;
+  }
+
+  textarea{
+    line-height: 1.6;
+  }
+  select{
+    height: 2.6rem !Important;
+    border: 2px solid #ddd;
+    border-radius: 0px;
+  }
+
+  #titlediv #title{
+    height: 3.1rem !Important;
+    padding: 1rem 0.5rem 1.25rem !important;
+  }
+}

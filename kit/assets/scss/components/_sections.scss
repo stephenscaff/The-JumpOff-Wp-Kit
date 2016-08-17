@@ -1,16 +1,14 @@
 /*----------------------------------------------   
---Sect: content (basic repeatable content regions)
+-Sections
+@description: define styles global sections
 -----------------------------------------------  */
-%section--padded, .section--padded {
-  padding: 4em 0;
-}
-%section--padded-small, .section--padded-small {
-  padding: 2em 0;
-}
-%section--padded-bottom, .section--padded-bottom{
-  padding-bottom: 4em;
-}
-.section {
-  @extend %section--padded;
+section {
+  position:relative;
 }
 
+/*----------------------------------------------   
+-basic section class
+-----------------------------------------------  */
+.section{
+  padding: $pad 0;
+}
