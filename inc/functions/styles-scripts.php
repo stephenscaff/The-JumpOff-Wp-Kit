@@ -1,9 +1,16 @@
 <?php
 /*-------------------------------------------*/
-/*	jumpoff_scripts_and_styles()
-/*	@description: managing and loading of scripts and styles 
-/*	@params: wp_register_script ('js-handle', $src, $deps, $ver, $in_footer);
+/*	Styles and Scripts Loading
 /*-------------------------------------------*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+/**
+ * jumpoff_scripts_and_styles
+ * Register and enqueue our scripts and styles loading
+ *
+ * @see 
+ */
 function jumpoff_scripts_and_styles() {
 	if ( !is_admin() ) {
 	
@@ -33,10 +40,15 @@ function jumpoff_scripts_and_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'jumpoff_scripts_and_styles' );
 
-/*-------------------------------------------*/
-/*	Asych Loader
-/*	@description: adds asynch to app.min.js
-/*-------------------------------------------*/
+
+
+/**
+ * 	Asynch JS Loader
+ *	Adds aynch to admin.min.js
+ *
+ *	@param $tag
+ * 	@see https://developer.wordpress.org/reference/hooks/script_loader_tag/
+ */
 function jumpoff_async_js($tag, $handle) {
   if ( 'jumpoff_js' !== $handle )
   	return $tag;
@@ -45,21 +57,44 @@ function jumpoff_async_js($tag, $handle) {
 }
 add_filter('script_loader_tag', 'jumpoff_async_js', 10, 2);
 
-/*-------------------------------------------*/
-/*	Admin and Login Styles
-/*	@description: loads styles for custom admin theme and login page
-/*	@see: inc/admin/
-/*-------------------------------------------*/
+
+/**
+ * 	jumpoff_remove_css_js_version
+ *	Removes the appended versions to our css/js includes
+ *
+ *	@param $src () the src of our css.js
+ *	@return $src 
+ */
+function jumpoff_remove_css_js_version( $src ) {
+  if( strpos( $src, '?ver=' ) )
+    $src = remove_query_arg( 'ver', $src );
+  return $src;
+}
+
+add_filter('style_loader_src', 'jumpoff_remove_css_js_version', 1000 );
+add_filter('script_loader_src', 'jumpoff_remove_css_js_version', 1000 );
+
+
+/**
+ * 	Admin and Login Styles
+ *	Loads styles for custom admin theme and login page
+ *
+ *	@param inc/admin/
+ *	@return $src 
+ */
 function jumpoff_admin_theme_styles() {
   wp_enqueue_style('admin',get_template_directory_uri() . '/inc/admin-theme/admin.css', false );
+  wp_enqueue_style( 'icons',get_template_directory_uri() . '/assets/css/fonts.min.css', false );
 }
+
 add_action('admin_enqueue_scripts', 'jumpoff_admin_theme_styles');
 add_action('login_enqueue_scripts', 'jumpoff_admin_theme_styles');
 
-/*-------------------------------------------*/
-/*	CF7: jumpoff_cf7_dequeue() 
-/*	@description: removes CF7 scripts and styles for all but the contact page
-/*-------------------------------------------*/
+/**
+ * 	CF7: jumpoff_cf7_dequeue() 
+ *	Removes CF7 scripts and styles for all but the contact page
+ *
+ */
 function jumpoff_cf7_dequeue() {
 	if ( !is_page( array( 'contact' ) ) ) {
 		wp_dequeue_script( 'contact-form-7' );

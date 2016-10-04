@@ -20,28 +20,20 @@ get_header(); ?>
   </header>
 </section>
 
-<section class="mast mast--archive">
-  <div class="row u-center-all">
-    <header class="g-8 cols">
-       <?php get_template_part( 'partials/post', 'author' );?>
-     </header>
-  </div>
-</section>
 
-<!-- Posts
-================================================== -->
-<section class="posts">
- <div class="grid">
-  <div class="grid__col g-8 centered">
-  <?php
+<!-- POSTS -->
+<section class="posts pad bg-lightgrey">
+  <div class="grid-xl">
+    <div class="posts__grid">
+      <?php
     if ( have_posts() ): while ( have_posts() ) : the_post();
       get_template_part( 'partials/content/content', 'posts' );
     endwhile; else: 
       get_template_part( 'partials/content/content', 'none' );
     endif;
     ?>
+    </div>
   </div>
- </div>
 </section>
 
 <!-- Pagination

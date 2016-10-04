@@ -9,7 +9,7 @@
  * @version   1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
 function ctp_acf_options_pages() {
 

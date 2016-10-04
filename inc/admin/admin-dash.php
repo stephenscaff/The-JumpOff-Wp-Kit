@@ -1,10 +1,10 @@
 <?php
 /*-----------------------------------------------*/
 /*  DASH
-/*  Widgets - remove
-/*  Widgets - add custom
+/*  Dashboard widgets and content.
 /*-----------------------------------------------*/
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
 /*-----------------------------------------------*/
 /*  Dash - remove widgets

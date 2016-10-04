@@ -1,170 +1,147 @@
 <?php
 /*-----------------------------------------------*/
-/* HELPER FUNCTIONS:
-/* Body Classes
-/* Path helpers
-/* Excerpts and shorteners
-/* Cats and Taxonomies
-/* Line Breaks
-/*-----------------------------------------------*/
+/*  IMAGE HELPERS
+/*-----------------------------------------------*/ 
 
-/*--------------------------------------------------*/
-/*  jumpoff_body_class
-/*  @description: Cleans up body classes, then adds custom
-/*                based on page or cpt names
-/*--------------------------------------------------*/ 
-function jumpoff_body_class($classes) {
- global $post, $page;
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
- // Add page name to body class
- if (is_single() || is_page() && !is_front_page()) {
-  $classes[] = basename(get_permalink());
- }
- if (is_home() || is_singular('post') || is_post_type_archive( 'post' )) {
-  $classes[] = 'blog';
- }
+/**
+*  jumpoff_ft_img
+*  Featured Image helper with fallbacks
+*  1. Get Ft Image
+*  2. Get Post attachement
+*  3. Get First image in post content
+*  4. Get no-img.jpg fallback
+*  
+* @example: jumpoff_ftimg_fallbacks('full')
+* @param $size (array|string) : images size - ie; full, medium, small)
+* @param $id (string) : image id
+* @param $echo (boolean) : cho (default) or return image
+**/ 
 
- //Example for CPTs
- if (is_singular('work') || is_post_type_archive( 'work' )) {
-  $classes[] = 'work';
- }
+function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
+  global $post, $posts;
 
- // Remove Classes
- $home_id_class = 'page-id-' . get_option('page_on_front');
- $page_id_class = 'page-id-' . get_the_ID();
- $post_id_class = 'postid-' . get_the_ID();
- $page_template_name_class = 'page-template-page-' . basename(get_permalink());
- $page_template_name_php = 'page-template-page-' . basename(get_permalink()) . '-php';
- 
- $remove_classes = array(
-  'page-template-default', 'page-template', 'single-format-standard',
-   $home_id_class,
-   $page_id_class,
-   $post_id_class,
-   $page_template_name_class,
-   $page_template_name_php
- );
+  // Allow loading posts by ID instead of relying on global $post/the loop
+  if ($post_id) { 
+    $post = get_post($post_d); 
+  }
 
- //Add specific classes
- $classes[] = 'fade-in-page';
- $classes = array_diff($classes, $remove_classes);
-  return $classes;
-}
+  // Read featured image data for image url.
+  $image_id = get_post_thumbnail_id();
 
-add_filter('body_class', 'jumpoff_body_class');
+  // Get Image src of image attached to post.
+  $attached_to_post = wp_get_attachment_image_src( get_post_thumbnail_id(), $size, false);
+  
+  // Set our attached image as the returned related image.
+  $related_img =  $attached_to_post[0];                         
 
+  // Check Post for image attachments
+  if($related_img == "") {
+    $attachments = get_children( array(
+      'post_parent'    => get_the_ID(),
+      'post_type'      => 'attachment',
+      'numberposts'    => 1, 
+      'post_status'    => 'inherit',
+      'post_mime_type' => 'image',
+      'order'          => 'ASC',
+      'orderby'        => 'menu_order ASC'
+      ) );
+    
+    // If we found attached image
+    if(!empty($attachments)) {
+      foreach ( $attachments as $attachment_id => $attachment ) {
+         if(wp_get_attachment_image($attachment_id) != "") {
+          $related_img = wp_get_attachment_url( $attachment_id );
+        }                       
+      }  
+    } else { 
+      // If no ft image set, let's get the first image within post 
+      $first_img = '';
+      ob_start();
+      ob_end_clean();
 
-/*-----------------------------------------------*/
-/*  jumpoff_slug: 
-/*  
-/*  @description: Get category by page slug. Used for passing as var in `get_posts args
-/*  @return: $slug (post_name);
-/*  @example:
-/*   // if is home  
-    if ( is_home() ) {
-    $slug = null;
-  // else if is cat page  
-  } else {
-    $slug = jumpoff_slug();
+      // Find that shit
+      if( $output = preg_match_all('/<img.+src=\'"[\'""].*>/i', $post->post_content, $matches) ) {
+        $first_img = $matches[1][0];
+      }
+
+      // If we have a first image
+      if(!empty($first_img)) {
+        $related_img = $first_img;
+      } else {
+        
+        // Get dir
+        $template_dir = get_bloginfo('template_directory');
+
+        // Array of fallback images to deliver randomly
+        // @since v1.2
+        $random_no_images = array('placeholder-1.jpg', 'placeholder-2.jpg', 'placeholder-3.jpg', 'placeholder-4.jpg', 'placeholder-5.jpg');
+
+        // Randomize array of fallbacks
+        $randomNumber = array_rand($random_no_images);
+        $randomImage = $random_no_images[$randomNumber];
+
+        // Set placeholder path for out random fallbacks
+        $related_img = $template_dir."/assets/images/placeholders/$randomImage";  
+      }
+    }   
   }  
-  $args = array(
-    'posts_per_page'   => 5,
-    'offset'           => 0,
-    'category_name'    => $slug,
-    'orderby'          => 'date',
-    'order'            => 'DESC'
-/*-----------------------------------------------*/
-function jumpoff_slug() {
-  global $post;
-  $slug = get_post( $post )->post_name;
-  return $slug;
-}
 
-
-/*-----------------------------------------------*/
-/*  jumpoff_ids ()
-/*  @description: Retrieves IDs to use in calling fields.
-/*  @example: $postidd = jumpoff_ids();
-/*-----------------------------------------------*/
-function jumpoff_ids() {
-  $page_for_posts = get_option( 'page_for_posts' );
-  if (is_home()){
-    $postid = $page_for_posts;
+  // If $echo is false, return, else echo.
+  // Needed so we can create a ft image shortcode
+  // @since 1.2
+  // @see inc/funcitons/shortcodes.php
+  if ( $echo == FALSE  ) {
+    return $related_img;
   } else {
-    $postid = $post->ID;
+    echo $related_img;
   }
-  return $postid;
 }
 
-/*-----------------------------------------------*/
-/*  jumpoff_ids ()
-/*  @description: Retrieves IDs to use in calling fields.
-/*  @example: $postidd = jumpoff_ids();
-/*-----------------------------------------------*/
-function jumpoff_ids() {
-  global $post;
-  $page_for_posts = get_option( 'page_for_posts' );
-  $id;
-  if (is_post_type_archive()){
-    $post_type = get_queried_object();
-    $cpt = $post_type->rewrite['slug'];
-    $id = "cpt_$cpt";
-  } elseif (is_home()){
-    $id = 'options'; //$page_for_posts;
-  } elseif (is_front_page()) {
-    $id = get_option('page_on_front');
-  } else{
-    $id = $post->ID;
+/**
+*  jumpoff_html5_insert_image
+*  Wrap images in figure, captions in a figcap.
+*  Takes place in editor via image_send_to_editor
+*
+* @param $html (array|string) : images size - ie; full, medium, small)
+* @param $id (integer) : image id
+* @param $caption (string) : gets from attachment editor caption field
+* @param $align (string) : alignment class
+* @param $url (string) : image path
+* @param $size (string|array) (Optional) Image size. Accepts any valid image size, or an array of width and height values in pixels (in that order).
+* @param $alt (string) : gets from attachment editor alt field
+**/ 
+function jumpoff_html5_insert_image($html, $id, $caption, $title, $align, $url, $size, $alt) {
+  $src  = wp_get_attachment_image_src( $id, $size, false );
+  $html5_str = "<figure id='media-" .$id . "' class='align-" . $align . "'>";
+  $html5_str .= "<img src='" . $src[0] . "' alt='" . $alt . "' />";
+  if ($caption) {
+    $html5_str .= "<figcaption>" . $caption ."</figcaption>";
   }
-  return $id;
+  $html5_str .= "</figure>";
+  return $html5_str;
 }
-
-/*-----------------------------------------------*/
-/*  jumpoff_mast_class ()
-/*  Adds BEM modifier classes to mast partials..
-/*-----------------------------------------------*/
-function jumpoff_mast_class() {
-  $page_for_posts = get_option( 'page_for_posts' );
-  $class='';
-  if (is_home()){
-    $class ='blog';
-  } elseif (is_front_page()) {  
-    $class ='home';
-  } elseif (is_archive()){
-    $class = 'archive';
-  } else {
-    $class = basename(get_permalink());
-  }
-  return $class;
-}
-
-/*-----------------------------------------------*/
-/* Wrap mast text line breaks in BEM syntax
-/*-----------------------------------------------*/
-function jumpoff_mast_text ( $textarea ){
- $lines = explode("\n", $textarea);
- if ( !empty($lines) ) {
- foreach ( $lines as $line ) {
-  echo '<p class="mast__text">'. trim( $line ) .'</p>';
-  }
- }
-}
-/*-----------------------------------------------*/
-/*  jumpoff_breaks_list ()
-/*  @description: Wraps line breaks from as custom fieldin list items
-/*  @example: jumpoff_breaks_list($fieldname)
-/*-----------------------------------------------*/
-function jumpoff_breaks_list ( $textarea ){
- $lines = explode("\n", $textarea);
-if ( !empty($lines) ) {
-  echo '<ul class="list-disc">';
- foreach ( $lines as $line ) {
-  echo '<li>'. trim( $line ) .'</li>';
- }
- echo '</ul>';
- }
-}
+add_filter( 'image_send_to_editor', 'jumpoff_html5_insert_image', 10, 9 );
 
 
+/**
+*   jumpoff_img_id_url
+*   Wrap images in figure, captions in a figcap.
+*   Takes place in editor via image_send_to_editor
+*
+*   @param $imgField (array|string) : images size - ie; full, medium, small)
+*   @param $imgSize (integer) : image id
+*   @return $img (integer) : image id
+**/ 
+function jumpoff_img_id_url($imgField, $imgSize) {
+  $getImg = get_field($imgField);
+  $getImgSize = $imgSize; // (get full size)
+  $image_array = wp_get_attachment_image_src($getImg, $getImgsize);
+  // finally, extract and store the URL from $image_array
+  $image_url = $image_array[0];
+  
+  return $image_url;
+}
 
 ?>

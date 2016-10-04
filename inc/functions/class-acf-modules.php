@@ -1,19 +1,25 @@
 <?php
+/*-----------------------------------------------*/
+/* MODULES
+/*-----------------------------------------------*/
+
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+
 /**
-* ACF Module Loader
+* ACF Module Loader Class
 *
 * Autoloads ACF Flexible Content Fields as modules by matching the module name with the file name
 * from within the modules directory.
 *
 * @author       Stephen Scaff
-* @package      SandP
+* @package      Inrix
 * @see          partials/modules
 * @see          asthttp://www.advancedcustomfields.com/add-ons/flexible-content-field/
 * @version      1.0
 * @example      ACF_Layout::render(get_row_layout());
 */
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 
 class ACF_Modules {

@@ -69,13 +69,5 @@ $meta_description = get_post_meta( get_the_ID(), 'seo_description', true ) ? get
 <!-- CSS & Js
 ================================================== -->
 <?php wp_head(); ?>
-<!-- Image Preloader -->
-<script>
-function imgLoaded(img){
-    var imgWrapper = img.parentNode;
-    setTimeout(function(){
-    imgWrapper.className += imgWrapper.className ? ' is-loaded' : 'is-loaded';
-  }, 300);
-};
-</script>
+
 </head>

@@ -1,5 +1,12 @@
 <?php
 /*--------------------------------------------------*/
+/*  WP CLEANUPS
+/*  Let's cleanup some of the grimey stuff Wp injects.
+/*--------------------------------------------------*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+/*--------------------------------------------------*/
 /*	Head Clean Up
 /*--------------------------------------------------*/
 function jumpoff_head_cleanup() {
@@ -19,10 +26,6 @@ function jumpoff_head_cleanup() {
   // Remove Stupid Emoticons
   remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
   remove_action( 'wp_print_styles', 'print_emoji_styles' );
-  
-  //Remove versions from css and js
-  add_filter('style_loader_src', 'jumpoff_remove_cssjs_ver', 1000 );
-  add_filter('script_loader_src', 'jumpoff_remove_cssjs_ver', 1000 );
 
   //Remove Wp Version
   add_filter('the_generator', 'jumpoff_remove_wp_version');
@@ -38,14 +41,6 @@ function jumpoff_remove_wp_version() {
   return '';
 }
 
-/*--------------------------------------------------*/
-/*	Remove Versions: js and css
-/*--------------------------------------------------*/
-function jumpoff_remove_cssjs_ver( $src ) {
-    if( strpos( $src, '?ver=' ) )
-        $src = remove_query_arg( 'ver', $src );
-    return $src;
-}
 
 /*--------------------------------------------------*/
 /*	Stop Injected Styles: Gallery Styles
@@ -54,48 +49,9 @@ function jumpoff_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-/*--------------------------------------------------*/
-/*  Lang atts
-/*--------------------------------------------------*/
-function jumpoff_language_attributes() {
-  $attributes = array();
-  $output = '';
 
-  if (function_exists('is_rtl')) {
-    if (is_rtl() == 'rtl') {
-      $attributes[] = 'dir="rtl"';
-    }
-  }
-  $lang = get_bloginfo('language');
 
-  if ($lang && $lang !== 'en-US') {
-    $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
-  }
 
-  $output = implode(' ', $attributes);
-  $output = apply_filters('admissionado_language_attributes', $output);
 
-  return $output;
-}
-
-/*--------------------------------------------------*/
-/*  Canonical LInk
-/*--------------------------------------------------*/
-function jumpoff_rel_canonical() {
-  global $wp_the_query;
-
-  if (!is_singular()) {
-    return;
-  }
-
-  if (!$id = $wp_the_query->get_queried_object_id()) {
-    return;
-  }
-
-  $link = get_permalink($id);
-  echo "\t<link rel=\"canonical\" href=\"$link\">\n";
-}
 
 ?>

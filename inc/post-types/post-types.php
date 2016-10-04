@@ -1,11 +1,6 @@
 <?php
 /*--------------------------------------------------*/
 /*  Custom Post Types and Custom Taxonomies 
-/*  01. Flush Rewrites
-/*  02: Taxonomy  - Post Functions
-/*  03: Post Type - Work
-/*  04: Post Type - Team
-/*  05: Post Type - Jobs
 /*--------------------------------------------------*/
 
 
@@ -22,11 +17,12 @@ function jumpoff_flush_rewrite_rules() {
 /*-----------------------------------------------*/
 /* Taxonomy - Post Functions
 /*-----------------------------------------------*/
-require_once('post-taxonomy-post-functions.php');
+require_once('post-taxonomy.php');
+
 /*-----------------------------------------------*/
 /* Post Type - Work + Work Filters Taxonomy
 /*-----------------------------------------------*/
-//require_once('post-type-work.php');
+//require_once('post-type-case-studies.php');
 /*-----------------------------------------------*/
 /* Post Type - Team
 /*-----------------------------------------------*/

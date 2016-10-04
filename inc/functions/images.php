@@ -1,58 +1,43 @@
 <?php
 /*-----------------------------------------------*/
-/*  IMAGES
-/*  jumpoff_img()
-/*  jumpoff_first_img()
-/*  jumpoff_ft_cimg()
-/*  html5 image wrapping in the_content
-/*  Image url from ID
+/*  IMAGE HELPERS
 /*-----------------------------------------------*/ 
 
-/*-----------------------------------------------*/
-/*  jumpoff_first_img()
-/*
-/*  Get first image in post
-/*  Fallback to no-img.jpg
-/*  @example: echo jumpoff_first_img();
-/*-----------------------------------------------*/
-function jumpoff_first_img() {
-   global $post, $posts;
-   $first_img = '';
-   ob_start();
-   ob_end_clean();
-  if( $output = preg_match_all('/<img.+src=\'"[\'""].*>/i', $post->post_content, $matches) ) {
-    $first_img = $matches[1][0];
-  }
-   $url =  get_template_directory_uri();
-   if(empty($first_img)){ //Defines a default image
-     $first_img = "$url/assets/images/no-img.jpg";
-   }
-  return $first_img;
-}
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
-/*--------------------------------------------------*/
-/* Featured Image with fallbacks (4)
-/*  Used as the primary way to call images in loops/queries
-/*  1. Get Ft Image
-/*  2. Get Post attachement
-/*  3. Get Girst image in post content
-/*  4. Get no-img.jpg fallback
-/*  
-/*  @example: jumpoff_ftimg_fallbacks('full')
-/*  @param $imgSize (images size - ie; full, medium, small)
-/*  @param $postId  (image id)
-/*--------------------------------------------------*/ 
-function jumpoff_ft_img($imgSize, $postId = '') {
+/**
+*  jumpoff_ft_img
+*  Featured Image helper with fallbacks
+*  1. Get Ft Image
+*  2. Get Post attachement
+*  3. Get First image in post content
+*  4. Get no-img.jpg fallback
+*  
+* @example: jumpoff_ftimg_fallbacks('full')
+* @param $size (array|string) : images size - ie; full, medium, small)
+* @param $id (string) : image id
+* @param $echo (boolean) : cho (default) or return image
+**/ 
+
+function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
   global $post, $posts;
-  // Allow loading posts by ID instead of relying on global $post/the loop
-  if ($postId) { $post = get_post($postId); }
 
-  // read featured image data for image url
+  // Allow loading posts by ID instead of relying on global $post/the loop
+  if ($post_id) { 
+    $post = get_post($post_d); 
+  }
+
+  // Read featured image data for image url.
   $image_id = get_post_thumbnail_id();
-  $attached_to_post = wp_get_attachment_image_src( get_post_thumbnail_id(), $imgSize, false);
+
+  // Get Image src of image attached to post.
+  $attached_to_post = wp_get_attachment_image_src( get_post_thumbnail_id(), $size, false);
+  
+  // Set our attached image as the returned related image.
   $related_img =  $attached_to_post[0];                         
 
-  if($related_img == ""):
+  // Check Post for image attachments
+  if($related_img == "") {
     $attachments = get_children( array(
       'post_parent'    => get_the_ID(),
       'post_type'      => 'attachment',
@@ -62,34 +47,71 @@ function jumpoff_ft_img($imgSize, $postId = '') {
       'order'          => 'ASC',
       'orderby'        => 'menu_order ASC'
       ) );
-    if(!empty($attachments)): //check if there's an image attached or not
+    
+    // If we found attached image
+    if(!empty($attachments)) {
       foreach ( $attachments as $attachment_id => $attachment ) {
-        if(wp_get_attachment_image($attachment_id) != ""):
-            $related_img = wp_get_attachment_url( $attachment_id );
-        endif;                        
-      }
-    else:  // if no attachment 
+         if(wp_get_attachment_image($attachment_id) != "") {
+          $related_img = wp_get_attachment_url( $attachment_id );
+        }                       
+      }  
+    } else { 
+      // If no ft image set, let's get the first image within post 
       $first_img = '';
       ob_start();
       ob_end_clean();
+
+      // Find that shit
       if( $output = preg_match_all('/<img.+src=\'"[\'""].*>/i', $post->post_content, $matches) ) {
         $first_img = $matches[1][0];
       }
-      if(!empty($first_img)):
-          $related_img = $first_img;
-      else:
-          $related_img = bloginfo('template_directory')."/assets/images/placeholder.jpg";    //define default thumbnail, you can use full url here.
-      endif;
-    endif;   
-  endif;  
 
-  echo $related_img;
-} 
+      // If we have a first image
+      if(!empty($first_img)) {
+        $related_img = $first_img;
+      } else {
+        
+        // Get dir
+        $template_dir = get_bloginfo('template_directory');
 
-/*-----------------------------------------------*/
-/* Wrap images in figure, captions in a figcap
-/* Happens in the editor (image_send_to_editor)
-/*-----------------------------------------------*/
+        // Array of fallback images to deliver randomly
+        // @since v1.2
+        $random_no_images = array('placeholder-1.jpg', 'placeholder-2.jpg', 'placeholder-3.jpg', 'placeholder-4.jpg', 'placeholder-5.jpg');
+
+        // Randomize array of fallbacks
+        $randomNumber = array_rand($random_no_images);
+        $randomImage = $random_no_images[$randomNumber];
+
+        // Set placeholder path for out random fallbacks
+        $related_img = $template_dir."/assets/images/placeholders/$randomImage";  
+      }
+    }   
+  }  
+
+  // If $echo is false, return, else echo.
+  // Needed so we can create a ft image shortcode
+  // @since 1.2
+  // @see inc/funcitons/shortcodes.php
+  if ( $echo == FALSE  ) {
+    return $related_img;
+  } else {
+    echo $related_img;
+  }
+}
+
+/**
+*  jumpoff_html5_insert_image
+*  Wrap images in figure, captions in a figcap.
+*  Takes place in editor via image_send_to_editor
+*
+* @param $html (array|string) : images size - ie; full, medium, small)
+* @param $id (integer) : image id
+* @param $caption (string) : gets from attachment editor caption field
+* @param $align (string) : alignment class
+* @param $url (string) : image path
+* @param $size (string|array) (Optional) Image size. Accepts any valid image size, or an array of width and height values in pixels (in that order).
+* @param $alt (string) : gets from attachment editor alt field
+**/ 
 function jumpoff_html5_insert_image($html, $id, $caption, $title, $align, $url, $size, $alt) {
   $src  = wp_get_attachment_image_src( $id, $size, false );
   $html5_str = "<figure id='media-" .$id . "' class='align-" . $align . "'>";
@@ -103,20 +125,23 @@ function jumpoff_html5_insert_image($html, $id, $caption, $title, $align, $url, 
 add_filter( 'image_send_to_editor', 'jumpoff_html5_insert_image', 10, 9 );
 
 
-/*-----------------------------------------------*/
-/*  jumpoff_img_id_url
-/*  
-/*  Get Image's URL Via it's ID
-/*  @param $imgSize (images size - ie; full, medium, small)
-/*  @return $img_url;
-/*-----------------------------------------------*/
+/**
+*   jumpoff_img_id_url
+*   Wrap images in figure, captions in a figcap.
+*   Takes place in editor via image_send_to_editor
+*
+*   @param $imgField (array|string) : images size - ie; full, medium, small)
+*   @param $imgSize (integer) : image id
+*   @return $img (integer) : image id
+**/ 
 function jumpoff_img_id_url($imgField, $imgSize) {
   $getImg = get_field($imgField);
   $getImgSize = $imgSize; // (get full size)
   $image_array = wp_get_attachment_image_src($getImg, $getImgsize);
-// finally, extract and store the URL from $image_array
+  // finally, extract and store the URL from $image_array
   $image_url = $image_array[0];
- return $image_url;
+  
+  return $image_url;
 }
 
 ?>

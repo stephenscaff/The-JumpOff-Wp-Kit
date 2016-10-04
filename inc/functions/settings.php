@@ -1,17 +1,18 @@
 <?php
 /*-----------------------------------------------*/
-/* SETTINGS FUNCTIONS:
-/* Permalinks
-/* Images - Sizes
-/* Images - Remove HxW
-/* Images - Stop Autolinking
-/* Images- Default upload settings
-/*
+/*  WP SETTINGS
+/*  -Permalinks
+/*  -Images
 /*-----------------------------------------------*/
 
-/*-----------------------------------------------*/
-/* Set Permalinks
-/*-----------------------------------------------*/
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+/**
+ *  jumpoff_set_permalinks
+ *
+ *  Set our permalink structre here, so they can't be f'd up in Admin/Settings.
+ *  Structre: news/year/month-numeric/post-name
+ */
 function jumpoff_set_permalinks() {
   global $wp_rewrite;
   $wp_rewrite->set_permalink_structure( '/blog/%year%/%monthnum%/%postname%/' );
@@ -19,99 +20,128 @@ function jumpoff_set_permalinks() {
 add_action( 'init', 'jumpoff_set_permalinks' );
 
 
-/*-----------------------------------------------*/
-/* Defualt Images - Thumb
-/*-----------------------------------------------*/
-update_option( 'thumbnail_size_w', 300 );
-update_option( 'thumbnail_size_h', 300 );
-update_option( 'thumbnail_crop', 1 );
+/**
+ *  JumpoffImageSettings
+ *  
+ *  Class to handle various image settings and handling.
+ *  
+ *  Image Sizes (All ratios of 2000x1200, and hard set)
+ *  Full : 2000 x 1200 (ideally)
+ *  Medium: 1250 x 750
+ *  Large: 1500 x 900
+ */
+if (!class_exists('JumpoffImageSettings ')) {
 
-/*-----------------------------------------------*/
-/* Defualt Images - Medium 
-/*-----------------------------------------------*/
-update_option( 'medium_size_w', 850 );
-update_option( 'medium_size_h', 578 );
+ class JumpoffImageSettings {
 
-/*-----------------------------------------------*/
-/* Defualt Images - Large
-/*-----------------------------------------------*/
-update_option( 'large_size_w', 1250 );
-update_option( 'large_size_h', 815 );
+  // Constructor
+  function __construct() {
+    add_filter('intermediate_image_sizes_advanced',  array($this, 'remove_image_sizes'));
+    add_filter('init',  array($this, 'medium_images'));
+    add_filter('init',  array($this, 'large_images'));
+    add_filter('init',  array($this, 'add_image_sizes'));
+    add_filter('image_size_names_choose',  array($this, 'add_images_to_admin'));
+    add_filter('post_thumbnail_html',  array($this, 'remove_wxh_attribute', 10 ));
+    add_filter('image_send_to_editor',  array($this, 'remove_wxh_attribute', 10 ));
+    add_action('after_setup_theme',  array($this, 'image_output_settings'));
+  }
 
-/*-----------------------------------------------*/
-/* Masthead Image Size - For Mastheads
-/*-----------------------------------------------*/
-add_image_size( 'team-profile', 1250, 1200);
+/**
+ *  Remove Sizes we won't need, so we're not creating pointless images
+ *
+ *  @return $sizes
+ */
+  function remove_image_sizes( $sizes) {
+    unset( $sizes['thumbnail'] );
+    return $sizes;
+  }
 
-/*-----------------------------------------------*/
-/* Masthead Image Size - For Mastheads
-/*-----------------------------------------------*/
-add_image_size( 'mast-image', 2000, 1250);
+/**
+ *  Set Med sizes
+ *
+ *  1250x750
+ */
+  function medium_images(){
+    update_option( 'medium_size_w', 1250 );
+    update_option( 'medium_size_h', 750 );
 
-/*-----------------------------------------------*/
-/* Add custom images to Admin
-/*-----------------------------------------------*/
-function jumpoff_custom_sizes($sizes) {
- $addsizes = array(
-  "masthead-image" => __( "Masthead Images")
- );
+    // Add cropping capability
+    if(false === get_option('medium_crop')) {
+      add_option('medium_crop', '1'); 
+    } else {
+      update_option('medium_crop', '1');
+    }
+  }
 
- $newsizes = array_merge($sizes, $addsizes);
- return $newsizes;
+/**
+ *  Set Large sizes
+ *
+ *  1500x900
+ */
+  function large_images(){
+    update_option( 'large_size_w', 1500 );
+    update_option( 'large_size_h', 900 );
+
+    if(false === get_option("large_crop")) {
+         add_option('large_crop', '1'); 
+    } else {
+      update_option('large_crop', '1');
+    }
+  }
+
+/**
+ *  Create Custom image size.
+ *  Used for Mastheads and full width images.
+ *  Duplicate add_image_size for additional custom sizes.
+ *
+ *  Name: "Mast" 
+ *  Size: 2000x1200
+ */
+  function add_image_sizes(){
+    // New Image: 'Mast'
+    add_image_size( 'mast', 2000, 1200, true );
+  }
+
+/**
+ *  Add our custom image, "Mast" to the admin / media gal.
+ *  Continue array with additional custom sizes.
+ *
+ *  @return $sizes 
+ */
+  function add_images_to_admin( $sizes ) {
+
+    return array_merge( $sizes, array(
+      'mast' => __('Mastheads'),
+    ));
+  }
+
+/**
+ *  Remove wxh attributes
+ *  Prevent Wp from injecting height and width for images in the_content
+ *
+ *  @return $html 
+ */
+  function remove_wxh_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+  }
+
+/**
+ *  Image Output Settings
+ *  Additional cleanups for images added to the_content
+ *
+ *  @return $html 
+ */
+  function image_output_settings() {
+   // no alignment
+   update_option('image_default_align', 'none' );
+   // don't auto link
+   update_option('image_default_link_type', 'none' );
+   //insert at full width
+   update_option('image_default_size', 'full' );
+  }
 }
-
-add_filter( 'image_size_names_choose', 'jumpoff_custom_sizes' );
-
-/*----------------------------------------------*/
-/* jumpoff_remove_width_attribute
-/* 
-/* Images: Remove auto HxW
-/*----------------------------------------------*/
-function jumpoff_remove_width_attribute( $html ) {
- $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
- return $html;
 }
-add_filter( 'post_thumbnail_html', 'jumpoff_remove_width_attribute', 10 );
-add_filter( 'image_send_to_editor', 'jumpoff_remove_width_attribute', 10 );
+new JumpoffImageSettings ();
 
-
-
-/*-----------------------------------------------*/
-/* jumpoff_default_img_settings
-/*  
-/* Default Image Settings
-/* Some defaults for the image uploader
-/*-----------------------------------------------*/
-function jumpoff_default_img_settings() {
- // no alignment
- update_option('image_default_align', 'none' );
- // don't auto link
- update_option('image_default_link_type', 'none' );
- //insert at full width
- update_option('image_default_size', 'full-size' );
-
-}
-add_action('after_setup_theme', 'jumpoff_default_img_settings');
-
-
-@ini_set( 'upload_max_size' , '64M' );
-@ini_set( 'post_max_size', '64M');
-@ini_set( 'max_execution_time', '300' );
-
-
-/*-----------------------------------------------*/
-/* jumpoff_widgets_init
-/*  
-/* Registers widgets, if that's your thing
-/*-----------------------------------------------
-function jumpoff_widgets_init() {
-
- register_sidebar( array(
-  'name'          => 'Home right sidebar',
-  'id'            => 'home_right_1',
- ) );
-
-}
-add_action( 'widgets_init', 'jumpoff_widgets_init' );
-*/
 ?>

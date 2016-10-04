@@ -1,10 +1,10 @@
 <?php
 /*-----------------------------------------------*/
-/*  NAV
-/*  01. Is-Current class
-/*  02. jumpoff_page_link
-/*  03. Register menu(s) if so desired
+/*  NAVIGATION
+/*  Nav helpers.
 /*-----------------------------------------------*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
 /*--------------------------------------------------*/
 /*  Nav - Add is-current class

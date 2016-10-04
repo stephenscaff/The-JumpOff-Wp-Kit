@@ -9,111 +9,123 @@ add_action('after_setup_theme', 'jumpoff_setup');
 /*--------------------------------------------------*/ 
 
 /*-----------------------------------------------*/
-/* Includes: Enqueue
+/* Admin: Appearance
+/*-----------------------------------------------*/
+require_once('inc/admin/admin-appearance.php');
+
+/*-----------------------------------------------*/
+/* Admin: Dashboard
+/*-----------------------------------------------*/
+require_once('inc/admin/admin-dash.php');
+
+/*-----------------------------------------------*/
+/* Admin: Editor
+/*-----------------------------------------------*/
+require_once('inc/admin/admin-editor.php');
+
+/*-----------------------------------------------*/
+/* Admin: Post Order (drag and drop)
+/*-----------------------------------------------*/
+require_once('inc/admin/admin-post-order/post-order.php');
+
+/*-----------------------------------------------*/
+/* Admin: Users
+/*-----------------------------------------------*/
+require_once('inc/admin/admin-users.php');
+
+/*-----------------------------------------------*/
+/* Enqueue/Loader Scripts and Styles
 /*-----------------------------------------------*/
 require_once('inc/functions/styles-scripts.php');
 
 /*-----------------------------------------------*/
-/* Includes: CleanUp
+/* Clean Up grimey WP stuff
 /*-----------------------------------------------*/
 require_once('inc/functions/cleanup.php');
 
 /*-----------------------------------------------*/
-/* Includes: Settings
+/* Site and Theme Settings
 /*-----------------------------------------------*/
 require_once('inc/functions/settings.php');
 
 /*-----------------------------------------------*/
-/* Includes: Theme Support
+/* Register Theme Supports
 /*-----------------------------------------------*/
 require_once('inc/functions/theme-support.php');
 
 /*-----------------------------------------------*/
-/* Includes: Admin
-/*-----------------------------------------------*/
-require_once('inc/functions/admin.php');
-
-/*-----------------------------------------------*/
-/* Includes: Editor
-/*-----------------------------------------------*/
-require_once('inc/functions/editor.php');
-
-/*-----------------------------------------------*/
-/* Includes: Dash
-/*-----------------------------------------------*/
-require_once('inc/functions/dash.php');
-
-/*-----------------------------------------------*/
-/* Includes: Users
-/*-----------------------------------------------*/
-require_once('inc/functions/users.php');
-
-/*-----------------------------------------------*/
-/* Includes: Custom Post Types (CPTs) & Taxonomies
-/*-----------------------------------------------*/
-require_once('inc/functions/comments.php');
-
-/*-----------------------------------------------*/
-/* Includes: Nav
-/*-----------------------------------------------*/
-require_once('inc/functions/nav.php');
-
-/*-----------------------------------------------*/
-/* Includes: Nav
-/*-----------------------------------------------*/
-require_once('inc/functions/paths.php');
-
-/*-----------------------------------------------*/
-/* Includes: Post tempalte parts
-/*-----------------------------------------------*/
-require_once('inc/functions/post-templates.php');
-
-/*-----------------------------------------------*/
-/* Includes: Cats and Taxes
-/*-----------------------------------------------*/
-require_once('inc/functions/taxonomies.php');
-
-/*-----------------------------------------------*/
-/* Includes: Pagination
-/*-----------------------------------------------*/
-require_once('inc/functions/pagination.php');
-
-/*-----------------------------------------------*/
-/* Includes: Image
-/*-----------------------------------------------*/
-require_once('inc/functions/images.php');
-
-/*-----------------------------------------------*/
-/* Includes: helpers
-/*-----------------------------------------------*/
-require_once('inc/functions/helpers.php');
-
-/*-----------------------------------------------*/
-/* Includes: helpers
-/*-----------------------------------------------*/
-require_once('inc/functions/loops.php');
-
-
-/*-----------------------------------------------*/
-/* Includes: Custom Post Types (CPTs) & Taxonomies
+/* Custom Post Types (CPTs) & Taxonomies
 /*-----------------------------------------------*/
 require_once('inc/post-types/post-types.php');
 
 /*-----------------------------------------------*/
+/* ACF on CPT Indexes
+/*-----------------------------------------------*/
+require_once('inc/post-types/cpt-for-acf.php');
+
+/*-----------------------------------------------*/
+/* CPT Circular Nav
+/*-----------------------------------------------*/
+//require_once('inc/post-types/cpt-nav.php');
+
+/*-----------------------------------------------*/
+/* Comments
+/*-----------------------------------------------*/
+//require_once('inc/functions/comments.php');
+
+/*-----------------------------------------------*/
+/* Path Helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/paths.php');
+/*-----------------------------------------------*/
+/* Nav Helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/nav.php');
+
+/*-----------------------------------------------*/
+/* Post Helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/post-helpers.php');
+
+/*-----------------------------------------------*/
+/* Taxonomies and Categories Helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/taxonomies.php');
+
+/*-----------------------------------------------*/
+/* Pagination
+/*-----------------------------------------------*/
+require_once('inc/functions/pagination.php');
+
+/*-----------------------------------------------*/
+/* Image Helpers
+/*-----------------------------------------------*/
+require_once('inc/functions/images.php');
+
+/*-----------------------------------------------*/
+/* Helpers - General Utilities
+/*-----------------------------------------------*/
+require_once('inc/functions/helpers.php');
+
+/*-----------------------------------------------*/
+/* Dynamic Classes
+/*-----------------------------------------------*/
+require_once('inc/functions/dynamic-classes.php');
+
+/*-----------------------------------------------*/
+/* Shortcodes
+/*-----------------------------------------------*/
+require_once('inc/functions/shortcodes.php');
+
+/*-----------------------------------------------*/
+/* Loops for Posts and CPTs
+/*-----------------------------------------------*/
+require_once('inc/functions/loops.php');
+
+/*-----------------------------------------------*/
 /* ACF Module loader
 /*-----------------------------------------------*/
-require_once('inc/functions/modules.php');
-
-/*-----------------------------------------------*/
-/* Includes: Circular Nav
-/*-----------------------------------------------*/
-require_once('inc/functions/cpt-nav.php');
-
-/*-----------------------------------------------*/
-/* Post Order (drag and drop)
-/*-----------------------------------------------*/
-require_once('inc/functions/post-order/post-order.php');
+require_once('inc/functions/class-acf-modules.php');
 
 
-?> 
-
+?>

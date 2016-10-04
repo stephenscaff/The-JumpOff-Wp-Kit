@@ -1,11 +1,52 @@
 <?php
 /*-----------------------------------------------*/
 /*  ADMIN FUNCTIONS
-/* Admin Appearance
-/* Admin Widgets
-/* Admin Editor
-/* Admin Post Filters
 /*-----------------------------------------------*/
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+/** 
+*  jumpoff_admin_body_class
+*  Adds an admin body class that we can use to hide or target elements with css
+*
+*  @return: $classes (string)
+*/
+function jumpoff_admin_body_class( $classes ){ 
+  // Global Post
+  global $post;
+
+   if( !is_object($post) ) 
+        return;
+  // Make sure we're getting $post object
+  setup_postdata( $post );
+
+  // Returns an object that includes the screen’s ID, base, post type, taxonomy
+  // @see https://developer.wordpress.org/reference/functions/get_current_screen
+  $screen = get_current_screen();
+
+  // Construct class form the post_name
+  $page_name = 'admin-'.$post->post_name;
+  
+  // Construct class from post id
+  $post_id = 'admin-post-'.$post->ID;
+  
+  if ( 'post' == $screen->base ) {
+    $classes .= ' ' . $screen->post_type . ' ' . $post_id . ' ' . $page_name;
+  }
+  if(basename(get_page_template()) === 'page.php'){
+    $classes .= ' admin-page-template-default';
+  }
+  
+  // Return our admin classes
+  return $classes;
+  
+  // Reset
+  wp_reset_postdata( $post );
+}
+// Run our admin body class through abdmin_body_class
+add_filter( 'admin_body_class', 'jumpoff_admin_body_class' );
+
+
 
 /*-----------------------------------------------*/
 /*  Editor: Remove Visual Editor form Admin
@@ -22,23 +63,6 @@ add_filter('show_admin_bar', '__return_false');
 /*-----------------------------------------------*/
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 remove_action( 'additional_capabilities_display', 'additional_capabilities_display' );
-
-/*-----------------------------------------------*/
-/*  Admin Appearance: Remove via css where no hooks exist
-/*-----------------------------------------------*/
-function jumpoff_admin_hides() {
- echo '<style type="text/css">
-         .user-comment-shortcuts-wrap,
-         .show-admin-bar,
-         .user-rich-editing-wrap,
-         .user-description-wrap,.user-url-wrap{display:none}
-       </style>';
-}
-
-add_action('admin_head', 'jumpoff_admin_hides');
-
-
-
 
 
 /*-----------------------------------------------*/
@@ -73,40 +97,9 @@ function jumpoff_custom_admin_footer() {
 add_filter( 'admin_footer_text', 'jumpoff_custom_admin_footer' );
 
 
-/*-----------------------------------------------*/
-/* Post Filters: Add to Query for post filter
-/*-----------------------------------------------*/
-function jumpoff_admin_posts_filter( &$query )
-{
- if ( 
-  is_admin() 
-  AND 'edit.php' === $GLOBALS['pagenow']
-  AND isset( $_GET['p_format'] )
-  AND '-1' != $_GET['p_format']
-     )
- {
-  $query->query_vars['tax_query'] = array( array(
-   'taxonomy' => 'post_format'
-  ,'field'    => 'ID'
-  ,'terms'    => array( $_GET['p_format'] )
-  ) );
- }
-}
-add_filter( 'parse_query', 'jumpoff_admin_posts_filter' );
 
-/*-----------------------------------------------*/
-/* Post Filters: Add Taxonomies to Post Filter
-/*-----------------------------------------------*/
-function jumpoff_restrict_manage_posts_format()
-{
-  wp_dropdown_categories( array(
-   'taxonomy'         => 'post_format',
-   'hide_empty'       => 0,
-   'name'             => 'p_format',
-   'show_option_none' => 'Select Post Format'
-  ) );
-}
-add_action( 'restrict_manage_posts', 'jumpoff_restrict_manage_posts_format' );
+
+
 
 /*-----------------------------------------------*/
 /* Post Filters: Add Taxonomies to Post Filter
