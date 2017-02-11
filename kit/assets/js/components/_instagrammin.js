@@ -2,36 +2,32 @@
 /*global jQuery */
 /*jshint unused:false */
 /*jshint -W081 */
-/*-------------------------------
-* Every Day I'm Instagrammin'
-* http://everydayiminstagrammin.stephenscaff.com
-* Version: 1.0
-*
-* Licensed under the MIT license.
-* http://www.opensource.org/licenses/mit-license.php
-*
-* Copyright 2015, Stephen Scaff
-* http://stephenscaff.com
-*
-*------------------------------- */
-//  clientID: '2016056709',
-/*------------------------------
-* USAGE:
-*
-$('.instagram').everydayImInstagrammin({
-  clientID: 'Your ClientID',
-  accessToken: 'Your Access Token',
-  numberPics: '12',
-  imgClass: 'insta-img',
-  captions: 'true',
-  captionAlign: 'bottom',
-  sequenceFadeIn: 'true',
-  sequenceDuration: 300,
-  InstaType: 'byHash',
-  hashTag: 'pigeonwisdom'
-});
-
-----------------------------------*/
+/**
+ * Every Day I'm Instagrammin'
+ * http://everydayiminstagrammin.stephenscaff.com
+ * Version: 1.0
+ *
+ * Licensed under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ *
+ * Copyright 2015, Stephen Scaff
+ * http://stephenscaff.com
+ *
+ * @example
+    $('.instagram').everydayImInstagrammin({
+      clientID: 'Your ClientID',
+      accessToken: 'Your Access Token',
+      numberPics: '12',
+      imgClass: 'insta-img',
+      captions: 'true',
+      captionAlign: 'bottom',
+      sequenceFadeIn: 'true',
+      sequenceDuration: 300,
+      InstaType: 'byHash',
+      hashTag: 'pigeonwisdom'
+    });
+ *
+ */
 (function($) {
   $.everydayImInstagrammin = {
     defaults: {
@@ -127,4 +123,3 @@ $('.insta').everydayImInstagrammin({
   sequenceFadeIn: 'true',
   sequenceDuration: 300
 });
-

@@ -1,8 +1,6 @@
-/*----------------------------------------
-A file/image upload button
-Dependancies: modules/_forms.scss
-------------------------------------------*/
-
+/**
+ * File Uploader
+ */
 var SITE = SITE || {};
  
 SITE.fileInputs = function() {

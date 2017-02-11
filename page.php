@@ -21,17 +21,15 @@ get_header(); ?>
   </header>
 </section>
 
-<!-- SECTION -->
-<section class="section pad">
- <div class="grid">
-  <div class="grid__col g-8 centered">
-  <?php 
-   while (have_posts()) : the_post();
+<!-- CONTENT -->
+<section class="content pad">
+  <div class="grid-sm">
+<?php while (have_posts()) : the_post();
     the_content();
-   endwhile; // End content loop ?>
+   endwhile; // End content loop ?> 
   </div>
- </div>
 </section>
+
 </main>
 
 <!-- FOOTER --> 

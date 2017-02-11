@@ -12,10 +12,8 @@
 // ----------------------------------------------
 // Fonts
 //-----------------------------------------------
-$font-header: "gibson", Georgia, serif;
+$font-header: "gibson", Helvetica, sans-serif;
 $font-paragraph: "noto-serif", Georgia, serif;
-
-//$font-title: ;
 //$font-subtitle: ;
 
 // ----------------------------------------------
@@ -26,16 +24,24 @@ $base-lineheight: 1.8;
 // ----------------------------------------------
 // Font Size vars
 //-----------------------------------------------
+$font-scale-up: 0.1em;
+$font-h1: 2.25em;
+$font-h2: 1.9em;
+$font-h3: 1.3em;
+$font-h4: 1.1em;
+$font-h5: 1em;
 $font-small: 0.9em;
-$font-xsmall: 0.8em;
+$font-xsmall: 0.85em;
 $font-xxsmall: 0.7em;
-$font-xxxsmall: 0.5em;
+$font-xxxsmall: 0.6em;
 
-// -----------------------------`-----------------
+// -----------------------------------------------
 // Paddings
 //-----------------------------------------------
+$pad-xl:8em;
 $pad-lg:6em;
-$pad: 4em;
+$pad-med: 5em;
+$pad: 3em;
 $pad-sm: 2em;
 
 // ----------------------------------------------
@@ -46,17 +52,18 @@ $grid-cols: 12;
 // Grid col sizes
 $grid-col: 100% / $grid-cols;
 // Grid col pad
-$grid-col-pad: 2%;
+$grid-col-pad: 1.5em;
 $grid-gutter: 2%;
-$grid-max-width-sm: 50em;
-$grid-max-width: 60em;
-$grid-max-width-lg: 80%;
+$grid-max-width-sm: 42em;
+$grid-max-width: 60em; 
+$grid-max-width-med: 70em;
+$grid-max-width-lg: 85%;
 $grid-max-width-xl: 95%;
 $grid-width: 95%;
 
-/*----------------------------------------------
---Media Queries (min-widths)
------------------------------------------------*/
+// ----------------------------------------------
+// MQs
+//-----------------------------------------------
 //Smallest phone
 $mq-xsmall: 22em;
 //phone
@@ -72,9 +79,9 @@ $mq-xxlarge: 115em;
 //Thunderbold goes to 157em
 $mq-xxxlarge: 130em;
 
-/*----------------------------------------------
---Colors
------------------------------------------------*/
+// ----------------------------------------------
+// Colors
+//-----------------------------------------------
 $color-alpha:     #C43A31;
 $color-beta:      #003a49;
 

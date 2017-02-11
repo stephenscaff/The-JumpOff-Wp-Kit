@@ -1,0 +1,30 @@
+//----------------------------------------------
+// Admin Theme Colors
+//----------------------------------------------
+$color-alpha: #002d72;
+$color-beta: #216dd5;
+$color-delta: #0085ba;
+$color-light: rgba(255,255,255,0.8);
+$color-inputs-bg: rgba(124, 124, 124, 0.24);
+$color-form-border: rgba(255, 255, 255, 0.15);
+$color-form-label: $color-light;
+$sidebar-width: 16em;
+
+
+//----------------------------------------------
+// Admin Theme Media Queries
+//----------------------------------------------
+//Smallest phone
+$mq-xsmall: 22em;
+//phone
+$mq-small: 32em;
+//Tablet
+$mq-med: 54em;
+//laptop
+$mq-large: 65em;
+//Past laptop
+$mq-xlarge: 80em;
+//Mid Size monitor
+$mq-xxlarge: 115em;
+//Thunderbold goes to 157em
+$mq-xxxlarge: 130em;

@@ -1,11 +1,6 @@
 <?php
-/*-----------------------------------------------*/
-/* MODULES
-/*-----------------------------------------------*/
-
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
-
 
 /**
 * ACF Module Loader Class

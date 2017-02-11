@@ -1,4 +1,9 @@
 <?php
+
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+
 $jumpoff_order_options = get_option('jumpoff_order_options');
 $jumpoff_order_objects = isset($jumpoff_order_options['objects']) ? $jumpoff_order_options['objects'] : array();
 $jumpoff_order_tags = isset($jumpoff_order_options['tags']) ? $jumpoff_order_options['tags'] : array();

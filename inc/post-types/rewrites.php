@@ -1,11 +1,10 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-/*--------------------------------------------------*/
-/*  jumpoff_taxonomy_slug_rewrite
-/*  Allows post type and custom taxonomy slugs 
-/*  be the same and actually work. 
-/*--------------------------------------------------*/
+/**
+ *  Allows post type and custom taxonomy slugs 
+ *  be the same and actually work. 
+ */
 function jumpoff_taxonomy_slug_rewrite($wp_rewrite) {
   $rules = array();
   // get all custom taxonomies

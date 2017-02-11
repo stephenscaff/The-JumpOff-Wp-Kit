@@ -12,85 +12,64 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+global $post ; 
+
 //vars 
+$title = get_sub_field('heading_title');
+$bg_color = get_sub_field('bg_color');
 $post_type = get_sub_field('post_type');
 $posts_number = get_sub_field('posts_number');
-$show_link = get_sub_field('show_link');
-$link_text = get_sub_field('archive_link_text');
-$opt_id = get_sub_field('option_id');
-$opt_class = get_sub_field('option_class');
-?>
+$archive_link = get_sub_field('archive_link');
+$ft_or_recent = get_sub_field('featured_or_recent');
 
-<?php if ($post_type ==  'portfolio') : ?>      
+$tax_query='';
 
-<!-- PORTFOLIO -->
-<section class="folios">
-  <div id="portfolio" class="folio__grid" data-scroll="stagger-up">
+// Get Related Resources for Industries
+if ($ft_or_recent == 'featured'){
 
-<?php elseif ($post_type ==  'team') : ?>
+  $tax_query = array(
+    'taxonomy'    => 'post-functions',
+    'field'       => 'slug',
+    'terms' => array( 'featured' ),
+    'operator'    => 'IN',
+  );
+} 
 
-<!-- TEAM -->
-<section id="team" class="teams <?php if ($opt_class) : echo $opt_class; endif; ?>">
-  <div class="teams__grid" data-scroll="stagger-up">
-
-<?php else : ?>
-
-<!-- POSTS -->
-<section class="posts">
-  <div class="grid-lg">
-    <div class="posts__grid">
-
-<?php endif; ?>
-<?php
-global $post ; 
 $args = array(
     'post_type' => $post_type,
     'posts_per_page'   => $posts_number,
     'orderby'          => 'date',
     'order'            => 'DESC',
+    'tax_query'       => array($tax_query),
   );
   $posts = get_posts( $args );
+if ($posts && $title) : ?>
+<!-- Blog : Heading -->
+<section id="<?php echo $post_type; ?>" class="heading <?php if ($bg_color) : echo $bg_color; endif ?>" data-scroll-index="">
+  <header class="grid-lg">
+    <h2 class="heading__title"><?php echo $title; ?></h2>
+  </header>
+</section>
+<?php endif; if ($posts) : ?>
+<!-- Posts-->
+<section class="posts pad <?php if ($bg_color) : echo $bg_color; endif ?>">
+  <div class="grid-xl">
+    <div class="posts__grid">
+<?php
   foreach ( $posts as $post ) : setup_postdata( $post );
     get_template_part( 'partials/content/content', $post_type );
   endforeach;
   wp_reset_postdata();
 ?>
-<?php if ($post_type ==  'portfolio' || $post_type == 'team') : ?>
+    </div>
   </div>
 </section>
+<?php endif; if ($archive_link) : ?>
 
-<?php else : ?>
-    
-    </div> 
+<!-- Blog : View More -->
+<section class="view-more">
+  <div class="view-more__content grid-xl">
+    <a class="btn-line btn--beta" href="<?php echo jumpoff_term_link('blog', 'content-types'); ?>">View All</a>
   </div>
-</section>
-
-<?php endif; ?>
-
-<?php // Show Archive Link
-
-if ($show_link && $post_type != 'team') : ?>
-
-<?php 
-//$noun = 'Posts';
-
-} elseif ($post_type == 'portfolio') {
-  
-  $link = jumpoff_page_url('portfolio', '1');
-
-} elseif ($post_type == 'team') {
-
-  $link = jumpoff_page_url('about', '1')/'#team';
-
-} else {
-
-  $link = jumpoff_page_url('blog');
-}
-?>
-
-<section class="cta">
-  <a class="cta__link" href="<?php echo $link; ?>">
-    <span class="btn-link btn--white"><span><?php echo $link_text; ?></span>
-  </a>
 </section>
 <?php endif; ?>

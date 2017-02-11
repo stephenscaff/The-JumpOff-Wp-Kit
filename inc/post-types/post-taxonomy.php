@@ -15,9 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  */
 function post_functions_taxonomy() {
   register_taxonomy(
-    'post-functions',  
-    // Apply to these psot types
-    array( 'post','case-studies'),
+    'post-functions',  //The name of the taxonomy.
+    array( 'post', 'industries', 'products' ),
 
     array(  
     'labels'              => array(

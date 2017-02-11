@@ -1,7 +1,6 @@
-/*-----------------------------------------
-Simple Alerts via data-atts
-@todo: clean up, object literal
-------------------------------------------*/
+/**
+ *  Simple Alerts to build off
+ */
 
 (function() {
 	//trigger alert via data-attribute

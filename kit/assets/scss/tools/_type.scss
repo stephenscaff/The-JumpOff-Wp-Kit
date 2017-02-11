@@ -1,0 +1,124 @@
+
+//----------------------------------------------   
+//  Global Font Styles
+//  @description: create extendable and global font/header styles
+//                _base/typography.scss handles header sizings and setup.
+//                You create titles and subtitles here.
+//----------------------------------------------- 
+%font-title{
+  text-transform: uppercase;
+  font-family: $font-header;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.175em;
+}
+
+%font-subtitle{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  font-size: $font-xsmall;
+}
+
+%font-uppercase{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+%font-links{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/*----------------------------------------------   
+-section Title Styles
+-----------------------------------------------  */
+%font-lead,
+.font-lead{
+  font-size: 120%;
+ -webkit-hyphens: none;
+ -moz-hyphens: none;
+ -ms-hyphens: none;
+ hyphens: none;
+ margin-bottom: 0.8em;
+ line-height: 1.6;
+ @media (min-width: $mq-med) {
+   font-size: 135%;
+ }
+}
+//----------------------------------------------
+//  Example: Styles for BEM elements
+//----------------------------------------------
+//  [class*='__subtitle']{
+//    @extend %font-subtitle;
+//  }
+
+//----------------------------------------------
+//  Unstyled list
+//----------------------------------------------
+%list-unstyled {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+//----------------------------------------------
+//  Inline Lists
+//----------------------------------------------
+%list-inline{
+
+  ul{
+    list-style: none;
+    display: block;
+
+    li{
+      margin-right:  1em;
+      display: inline-block;
+    }
+  }
+}
+
+
+//----------------------------------------------
+//  word-break()
+//  @description: Solution for one word per line. We need
+//  to apply within @media, so couldn't just be an extend.
+//----------------------------------------------
+@mixin word-break(){
+  word-spacing: 9999px;
+}
+
+//----------------------------------------------
+//  font-rwd
+//  Change font-size across breaks 
+//  @param: $font_sm  - at small
+//  @param: $font_med - at med break
+//  @param: $font_lg  - at Large break
+//  @param: $font_xl  - at Xlarge break  
+//----------------------------------------------
+@mixin font-rwd($font_sm, $font_med, $font_lg, $font_xl) {
+  font-size: $fontSm;
+ 
+  @media (min-width: $mq-med) {
+    font-size: $font_med;
+  } 
+  @media (min-width: $mq-large) {
+    font-size: $font_lg;
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: $font_xl;
+  }  
+}
+
+//----------------------------------------------
+//  unstyled-list
+//  Creates an unstyled list, if you don't reset all lists
+//----------------------------------------------
+@mixin unstyled-list {
+  margin: 0 auto;
+  padding-left: 0;
+  list-style-type: none;
+}

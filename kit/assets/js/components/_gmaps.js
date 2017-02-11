@@ -1,11 +1,12 @@
-/*----------------------------------------
-  Stupid simple Google maps plugin.
-  Parses text into a Gmap, from a vcard.
-
-  Usage:
-
-  <!-- Sect Map
-  ================================================== -->
+/**
+ * Simple Google Maps plugin
+ * 
+ * Parses text/vcards into a gmap.
+ * Make sure to register with gmap api
+ * and include the gmap lib link.
+ *
+ * @author  Stephen Scaff
+ * @example
   <section class="js-map">
     <div class="location">Way of the Dog</div>
     <div class="address">527 S. Juanita Ave</div>
@@ -16,10 +17,10 @@
     <div class="phone">310-543-0375</div>
     <div class="zoom">13</div>
   </section>
------------------------------------------*/
-
-/* jshint undef: false, unused: false, -W020 */
-/* global $vcardGmap, google */
+ *
+ * jshint undef: false, unused: false, -W020
+ * global $vcardGmap, google
+ */
 
 //Do maps exist?
 if ($(".js-map").length) {
@@ -296,9 +297,7 @@ if ($(".js-map").length) {
         }
       });
 
-      /*----------------------------------------------   
-      --vcardGmapOptions
-      -----------------------------------------------  */
+      // Options
       var vcardGmapOptions = {
         //Set zoom within vcard
         'zoom': parseInt($vcardGmap.children('.zoom').text()),

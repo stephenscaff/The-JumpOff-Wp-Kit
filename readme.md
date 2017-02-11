@@ -35,10 +35,8 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- fonts.min.scss    # minified base64 font-face
 |
 |   |-- js 
-|       |-- plugins.min.js    # all minified plugins
-|       |-- scripts.min.js    # minified init and one off scripts
+|       |-- app.min.js        # all minified scripts
 |       |-- jquery.min.js  
-|       |-- modernizr.js   
 |
 |-- kit/                      # Working files
 |   |-- assets/               # scss and js
@@ -46,43 +44,39 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |           |-- app.scss      # main scss imports
 |           |-- fonts.scss    # font base64 imports
 |      
-|           |--tools/
+|           |--tools/         # Mixins and placeholder extends 
 |               |--- _config.scss # master config and sass vars 
-|               |--- _mixins.scss # global mixins
-|               |--- _extends.scss # global extends and themes
-|           |-- fonts/
+|               |--- _grids.scss 
+|               |--- _animations.scss 
+|               |--- _etc...
 |           |-- base/
 |               |--  _typography.scss    
 |               |--- _media.scss # global mixins
-|               |--- _colors.scss
-|               |--  _decor.scss  
-|               |--  _forms.scss       
+|               |--  _forms.scss      
 |           |--components/  
 |               |-- _buttons.scss      
-|               |-- _feeds.scss    
-|               |-- _ctas.scss    
-|               |-- _folio.scss    
+|               |-- _masts.scss    
+|               |-- _ctas.scss     
 |               |-- _intros.scss  
-|               |-- _jobs.scss    
 |               |-- etc...  
 |           |--regions/
-|               |-- _header.scss
-|               |-- _header-menu.scss
-|               |-- _footer.scss            
-|           |--utils/
+|               |-- _site-header.scss
+|               |-- _site-footer.scss       
+|               |-- _filterbar.scss
+|           |--helpers/
 |               |-- _grid.scss      
 |               |-- _helpers.scss  
 |               |-- _animations.scss   
-|               |-- etc... 
 |           |-- vendor/ 
 |               |-- _normalizer.scss 
 |
-|       |-- js/               # js files
-|           |-- jquery.js     # yep... still rocking jquery
-|           |-- app.js        # script appends/prepends/includes
-|           |-- _init.js      # inits
-|           |-- vendor/       # vendor libs
-|           |-- components/   # js components
+|       |-- js/            # js files
+|           |-- vendor/    
+|           |-- components/    
+|               |-- _site-nav.js   
+|               |-- _popups.js
+|               |-- _etc...   
+|           |-- _inits # site inits 
 |
 ```
 
@@ -90,44 +84,43 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 
 ```
 |-- inc/                      
-|   |-- admin-styles/      
-|       |-- admin-styles.min.css     # Admin Styles, minifed
-|       |-- admin-styles.scss        # Admin styles, working
+|   |-- admin/  
+|       |-- admin-theme             
 |
-|   |-- cpts 
-|       |-- post-types.php           # Custom Post Types & Taxonomies
+|   |-- post-types
+|       |-- post-type-name.php      
 |
-|   |-- functions                    # Functions, called in functions.php
-|       |-- admin.php                # admin related functions (appearance, editor, post filters)
-|       |-- settings.php             # wp defulat settings (images, permalinks, etc)
-|       |-- theme-support.php        # register theme support (thumbnails, post formats, etc)
-|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
-|       |-- cleanup.php              # Cleanups 
-|       |-- users.php                # User related functions 
-|       |-- dash.php                 # Dashboard related functions 
-|       |-- editor.php               # Post Editor 
-|       |-- helpers.php              # Helpers (excerpts, paths, cats, etc)
-|       |-- loops.php                # Modular Loop helpers
-|       |-- nav.php                  # Nav functions
-|       |-- pagination.php           # Paginaiton
-|       |-- socials.php              # Social integration funcitons
-|       |-- users.php                # User related functions 
-|       |-- modules.php              # Module loader class for ACF Flexible Content
+|   |-- functions                    
+|       |-- class-acf-modules.php              
+|       |-- styles-scripts.php     
+|       |-- post-templates.php       
+|       |-- loops.php               
+|       |-- etc...                
+|       |-- editor.php               
+|       |-- helpers.php              
+|       |-- loops.php               
+|       |-- nav.php                 
+|       |-- pagination.php           
+|       |-- socials.php            
+|       |-- users.php              
+|       |-- modules.php             
 |
-|-- page-templates/                  # Custom Page Templates
+|  |-- settings                      
+|
+|-- page-templates/                  
 |   |-- home.php                
 |
-|-- partials/                        # Partials, Loops, and modular elements
-|   |-- content/                     # Loop content
-|       |-- content-posts.php        # scss files
+|-- partials/                        
+|   |-- content/                     
+|       |-- content-posts.php        
 |       |-- content-etc.php         
 |       |-- etc...
-|   |-- modules/                     # Modules (via ACF and module loader at inc/functions/modules)
+|   |-- modules/                    
 |       |-- content-module.php 
 |       |-- image-module.php 
 |       |-- etc...
-|   |-- partials-head.php            # global head content, called in header.php
-|   |-- partials-header.php          # global header content, called in header.php
-|   |-- partials-footer.php          # global footer content, called in header.php
-|       |-- etc...
+|   |-- partials-head.php            
+|   |-- partials-header.php          
+|   |-- partials-footer.php          
+|   |-- etc...
 ```

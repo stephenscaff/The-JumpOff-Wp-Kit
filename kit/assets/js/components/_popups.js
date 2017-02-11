@@ -1,81 +1,143 @@
-/*---------------------------------------------
-PopUps
+/**
+ * PopUps
+ * For stuff like modals and popups. 
+ * Uses data atts to support multiple unique instances.
+ *
+ * @version: 1.2 (added aria support)
+ * @author  Stephen Scaff
+ * @example <a href="" data-popup="modal-popup">Poppin and Rockin</a> 
+ *          El to Popup <article id="modal-popup">Rock it don't stop</article>
+ */
 
-@version: 1.2 (added aria support)
-@description: 
-For stuff like modals and popups. 
-Uses data atts to support multiple unique instances.
+  var PopItUp = (function() {
+    var s;
 
-@see: scss/components
-@useage:  
-  link: <a href="" data-popup="modal-popup">Poppin and Rockin</a>
-  el to pop: <article id="modal-popup">Rock it don't stop</article>
-----------------------------------------------*/
-(function($) {
-  var s,
-  popUps = {
+    /**
+     * Settings
+     */
+    var settings = {
+      autoOpen: $('[data-popup-init]'),
+      openLink: $('[data-popup]'),
+      closeLink: $('.js-close-popup'),
+      body: $(document.body),
+      //vimeoID: $('[data-vimeo-id]'),
+      videoHolder:  $('.popup__vid'),
+      self: null
+    };
 
-    settings: {
-      popupLink: $('[data-popup]'),
-      popupData: $('[data-popup]').data('popup'),
-      popup: $('.popup'),
-      closer: $('.js-close-popup'),
-      input: $('input'),
-      isOpen: 'popup--is-open',
-    },
+    return {
+   
+      /**
+       * Init Popups
+       */
+      init: function() {
+        s = settings;
+        this.bindEvents();
+      },
 
-    init: function(){
-      s = this.settings;
-      this.bindEvents();
-    },
-
-    bindEvents: function() {
-      s.popupLink.click(function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        popUps.openPopup();
-        s.closer.focus();
-      });
-
-      s.closer.click(function(e) {
-        e.preventDefault();
-        popUps.closePopup();
-      });
-
-      // Close on ctrl c
-      s.input.bind('copy', function() {
-        popUps.closePopup();
-        s.popupLink.focus();
-      });
-
-      // Close on escape
-      $(document).keyup(function(e) {
-        if ($('body').hasClass(s.isOpen) && e.which === 27) {
-          popUps.closePopup();
-           s.popupLink.focus();
+      /**
+       * Bind Events
+       */
+      bindEvents: function(){
+        
+        // Auto Open
+        if (typeof s.autoOpen.data('popup-init') !== 'undefined'){
+          PopItUp.autoOpenPopUp();
         }
-      });
-      // Close if clicked anywhere
-      $('body').click(function() {
-        if ($('body').hasClass(s.isOpen)) {
-          popUps.closePopup();
-          s.popupLink.focus();
-        }
-      });
-    },
 
-    openPopup: function() {
-      $('#'+s.popupData).addClass(s.isOpen);
-      $('body').addClass(s.isOpen);
-      s.popup.attr('aria-hidden', 'false'); //@since v1.2
-    },
-    closePopup: function() {
-      $('#'+s.popupData).removeClass(s.isOpen);
-      $('body').removeClass('popup--is-open');
-      s.popup.attr('aria-hidden', 'true'); //@since v1.2
-    },
-  };
-  if($("[data-popup]").length) {  
-    popUps.init();
-  }
-})(jQuery);
+        // Opener
+        s.openLink.on( 'click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          s.self = this;
+          PopItUp.openPopUp();
+          
+          // If we have a Vimeo ID
+          if ($(this).data('vimeo-id')){
+            PopItUp.playVideo();
+          }
+        });
+        
+        // Close Link
+        s.closeLink.on( 'click', function(e) {
+          e.preventDefault();
+          PopItUp.closePopUp();
+          PopItUp.stopVideo();
+        });
+
+        // Close on escape
+        s.body.on("keyup click", function(e) {
+          if (s.body.hasClass('popup--is-open') && e.which === 27) {
+            PopItUp.closePopUp();
+            PopItUp.stopVideo();
+          } 
+        });
+      },
+
+      /**
+       * Auto Open
+       */
+      autoOpenPopUp: function(){
+        s.autoOpen.addClass('is-open');
+        s.body.addClass('popup--auto-open');
+      },
+
+      /**
+       * Open PopUps
+       */
+      openPopUp: function(){
+        var popup = $(s.self).data('popup');
+        
+        // Make sure we close any rouge autoOpens
+        s.autoOpen.removeClass('is-open');
+
+        // now, let's open that shit
+        $('#'+popup).addClass('is-open').attr('aria-hidden', 'false');
+        s.body.addClass('popup--is-open');
+        // If popup has data-vid
+          //if(s.vimeoID) { 
+  
+      },
+      
+      /**
+       * Close Popups
+       */
+      closePopUp: function(){
+        var popup = $(s.self).attr('data-popup');
+        $('#'+popup).removeClass('is-open').attr('aria-hidden', 'true');
+        s.body.removeClass('popup--is-open popup--auto-open');
+        //s.body.removeClass('popup--auto-open');
+      },
+
+      /**
+       * Play Video
+       * Supports Vimeo for the full viewport vids
+       */
+      playVideo: function(){
+        /** @todo Fix vimeoID 'this' scope */
+        var vimeoID = $(s.self).data('vimeo-id'), 
+            vimeoURL = 'https://player.vimeo.com/video/',
+            vimeoPath = vimeoURL+vimeoID,
+            vimeoColor = $(s.self).data('vimeo-color');
+
+
+        $.getJSON('http://www.vimeo.com/api/oembed.json?url=' + encodeURIComponent(vimeoPath) + '&title=0&byline=0&color=' + vimeoColor + '&autoplay=1&callback=?', 
+          
+          function(data){
+            s.videoHolder.html(data.html);
+          });
+      },
+
+      /**
+       * Stop Video
+       * Just clear out vids
+       */
+      stopVideo: function(){
+        //var vimeourl = $(".popup__vid").data('vid');
+         $(".popup__vid").empty();
+      },
+    };
+  })();
+ PopItUp.init();
+
+// $('#'+popup).addClass('is-open').fadeIn($(this).data());

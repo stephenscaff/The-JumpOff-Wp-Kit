@@ -1,14 +1,45 @@
-/*----------------------------------------------   
--Intro Text Sections
------------------------------------------------  */
+//----------------------------------------------
+//  Intros
+//  Styles for intro sections
+//
+//  @group intros
+//-----------------------------------------------
 
 .intro{
   margin: 0 auto;
-  padding: $section-padded;
-  text-align: center;
-  background-color: $color-lightgrey;
-  p{
+  padding: $pad-lg 0;
+  
+  &__header, &__content{
     margin: 0 auto;
-    max-width: 40em;
+    text-align:center;
+  }
+
+  &__title{
+    @extend %font-title;
+  }
+  
+  &__text, p{
+    margin: 0 auto;
+    max-width: 54em;
+  }
+  
+/*----------------------------------------------   
+-Heading--Left modifier
+-----------------------------------------------  */
+  &.intro--left{
+    text-align: left;
+    background-color: transparent;
+
+    
+    .intro__header, .intro__content{
+      margin: 0 auto;
+      text-align: left;
+    }
+  }
+
+  &.intro--heading{
+    padding: $pad 0 $pad-sm;
   }
 }
+
+

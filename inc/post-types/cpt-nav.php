@@ -1,46 +1,35 @@
 <?php
-/*--------------------------------------------------*
-* Circular Custom Post Type Nav
+/**
+*   Circular Custom Post Type Nav
 * 
-* @decription: Circular cusotm post type nav, that lnks last post to first and vis versa.
+*   @decription: Circular cusotm post type nav, that lnks last post to first and vis versa.
 * 
-* @param string       $link           Link permalink format.
-* @param bool         $in_same_term   Optional. Whether link should be in a same taxonomy term. Default is false.
-* @param array|string $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default is ''.
-* @param bool         $previous       Optional. Whether to display link to previous or next post. Default is true.
-* @useage:
-
-<?php jumpoff_next_link(  '%link', '<i class="icon-left-chev"></i>', true, '', 'team-type'); ?>
-<?php jumpoff_prev_link(  '%link', '<i class="icon-right-chev"></i>', true, '', 'team-type' ); ?>
-
-/*--------------------------------------------------*/
+*   @param string       $link           Link permalink format.
+*   @param bool         $in_same_term   Optional. Whether link should be in a same taxonomy term. Default is false.
+*   @param array|string $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default is ''.
+*   @param bool         $previous       Optional. Whether to display link to previous or next post. Default is true.
+*   @example
+*     <?php jumpoff_next_link(  '%link', '<i class="icon-left-chev"></i>', true, '', 'team-type'); ?>
+*     <?php jumpoff_prev_link(  '%link', '<i class="icon-right-chev"></i>', true, '', 'team-type' ); ?>
+*
+**/
 defined( 'ABSPATH' ) or die();
 
-if ( ! class_exists( 'jumpoff_LoopPostNavigationLinks' ) ) :
+if ( ! class_exists( 'cptNav' ) ) :
 
-class jumpoff_LoopPostNavigationLinks {
+class cptNav {
 
   /**
    * Flag to indicate if loop navigation is currently enanbled.
    *
-   * @since 2.6
    * @var bool
    */
   public static $loop_navigation_find = false;
 
-  /**
-   * Returns version of the plugin.
-   *
-   * @since 2.6
-   */
-  public static function version() {
-    return '2.6.1';
-  }
 
   /**
    * Class constructor: initializes class variables and adds actions and filters.
    *
-   * @since 2.6
    */
   public static function init() {
     // Load plugin textdomain.
@@ -55,8 +44,6 @@ class jumpoff_LoopPostNavigationLinks {
 
   /**
    * Loads the plugin domain for If File Exists.
-   *
-   * @since 2.6.1
    */
   public static function load_textdomain() {
     load_plugin_textdomain( 'loop-post-navigation-links' );
@@ -85,9 +72,9 @@ class jumpoff_LoopPostNavigationLinks {
     return $where;
   }
 
-} // end jumpoff_LoopPostNavigationLinks
+} // end cptNav
 
-jumpoff_LoopPostNavigationLinks::init();
+cptNav::init();
 
 endif; // end if !class_exists()
 
@@ -100,12 +87,10 @@ endif; // end if !class_exists()
  */
 
 
-if ( ! function_exists( 'jumpoff_get_next_or_loop_post_link' ) ) :
+if ( ! function_exists( 'jumpoff_get_next_or_loop_link' ) ) :
 /**
  * Gets next post link that is adjacent to the current post, or if none, then
  * the first post in the series.
- *
- * @since 2.5
  *
  * @param string       $format         Optional. Link anchor format. Default is '%link &raquo;'.
  * @param string       $link           Optional. Link permalink format. Default is '%title'.
@@ -113,10 +98,10 @@ if ( ! function_exists( 'jumpoff_get_next_or_loop_post_link' ) ) :
  * @param array|string $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default is ''.
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
-function jumpoff_get_next_or_loop_post_link( $format='%link &raquo;', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
-  return jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term, $excluded_terms, false, $taxonomy );
+function jumpoff_get_next_or_loop_link( $format='%link &raquo;', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
+  return jumpoff_get_adjacent_or_loop_link( $format, $link, $in_same_term, $excluded_terms, false, $taxonomy );
 }
-add_action( 'jumpoff_get_next_or_loop_post_link', 'jumpoff_get_next_or_loop_post_link', 10, 5 );
+add_action( 'jumpoff_get_next_or_loop_link', 'jumpoff_get_next_or_loop_link', 10, 5 );
 endif;
 
 
@@ -125,8 +110,6 @@ if ( ! function_exists( 'jumpoff_next_link' ) ) :
  * Displays next post link that is adjacent to the current post, or if none, then
  * the first post in the series.
  *
- * @since 2.0
- *
  * @param string       $format         Optional. Link anchor format. Default is '%link &raquo;'.
  * @param string       $link           Optional. Link permalink format. Default is '%title'.
  * @param bool         $in_same_term   Optional. Whether link should be in a same taxonomy term. Default is false.
@@ -134,18 +117,16 @@ if ( ! function_exists( 'jumpoff_next_link' ) ) :
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
 function jumpoff_next_link( $format='%link &raquo;', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
-  jumpoff_adjacent_or_loop_post_link( $format, $link, $in_same_term, $excluded_terms, false, $taxonomy );
+  jumpoff_adjacent_or_loop_link( $format, $link, $in_same_term, $excluded_terms, false, $taxonomy );
 }
 add_action( 'jumpoff_next_link', 'jumpoff_next_link', 10, 5 );
 endif;
 
 
-if ( ! function_exists( 'jumpoff_get_previous_or_loop_post_link' ) ) :
+if ( ! function_exists( 'jumpoff_get_prev_or_loop_link' ) ) :
 /**
  * Gets previous post link that is adjacent to the current post, or if none,
  * then the last post in the series.
- *
- * @since 2.5
  *
  * @param string       $format         Optional. Link anchor format. Default is '&laquo; %link'.
  * @param string       $link           Optional. Link permalink format. Default is '%title'.
@@ -153,8 +134,8 @@ if ( ! function_exists( 'jumpoff_get_previous_or_loop_post_link' ) ) :
  * @param array|string $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default is ''.
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
-function jumpoff_get_previous_or_loop_post_link( $format='&laquo; %link', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
-  return jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term, $excluded_terms, true, $taxonomy );
+function jumpoff_get_prev_or_loop_link( $format='&laquo; %link', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
+  return jumpoff_get_adjacent_or_loop_link( $format, $link, $in_same_term, $excluded_terms, true, $taxonomy );
 }
 add_action( 'jumpoff_prev_link', 'jumpoff_prev_link', 10, 5 );
 endif;
@@ -165,8 +146,6 @@ if ( ! function_exists( 'jumpoff_prev_link' ) ) :
  * Display previous post link that is adjacent to the current post, or if none,
  * then the last post in the series.
  *
- * @since 2.0
- *
  * @param string       $format         Optional. Link anchor format. Default is '&laquo; %link'.
  * @param string       $link           Optional. Link permalink format. Default is '%title'.
  * @param bool         $in_same_term   Optional. Whether link should be in a same taxonomy term. Default is false.
@@ -174,19 +153,17 @@ if ( ! function_exists( 'jumpoff_prev_link' ) ) :
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
 function jumpoff_prev_link( $format='&laquo; %link', $link='%title', $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
-  jumpoff_adjacent_or_loop_post_link( $format, $link, $in_same_term, $excluded_terms, true, $taxonomy );
+  jumpoff_adjacent_or_loop_link( $format, $link, $in_same_term, $excluded_terms, true, $taxonomy );
 }
 add_action( 'jumpoff_prev_link', 'jumpoff_prev_link', 10, 5 );
 endif;
 
 
-if ( ! function_exists( 'jumpoff_get_adjacent_or_loop_post_link' ) ) :
+if ( ! function_exists( 'jumpoff_get_adjacent_or_loop_link' ) ) :
 /**
  * Gets adjacent post link or the post link for the post at the opposite end of the series.
  *
  * Can be either next post link or previous.
- *
- * @since 2.5
  *
  * @param string       $format         Link anchor format.
  * @param string       $link           Link permalink format.
@@ -195,7 +172,7 @@ if ( ! function_exists( 'jumpoff_get_adjacent_or_loop_post_link' ) ) :
  * @param bool         $previous       Optional. Whether to display link to previous or next post. Default is true.
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
-function jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category' ) {
+function jumpoff_get_adjacent_or_loop_link( $format, $link, $in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category' ) {
   if ( $previous && is_attachment() )
     $post = get_post( get_post()->post_parent );
   else
@@ -203,9 +180,9 @@ function jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term =
 
   // START The only modification of get_adjacent_post_link() -- get the last/first post if there isn't a legitimate previous/next post
   if ( ! $post ) {
-    jumpoff_LoopPostNavigationLinks::$loop_navigation_find = true;
+    cptNav::$loop_navigation_find = true;
     $post = get_adjacent_post( $in_same_term, $excluded_terms, $previous, $taxonomy );
-    jumpoff_LoopPostNavigationLinks::$loop_navigation_find = false;
+    cptNav::$loop_navigation_find = false;
     // Don't loop to itself.
     if ( $post == get_post() ) {
       $post = null;
@@ -247,11 +224,11 @@ function jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term =
   // Apply custom filters and return
   return apply_filters( "jumpoff_{$adjacent}_or_loop_post_link_get", $output, $format, $link, $post, $in_same_term, $excluded_terms, $taxonomy );
 }
-add_action( 'jumpoff_get_adjacent_or_loop_post_link', 'jumpoff_get_adjacent_or_loop_post_link', 10, 6 );
+add_action( 'jumpoff_get_adjacent_or_loop_link', 'jumpoff_get_adjacent_or_loop_link', 10, 6 );
 endif;
 
 
-if ( ! function_exists( 'jumpoff_adjacent_or_loop_post_link' ) ) :
+if ( ! function_exists( 'jumpoff_adjacent_or_loop_link' ) ) :
 /**
  * Displays adjacent post link or the post link for the post at the opposite end of the series.
  *
@@ -264,7 +241,7 @@ if ( ! function_exists( 'jumpoff_adjacent_or_loop_post_link' ) ) :
  * @param bool         $previous       Optional. Whether to display link to previous or next post. Default is true.
  * @param string       $taxonomy       Optional. Taxonomy, if $in_same_term is true. Default 'category'.
  */
-function jumpoff_adjacent_or_loop_post_link( $format, $link, $in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category' ) {
+function jumpoff_adjacent_or_loop_link( $format, $link, $in_same_term = false, $excluded_terms = '', $previous = true, $taxonomy = 'category' ) {
   if ( $previous && is_attachment() ) {
     $post = get_post( get_post()->post_parent );
   } else {
@@ -276,7 +253,7 @@ function jumpoff_adjacent_or_loop_post_link( $format, $link, $in_same_term = fal
   // Apply custom filters and echo
   echo apply_filters(
     "jumpoff_{$adjacent}_or_loop_post_link_output",
-    jumpoff_get_adjacent_or_loop_post_link( $format, $link, $in_same_term, $excluded_terms, $previous, $taxonomy ),
+    jumpoff_get_adjacent_or_loop_link( $format, $link, $in_same_term, $excluded_terms, $previous, $taxonomy ),
     $format,
     $link,
     $post,
@@ -285,7 +262,7 @@ function jumpoff_adjacent_or_loop_post_link( $format, $link, $in_same_term = fal
     $taxonomy
   );
 }
-add_action( 'jumpoff_adjacent_or_loop_post_link', 'jumpoff_adjacent_or_loop_post_link', 10, 6 );
+add_action( 'jumpoff_adjacent_or_loop_link', 'jumpoff_adjacent_or_loop_link', 10, 6 );
 endif;
 
 if ( ! function_exists( 'jumpoff_get_adjacent_or_loop_post' ) ) :
@@ -293,8 +270,6 @@ if ( ! function_exists( 'jumpoff_get_adjacent_or_loop_post' ) ) :
  * Returns adjacent post or the post at the opposite end of the series.
  *
  * Can be either next post or previous post.
- *
- * @since 2.6
  *
  * @param bool          $in_same_term   Optional. Whether link should be in a same taxonomy term. Default is false.
  * @param array|string  $excluded_terms Optional. Array or comma-separated list of excluded term IDs. Default is ''.
@@ -311,9 +286,9 @@ function jumpoff_get_adjacent_or_loop_post( $in_same_term = false, $excluded_ter
   }
 
   if ( ! $post ) {
-    jumpoff_LoopPostNavigationLinks::$loop_navigation_find = true;
+    cptNav::$loop_navigation_find = true;
     $post = get_adjacent_post( $in_same_term, $excluded_terms, $previous, $taxonomy );
-    jumpoff_LoopPostNavigationLinks::$loop_navigation_find = false;
+    cptNav::$loop_navigation_find = false;
     // Don't loop to itself.
     if ( $post == get_post() ) {
       $post = null;
@@ -341,7 +316,7 @@ function jumpoff_get_next_or_loop_post( $in_same_term = false, $excluded_terms =
 add_action( 'jumpoff_get_next_or_loop_post', 'jumpoff_get_next_or_loop_post', 10, 3 );
 endif;
 
-if ( ! function_exists( 'jumpoff_get_previous_or_loop_post' ) ) :
+if ( ! function_exists( 'jumpoff_get_prev_or_loop_post' ) ) :
 /**
  * Returns previous post or the post at the end of the series.
  *
@@ -351,10 +326,8 @@ if ( ! function_exists( 'jumpoff_get_previous_or_loop_post' ) ) :
  *
  * @return WP_Post|null The post, or null if the post loops back to itself.
  */
-function jumpoff_get_previous_or_loop_post( $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
+function jumpoff_get_prev_or_loop_post( $in_same_term = false, $excluded_terms = '', $taxonomy = 'category' ) {
   return jumpoff_get_adjacent_or_loop_post( $in_same_term, $excluded_terms, true, $taxonomy );
 }
-add_action( 'jumpoff_get_previous_or_loop_post', 'jumpoff_get_previous_or_loop_post', 10, 3 );
+add_action( 'jumpoff_get_prev_or_loop_post', 'jumpoff_get_prev_or_loop_post', 10, 3 );
 endif;
-
-

@@ -1,22 +1,67 @@
-/*----------------------------------------------
---tabs: nav
------------------------------------------------*/
-.js-tabs {
-	.tab-nav {
-		li {
-			list-style: none;
-			display: inline-block;
-			padding-right: 1em;
-		}
-	
-  	li:hover {
-  		cursor: pointer;
-  	}
+//----------------------------------------------
+//  Tabs
+//
+//  Stupid simple tabs pattern that allows multiple tabs 
+//  with on the same page with identical markup. Works via
+//  a tab navigation list and corresponding viewer list.
+//
+//  @group tabs
+//  @see kit/js/components/_tabs.js
+//-----------------------------------------------
+
+.tabs{
+  padding: $pad 0;
+
+  //----------------------------------------------
+  //  Tabs Nav
+  //----------------------------------------------
+  &__nav {
+    li {
+      list-style: none;
+      display: inline-block;
+      padding-right: 1em;
+    }
+  
+    li:hover {
+      cursor: pointer;
+    }
   }
-  /*----------------------------------------------
-  --tabs: viewer
-  -----------------------------------------------*/
-	.tab-viewer li {
-		list-style: none;
-	}
+  //----------------------------------------------
+  //  Tabs Viewer
+  //----------------------------------------------
+  &__viewer{ 
+
+    li {
+     list-style: none;
+    }
+    // For our contact page, featuring forms in tabs.
+    .contact-form .grid{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+// Tabs Modifer - contacts
+.tabs--contacts{
+
+  .tabs__tab{
+    padding: 1.75em 2em 1em;
+    min-width: 10em;
+    @extend %font-links;
+    text-align: center;
+    color: $color-alpha;
+    background-color: #fff;
+
+    &.is-active{
+      background-color: $color-lightgrey;
+    }
+  }
+  .tabs__nav{
+    background-color: #fff;
+  }
+  .tabs__viewer{
+    padding: $pad-sm 0 $pad;
+    background: $color-lightgrey;
+  }
 }

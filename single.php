@@ -40,7 +40,6 @@ get_header();
 <!-- COMMENTS -->
 <?php //get_template_part( 'partials/partial', 'comments' );?>
 
-
 <!-- NEXT -->
 <?php get_template_part( 'partials/partial', 'next' );?>
 

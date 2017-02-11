@@ -19,8 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  </div>
 </footer>
 
-<!-- Le javascript
-================================================== --> 
+<!-- Le javascript --> 
 <?php wp_footer(); ?>
 
 </body>

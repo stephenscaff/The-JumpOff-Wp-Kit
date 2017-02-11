@@ -1,0 +1,25 @@
+/*----------------------------------------------   
+Inline Code
+-----------------------------------------------  */
+.code-inline{
+  padding: 0.5em;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #eee;
+}
+
+.code-inline-block{
+  display: block;
+}
+
+
+/*----------------------------------------------   
+Featured Image Checkbox
+Field that allows for the ft image to be 
+added to the masthead, instead of the post.
+-----------------------------------------------  */
+.ft-img-check{
+  display: block;
+  width: 100%;
+  border-top: 1px solid #eee;
+  padding: 1.2em 0 0.4em;
+}

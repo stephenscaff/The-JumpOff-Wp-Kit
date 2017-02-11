@@ -1,10 +1,10 @@
-/*---------------------------------------------
-Spanizer
-- Wraps letters with spans, for css animations
-
-@useage:
+/**
+ * Spanizer
+ * Wraps letters with spans, for css animations
+ *
+ * @example
   <h1 class="js-letters">Letters</h1>
-----------------------------------------------*/
+ */
 (function($) {
   var s,
   spanizeLetters = {

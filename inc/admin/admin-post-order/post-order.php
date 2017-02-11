@@ -1,6 +1,15 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+
+/**
+ * create new PostOrder_Engine class
+ */
 $jumpoff_order = new PostOrder_Engine();
 
+/**
+ * class: PostOrder_engine
+ */
 class PostOrder_Engine {
 
     function __construct() {
@@ -82,9 +91,9 @@ class PostOrder_Engine {
         if ($this->_check_load_script_css()) {
             wp_enqueue_script('jquery');
             wp_enqueue_script('jquery-ui-sortable');
-            wp_enqueue_script('jumpoff_orderjs', get_template_directory_uri() . '/inc/functions/post-order/assets/post_order.js', array('jquery'), null, true);
+            wp_enqueue_script('jumpoff_orderjs', get_template_directory_uri() . '/inc/admin/admin-post-order/assets/post_order.js', array('jquery'), null, true);
 
-            wp_enqueue_style('jumpoff_order', get_template_directory_uri() . '/inc/functions/post-order/assets/post_order.css', array(), null);
+            wp_enqueue_style('jumpoff_order', get_template_directory_uri() . '/inc/admin/admin-post-order/assets/post_order.css', array(), null);
         }
     }
 

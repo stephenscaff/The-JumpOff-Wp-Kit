@@ -1,8 +1,8 @@
-/*----------------------------------------   
--Scrolling Animations
-@description: a waypoints.js extension for animating of data attributes.
-@see: scss/utils/animations-scrolling.scss
------------------------------------------*/
+/**
+ * Scrolling Animations
+ * A waypoints.js extension for animating of data attributes.
+ * @see: scss/utils/animations-scrolling.scss
+ */
 (function($) {
 
     var scroller = {

@@ -1,7 +1,4 @@
 <?php
-/*-----------------------------------------------*/
-/*  IMAGE HELPERS
-/*-----------------------------------------------*/ 
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
@@ -24,7 +21,7 @@ function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
 
   // Allow loading posts by ID instead of relying on global $post/the loop
   if ($post_id) { 
-    $post = get_post($post_d); 
+    $post = get_post($post_id); 
   }
 
   // Read featured image data for image url.
@@ -76,7 +73,18 @@ function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
 
         // Array of fallback images to deliver randomly
         // @since v1.2
-        $random_no_images = array('placeholder-1.jpg', 'placeholder-2.jpg', 'placeholder-3.jpg', 'placeholder-4.jpg', 'placeholder-5.jpg');
+        $random_no_images = 
+          array('placeholder-1.jpg', 
+                'placeholder-2.jpg', 
+                'placeholder-3.jpg', 
+                'placeholder-4.jpg', 
+                'placeholder-5.jpg',
+                'placeholder-6.jpg',
+                'placeholder-7.jpg',
+                'placeholder-8.jpg',
+                'placeholder-9.jpg',
+                'placeholder-10.jpg',
+                'placeholder-11.jpg');
 
         // Randomize array of fallbacks
         $randomNumber = array_rand($random_no_images);

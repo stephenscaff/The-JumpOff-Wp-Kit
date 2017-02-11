@@ -1,0 +1,29 @@
+//----------------------------------------------
+//  Site Footer
+//
+//  Styles for the global site footer.
+//
+//  @group site-footer
+//-----------------------------------------------
+.site-footer {
+  margin-top: 1em;
+}
+
+//----------------------------------------------
+//  Sticky Footer via Flex
+//
+//  Flexbox-based sticky footer for pages with not 
+//  enough content to fill viewport. Might act wierd 
+//  in IE.
+//
+//  @group site-footer
+//-----------------------------------------------
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}

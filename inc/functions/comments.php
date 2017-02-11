@@ -1,8 +1,4 @@
 <?php
-/*-----------------------------------------------*/
-/*  Users: 
-/*  01: Add new contact methods, remove stupid ones
-/*-----------------------------------------------*/
 // Comment Layout
 function jumpoff_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>

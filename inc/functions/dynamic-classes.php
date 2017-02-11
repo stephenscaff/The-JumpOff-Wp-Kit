@@ -1,21 +1,15 @@
 <?php
-/*-----------------------------------------------*/
-/* Dynamic Classes
-/*-----------------------------------------------*/
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
-
 /** 
-*  jumpoff_body_class
-*  Cleans up body classes, then adds custom, based on page or cpt names
-*
-*  @return: $classes (string)
-*/
+ *  jumpoff_body_class
+ *  Cleans up body classes, then adds custom, based on page or cpt names
+ *  @return: $classes (string)
+ */
 function jumpoff_body_class($classes) {
   global $post, $page;
 
-  // Add page name to body class
   if (is_single() || is_page() && !is_front_page()) {
     $classes[] = basename(get_permalink());
   }
@@ -36,7 +30,9 @@ function jumpoff_body_class($classes) {
  
   // Remove Classes Array
   $remove_classes = array(
-    'page-template-default', 'page-template', 'single-format-standard',
+    'page-template-default', 
+    'page-template', 
+    'single-format-standard',
     $home_id_class,
     $page_id_class,
     $post_id_class,
@@ -44,8 +40,8 @@ function jumpoff_body_class($classes) {
     $page_template_name_php
   );
 
-  //Add specific classes
-  $classes[] = 'fade-in-page';
+  // Add specific classes
+  $classes[] = 'page-is-loading';
   $classes = array_diff($classes, $remove_classes);
   return $classes;
 }
@@ -74,5 +70,3 @@ function jumpoff_mast_class() {
   }
   return $class;
 }
-
-?>

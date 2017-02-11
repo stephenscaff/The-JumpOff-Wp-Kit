@@ -1,54 +1,39 @@
-
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 /**
- * Section: Next Post
+ *  Section: Next Post
  *
- * @author    Stephen Scaff
- * @package   jumpoff/content/sect-next
- * @version     1.0
+ *  @author     Stephen Scaff
+ *  @package    partials
+ *  @version    1.0
+ *  @uses       cptNav::$loop_navigation_find to find first/last posts
+ *  @uses       jumpoff_prev_link() which calls our cptNav class
+ *  
+ *              $format='%link &raquo;', 
+ *              $link='%title', 
+ *              $in_same_term = false, 
+ *              $excluded_terms = '', 
+ *              $taxonomy = 'category'
  */
-
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
+if (is_post_type('resources')){
+  $in_term = TRUE;
+  $tax = 'resource-types';
+} else{
+  $in_term = FALSE;
+  $tax = 'product-filters';
 }
 ?>
-<?php
-$previous_post = get_adjacent_post(false, '', false); 
-$next_post = get_adjacent_post(false, '', true);
-$post_type = get_post_type( get_the_ID() );
-?>
+<section class="pagination pagination--next">
+<?php jumpoff_next_link(  '%link', '
+  <div class="pagination__content">
+    <span class="pagination__meta">Previous</span>
+    <span class="pagination__title">%title</span>
+  </div>', $in_term, '', $tax); ?>
+<?php jumpoff_prev_link(  '%link', '
+  <div class="pagination__content">
+    <span class="pagination__meta">Next</span>
+    <span class="pagination__title">%title</span>
+  </div>', $in_term, 'true', $tax); ?>
+</section>
+ 
 
-<?php if ($next_post): // if there are newer articles ?>
-  <article class="card card--next" data-scroll="stagger-up">
-    <a class="card__link" href="<?php echo get_permalink($next_post); ?>">
-    <figure class="card__bg" style="background-image: url(<?php jumpoff_ft_img('fullsize', $next_post); ?>)"> </figure>
-        <header class="card__header">
-          <span class="card__subtitle">Up Next</span>
-          <h2 class="card__title"><?php echo get_the_title($next_post); ?></h2>
-        </header>
-    </a>
-  </article>
-
-<?php else: 
-  $cat = jumpoff_get_cat_slug();
-  $args = array(
-    'post_type' => $post_type,
-    'posts_per_page'   => 1,
-    'orderby'          => 'menu_order',
-    'order'            => 'DESC',
-  );
-  $posts = get_posts( $args );
-  foreach ( $posts as $post ) : setup_postdata( $post ); ?>
-  <article class="card card--next" data-scroll="stagger-up">
-    <a class="card__link" href="<?php echo get_permalink(); ?>">
-    <figure class="card__bg" style="background-image: url(<?php jumpoff_ft_img('fullsize'); ?>)"> </figure>
-        <header class="card__header">
-          <span class="card__subtitle">Up Next</span>
-          <h2 class="card__title"><?php echo get_the_title(); ?></h2>
-        </header>
-    </a>
-  </article>
-  <?php endforeach;
-  wp_reset_postdata();
-?>
-<?php endif; ?>

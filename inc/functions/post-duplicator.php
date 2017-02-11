@@ -1,8 +1,4 @@
 <?php 
-/*-----------------------------------------------*/
-/*  Post or Post Type Duplicator
-/*  For DEV only!
-/*-----------------------------------------------*/
 /*
  * Function creates post duplicate as a draft and redirects then to the edit post screen
  */
@@ -104,5 +100,3 @@ function jumpoff_duplicate_post_link( $actions, $post ) {
 }
  
 add_filter( 'post_row_actions', 'jumpoff_duplicate_post_link', 10, 2 );
-?> 
-?>

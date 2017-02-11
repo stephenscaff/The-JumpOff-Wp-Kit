@@ -1,13 +1,17 @@
 /*jshint -W030*/
 /*globals feature: false */
 
+/* This script wrapped in a Immediately-Invoked Function Expression (IIFE) to
+ * prevent variables from leaking onto the global scope. For more information
+ * on IIFE visit the link below.
+ * @see http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
+
+
 /*---------------------------------------------
-SITE INITS
-@description: pattern for initializing our plugins and modules,
-              via the object literal 'site'
+INit Mixitup
 ----------------------------------------------*/
 var site = {
-  
+      
   /*---------------------------------------------
   Feature JS
   ----------------------------------------------*/
@@ -23,6 +27,7 @@ var site = {
       $("html").addClass("no-flexbox");
     }
   },
+
   /*---------------------------------------------
   Parallax
   ----------------------------------------------*/
@@ -30,7 +35,6 @@ var site = {
     $('.js-parallax').parallax(6, 'false');
   },
 };
-
 
 /*---------------------------------------------
 INITS (doc ready)

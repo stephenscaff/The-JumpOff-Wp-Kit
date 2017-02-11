@@ -1,0 +1,72 @@
+/*----------------------------------------------   
+Users visibilities
+-----------------------------------------------  */
+.user-comment-shortcuts-wrap,
+.show-admin-bar,
+.user-rich-editing-wrap,
+.user-description-wrap,.user-url-wrap
+{
+  display:none
+}
+
+//----------------------------------------------
+//  Hide Main COntent Editor
+//-----------------------------------------------
+.admin-contact,
+.admin-about,
+.admin-home,
+.admin-careers,
+.admin-contact,
+.admin-press-room,
+.post-type-scorecards
+{
+  #postdivrich{
+    display: none;
+  }
+}
+
+//----------------------------------------------
+//  Page Nav Fields
+//-----------------------------------------------
+.admin-page-template-default{ 
+  // Page Navs Fields
+  #acf-group_57d87ea3a66df,
+
+  // Masts Fields
+  #acf-group_57c46e7989c0f{
+   //display: none;
+  }
+}
+
+//----------------------------------------------
+//  admin-mast-icon
+//
+//  Hide Mast Icon field on all but industries, products
+//-----------------------------------------------
+.admin-mast-icon{
+  display: none;
+}
+// Now Show
+.post-type-industries, .post-type-products{
+  .admin-mast-icon{
+    display: block;
+  }
+}
+
+/*----------------------------------------------   
+Modules visibilities
+-----------------------------------------------  */
+.wp-admin.post-type-industries .acf-fc-popup [data-layout="industries-ft-module"]{
+  display: none;
+}
+
+
+//----------------------------------------------
+//  Hide Categorey Tabs
+//
+//  Removes that pointless "most used" tabs on cat/tax boxes
+//-----------------------------------------------
+.category-tabs {
+  margin: 8px 0 5px;
+  display: none;
+}

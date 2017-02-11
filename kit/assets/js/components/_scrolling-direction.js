@@ -1,6 +1,7 @@
-/*----------------------------------------   
--Scroll Direction
------------------------------------------*/
+/**
+ * Detect Scolling direction
+ *
+ */
 function scrollDirection(){
   // Hide Header on on scroll down
   var didScroll;

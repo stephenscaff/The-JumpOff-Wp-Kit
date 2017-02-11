@@ -1,25 +1,21 @@
 <?php
 /**
- * The template for displaying Archives
- *
+ * Template for general posts archives.                                                                                                               n
  *
  * @author    Stephen Scaff
- * @package   jumpoff/archive
- * @version   1.0
+ * @package   page
+ * @version   2.0.0
  */
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- Archive hero
-================================================== -->
-<section class="mast mast--archive">
-  <header class="mast__header row g-full">
-    <span class="mast__subtitle">More From</span>
-    <h2 class="mast__title"><?php single_cat_title( '', true ); ?></h2>
-  </header>
-</section>
+<!-- MAIN --> 
+<main role="main" class="">
 
+<!-- MAST -->
+<?php get_template_part( 'partials/partial', 'mast' );?>
 
 <!-- POSTS -->
 <section class="posts pad bg-lightgrey">
@@ -36,10 +32,10 @@ get_header(); ?>
   </div>
 </section>
 
-<!-- Pagination
-================================================== -->
+<!-- Pagination -->
 <?php get_template_part( 'partials/posts', 'pagination' );?>
 
-<!-- Footer
-================================================== --> 
+</main>
+
+<!-- Footer  --> 
 <?php get_footer(); ?>

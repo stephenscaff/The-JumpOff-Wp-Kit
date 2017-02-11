@@ -1,16 +1,13 @@
 <?php
-/*-----------------------------------------------*/
-/*  ADMIN FUNCTIONS
-/*-----------------------------------------------*/
-
 if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
 /** 
-*  jumpoff_admin_body_class
-*  Adds an admin body class that we can use to hide or target elements with css
-*
-*  @return: $classes (string)
-*/
+ *  Admin Body Class
+ *  Adds an admin body class that we can use to 
+ *  hide or target elements with css
+ *
+ *  @return: $classes (string)
+ */
 function jumpoff_admin_body_class( $classes ){ 
   // Global Post
   global $post;
@@ -43,31 +40,21 @@ function jumpoff_admin_body_class( $classes ){
   // Reset
   wp_reset_postdata( $post );
 }
-// Run our admin body class through abdmin_body_class
+
 add_filter( 'admin_body_class', 'jumpoff_admin_body_class' );
 
-
-
-/*-----------------------------------------------*/
-/*  Editor: Remove Visual Editor form Admin
-/*-----------------------------------------------*/
+# Remove Visual Editor
 //add_filter ( 'user_can_richedit' , create_function ( '$a' , 'return false;' ) , 50 );
 
-/*-----------------------------------------------*/
-/*  Admin Appearance: Remove FrontEnd Admin bar
-/*-----------------------------------------------*/
+# Remove Admin Bar from Front End
 add_filter('show_admin_bar', '__return_false');  
 
-/*-----------------------------------------------*/
-/*  Admin Appearance: Remove Color Picker
-/*-----------------------------------------------*/
+# Remove Color Picker
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+# Remove Addtl Capabilities
 remove_action( 'additional_capabilities_display', 'additional_capabilities_display' );
 
-
-/*-----------------------------------------------*/
-/*  Remove Admin Bar stuffs
-/*-----------------------------------------------*/
 function jumpoff_admin_bar_remove() {
   global $wp_admin_bar;
 
@@ -87,28 +74,23 @@ function jumpoff_admin_bar_remove() {
 
 add_action('wp_before_admin_bar_render', 'jumpoff_admin_bar_remove', 0);
 
-/*-----------------------------------------------*/
-/*  Admin Footer: Replace Wp text
-/*-----------------------------------------------*/
+/**
+ * Replace Admin Footer
+ */
 function jumpoff_custom_admin_footer() {
   _e( '<span id="footer-thankyou">Developed by <a href="http://urbaninfluence.com" target="_blank">Urban Influence</a></span>' );
 }
-// adding it to the admin area
 add_filter( 'admin_footer_text', 'jumpoff_custom_admin_footer' );
 
 
-
-
-
-
-/*-----------------------------------------------*/
-/* Post Filters: Add Taxonomies to Post Filter
-/*-----------------------------------------------*/
+/**
+ * Add Taxonomy to Posts Filter (Admin)
+ */
 function jumpoff_add_taxonomy_filters() {
   global $typenow;
  
   // an array of all the taxonomyies you want to display. Use the taxonomy name or slug
-  $taxonomies = array('post-functions'); //arry of the post functions to add
+  $taxonomies = array('post-functions');
  
   foreach ($taxonomies as $tax_slug) {
     $tax_obj = get_taxonomy($tax_slug);
@@ -118,7 +100,7 @@ function jumpoff_add_taxonomy_filters() {
     if(count($terms) > 0) {
       echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
       echo "<option value=''>Show All $tax_name</option>";
-      foreach ($terms as $term) { 
+      foreach ( $terms as $term ) { 
         echo '<option value='. $term->slug, isset($_GET[$tax_slug]) == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>'; 
       }
       echo "</select>";
@@ -126,6 +108,3 @@ function jumpoff_add_taxonomy_filters() {
   }
 }
 add_action( 'restrict_manage_posts', 'jumpoff_add_taxonomy_filters' );
-
-
-?>

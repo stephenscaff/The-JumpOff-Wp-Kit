@@ -1,7 +1,8 @@
-/*----------------------------------------   
--Expander
-Simple Expander made reuseable via data attributes
------------------------------------------*/
+/**
+ * Expander
+ * Simple reusable expander via data atts
+ *
+ */
 (function($) {
   var expandIt = { 
 

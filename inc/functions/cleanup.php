@@ -1,14 +1,12 @@
 <?php
-/*--------------------------------------------------*/
-/*  WP CLEANUPS
-/*  Let's cleanup some of the grimey stuff Wp injects.
-/*--------------------------------------------------*/
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
+if ( ! defined( 'ABSPATH' ) ) exit; 
 
-/*--------------------------------------------------*/
-/*	Head Clean Up
-/*--------------------------------------------------*/
+/** 
+*  Head Clean Up
+*  Cleans up the head with stuff don't need
+*  @return: string $classes
+*/
 function jumpoff_head_cleanup() {
 
   //Remove rss links
@@ -27,31 +25,23 @@ function jumpoff_head_cleanup() {
   remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
   remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
-  //Remove Wp Version
+  // Remove Wp Version
   add_filter('the_generator', 'jumpoff_remove_wp_version');
 
 }
 add_action('init', 'jumpoff_head_cleanup');
 
 
-/*--------------------------------------------------*/
-/*	Remove Wp Version - for security
-/*--------------------------------------------------*/
+/** 
+*  Remove Versioning for security
+*/
 function jumpoff_remove_wp_version() {
   return '';
 }
 
-
-/*--------------------------------------------------*/
-/*	Stop Injected Styles: Gallery Styles
-/*--------------------------------------------------*/
+/** 
+*  Stop gallery styles injection
+*/
 function jumpoff_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
-
-
-
-
-
-
-?>

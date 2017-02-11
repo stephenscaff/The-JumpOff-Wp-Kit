@@ -1,56 +1,53 @@
+
 <?php
 /**
- * The template for displaying Author Archives
- *
+ * Template for author posts archives.                                                                                                               n
  *
  * @author    Stephen Scaff
- * @package   jumpoff/archive
- * @version   1.0
+ * @package   page
+ * @version   2.0.0
  */
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- Archive hero
-================================================== -->
-<section class="mast mast--archive">
-  <header class="mast__header row g-full">
-    <h1 class="mast__title"><?php the_author_meta('display_name'); ?></h1>
-    <hr class="sep-center sep--white">
-    <?php if (get_the_author_meta('description')) : ?>
+<!-- MAIN --> 
+<main role="main" class="">
+
+<section class="mast mast--author">
+  <div class="grid">
+  <div class="mast__content">
+      <h1 class="mast__title"><?php the_author_meta('display_name'); ?></h1>
+      <?php if (get_the_author_meta('description')) : ?>
       <p><?php the_author_meta('description'); ?></p>
     <?php endif; ?>
-  </header>
-</section>
-
-<section class="mast mast--archive">
-  <div class="row u-center-all">
-    <header class="g-8 cols">
-       <?php get_template_part( 'partials/post', 'author' );?>
-     </header>
+  </div>
   </div>
 </section>
 
-<!-- Posts
-================================================== -->
-<section class="posts">
- <div class="grid">
-  <div class="grid__col g-8 centered">
-  <?php
+<!-- Breadcrumbs -->
+<?php get_template_part( 'partials/partial', 'breadcrumbs' );?>
+
+<!-- POSTS -->
+<section class="posts pad bg-lightgrey">
+  <div class="grid-xl">
+    <div class="posts__grid">
+      <?php
     if ( have_posts() ): while ( have_posts() ) : the_post();
-      get_template_part( 'partials/content/content', 'posts' );
+      get_template_part( 'partials/content/content', 'post' );
     endwhile; else: 
       get_template_part( 'partials/content/content', 'none' );
     endif;
     ?>
+    </div>
   </div>
- </div>
 </section>
 
-<!-- Pagination
-================================================== -->
-<?php get_template_part( 'partials/posts', 'pagination' );?>
+<!-- Pagination -->
+<?php get_template_part( 'partials/partial', 'pagination' );?>
 
-<!-- Footer
-================================================== --> 
+</main>
+
+<!-- Footer  --> 
 <?php get_footer(); ?>

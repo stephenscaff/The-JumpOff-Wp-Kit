@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 <body id="top" <?php body_class(); ?>>
 
-<!-- Header  -->
+<!-- Menu Small -->
 <section class="site-menu-sm">
- 
+
   <nav class='site-menu-sm__nav'>
     <ul>
       <li><a href="<?php jumpoff_page_url('home') ?>">Home</a></li>
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
   </nav>
 </section>
 
-<!-- Header -->
+<!-- Header-->
 <header class="site-header">
   <div class="grid-xl">
     <!-- Logo -->

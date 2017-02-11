@@ -1,6 +1,13 @@
-/*----------------------------------------------
--Pop Overs
------------------------------------------------*/
+//----------------------------------------------
+//  Pop Overs
+//  PopUp styles for our popups.js
+//  Supports all kinds of shit, modals, full screen johns,
+//  full viewport vimeo vid, etc.
+//
+//  @group Popups
+//  @see js/components/_popups.js
+//  @see scss/components/_modals.scss 
+//----------------------------------------------
 .popup{
   z-index: -2;
   position: fixed;
@@ -17,18 +24,22 @@
   background: rgba(0,0,0,0.8);
   transition: all 0.5s ease;
 
-  //List Items animation setup
+  // List Items animation setup
   li{
     color: #fff;
     opacity: 0;
     transform: translateY(-1.5em);
   }
 
-  //Open
-  &.popup--is-open{
-    z-index: $z-overlays !important;
+//----------------------------------------------
+//  Pop Up - Is Open State
+//----------------------------------------------
+  .popup--is-open &.is-open,
+  .popup--auto-open &.is-open{
+    z-index: 999 !important;
     height: 100%;
     opacity: 1;
+    background: rgba(#111, 0.9);
     transition: opacity 0.6s ease;
 
     //List items animate in
@@ -39,18 +50,34 @@
       @include nth-trans-delay(8, 0.1s)
     }
   }
+
+  // Light modifier
+  .popup--is-open &.popup--light{
+    background: rgba(#fff, 0.9);
+  }
+
+  // Lightgrey modifier
+  .popup--is-open &.popup--lightgrey{
+    background: rgba(#eee, 0.9);
+  }
 }
 
+//----------------------------------------------
+//  Hide Header
+//----------------------------------------------
 .popup--is-open{
+  
+  // Hide site header
   .site-header{
     z-index: 0;
   }
 }
-/*----------------------------------------------
--Pop Overs - CLose
------------------------------------------------*/
+
+//----------------------------------------------
+//  Pop Ups - Closers
+//----------------------------------------------
 .popup__close {
-  z-index: $z-overlays;
+  z-index: 991;
   position:fixed;
   height: 3rem;
   width: 2rem;
@@ -88,4 +115,32 @@
   &:before {
     transform: rotate(-45deg);
   }
+}
+
+//----------------------------------------------
+//  Color closer x based on theme
+//----------------------------------------------
+.popup--light, .popup--lightgrey{
+  
+  .popup__x:before,.popup__x:after{
+    background: $color-dark !important;
+  } 
+}
+
+//----------------------------------------------
+//  Pop Up - Video reqs. Also use the flex-vid class
+//----------------------------------------------
+.popup__vid{
+  display: flex;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.video-wrapper video{
+  //object-fit:cover;
 }

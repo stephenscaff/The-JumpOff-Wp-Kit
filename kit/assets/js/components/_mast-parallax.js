@@ -1,9 +1,7 @@
-/*----------------------------------------
-Plugin: Plax Jax
-Version 1.0
-Author: Stephen Scaff
------------------------------------------*/
-
+/**
+ * Parallax Masts
+ * @version 1.0
+ */
 ;(function( $ ){
   var $window = $(window);
   var windowHeight = $window.height();
