@@ -11,8 +11,8 @@
 var MCSignUp = (function() {
 
 
-  var $form = $('#mc-signup'),
-      $formSubmit = $('#mc-submit'),
+  var $form = $('#mc-embedded-subscribe-form'),
+      $formSubmit = $('#mc-embedded-subscribe'),
       $body = $('body'),
       $signupNotice = $('.signup-notice');
   
@@ -52,7 +52,7 @@ var MCSignUp = (function() {
         
         // Error
         error: function(err) { 
-          $('.signup-notice').html('<span class="alert">Sorry girl. It\'s all gone Pete Tong. Try again later</span>'); 
+          $('.signup-notice').html('<span class="alert">Sorry, please try again.</span>'); 
         },
 
         // Success
@@ -65,10 +65,16 @@ var MCSignUp = (function() {
             message = data.msg.substring();
             // Add error class
             $body.addClass('signup--error');
+            console.log($body);
+            console.log('nope');
             // Add error message
             $('.signup-notice').html('<span class="signup-notice__message">'+message+'</span>');
+
+            // add Errors
+            $('.signup-form__input').addClass('error');
           
           } else {
+            console.log('yep');
             // Data Message
             message = data.msg;
             // Add success class
@@ -91,3 +97,4 @@ var MCSignUp = (function() {
   };
 })();
 MCSignUp.init();
+

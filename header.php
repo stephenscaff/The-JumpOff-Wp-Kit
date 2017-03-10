@@ -9,6 +9,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; 
 
+get_template_part( 'partials/partial', 'head' );
+get_template_part( 'partials/partial', 'header' );
+
 ?>
-<?php get_template_part( 'partials/partial', 'head' );?>
-<?php get_template_part( 'partials/partial', 'header' );?>

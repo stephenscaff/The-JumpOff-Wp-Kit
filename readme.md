@@ -6,19 +6,6 @@ A Wordpress starter theme and front-end framework for CodeKit
 -Wordpress: for, eh, Wordpress.
 -Jquery: for js
 
-
-
-## Modules
-functions/modules is a module loader for ACF Flexible Content Fields which enables drag and drop content creation. Just name your Flexible Content Fields after your related module file (ie; content-module.php). 
-
-Call modules inside templates like so:
-
-```
-<?php while (has_sub_field('modules')) : ?>
-  <?php ACF_Modules::render(get_row_layout()); ?>
-<?php endwhile; ?>
-```
-
 ## Transitioning from Static to WP
 Simple take the kit folder form the static projects and replace the kit folder in the wp project. Then replace global headers and footers and create page tempaltes from each static page.
 
@@ -35,48 +22,46 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- fonts.min.scss    # minified base64 font-face
 |
 |   |-- js 
-|       |-- app.min.js        # all minified scripts
+|       |-- plugins.min.js    # all minified plugins
+|       |-- scripts.min.js    # minified init and one off scripts
 |       |-- jquery.min.js  
+|       |-- modernizr.js   
 |
 |-- kit/                      # Working files
 |   |-- assets/               # scss and js
 |       |-- scss/             # scss files
 |           |-- app.scss      # main scss imports
 |           |-- fonts.scss    # font base64 imports
-|      
-|           |--tools/         # Mixins and placeholder extends 
-|               |--- _config.scss # master config and sass vars 
-|               |--- _grids.scss 
-|               |--- _animations.scss 
-|               |--- _etc...
+|
 |           |-- base/
-|               |--  _typography.scss    
-|               |--- _media.scss # global mixins
-|               |--  _forms.scss      
+|               |--- _config.scss
+|               |--- _mixins.scss
+|               |--- _colors.scss
+|               |--  _media.scss  
+|               |--  typography.scss      
 |           |--components/  
+|               |-- _animations.scss  
 |               |-- _buttons.scss      
-|               |-- _masts.scss    
-|               |-- _ctas.scss     
-|               |-- _intros.scss  
+|               |-- _grid.scss    
 |               |-- etc...  
-|           |--regions/
-|               |-- _site-header.scss
-|               |-- _site-footer.scss       
-|               |-- _filterbar.scss
-|           |--helpers/
-|               |-- _grid.scss      
-|               |-- _helpers.scss  
-|               |-- _animations.scss   
+|           |--partials/
+|               |-- _header.scss
+|               |-- _footer.scss       
+|               |-- _posts.scss     
+|           |--pages/
+|               |-- _home.scss      
+|               |-- _about.scss  
+|               |-- _etc...  
 |           |-- vendor/ 
 |               |-- _normalizer.scss 
 |
-|       |-- js/            # js files
-|           |-- vendor/    
-|           |-- components/    
-|               |-- _site-nav.js   
-|               |-- _popups.js
+|       |-- js/             # js files
+|           |-- scripts.js  # working scripts
+|           |-- plugins.js  # imported plugins
+|           |-- plugins/    # plugin import files
+|               |-- _easings.js   
+|               |-- _tabs.js
 |               |-- _etc...   
-|           |-- _inits # site inits 
 |
 ```
 
@@ -84,43 +69,43 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 
 ```
 |-- inc/                      
-|   |-- admin/  
-|       |-- admin-theme             
+|   |-- admin-styles/      
+|       |-- admin-styles.min.css     # Admin Styles, minifed
+|       |-- admin-styles.scss        # Admin styles, working
 |
-|   |-- post-types
-|       |-- post-type-name.php      
+|   |-- cpts 
+|       |-- post-types.php           # Custom Post Types & Taxonomies
 |
-|   |-- functions                    
-|       |-- class-acf-modules.php              
-|       |-- styles-scripts.php     
-|       |-- post-templates.php       
-|       |-- loops.php               
-|       |-- etc...                
-|       |-- editor.php               
-|       |-- helpers.php              
-|       |-- loops.php               
-|       |-- nav.php                 
-|       |-- pagination.php           
-|       |-- socials.php            
-|       |-- users.php              
-|       |-- modules.php             
+|   |-- customfields
+|       |-- custom-fields.php        # custom-fields saves
 |
-|  |-- settings                      
+|   |-- functions                    # Functions, called in functions.php
+|       |-- admin.php                # admin related functions (appearance, editor, post filters)
+|       |-- settings.php             # wp defulat settings (images, permalinks, etc)
+|       |-- theme-support.php        # register theme support (thumbnails, post formats, etc)
+|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
+|       |-- cleanup.php              # Cleanups 
+|       |-- users.php                # User related functions 
+|       |-- dash.php                 # Dashboard related functions 
+|       |-- editor.php               # Post Editor 
+|       |-- helpers.php              # Helpers (excerpts, paths, cats, etc)
+|       |-- loops.php                # Modular Loop helpers
+|       |-- nav.php                  # Nav functions
+|       |-- pagination.php           # Paginaiton
+|       |-- socials.php              # Social integration funcitons
+|       |-- users.php                # User related functions 
 |
-|-- page-templates/                  
+|-- page-templates/                  # Custom Page Templates
 |   |-- home.php                
 |
-|-- partials/                        
-|   |-- content/                     
-|       |-- content-posts.php        
+|-- partials/                        # Partials, Loops, and modular elements
+|   |-- content/                     # Loop content
+|       |-- content-posts.php        # scss files
 |       |-- content-etc.php         
-|       |-- etc...
-|   |-- modules/                    
-|       |-- content-module.php 
-|       |-- image-module.php 
-|       |-- etc...
-|   |-- partials-head.php            
-|   |-- partials-header.php          
-|   |-- partials-footer.php          
-|   |-- etc...
+|   |-- partials-head.php            # global head content, called in header.php
+|   |-- partials-header.php          # global header content, called in header.php
+|   |-- partials-footer.php          # global footer content, called in header.php
+|   |-- post-author.php              # modular sections
+|
+|-- resources/                       # a place to save working files and notes, ie PSDs, Icon Project Json files, etc
 ```

@@ -1,13 +1,80 @@
-/*----------------------------------------------   
---Dash Widget
------------------------------------------------  */
-.widget{ 
+//----------------------------------------------
+//  Hide Main COntent Editor
+//-----------------------------------------------
+.dash{
+  padding: 1% 1% 1% 0;
 
-  i{
-    color: #ddd;
+  @media (min-width: $mq-large){
+    padding: 1% 1% 1% 2%;
   }
-  .sep{
-    border-top: 1px solid #ddd;
-    border-bottom: 0;
+}
+
+.dash-header{
+  padding: 0.5em 0 2em;
+  
+  &__title{
+    font-size: 3em;
+    font-weight: 400;
+    color: $color-alpha;
   }
+
+  &__text{
+    font-size: 1.5em;
+    font-weight: 400;
+    color: $color-grey;
+  }
+}
+
+//----------------------------------------------
+//  Dash Cards
+//-----------------------------------------------
+.dash-cards{
+
+  @media (min-width: $mq-med){
+    display: flex;
+    margin-left: -1em;
+    margin-right: -1em;
+  }
+}
+
+//----------------------------------------------
+//  Dash Card
+//-----------------------------------------------
+.dash-card{
+  width: 50%;
+  flex-basis: 50%;
+  max-width: 35em;
+  position: relative;
+  display: block;
+  padding: 1em;
+
+  &__link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    min-height: 18em;
+    padding: 2em;
+    background: #fff;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover{
+      box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30,140,190,.8);
+    }
+  }
+
+  &__content{
+    padding: 2em 0.5em;
+  }
+
+  &__icon{
+    font-size: 5em;
+  }
+
+  &__text{
+    max-width: 17em;
+    margin: 0 auto;
+  }
+
 }

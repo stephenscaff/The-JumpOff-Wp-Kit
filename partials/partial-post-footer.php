@@ -12,6 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
+
 <footer class="post-footer">
   <div class="grid">
     <div class="grid__col g-6 centered">

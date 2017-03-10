@@ -1,6 +1,6 @@
-/*----------------------------------------------   
---Admin: Text Editor Q Tags Toolbar
------------------------------------------------  */
+//----------------------------------------------
+// Admin: Text Editor Q Tags Toolbar
+//----------------------------------------------
 .wp-core-ui .quicktags-toolbar input.button.button-small {
   font-size:1em!important;
   height:3em!important;
@@ -32,9 +32,9 @@
     }
 }
 
-/*----------------------------------------------   
---Admin - Toolbar Buttons
------------------------------------------------  */
+//----------------------------------------------
+// Editor: Toolbar Buttons
+//----------------------------------------------
 .postarea{
  
  .wp-core-ui .quicktags-toolbar input.button.button-small:hover {
@@ -72,9 +72,9 @@
   display:block !Important;
 }
 
-/*----------------------------------------------   
---TINY MCE STYLES: Toolbar buttons
------------------------------------------------  */
+//----------------------------------------------
+// TINY MCE
+//----------------------------------------------
 body#tinymce {
   font-size: 95% !important;
   margin: 1em 2em !important;
@@ -83,7 +83,6 @@ body#tinymce {
 
 #wp-content-wrap{
   
-
   //toolbar
   div.mce-toolbar-grp {
     background:#fff;
@@ -150,8 +149,6 @@ body#tinymce {
 
 }
 
-
-
 #poststuff{
 
   .quicktags-toolbar{
@@ -168,7 +165,7 @@ body#tinymce {
       display: none;
   }
 
-
+  // ACF Inputs
   .acf-input{
     [value="ins"],
     [value="Caption"],

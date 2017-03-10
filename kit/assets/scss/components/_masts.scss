@@ -1,9 +1,8 @@
-//----------------------------------------------
-//  Mast
-//  Page mastheads
-//
-//  @group mast
-//-----------------------------------------------
+/*----------------------------------------------
+-Masts
+@description: for top of page mastheads.
+@see: scss/tools/mixins.scss for the 'mast' mixin
+-----------------------------------------------*/
 .mast{
   position: relative;
   display:flex;

@@ -1,6 +1,6 @@
-/*----------------------------------------------   
-Users visibilities
------------------------------------------------  */
+//----------------------------------------------
+//  User Page Visibilities
+//-----------------------------------------------
 .user-comment-shortcuts-wrap,
 .show-admin-bar,
 .user-rich-editing-wrap,
@@ -11,14 +11,14 @@ Users visibilities
 
 //----------------------------------------------
 //  Hide Main COntent Editor
-//-----------------------------------------------
+//----------------------------------------------
 .admin-contact,
 .admin-about,
 .admin-home,
 .admin-careers,
 .admin-contact,
-.admin-press-room,
-.post-type-scorecards
+.admin-page-mast-modules,
+.post-type-page
 {
   #postdivrich{
     display: none;
@@ -26,40 +26,25 @@ Users visibilities
 }
 
 //----------------------------------------------
-//  Page Nav Fields
-//-----------------------------------------------
-.admin-page-template-default{ 
-  // Page Navs Fields
-  #acf-group_57d87ea3a66df,
-
-  // Masts Fields
-  #acf-group_57c46e7989c0f{
-   //display: none;
-  }
-}
-
+//  Remove Dash Menu Items, we're adding a new one
 //----------------------------------------------
-//  admin-mast-icon
-//
-//  Hide Mast Icon field on all but industries, products
-//-----------------------------------------------
-.admin-mast-icon{
+.menu-top-first .wp-first-item{
   display: none;
-}
-// Now Show
-.post-type-industries, .post-type-products{
-  .admin-mast-icon{
-    display: block;
+
+  & + li{
+    display: none;
   }
 }
-
-/*----------------------------------------------   
-Modules visibilities
------------------------------------------------  */
-.wp-admin.post-type-industries .acf-fc-popup [data-layout="industries-ft-module"]{
-  display: none;
+//----------------------------------------------
+//  Hide User Fields that we can't unhook
+//----------------------------------------------
+tr.user-url-wrap, 
+.user-description-wrap, 
+.user-rich-editing-wrap, 
+.user-comment-shortcuts-wrap, 
+.user-admin-bar-front-wrap {
+    display: none !important;
 }
-
 
 //----------------------------------------------
 //  Hide Categorey Tabs

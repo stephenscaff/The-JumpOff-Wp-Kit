@@ -1,15 +1,10 @@
-/**
- *  Image 2 Background Image
- *  Takes an image and adds as a bg image 
- *  to it's parent
- *
- *  @author Stephen Scaff
- *  @example
-      <figure class="js-imgbg">
-        <img src="yourmom.jpg">
-      </figure>
+/** 
+ * Img to background image
+ * @useage
+ * <figure class="js-imgbg">
+ *  <img src="yourmom.jpg">
+ * </figure>
  */
-
 (function($) {
   var s,
   img2bg = {
@@ -31,13 +26,11 @@
   img2bg.init();
 })(jQuery);
 
-/**
- *  Image 2 Background Image
- *  Gets data-att of image url and sets as bg image.
- *
- *  @author Stephen Scaff
- *  @example
-      <figure class="js-imgbg" data-bg-img="http://yourimage.jpg"></figure>
+/** 
+ * Data to background image
+ * Gets data-att of image url and sets and bg image.
+ * @useage
+ * <figure class="js-imgbg" data-bg-img="http://yourimage.jpg"></figure>
  */
 (function($) {
   var s,

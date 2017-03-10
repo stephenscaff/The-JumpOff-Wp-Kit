@@ -17,21 +17,25 @@
 //----------------------------------------------   
 // Tools: Mixins
 //---------------------------------------------- 
-@import 'tools/_positioning';
-@import 'tools/_grids';
-@import 'tools/_backgrounds';
-@import 'tools/_type';
-@import 'tools/_links';
-@import 'tools/_animations';
+@import 'tools/_mixins-type';
+@import 'tools/_mixins-grids';
+@import 'tools/_mixins-modules';
+@import 'tools/_mixins-animations';
 
 //----------------------------------------------   
-// Normalizer
+// Tools: Extends
 //---------------------------------------------- 
+@import 'tools/_extends-type';
+@import 'tools/_extends-sections';
+
+/*----------------------------------------------   
+Normalizer
+-----------------------------------------------  */ 
 @import 'base/_normalizer';
 
-//----------------------------------------------   
-// Base
-//---------------------------------------------- 
+/*----------------------------------------------   
+-Base
+-----------------------------------------------  */
 @import 'base/_links';
 @import 'base/_typography';
 @import 'base/_lists';
@@ -40,24 +44,28 @@
 @import 'base/_code';
 @import 'base/_tables';
 
-//----------------------------------------------   
-// Vendor
-//----------------------------------------------  
 
-//----------------------------------------------   
-// Layouts / Regions
-//---------------------------------------------- 
+/*----------------------------------------------   
+Vendor
+-----------------------------------------------  */ 
+
+
+/*----------------------------------------------   
+-Layouts & Regions
+-----------------------------------------------  */
 @import 'regions/_site-menu-sm';
-@import 'regions/_site-header';
-@import 'regions/_site-footer';
+@import 'regions/_header';
+@import 'regions/_footer';
 
-//----------------------------------------------   
-// Components
-//---------------------------------------------- 
+/*----------------------------------------------   
+-Components: Modular components
+-----------------------------------------------  */
 @import 'components/_buttons';
 @import 'components/_sections';
 @import 'components/_masts';
-@import 'components/_auto-cols';
+@import 'components/_titles';
+@import 'components/_ctas';
+@import 'components/_auto-grid';
 @import 'components/_popups';
 
 //@import 'components/_posts';
@@ -65,14 +73,13 @@
 //@import 'components/_post-content';
 //@import 'components/_bylines';
 
-//----------------------------------------------   
-// Utils
-//---------------------------------------------- 
+/*----------------------------------------------   
+Utils
+-----------------------------------------------  */
 @import 'utils/_grid'; 
 @import 'utils/_helpers-colors';
 @import 'utils/_helpers';
 @import 'utils/_decor';
 @import 'utils/_animations-keyframes';
-@import 'utils/_animations-transitions';
 @import 'utils/_animations-scrolling';
 

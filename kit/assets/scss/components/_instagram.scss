@@ -1,11 +1,6 @@
-//----------------------------------------------
-//  Instagram Feed
-//
-//  Styles for Instagram feeds.
-//
-//  @group insta
-//  @see kit/js/components/_instagrammin.js
-//-----------------------------------------------
+/*----------------------------------------------   
+--Instagramin'
+-----------------------------------------------  */
 .insta {
   background: $color-darkgrey;
   @include flex-grid(2,4);
@@ -38,7 +33,7 @@
     }
   }
 
-  // Caption hover
+  /* Caption hover tint */
   .insta__caption {
     z-index: 100;
     display: none;

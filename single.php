@@ -20,30 +20,27 @@ get_header();
 
 <article>
 
-<!-- MAST -->
+<!-- Post Header -->
 <?php get_template_part( 'partials/partial', 'post-header' );?>
 
-<!-- POST CONTENT -->
+<!--Post Content -->
 <section class="post-content content">
   <div class="grid-sm">
       <?php the_content(); ?>
   </div>
 </section>
 
-<!-- POST FOOTER -->
+<!-- Footer -->
 <?php get_template_part( 'partials/partial', 'post-footer' );?>
 
 </article>
 
 <?php endwhile; ?>
 
-<!-- COMMENTS -->
-<?php //get_template_part( 'partials/partial', 'comments' );?>
-
-<!-- NEXT -->
+<!-- Next -->
 <?php get_template_part( 'partials/partial', 'next' );?>
 
 </main>
 
-<!-- FOOTER -->    
+<!-- Footer-->    
 <?php get_footer(); ?>

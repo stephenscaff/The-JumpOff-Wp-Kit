@@ -1,0 +1,89 @@
+//---------------------------------------------- 
+//  link-styles()
+//  @description: Transition Delay on nth-childs
+//  @param: $mainColor: [$color-darkgrey] - initial color
+//  @param: $hoverColor:[$color-alpha]    - hover color
+//----------------------------------------------
+@mixin link-styles($mainColor: $color-darkgrey, $hoverColor: $color-alpha){
+ color: $mainColor;
+ text-decoration: none; 
+ line-height:inherit;
+ transition: color 0.4s ease-in-out;
+
+ &:hover, &:focus{
+  color: $hoverColor;
+  transition: color 0.4s ease-in-out;
+ }
+ &:active{
+  color: darken($hoverColor, 25);
+ }
+}
+
+//----------------------------------------------  
+// Fancy Pants Cross Out links
+//----------------------------------------------
+@mixin link-crossout($line_width:1px, $line_color: $color-dark){
+  position:relative;
+  display:inline-block;
+  overflow:hidden;
+
+  &:after{
+   content: "";
+   position: absolute;
+   height: $line_width;
+   background-color: $line_color;
+   left: 0;
+   right: 0;
+   top: 50%;
+   margin: 0 auto;
+   transform:translateX(-120%);
+   transition: all 0.6s ease;
+  }
+
+  &:hover:after{
+   width: 100%;
+   transform: translateX(0);
+   transition: all 0.6s ease;
+  }
+}
+
+//----------------------------------------------
+//  word-break()
+//  @description: Solution for one word per line. We need
+//  to apply within @media, so couldn't just be an extend.
+//----------------------------------------------
+@mixin word-break(){
+  word-spacing: 9999px;
+}
+
+//----------------------------------------------
+//  font-rwd
+//  @description: Change font-size across breaks 
+//  @param: $font_sm  - at small
+//  @param: $font_med - at med break
+//  @param: $font_lg  - at Large break
+//  @param: $font_xl  - at Xlarge break  
+//----------------------------------------------
+@mixin font-rwd($font_sm, $font_med, $font_lg, $font_xl) {
+  font-size: $fontSm;
+ 
+  @media (min-width: $mq-med) {
+    font-size: $font_med;
+  } 
+  @media (min-width: $mq-large) {
+    font-size: $font_lg;
+  }
+  @media (min-width: $mq-xlarge) {
+    font-size: $font_xl;
+  }  
+}
+
+//----------------------------------------------
+//  unstyled-list
+//  @description: creates an unstyled list
+//----------------------------------------------
+@mixin unstyled-list {
+  margin: 0 auto;
+  padding-left: 0;
+  list-style-type: none;
+}

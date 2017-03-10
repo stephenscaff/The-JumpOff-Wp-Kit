@@ -20,9 +20,9 @@ $search_query = get_search_query();
     <form id="searchform" role="search" class="search-form" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
       <div class="input-group">
         <input id="s" class="input-group__input input--search" name="s" type="text" placeholder="<?php esc_attr_e('Do another search', 'jumpoff'); ?>">
-          <button id="searchsubmit" class="input-group__btn btn--submit" type="submit" aria-label="Submit" title="Submit">
+        <button id="searchsubmit" class="input-group__btn btn--submit" type="submit" aria-label="Submit" title="Submit">
             Search
-          </button>
+        </button>
       </div>
     </form>
   </div>
@@ -38,9 +38,9 @@ $search_query = get_search_query();
 </section>
 
 <!-- Search Return Cards -->
-<section class="search-returns bg-lightgrey">
+<section class="posts posts--search bg-lightgrey">
   <div class="grid-xl">
-    <div class="search-returns__grid">
+    <div class="posts__grid">
 <?php 
   while ( $wp_query->have_posts() ) : $wp_query->the_post();
     get_template_part( 'partials/content/content', 'search-cards' );

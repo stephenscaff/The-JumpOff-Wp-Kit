@@ -65,20 +65,16 @@
 //-----------------------------------------------
 .acf_postbox{
  
- p.label label {
-    font-size: 1.2em !Important;
+  p.label label {
+    font-size: 1.2em !important;
     font-weight: 700 !important;
-    //padding: 1em 1em 1em;
-    //margin: 0 -1em 1em !important;
-    //border-bottom: 1px solid #ddd;
-    //border-top: 6px solid #F1F1F1;
- }
+  }
 
- p.label {
-  font-size:1.1em;
-  line-height:1.6;
-  padding:1em 0 0;
- }
+  p.label {
+    font-size:1.1em;
+    line-height:1.6;
+    padding:1em 0 0;
+  }
 }
 
 
@@ -120,7 +116,6 @@ table.acf_input tbody tr td.label{
   width: auto;
 }
 
-
 //----------------------------------------------
 //  ACF Field - Label (hints)
 //
@@ -142,7 +137,6 @@ table.acf_input tbody tr td.label{
   color: #888;
 }
 
-
 //----------------------------------------------
 //  ACF Field - Message/Hints
 //
@@ -157,40 +151,16 @@ table.acf_input tbody tr td.label{
 }
 
 //----------------------------------------------
-//  ACF Field - Icon List
-//
-//  Radio options list of available svg icons.
-//  This list will get huge, so let's save some admin
-//  space and grid them out.
-//
-//  @group admin fields
+//  Select 2 from ACF
 //-----------------------------------------------
-.admin-field-icon-list{
-  max-width: 75em;
-
-   ul li {
-    display: inline-block;
-    width: 50%;
-
-    @media (min-width: $mq-xlarge){
-      width: 20%;
-    }
-  }
-}
-
-
 .select2-container .select2-choice {
-    padding: 0.35em;
-    background-color: #fff;
-    background-image: none !important;
-    filter: none !important;
+  padding: 0.35em;
+  background-color: #fff;
+  background-image: none !important;
+  filter: none !important;
 }
 
 .select2-container .select2-choice .select2-arrow b{
   top: 12% !important;
   position: relative;
-}
-
-.select2-search-choice-close{
-  
 }

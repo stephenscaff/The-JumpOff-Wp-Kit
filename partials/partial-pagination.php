@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit; // Exit if accessed directly
 }
 ?>
-<?php if ( function_exists('jumpoff_pagination') ) { jumpoff_pagination(); } else if ( is_paged() ) : ?>
-<?php endif; ?>
-
+<?php 
+if ( function_exists('jumpoff_pagination') ) :
+  jumpoff_pagination(); 
+endif; 
+?>
 

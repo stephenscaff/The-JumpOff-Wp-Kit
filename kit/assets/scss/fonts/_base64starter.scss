@@ -1,9 +1,13 @@
-//---------------------------------------------- 
-//  Family: [family name]
-//  Weights: 400=reg, 700=bold
-//  Base64 embedding for out font-face.
-//  Convert ttf/otf to woff, then base64 that shit.
-//----------------------------------------------
+/*----------------------------------------
+Family: [family name]
+Weights: 400=reg, 700=bold
+
+Resources:
+  http://asun.co/o034-
+  - WOFF converter
+  http://jaicab.com/localFont/
+  - Base-64 multiple font files
+=========================================*/
 
 // Regular
 @font-face {

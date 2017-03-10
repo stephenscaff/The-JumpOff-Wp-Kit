@@ -1,6 +1,6 @@
-/*----------------------------------------------   
--Controls and Buttons
------------------------------------------------  */
+//----------------------------------------------
+// Controls and Buttons
+//----------------------------------------------
 #wp-content-editor-tools{
   background-color: #eee;
 }
@@ -50,9 +50,10 @@
 }
 
 #wpwrap{
-/*----------------------------------------------   
---Buttons
------------------------------------------------  */
+
+//----------------------------------------------
+// Buttons
+//----------------------------------------------
 .wp-core-ui .button,.wp-core-ui .button-primary,.wp-core-ui .button-secondary {
   box-shadow:none;
   border:0
@@ -61,15 +62,15 @@
 .wp-core-ui .button-primary {
     width: 8rem;
     height: 2.5rem;
-    vertical-align: middle !Important;
+    vertical-align: middle !important;
     text-align: center;
     line-height: 2.5rem;
     background-color: $color-alpha;
 }
 
-/*----------------------------------------------   
---ACF Buttons
------------------------------------------------  */
+//----------------------------------------------
+// ACF Buttons
+//----------------------------------------------
 .acf-image-uploader .acf-button, .preview.button {
   width: auto;
   height: 3em;
@@ -90,13 +91,9 @@
   margin: 0;
 }
 
-
-
-
-
-/*----------------------------------------------   
--Page Title Buttons
------------------------------------------------  */
+//----------------------------------------------
+// Page Titles
+//----------------------------------------------
   a.page-title-action {
     background: #fff;
     padding: 0.5rem 0.6rem;
@@ -107,29 +104,11 @@
       transition: background 0.4s ease;
     }
   }
-
 }
 
-/*
-.wp-core-ui .button,.wp-core-ui .button-secondary {
-background:#e4e4e4
+//----------------------------------------------
+// Edit Slug Box (appears below post titles)
+//----------------------------------------------
+#edit-slug-box {
+  margin: 1em 0 1.5em;
 }
-
-.wp-core-ui .button:hover,.wp-core-ui .button-secondary:hover,.wp-core-ui .button-primary {
-background:$color-alpha;
-color:#FFF
-}
-
-.wp-core-ui .button:hover span.wp-media-buttons-icon:before,.wp-core-ui .button-secondary:hover span.wp-media-buttons-icon:before {
-color:#FFF
-}
-
-.wp-media-buttons .insert-media {
-font-size:12px
-}
-
-.wp-media-buttons .add_media span.wp-media-buttons-icon:before {
-font-size:14px!important
-}
-*/
-

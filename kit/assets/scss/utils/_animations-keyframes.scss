@@ -1,46 +1,55 @@
-//----------------------------------------------
-// Fade In
-//----------------------------------------------
-@keyframes fade-in {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+/*----------------------------------------------
+--Page Fade In
+-----------------------------------------------*/
+.fade-in {
+  animation: fade-in ease-in-out 1s both;
 }
 
-//----------------------------------------------
-// Fade Out
-//----------------------------------------------
+.fade-in-page {
+  animation: fade-in ease-in-out 1.3s forwards;
+}
+/*----------------------------------------------
+--Fade Out
+-----------------------------------------------*/
+.fade-out {
+  animation: fade-in ease-in-out 1s both;
+}
 @keyframes fade-out {
   0%   { opacity: 1; }
   100% { opacity: 0; }
 }
 
-//----------------------------------------------
-//  Fade Out
-//----------------------------------------------
-@keyframes fade-out {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
+/*----------------------------------------------
+--Fade Up
+-----------------------------------------------*/
+.fade-up {
+  animation: fade-up ease-in-out 1s .4s both;
 }
 
-//----------------------------------------------
-//  Fade Up
-//----------------------------------------------
 @keyframes fade-up {
   0%   { transform: translateY(50px); }
   100% { transform: translateY(0px); }
 }
 
-//----------------------------------------------
-//  Fade Down
-//----------------------------------------------
+/*----------------------------------------------
+--Fade Down
+-----------------------------------------------*/
+.fade-down {
+  animation: fade-down ease-in-out 1s .4s both;
+}
+
 @keyframes fade-down {
   0%   { transform: translateY(-150px); }
   100% { transform: translateY(0px); }
 }
 
-//----------------------------------------------
-//  Fade In Left
-//----------------------------------------------
+/*----------------------------------------------
+--Fade In Left
+-----------------------------------------------*/
+.fade-left {
+  animation: fade-left ease-in-out 1s .1s both;
+}
+
 @keyframes fade-left {
   0% {
     opacity: 0;
@@ -52,9 +61,13 @@
   }
 }
 
-//----------------------------------------------
-//  Fade In Right
-//----------------------------------------------
+/*----------------------------------------------
+--Fade In Right
+-----------------------------------------------*/
+.fade-right {
+  animation: fade-right ease-in-out 1s .1s both;
+}
+
 @keyframes fade-right {
   0% {
     opacity: 0;
@@ -66,75 +79,53 @@
   }
 }
 
-//----------------------------------------------
-//  Slide up
-//----------------------------------------------
-@keyframes slide-up{
-  from {
-    transform: translate3d(0,100%,0);
+/*----------------------------------------------
+--Slide In Left
+-----------------------------------------------*/
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
   }
-  to {
-    transform: translate3d(0,0,0);
-  }
-}
-
-//----------------------------------------------
-//  Spin
-//----------------------------------------------
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
+/*----------------------------------------------
+--Slide In right
+-----------------------------------------------*/
+@keyframes slide-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*----------------------------------------------
+--Zoom
+-----------------------------------------------*/
+.scale-in {
+  @include engine3d;
+  animation: zoom-in ease-in-out 5s 0s;
+}
 
-//----------------------------------------------
-//  Scale in
-//----------------------------------------------
 @keyframes scale-in {
   0%   { transform: scale(0); }
   100% { transform: scale(1); }
 }
+/*----------------------------------------------
+--Zoom
+-----------------------------------------------*/
+.zoom-in {
+  @include engine3d;
+  animation: zoom-in ease-in-out 5s 0s;
+}
 
-//----------------------------------------------
-//  Zoom In
-//----------------------------------------------
 @keyframes zoom-in {
   0%   { transform: scale(1) rotate(0deg); }
   100% { transform: scale(1.4) rotate(3.2deg); }
 }
-
-
-/*----------------------------------------------
--preloader bounce
------------------------------------------------*/
-@keyframes preloader-bounce {
-  0%, 100% {
-    transform: scale(1.4) rotate(3.2deg);
-  }
-  50% {
-    transform: scale(0.5);
-  }
-}
-
-//----------------------------------------------
-//  Animation Helper calls
-//----------------------------------------------/
-.fade-in {
-  animation: fade-in ease-in-out 1s both;
-}
-.fade-in-page {
-  animation: fade-in ease-in-out 1.3s forwards;
-}
-.fade-right {
-  animation: fade-right ease-in-out 1s .1s both;
-}
-.fade-left {
-  animation: fade-left ease-in-out 1s .1s both;
-}
-.fade-down {
-  animation: fade-down ease-in-out 1s .4s both;
-}
-.fade-up {
-  animation: fade-up ease-in-out 1s .4s both;
-}
-

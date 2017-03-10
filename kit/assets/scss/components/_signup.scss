@@ -1,121 +1,121 @@
-//----------------------------------------------
-//  Signup
-//  MC signup ajax/json + interactions
-//
-//  @see: kit/assets/js/components/_signup.js
-//  @see: partials/modules/signup-module.php
-//-----------------------------------------------
-.signup-form{
-
-  &__input{
-    @extend .field--minimal;
-    margin-bottom: 1.5em;
-  }
-
-  &__btn{
-    display: inherit;
-    margin: 1em 0;
-  }
-}
-
-//----------------------------------------------
-//  Signup
-//
-//  @group: signup
-//-----------------------------------------------
-.signup-notice{
-  z-index: -1;
-  opacity: 0;
-  position: fixed;
-  top:  0;
-  bottom: 0;
-  left: 0;
-  right:  0;
-  height: 0;
-  max-height: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 5%;
-  color: #fff;
-  background-color: rgba($color-dark, 0.8);
-  text-align: center;
+/*----------------------------------------------
+-Signup
+@description: MC signup ajax/json + interactions
+@see: kit/assets/js/components/_signup.js
+@see: partials/modules/signup-module.php
+-----------------------------------------------*/
+.signup{
+  padding: $section-pad 0;
   
+  &__title{
+    @extend %font-title-sans;
+  }
+  &__form{
+    max-width: 35em;
+    margin: 0 auto;
+  }
+  &__input{
+    padding: 1.2rem 0.5rem 0.9rem;
+  }
+  
+  &__inputs{
+    display: flex;
+    flex-wrap: nowrap;
+    align-content: center;
+  }
+
+   &__submit{
+    white-space: nowrap;
+    min-width: 13em;
+  }
 
   &__message{
     opacity: 0;
+  }
+}
+/*----------------------------------------------
+-ON Success
+-----------------------------------------------*/
+.submit-success{
+  .signup{
+
+  }
+  .signup__message{
+    opacity: 1;
+    animation: fade-in 1.5s 1s ease;
+    transition: opacity 1s ease;
+  }  
+}
+/*--------------------------------------------------- 
+SIGNUP
+@description: Signup Notice
+---------------------------------------------------  */
+.signup-notice{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  padding: 5%;
+  text-align: center;
+  color: #fff;
+  z-index: -1;
+  transition: opacity 0.5s ease, z-index 1s 0.5s ease;
+
+  span{
     text-align:center;
     display: block;
     margin: 0 auto;
-    width: 90%;
-    max-width: 33em;
-    transition: opacity 1s ease; 
+
+    @media (min-width: $mq-med){
+      max-width: 70%;
+    }
   }
   
-  // Signup Success transition
-  .signup--success &{
+  //signup-notice - success
+  &.success{
+    opacity:  1;
     z-index: 999;
-    opacity: 1;
     height: 100vh;
-    max-height: 100vh;
     width: 100%;
-    background-color: rgba($color-dark, 0.8);
-    transition: opacity 0.1s ease, z-index 0.1s ease;
-    animation: signup-success 5s  ease both;
-
+    background-color: #111;
+    width:  100%;
+    top:  0;
+    bottom: 0;
+    left: 0;
+    right:  0;
+    will-change: opacity;
+    transform: translateY(0);
+    animation: signup-success 2s ease both;
   }
 
-  // Signup Error transition
-  .signup--error &{
+  //signup-notice - error
+  &.error{
     z-index: 999;
-    opacity: 1;
+    background: $color-alpha;
     height: 5em;
     max-height: 5em;
-    background: $color-alpha;
     will-change: opacity;
-
-    transition: opacity 0.5s 0.1s ease, z-index 0.1s ease, max-height 0.5s ease;
-  }
-
-  // Signup Error to Success transition
-  .signup--error.signup--success &{
-    height: 100vh;
-    max-height: 100vh;
-    background-color: rgba($color-dark, 0.8);
-    transition: max-height 1s ease, background-color 1s;
-    animation: fade-out 3s 4s ease both;
-  }
-
-  .signup--error & span,
-  .signup--success & span{
-    opacity: 1;
-    transition: opacity 1s ease;
-  }
-
-  .signup--fade-out &{
-      animation: signup-exit 1s 4s ease both;
+    transform: translateY(0);
+    animation: fade-in 2s ease;
+    transition: all 1s ease;
   }
 }
-
-@keyframes signup-exit{
-  to{
-    opacity: 0;
-  }
-}
-
-
 @keyframes signup-success{
   0%{
+    z-index: -1;
     opacity: 0;
   }
   50%{
-    opacity: 1;
-  }
-  70%{
-    opacity: 1;
-  }
-  100%{
+    z-index: 999;
     opacity: 0;
+  }
+
+  100%{
+    z-index: 999;
+    opacity: 1
 
   }
 }
@@ -136,12 +136,9 @@
 
   }
 }
-
-//----------------------------------------------
-//  Signup message
-//
-//  @group: signup
-//-----------------------------------------------
+/*--------------------------------------------------- 
+signup-message
+---------------------------------------------------  */
 .signup-message{
   opacity: 0;
 

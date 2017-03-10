@@ -1,13 +1,15 @@
-/* --settings
-========================================*/
+//----------------------------------------------
+// Imports
+//----------------------------------------------
 @import '_config';
-@import '_globals';
+@import '_acf';
+@import '_adminbar';
+@import '_adminmenu';
+@import '_layouts';
+@import '_typography';
 @import '_controls';
 @import '_forms';
 @import '_editor';
-@import '_adminbar';
-@import '_adminmenu';
 @import '_dash';
-@import '_acf';
 @import '_login';
 @import '_visibilities';

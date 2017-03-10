@@ -8,8 +8,9 @@
  * @package   jumpoff/footer
  * @version   1.0
  */
-if ( ! defined( 'ABSPATH' ) ) {
-  exit; // Exit if accessed directly
-}
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+get_template_part( 'partials/partial', 'footer' );
+
 ?>
-<?php get_template_part( 'partials/partial', 'footer' );?>

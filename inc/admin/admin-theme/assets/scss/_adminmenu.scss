@@ -1,6 +1,6 @@
-
-
-
+//----------------------------------------------
+// Admin Menu
+//----------------------------------------------
 #adminmenu {
   div.wp-menu-image:before {
     color: #a0a5aa;
@@ -88,15 +88,30 @@
   div.wp-menu-name,  .wp-submenu a  {
     color:#666
   }
- .wp-submenu, .wp-has-current-submenu .wp-submenu {
+  .wp-submenu, .wp-has-current-submenu .wp-submenu {
     background:#FFF!important
   }
 
- li.wp-has-current-submenu a.wp-has-current-submenu {
+  li.wp-has-current-submenu a.wp-has-current-submenu {
     padding-bottom:0
   }
 
- .wp-has-current-submenu ul>li>a {
+  .wp-has-current-submenu ul>li>a {
     padding-left:34px
   }
+}
+
+
+
+#adminmenu, 
+#adminmenu .wp-submenu, 
+#adminmenuback, 
+#adminmenuwrap {
+    background-color: #fff !important;
+    width: $sidebar-width;
+}
+
+#adminmenu .wp-submenu{
+  left: $sidebar-width - 0.75em;
+  transition: opacity 0.5s ease;
 }

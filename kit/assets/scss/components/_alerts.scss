@@ -1,0 +1,118 @@
+/*----------------------------------------------
+--Alerts
+-For bg colors, use: bg-white, bg-alpha, bg-beta, bg-grey, etc.
+-----------------------------------------------*/
+.alert {
+	//Default bg color: White
+  position: relative;
+  margin: 1em 0;
+	padding: 1.25em 1.5em;
+  background-color: #fff;
+  border-radius: $base-borderradius;
+  border-top: 1px solid rgba(0,0,0, .05);
+  border-left-width: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0, .2);
+
+	h2, h3, h4, h5, p {
+		margin: 0;
+		padding: 0;
+	}
+
+	.js-close {
+		position: absolute;
+    top: 54%;
+		right: 2%;
+		font-size: 1.75em;
+		transform: translateY(-50%);
+	}
+	
+	/*---------------------------------------------
+	--Alert: alpha
+	----------------------------------------------*/
+	&.alert--alpha {
+	border-left: 7px solid $color-alpha;
+	
+  	h2, h3, h4, h5 {
+  		color: $color-alpha;
+		}
+	}
+	/*----------------------------------------------
+	--Alert: Beta
+	-----------------------------------------------*/
+	&.alert--beta {
+	border-left: 7px solid $color-beta;
+	
+  	h2, h3, h4, h5 {
+  		color: $color-beta;
+		}
+	}
+	/*----------------------------------------------
+	--Alert: Ok
+	-----------------------------------------------*/
+	&.alert--ok {
+	border-left: 7px solid $color-ok;
+	
+  	h2, h3, h4, h5 {
+  		color: $color-ok;
+		}
+	}
+	/*----------------------------------------------
+	--Alert: Warning
+	-----------------------------------------------*/
+	&.alert--warning {
+	border-left: 7px solid $color-warning;
+	
+    h2, h3, h4, h5 {
+		  color: $color-warning;
+		}
+	}
+}
+
+
+/*----------------------------------------------
+--Alert Bar - via jquery and data-alert
+-----------------------------------------------*/
+.alert-bar {
+  z-index: 999999;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5em;
+  text-align: center;
+  color: #fff;
+  background-color: #09a;
+  box-shadow: 0 0 10px rgba(0,0,0, .75);
+  
+  h2, h3, h4, h5, p {
+  	padding: 0;
+  	margin: 0;
+  }
+  
+  .icon {
+  	display: inline;
+  	vertical-align:	middle;
+    font-size: 1.5em;
+  }
+  
+  p {
+  	display: inline;
+  	vertical-align:	middle;
+  }
+  
+	.js-close {
+		float: right;
+    font-size: 1.5em;
+		font-weight: 600;
+		line-height: 1;
+		text-shadow: 0 1px 0 #fff;
+    color: inherit;
+    transition: color .6s ease;
+		
+		&:hover {
+			color: rgba(255,255,255, .7);
+			transition: color .6s ease;
+		}
+	}
+}

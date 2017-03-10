@@ -120,8 +120,9 @@
             vimeoPath = vimeoURL+vimeoID,
             vimeoColor = $(s.self).data('vimeo-color');
 
-
-        $.getJSON('http://www.vimeo.com/api/oembed.json?url=' + encodeURIComponent(vimeoPath) + '&title=0&byline=0&color=' + vimeoColor + '&autoplay=1&callback=?', 
+        $.getJSON('http://www.vimeo.com/api/oembed.json?url=' + 
+          encodeURIComponent(vimeoPath) + '&title=0&byline=0&color=' + 
+          vimeoColor + '&autoplay=1&callback=?', 
           
           function(data){
             s.videoHolder.html(data.html);

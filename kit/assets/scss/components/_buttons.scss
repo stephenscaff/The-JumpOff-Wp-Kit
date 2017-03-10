@@ -1,114 +1,71 @@
-//----------------------------------------------
-//  Button Theme
-//  Default Button styler.
-//  @group    buttons
-//----------------------------------------------
-%btn-theme{
-  position: relative;
+/*----------------------------------------------
+--Butan
+-----------------------------------------------*/
+
+.btn {
   display: inline-block;
   vertical-align: middle;
   width: auto;
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border: 0;
-  @extend %font-links;
-  font-weight: 600;
+  padding: .5em 1em;
+  font-family: $font-header;
   text-align: center;
+  font-size: 100%;
+  font-weight: 600;
+  line-height: 1.2;
+  border: 0;
+  border-radius: $base-borderradius;
+  transition: background-color .25s ease-in;
   cursor: pointer;
   -webkit-appearance: none;
-  transition: all 0.4s $ease-cb-2;
 }
 
-//----------------------------------------------
-//  Button Mixin
-//  @group    buttons
-//----------------------------------------------
-@mixin btn($color: #fff, $bg_color: $color-alpha, $color_hover:#fff, $bg_color_hover:lighten($color-alpha, 10)){
-  @extend %btn-theme;
-  color: $color;
-  background-color: $bg_color;
-  padding: 1.555em 3em 1.355em;
-  line-height: 1;
-  border-radius: 4px;
-  min-width: 18em;
-  
-  &:hover{
-    color: $color_hover;
-    background-color: $bg_color_hover;
-    transition: all 0.6s ease;
-  }
+/*----------------------------------------------
+--Size modifiers
+-----------------------------------------------*/
+.btn--small {
+  font-size: .9em;
+  padding: .5em 1.5em;
 }
 
-//----------------------------------------------
-//  Button Line Mixin
-//  @group buttons
-//----------------------------------------------
-@mixin btn-line($color){
-  @extend %btn-theme;
-  color: $color;
-  
-  &:after{
-    content: '';
-    position: absolute;
-    bottom:-0.25em;
-    left: 0;
-    right: 0;
-    margin:0 auto;
-    height: 1px;
-    width: 0rem;
-    background-color: $color;
-    transition: all 0.6s ease;
-  }
+.btn--full {
+  display: block;
+  width: 100%;
+}
 
-  &:hover, a:hover &{
-    color: $color;
-    transition: all 0.6s ease;
+/*----------------------------------------------
+--Color modifiers
+-----------------------------------------------*/
+@mixin btn-theme($btn-bg, $btn-color, $btn-hoverbg:"", $btn-hover-color:"") {
+  color: $btn-color;
+  background-color: $btn-bg;
 
-    &:after{
-      @media (min-width: $mq-med){
-        width: 99%;
-        transition: all 0.6s ease;
-      }
+  &:hover {
+    cursor: pointer;
+    color: $btn-color;
+    @if $btn-hoverbg != "" {
+      background-color: $btn-hoverbg;
+    } 
+    @else{
+      background-color: lighten($btn-bg, 10%);
+    }
+    @if $btn-hover-color != "" {
+      color: $btn-hover-color;
     }
   }
-}
 
-
-//----------------------------------------------
-//  Button Line
-//  Minimal, Line-based button
-//
-//  @requires {mixin} btn-line() tools/mixins-buttons
-//  @group    buttons
-//----------------------------------------------
-.btn-line{
-  &.btn--white, {
-    @include btn-line(#fff);
-  }
-  &.btn--alpha{
-    @include btn-line($color-alpha);
-  }
-  &.btn--beta{
-    @include btn-line($color-beta);
+  &:active {
+    background-color: darken($btn-bg, 5%); 
   }
 }
 
-//----------------------------------------------
-//  Btn
-//  Basic button styles
-//
-//  @requires {mixin} btn()
-//  @group    buttons
-//----------------------------------------------
-.btn{
-  @include btn();
+.btn--alpha {
+  @include btn-theme($color-alpha, #fff);
+}
 
-  &--beta{
-     background-color: $color-beta;
+.btn--beta {
+  @include btn-theme($color-beta, #fff);
+}
 
-    &:hover{
-      background-color: $color-alpha;
-    } 
-  }
+.btn--white {
+  @include btn-theme(#fff, $color-beta, $color-beta, #fff);
 }

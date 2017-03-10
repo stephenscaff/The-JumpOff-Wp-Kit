@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- MAIN --> 
+<!-- Main --> 
 <main role="main" class="">
 
 <section class="mast mast--author">
@@ -26,23 +26,9 @@ get_header(); ?>
   </div>
 </section>
 
-<!-- Breadcrumbs -->
-<?php get_template_part( 'partials/partial', 'breadcrumbs' );?>
+<!-- Posts -->
+<?php get_template_part( 'partials/partial', 'posts' ); ?>
 
-<!-- POSTS -->
-<section class="posts pad bg-lightgrey">
-  <div class="grid-xl">
-    <div class="posts__grid">
-      <?php
-    if ( have_posts() ): while ( have_posts() ) : the_post();
-      get_template_part( 'partials/content/content', 'post' );
-    endwhile; else: 
-      get_template_part( 'partials/content/content', 'none' );
-    endif;
-    ?>
-    </div>
-  </div>
-</section>
 
 <!-- Pagination -->
 <?php get_template_part( 'partials/partial', 'pagination' );?>

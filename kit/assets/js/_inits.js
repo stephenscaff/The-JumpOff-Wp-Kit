@@ -1,20 +1,14 @@
 /*jshint -W030*/
 /*globals feature: false */
 
-/* This script wrapped in a Immediately-Invoked Function Expression (IIFE) to
- * prevent variables from leaking onto the global scope. For more information
- * on IIFE visit the link below.
- * @see http://en.wikipedia.org/wiki/Immediately-invoked_function_expression
-
-
-/*---------------------------------------------
-INit Mixitup
-----------------------------------------------*/
+/**
+ * Global Site inits
+ */
 var site = {
-      
-  /*---------------------------------------------
-  Feature JS
-  ----------------------------------------------*/
+  
+  /**
+   * Featured Init
+   */
   featureJS: function(){
     //no-js 
     $("html").removeClass("no-js");
@@ -27,18 +21,20 @@ var site = {
       $("html").addClass("no-flexbox");
     }
   },
-
-  /*---------------------------------------------
-  Parallax
-  ----------------------------------------------*/
+  /**
+   * Laxy Load
+   * @see js/vendor/_unveil.js
+   */
   plax: function(){
     $('.js-parallax').parallax(6, 'false');
   },
 };
 
-/*---------------------------------------------
-INITS (doc ready)
-----------------------------------------------*/
+
+
+/**
+ * Doc ready them inits
+ */
 $(function(){
   // Feature JS
   site.featureJS();

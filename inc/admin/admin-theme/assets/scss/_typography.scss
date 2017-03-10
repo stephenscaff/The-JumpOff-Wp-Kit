@@ -1,0 +1,47 @@
+#wpwrap{
+  margin-top: 1.3em;
+}
+
+#adminmenu, #adminmenu .wp-submenu, #adminmenuback, #adminmenuwrap {
+    background-color: #fff !important;
+    width: $sidebar-width;
+}
+
+#adminmenu .wp-submenu{
+  left: $sidebar-width - 0.75em;
+  transition: opacity 0.5s ease;
+}
+
+
+#wpcontent{
+  margin-left: $sidebar-width;
+}
+
+/*-----------------------------------------------*/
+/* Edit Pages: url/slug box below title
+/*-----------------------------------------------*/
+#edit-slug-box {
+  margin: 1em 0 1.5em;
+}
+
+
+//----------------------------------------------
+// Code
+//----------------------------------------------
+.code-inline{
+  padding: 0.5em;
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #eee;
+}
+
+.code-inline-block{
+  display: block;
+}
+
+//----------------------------------------------
+// Footer
+//----------------------------------------------
+#wpfooter{
+  padding-left: 5em;
+  padding-bottom: 1em;
+}

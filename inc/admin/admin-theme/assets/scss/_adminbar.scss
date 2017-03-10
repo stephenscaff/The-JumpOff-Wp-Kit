@@ -1,12 +1,13 @@
-
-
-
+//----------------------------------------------
+// WP Admin Bar
+//----------------------------------------------
 #wpadminbar {
 
   &{
     background:$color-alpha;
     height:auto
   }
+  
   .quicklinks .menupop ul li a:focus,
   .quicklinks .menupop ul li a:focus strong,
   .quicklinks .menupop ul li a:hover,
@@ -89,7 +90,9 @@
     display:none
   }
 
-
+//----------------------------------------------
+// Admin Bar Icons
+//----------------------------------------------
   .dashicons,
   .dashicons-before:before {
     font-size:30px;

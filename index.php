@@ -11,12 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- Main
-================================================== --> 
+<!-- Main --> 
 <main role="main" class="">
 
-<!-- Mast
-================================================== --> 
+<!-- Mast --> 
 <section class="mast">
   <figure class="mast__bg"></figure>
   <header class="mast__header">
@@ -25,29 +23,14 @@ get_header(); ?>
   </header>
 </section>
 
-<!-- Section Content
-================================================== -->
-<section class="posts">
- <div class="grid">
-  <div class="grid__col g-8 centered">
-  <?php
-    if ( have_posts() ): while ( have_posts() ) : the_post();
-      get_template_part( 'partials/content/content', 'posts' );
-    endwhile; else: 
-      get_template_part( 'partials/content/content', 'none' );
-    endif;
-    ?>
-  </div>
- </div>
-</section>
+<!-- Posts -->
+<?php get_template_part( 'partials/partial', 'posts' );?>
 
-<!-- Sect: Pagination
-================================================== -->
+<!-- Pagination -->
 <?php get_template_part( 'partials/partial', 'pagination' );?>
 
 </main>
 
-<!-- Footer
-================================================== --> 
+<!-- Footer --> 
 <?php get_footer(); ?>
 

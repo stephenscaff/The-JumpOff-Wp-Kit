@@ -1,8 +1,10 @@
-//----------------------------------------------
-//  Links
-//  @see scss/tools/mixins-type
-//  @see components/buttons for button styles
-//----------------------------------------------
+/*----------------------------------------------   
+Links
+-Basic Link Styles
+--
+@see scss/tools/mixins
+@see components/buttons for button styles
+-----------------------------------------------  */
 a{
   @include link-styles($color-alpha, $color-grey)
 }

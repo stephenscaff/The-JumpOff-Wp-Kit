@@ -66,11 +66,11 @@
           url: instaUrl,
           success: function(data) {
             for (var i = 0; i < options.numberPics; i++) {
-              if (data.data[i].hasOwnProperty('caption')) {
+              if (data.data[i].hasOwnProperty('caption') && data.data[i].caption !== null) {
                 var caption = '';
-                if (data.data[i].caption !== null) {
+       
                   caption = data.data[i].caption.text;
-                }
+          
                 elem.append("<li class='insta__item'><a target='_blank' href='" + data.data[i].link + "'><img class='" + options.imgClass + "' src='" + data.data[i].images.standard_resolution.url + "' /><div class='insta__caption'><p>" + caption + "</p></div></a></li>");
                 } else {
                 elem.append("<li class='insta__item'><a target='_blank' href='" + data.data[i].link + "'><img class='" + options.imgClass + "' src='" + data.data[i].images.standard_resolution.url + "'  /></a></li>");
@@ -112,13 +112,12 @@
 })(jQuery);
 
 $('.insta').everydayImInstagrammin({
-  clientID: '1299513855',
-  accessToken: '1299513855.5b9e1e6.38014cf0fb9a44b5ac7828862074023f',
+  clientID: '472977947',
+  accessToken: '472977947.1677ed0.ef4b198d268840f39774998007dd13e7',
   numberPics: '12',
   imgClass:'insta__img',
-  instaType: 'byHash',
-  hashTag: "awwwards",
   captions: 'true',
+  instaUser: 'ligaya.scaff',
   captionAlign: 'bottom',
   sequenceFadeIn: 'true',
   sequenceDuration: 300

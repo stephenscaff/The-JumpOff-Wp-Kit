@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 //vars
 $id = jumpoff_ids();
-$class = jumpoff_mast_class();
+$class = jumpoff_mod_class();
 $mast_title = get_field('mast_title', $id);
 $mast_text = get_field('mast_text', $id);
 $mast_bg = get_field('mast_bg', $id);

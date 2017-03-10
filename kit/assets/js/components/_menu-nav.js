@@ -1,6 +1,7 @@
-/*----------------------------------------------   
- -Offcanvas Menu Nav
- -----------------------------------------------  */
+/**
+ * Offcanvas Menu Nav
+ * Menu interaction for mobile or mobile-styled navs
+ */
 (function($) {
   var s,
   menuNav = {

@@ -11,26 +11,26 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- MAIN --> 
+<!-- Main --> 
 <main role="main">
 
-<!-- MAST --> 
+<!-- Mast --> 
 <section class="mast mast--page">
   <header class="mast__header">
     <h1><?php the_title(); ?></h1>
   </header>
 </section>
 
-<!-- CONTENT -->
+<!-- Content -->
 <section class="content pad">
   <div class="grid-sm">
 <?php while (have_posts()) : the_post();
     the_content();
-   endwhile; // End content loop ?> 
+   endwhile; ?> 
   </div>
 </section>
 
 </main>
 
-<!-- FOOTER --> 
+<!-- Footer --> 
 <?php get_footer(); ?>

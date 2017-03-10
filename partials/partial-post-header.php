@@ -10,8 +10,11 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 $post_subtitle = get_field('post_subtitle');
+
 ?>
+
 <header class="mast mast--left mast--post">
   <?php if ($post_ftimg) : ?>
     <figure class="mast__bg" style="background-image:url('<?php echo jumpoff_ft_img('full'); ?>');"></figure>
