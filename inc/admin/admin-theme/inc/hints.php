@@ -7,26 +7,30 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
  * 
  * @return string  $content A markup snippet
  */
+
 class AdminHints{
   
   function __construct(){
-    add_filter( 'admin_post_thumbnail_html', array( $this, 'featured_img') );
+    add_filter( 'admin_post_thumbnail_html', array( $this, 'ft_img_size_hints'));
   }
 
   /**
    * Featured Image Meta Hints
    */
-  function featured_img_helps($content){
-    global $post_type;  
+  function ft_img_size_hints( $content ) {
+    global $post_type;
 
-    // Target post types (use elseif for additional post types)
-    if ( 'post_type_name' == $post_type ) {
-      $content .= '<p>Featured and Mast Image: <br /> Size to 2000x1200px.</p><br/>';
+    if ( 'resources_cat' == $post_type ) {
+      $content .= '<p>The Featured Image appears on feeds: <br /> Size to 1250x1250.</p>';
     }
-    // Default
-    else{
-      $content .= '<p>Featured images appear in the Masthead and blog index previews. Size to 2000x1200px. Insert Shortcode: <br/><br/><code class="code-inline code-inline-block">[featured-image]</code> </p><br/>';
+    elseif ( 'team' == $post_type ) {
+      $content .= '<p>The Product Image appears on feeds: <br /> Size all product images to 1250x1250.</p><p>Use the Product Gallery below for the single product slider</p><p>Variation images are added from the Variations tab in Proudct Data.</p>';
     }
+    else {
+      $content .= '<p>Featured images appear in the Masthead and blog index previews. Size to 2000x1200px.<br/>';
+    }
+
+    return $content;
   }
 
   /**

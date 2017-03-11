@@ -9,6 +9,18 @@
 	],
 "creatorBuild": "25504",
 "files": {
+	"\/.gitignore": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/.gitignore",
+		"oF": 0
+		},
+	"\/archive.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/archive.php",
+		"oF": 0
+		},
 	"\/assets\/css\/app.min.css": {
 		"aP": 1,
 		"bl": 0,
@@ -59,10 +71,873 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/index.html": {
+	"\/author.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/index.html",
+		"oAP": "\/author.php",
+		"oF": 0
+		},
+	"\/comments.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/comments.php",
+		"oF": 0
+		},
+	"\/footer.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/footer.php",
+		"oF": 0
+		},
+	"\/functions.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/functions.php",
+		"oF": 0
+		},
+	"\/header.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/header.php",
+		"oF": 0
+		},
+	"\/humans.txt": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/humans.txt",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/.sass-cache\/2c014597ab236f074075dcc14ae2e91d7a9a9394\/admin-styles.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/.sass-cache\/2c014597ab236f074075dcc14ae2e91d7a9a9394\/admin-styles.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/.sass-cache\/662e2eba650c95d395f402d1a025dfcbffcb6251\/admin-styles.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/.sass-cache\/662e2eba650c95d395f402d1a025dfcbffcb6251\/admin-styles.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/.sass-cache\/a7e821da1a3d20016ac62b12b1899f2628fb0175\/admin-styles.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/.sass-cache\/a7e821da1a3d20016ac62b12b1899f2628fb0175\/admin-styles.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/.sass-cache\/c3ff74d7b15083ba77e4973b073f5f4a3ea59454\/admin-styles.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/.sass-cache\/c3ff74d7b15083ba77e4973b073f5f4a3ea59454\/admin-styles.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/admin-theme.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/admin-theme.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/css\/admin.min.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/admin.min-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/css\/admin.min.css.map": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/admin.min.css.map",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_acf.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_acf.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_adminbar.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_adminbar.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_adminmenu.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_adminmenu.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_config.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_config.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_controls.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_controls.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_dash.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_dash.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_editor.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_editor.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_forms.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_forms.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_globals.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_globals.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_login.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_login.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_visibilities.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/_visibilities.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/admin.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/0282881bb13c8510b181e94d7fb0085bffc76994\/admin.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_acf.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_acf.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_adminbar.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_adminbar.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_adminmenu.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_adminmenu.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_config.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_config.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_controls.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_controls.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_editor.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_editor.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_forms.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_forms.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_globals.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_globals.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_login.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_login.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_visibilities.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/_visibilities.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/admin.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/067f19f5c623cb3dcd293afc06f45cae3ff6ceb8\/admin.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_acf.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_acf.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_adminbar.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_adminbar.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_adminmenu.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_adminmenu.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_config.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_config.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_controls.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_controls.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_dash.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_dash.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_editor.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_editor.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_forms.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_forms.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_globals.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_globals.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_layouts.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_layouts.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_login.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_login.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_typography.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_typography.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_visibilities.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/_visibilities.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/admin.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/752b3ea9bbfa10a631a2ee1b3385c0998ca2f01e\/admin.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_acf.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_acf.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_adminbar.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_adminbar.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_adminmenu.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_adminmenu.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_config.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_config.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_controls.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_controls.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_editor.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_editor.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_globals.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_globals.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_login.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/_login.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/admin.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/scss\/.sass-cache\/a2a8d63d49651c5186c33bb78f65ad8f9f797ee6\/admin.scssc",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_acf.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_acf.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_adminbar.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_adminbar.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_adminmenu.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_adminmenu.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_config.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_config.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_controls.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_controls.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_dash.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_dash.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_editor.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_editor.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_forms.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_forms.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_globals.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_globals.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_layouts.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_layouts.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_login.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_login.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_typography.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_typography.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_visibilities.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_visibilities.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/_widgets.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 1,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/_widgets.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/assets\/scss\/admin.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 5,
+		"dS": 0,
+		"ft": 4,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/inc\/admin\/admin-theme\/assets\/css\/admin.css",
+		"oF": 0,
+		"oS": 0,
+		"uL": 1
+		},
+	"\/inc\/admin\/admin-theme\/inc\/adminbar.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/adminbar.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/inc\/editors.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/editors.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/inc\/extras.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/extras.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/inc\/hints.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/hints.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/inc\/menus.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/menus.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/admin-theme\/inc\/styles-scripts.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/admin-theme\/inc\/styles-scripts.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/dash\/dash-view.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/dash\/dash-view.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/dash\/dash.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/dash\/dash.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/dash\/widgets.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/dash\/widgets.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/post-order\/assets\/post_order.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/inc\/admin\/post-order\/assets\/post_order-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/inc\/admin\/post-order\/assets\/post_order.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/inc\/admin\/post-order\/assets\/min\/post_order-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/inc\/admin\/post-order\/assets\/taxonomy_order.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/inc\/admin\/post-order\/assets\/min\/taxonomy_order-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/inc\/admin\/post-order\/index.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/post-order\/index.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/post-order\/post-order.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/post-order\/post-order.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/post-order\/settings.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/post-order\/settings.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/utils\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/utils\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/admin\/utils\/post-duplicator.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/admin\/utils\/post-duplicator.php",
+		"oF": 0
+		},
+	"\/inc\/cleanup\/cleanup.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/cleanup\/cleanup.php",
+		"oF": 0
+		},
+	"\/inc\/cleanup\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/cleanup\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/fields\/class-acf-modules.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/fields\/class-acf-modules.php",
+		"oF": 0
+		},
+	"\/inc\/fields\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/fields\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/fields\/index-fields.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/fields\/index-fields.php",
+		"oF": 0
+		},
+	"\/inc\/helpers\/dynamic-classes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/helpers\/dynamic-classes.php",
+		"oF": 0
+		},
+	"\/inc\/helpers\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/helpers\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/load-more\/load-more.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/inc\/load-more\/min\/load-more-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/inc\/load-more\/load-more.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/load-more\/load-more.php",
+		"oF": 0
+		},
+	"\/inc\/load-more\/min\/load-more-min.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/inc\/load-more\/min\/min\/load-more-min-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/inc\/loaders\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/loaders\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/loaders\/styles-scripts.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/loaders\/styles-scripts.php",
+		"oF": 0
+		},
+	"\/inc\/paths\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/paths\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/paths\/nav.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/paths\/nav.php",
+		"oF": 0
+		},
+	"\/inc\/paths\/paths.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/paths\/paths.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/cpt-nav.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/cpt-nav.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/images.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/images.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/loops.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/loops.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/pagination.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/pagination.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/post-templates.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/post-templates.php",
+		"oF": 0
+		},
+	"\/inc\/post-helpers\/taxonomies.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-helpers\/taxonomies.php",
+		"oF": 0
+		},
+	"\/inc\/post-types\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-types\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/post-types\/post-taxonomy.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-types\/post-taxonomy.php",
+		"oF": 0
+		},
+	"\/inc\/post-types\/post-type-ex.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/post-types\/post-type-ex.php",
+		"oF": 0
+		},
+	"\/inc\/settings\/image-settings.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/settings\/image-settings.php",
+		"oF": 0
+		},
+	"\/inc\/settings\/includes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/settings\/includes.php",
+		"oF": 0
+		},
+	"\/inc\/settings\/permalinks.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/settings\/permalinks.php",
+		"oF": 0
+		},
+	"\/inc\/settings\/rewrites.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/settings\/rewrites.php",
+		"oF": 0
+		},
+	"\/inc\/settings\/support.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/settings\/support.php",
+		"oF": 0
+		},
+	"\/inc\/shortcodes\/shortcodes.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/inc\/shortcodes\/shortcodes.php",
+		"oF": 0
+		},
+	"\/index.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/index.php",
 		"oF": 0
 		},
 	"\/kit\/assets\/js\/_inits.js": {
@@ -164,11 +1039,11 @@
 		"sC": 1,
 		"tS": 0
 		},
-	"\/kit\/assets\/js\/components\/_page-transition.js": {
+	"\/kit\/assets\/js\/components\/_page-transitions.js": {
 		"ft": 64,
 		"mi": 1,
 		"oA": 1,
-		"oAP": "\/kit\/assets\/js\/components\/min\/_page-transition-min.js",
+		"oAP": "\/kit\/assets\/js\/components\/min\/_page-transitions-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
@@ -440,6 +1315,54 @@
 		"oAP": "\/kit\/assets\/scss\/.sass-cache\/1e8815ca492090bf1ae41afcf7b08ece499daed0\/_mixins-type.scssc",
 		"oF": 0
 		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_code.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_code.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_forms.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_forms.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_links.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_links.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_lists.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_lists.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_media.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_media.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_normalizer.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_normalizer.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_tables.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_tables.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_typography.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/34408608898c388c0b4033927efd76063ad0d38b\/_typography.scssc",
+		"oF": 0
+		},
 	"\/kit\/assets\/scss\/.sass-cache\/3dd0f82982fcd7f58f00f3cfe00f0a78abf065b5\/_iconfont.scssc": {
 		"ft": 8192,
 		"oA": 1,
@@ -456,6 +1379,18 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/kit\/assets\/scss\/.sass-cache\/3dd0f82982fcd7f58f00f3cfe00f0a78abf065b5\/_verlag.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/3ea6e949294e7979655e97d7ddd0c577337123b4\/app.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/3ea6e949294e7979655e97d7ddd0c577337123b4\/app.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/3ea6e949294e7979655e97d7ddd0c577337123b4\/fonts.scssc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/3ea6e949294e7979655e97d7ddd0c577337123b4\/fonts.scssc",
 		"oF": 0
 		},
 	"\/kit\/assets\/scss\/.sass-cache\/49cb6e3fead3a8b664f742ac3e0d8a1fc29c2430\/_auto-cols.scssc": {
@@ -492,6 +1427,36 @@
 		"ft": 8192,
 		"oA": 1,
 		"oAP": "\/kit\/assets\/scss\/.sass-cache\/49cb6e3fead3a8b664f742ac3e0d8a1fc29c2430\/_sections.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_auto-cols.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_auto-cols.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_buttons.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_buttons.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_masts.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_masts.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_popups.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_popups.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_sections.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/4d33746ab36b169566f8ffe396fe68d8dbe044a7\/_sections.scssc",
 		"oF": 0
 		},
 	"\/kit\/assets\/scss\/.sass-cache\/5e4195143ca2520ff98f3e4b81b8ebc14d408e84\/_config.scssc": {
@@ -644,6 +1609,84 @@
 		"oAP": "\/kit\/assets\/scss\/.sass-cache\/7c2c574b29905819e6c49e82f5855e7c74dd7c38\/_sticky-footer.scssc",
 		"oF": 0
 		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_colors.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_colors.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_decor.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_decor.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_grid.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_grid.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_helpers.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_helpers.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_keyframes.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_keyframes.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_transitions.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/862c164806fb79687681976d7931bd6ba01d2eb1\/_transitions.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_animations.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_animations.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_backgrounds.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_backgrounds.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_config.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_config.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_grids.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_grids.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_links.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_links.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_positioning.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_positioning.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_type.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/9069f5d71b534d4e251c37b5f2c73c5e8e17a25f\/_type.scssc",
+		"oF": 0
+		},
 	"\/kit\/assets\/scss\/.sass-cache\/9837c734ae0ebffe18822d80b54364db4d433d62\/_footer.scssc": {
 		"ft": 8192,
 		"oA": 1,
@@ -710,6 +1753,42 @@
 		"oAP": "\/kit\/assets\/scss\/.sass-cache\/a997b6edbf63f25568c093c559435cbd439e40bf\/_typography.scssc",
 		"oF": 0
 		},
+	"\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-footer.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-footer.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-header.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-header.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-menu-sm.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/b724ddf0f43fc2eda5fbba418bf4755df2e21afb\/_site-menu-sm.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_iconfont.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_iconfont.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_tiempos.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_tiempos.scssc",
+		"oF": 0
+		},
+	"\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_verlag.scssc": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/kit\/assets\/scss\/.sass-cache\/bba41f1af3801e08053be7c4e9e7bb557638d3a8\/_verlag.scssc",
+		"oF": 0
+		},
 	"\/kit\/assets\/scss\/.sass-cache\/d28fe0cd8a036618f9b01d63a7ad447dd3ac6fc5\/_animations-keyframes.scssc": {
 		"ft": 8192,
 		"oA": 1,
@@ -763,7 +1842,7 @@
 		"oAP": "\/assets\/css\/app.min.css",
 		"oF": 2,
 		"oS": 3,
-		"uL": 1
+		"uL": 0
 		},
 	"\/kit\/assets\/scss\/base\/_code.scss": {
 		"aP": 0,
@@ -1423,37 +2502,139 @@
 		"oS": 0,
 		"uL": 1
 		},
-	"\/kit\/pages\/includes\/_footer.kit": {
-		"ft": 2048,
-		"oA": 1,
-		"oAP": "\/kit\/pages\/includes\/_footer.html",
-		"oF": 0
-		},
-	"\/kit\/pages\/includes\/_head.kit": {
-		"ft": 2048,
-		"oA": 1,
-		"oAP": "\/kit\/pages\/includes\/_head.html",
-		"oF": 0
-		},
-	"\/kit\/pages\/includes\/_header.kit": {
-		"ft": 2048,
-		"oA": 1,
-		"oAP": "\/kit\/pages\/includes\/_header.html",
-		"oF": 0
-		},
-	"\/kit\/pages\/index.html": {
+	"\/page.php": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/kit\/pages\/index.html",
+		"oAP": "\/page.php",
 		"oF": 0
 		},
-	"\/kit\/pages\/index.kit": {
-		"ft": 2048,
-		"oA": 0,
-		"oAP": "\/kit\/pages\/index.html",
+	"\/partials\/content\/content-none.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/content\/content-none.php",
 		"oF": 0
 		},
-	"\/README.md": {
+	"\/partials\/content\/content-post.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/content\/content-post.php",
+		"oF": 0
+		},
+	"\/partials\/content\/content-team--EXAMPLE.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/content\/content-team--EXAMPLE.php",
+		"oF": 0
+		},
+	"\/partials\/modules\/content-module.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/modules\/content-module.php",
+		"oF": 0
+		},
+	"\/partials\/modules\/image-module.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/modules\/image-module.php",
+		"oF": 0
+		},
+	"\/partials\/modules\/intro-module.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/modules\/intro-module.php",
+		"oF": 0
+		},
+	"\/partials\/modules\/posts-module.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/modules\/posts-module.php",
+		"oF": 0
+		},
+	"\/partials\/partial-comments.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-comments.php",
+		"oF": 0
+		},
+	"\/partials\/partial-footer.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-footer.php",
+		"oF": 0
+		},
+	"\/partials\/partial-head.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-head.php",
+		"oF": 0
+		},
+	"\/partials\/partial-header.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-header.php",
+		"oF": 0
+		},
+	"\/partials\/partial-mast.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-mast.php",
+		"oF": 0
+		},
+	"\/partials\/partial-next.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-next.php",
+		"oF": 0
+		},
+	"\/partials\/partial-pagination.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-pagination.php",
+		"oF": 0
+		},
+	"\/partials\/partial-post-author.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-post-author.php",
+		"oF": 0
+		},
+	"\/partials\/partial-post-footer.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-post-footer.php",
+		"oF": 0
+		},
+	"\/partials\/partial-post-header.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-post-header.php",
+		"oF": 0
+		},
+	"\/partials\/partial-posts.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-posts.php",
+		"oF": 0
+		},
+	"\/partials\/partial-related-posts.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-related-posts.php",
+		"oF": 0
+		},
+	"\/partials\/partial-search-form.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-search-form.php",
+		"oF": 0
+		},
+	"\/partials\/partial-signup.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/partials\/partial-signup.php",
+		"oF": 0
+		},
+	"\/readme.md": {
 		"cS": 0,
 		"eF": 0,
 		"eL": 1,
@@ -1461,15 +2642,63 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
-		"oA": 1,
-		"oAP": "\/README.html",
-		"oF": 1,
+		"oA": 0,
+		"oAP": "\/readme.html",
+		"oF": 0,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
+		},
+	"\/robots.txt": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/robots.txt",
+		"oF": 0
+		},
+	"\/screenshot.png": {
+		"ft": 32768,
+		"iS": 296865,
+		"oA": 0,
+		"oAP": "\/screenshot.png",
+		"oF": 0,
+		"opt": 0
+		},
+	"\/search.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/search.php",
+		"oF": 0
+		},
+	"\/single.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/single.php",
+		"oF": 0
+		},
+	"\/style.css": {
+		"aP": 1,
+		"bl": 0,
+		"ft": 16,
+		"ma": 0,
+		"oA": 0,
+		"oAP": "\/style-min.css",
+		"oF": 0,
+		"oS": 0
+		},
+	"\/templates\/about.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/templates\/about.php",
+		"oF": 0
+		},
+	"\/templates\/home.php": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/templates\/home.php",
+		"oF": 0
 		}
 	},
 "hooks": [

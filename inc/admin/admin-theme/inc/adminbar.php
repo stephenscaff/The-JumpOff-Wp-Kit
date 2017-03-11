@@ -6,11 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
  * Admin Elements
  * Adds or edits admin elements, ie; the admin bar, admin footer, etc.
  */
-class AdminElements{
+class AdminBar{
   
   function __construct(){
     add_action( 'wp_before_admin_bar_render', array( $this, 'admin_bar'));
-    add_filter( 'admin_footer_text', array( $this, 'admin_footer') );
     $this->no_front_adminbar();
   }
 
@@ -42,4 +41,4 @@ class AdminElements{
   }
 }
 
-new AdminElements;
+new AdminBar;
