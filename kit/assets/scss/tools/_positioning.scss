@@ -1,0 +1,90 @@
+//----------------------------------------------
+//  MODULE MIXINS
+//  Positioning
+//  Backgrounds
+//  Sections (mast)
+//----------------------------------------------
+
+//----------------------------------------------
+//  Microclearfix
+//----------------------------------------------
+@mixin cf {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+//----------------------------------------------
+//  abs-center()
+//  @description: absolutely centers and element
+//----------------------------------------------
+@mixin abs-center($top:null,$bottom:null,$transform:null){
+  position: absolute;
+  left: 0;
+  right: 0;
+  @if $top{
+    top: $top;
+  }
+  @if $bottom{
+    bottom: $bottom;
+  }
+  @if $transform{
+    transform: translate3d(0,$transform,0);
+  }
+  margin: 0 auto;
+  text-align:center;
+}
+
+
+
+//----------------------------------------------
+//  trans-center()
+//  @description: vert & horz centering via transform
+//----------------------------------------------
+@mixin center-vh{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+
+//----------------------------------------------
+//  Aspect Ratio
+//  For preloading images to maintain height and as
+//  during fade-in animation. 
+//  @param $width natural width of image
+//  @param $height natual height of image
+//----------------------------------------------
+@mixin aspect_ratio($width, $height) {
+  padding-bottom: ($height / $width) * 100%;
+  position: relative;
+  height: 0;
+
+  & > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}
+
+
+//----------------------------------------------
+//  pseudo-element
+//  Basic styles for positioning a psedu element
+//  inside it's parent so it fills available space.
+//----------------------------------------------
+@mixin pseudo-element($zindex: 0) {
+  z-index: $zindex;
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}

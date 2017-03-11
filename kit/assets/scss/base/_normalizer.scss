@@ -1,13 +1,8 @@
-/* ---------------------------------------------- 
-  -Normalizer
-  A fork of normalize (github.com/necolas/normalize.css)
-*/
-/*----------------------------------------------   
--body
-1. Default margins
-2. prevent mobile gaps
-3. Better font rendering across browsers
------------------------------------------------  */
+/**
+ * Normalizer
+ * A fork of normalize (github.com/necolas/normalize.css)
+ */
+
 body {
   margin: 0;
   width: 100%;
@@ -20,11 +15,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/*----------------------------------------------   
--body, html
-1. Prevent horizontal scrolling.
-2. Set 100% height if needed for full viewport stuff
------------------------------------------------  */
+/** 
+ * body, html
+ * 1. Prevent horizontal scrolling.
+ * 2. Set 100% height if needed for full viewport stuff
+ */
 html, body {
   /* 1. */
   overflow-x: hidden;
@@ -33,16 +28,16 @@ html, body {
 	height: 100%; */
 }
 
-/*----------------------------------------------   
--Default to border-box
------------------------------------------------  */
+/** 
+ * Default to Border Box
+ */
 *, *:before, *:after {
   box-sizing: border-box; 
 }
 
-/*----------------------------------------------   
--HTML5 Block Levels
------------------------------------------------  */
+/**
+ * HTML% tags to block level elements
+ */
 article,
 aside,
 details,
@@ -59,11 +54,10 @@ summary {
   display: block;
 }
 
-/*----------------------------------------------   
-1. Correct `inline-block` display not defined in IE 8/9.
-2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
------------------------------------------------  */ 
-
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ * Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
 audio,
 canvas,
 progress,
@@ -72,46 +66,33 @@ video {
   vertical-align: baseline; /* 2 */
 }
 
-/*----------------------------------------------   
--Prevent modern browsers from displaying `audio` without controls.
--Remove excess height in iOS 5 devices.
------------------------------------------------  */ 
+/** 
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */ 
 
 audio:not([controls]) {
   display: none;
   height: 0;
 }
 
-/*----------------------------------------------   
--Address `[hidden]` styling not present in IE 8/9/10.
--Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
------------------------------------------------  */ 
 [hidden],
 template {
   display: none;
 }
 
-/*----------------------------------------------   
-LINKS
--Remove the gray background color from active links in IE 10.
--Remove default text-decoration
--Improve readability
------------------------------------------------  */ 
-
+/**
+ * Links
+ */
 a {
   text-decoration:  none;
   background-color: transparent;
   outline: 0;
 }
 
-/*----------------------------------------------   
-TEXT LEVEL
--Abbr: Address styling not present in IE 8/9/10/11, Safari, and Chrome.
--Bold: Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
-dfn, mark: Address unset styles
--Small: Address inconsistent and variable font size in all browsers.
--Prevent `sub` and `sup` affecting `line-height` in all browsers.
------------------------------------------------  */
+/**
+ * Text Level
+ */
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -147,9 +128,6 @@ sub {
   bottom: -0.25em;
 }
 
-/*----------------------------------------------   
-Address Blocks
------------------------------------------------  */ 
 address{
   font-style: normal;
 
@@ -158,11 +136,9 @@ address{
   }
 }
 
-/*----------------------------------------------   
-HEADERS
--Address variable `h1` font-size and margin within `section` and `article` contexts in Firefox 4+, Safari, and Chrome.
--Remove Margins from headers and type elements to better define in your typographic system
------------------------------------------------  */
+/**
+ * Headings
+ */
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -173,23 +149,17 @@ h1, h2, h3, h4, h5, h6, ul, ol,dl, li,dd, small{
 	padding:	0;
 }
 
-
-/*----------------------------------------------   
-Image IE Scaling fix
------------------------------------------------  */ 
-
+/**
+ * Image IE Scaling fix
+ */
 img {
   -ms-interpolation-mode:bicubic;
   border: 0;
 }
 
 /**
- * Correct overflow not hidden in IE 9/10/11.
+ * SVG - Correct overflow not hidden in IE 9/10/11.
  */
-/*----------------------------------------------   
-SVG
--Correct overflow not hidden in IE 9/10/11
------------------------------------------------  */ 
 svg:not(:root) {
   overflow: hidden;
 }
@@ -213,11 +183,6 @@ hr {
   height: 0;
 }
 
-
-
-/*----------------------------------------------   
-CODE & PREFORMATED
------------------------------------------------  */
 pre {
   overflow: auto;
 }
@@ -234,9 +199,9 @@ samp {
   font-size: 1em;
 }
 
-/*----------------------------------------------   
-FORMS
------------------------------------------------  */
+/**
+ * Forms
+ */
 form{
 	margin:	0;
 }

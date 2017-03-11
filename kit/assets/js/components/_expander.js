@@ -1,5 +1,6 @@
-/** 
- * Expander 
+/**
+ * Expander
+ * Simple reusable expander via data atts
  */
 (function($) {
   var expandIt = { 

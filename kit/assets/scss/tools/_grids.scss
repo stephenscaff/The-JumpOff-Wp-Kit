@@ -1,0 +1,145 @@
+
+//----------------------------------------------  
+//  flex-grid();
+//  @description: Creates grid blocks via flexbox
+
+//  @param: $sm, $med, $lg, $xl - @media sizes
+//  @param: $pad  - item padding  
+//  @useage: @include g-blocks(1, 2, 3, 4, 1%);
+
+//  @note: Can replace universal selector with '& > #{$item}''  ($item:'article')
+//----------------------------------------------
+@mixin flex-grid($sm:null, $med:null, $lg:null, $xl:null, $pad:0) {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  margin-left: -$pad;
+  margin-right: -$pad;
+
+  & > * {
+    padding:$pad;
+    flex-basis: 100%/$sm;
+    max-width: 100%/$sm;
+    
+    @if $med {
+      @media(min-width: $mq-med){
+        flex-basis: 100%/$med;
+        max-width: 100%/$med;
+      }
+    }
+
+    @if $lg {
+      @media(min-width: $mq-large){
+        flex-basis: 100%/$lg;
+        max-width: 100%/$lg;
+      }
+    }
+
+    @if $xl {
+      @media(min-width: $mq-xlarge){
+        flex-basis: 100%/$xl;
+        max-width: 100%/$xl;
+      }
+    }
+  }
+  &.grid--centered{
+    justify-content: center;
+  }
+}
+
+//----------------------------------------------  
+//  Flex Row
+//  A helper to create flex rows
+//
+//  @param width 
+//----------------------------------------------
+@mixin flex-row($vcenter: false, $justify:null, $wrap: no-wrap, $mobile:false){
+  
+  @if $vcenter == true {
+    align-items: center;
+  }
+  @if $justify{
+    justify-content: $justify;
+  }
+  @if $mobile == 'true' {
+    display: flex;
+    flex-wrap: wrap;
+
+  } @else {
+
+    @media (min-width: $mq-med){
+      display: flex;
+      flex-wrap: $wrap;
+    }
+  }
+}
+
+//----------------------------------------------  
+//  Flex Column
+//  A helper to output cross browser requirements for 
+//  columns inside a flexbox parent. flex-basis isn't
+//  enough in all cases.
+//
+//  @param width 
+//----------------------------------------------
+@mixin flex-col($width, $mobile:false){
+  @if $mobile == 'true' {
+    flex-basis: $width;
+    width: $width;
+    max-width: $width;
+
+  } @else {
+
+    @media (min-width: $mq-med){
+      flex-basis: $width;
+      width: $width;
+      max-width: $width;
+    }
+  }
+}
+
+//----------------------------------------------  
+//  Multi Column Grid
+//  Creates a multi col layout similar to Masonry (but no js)
+//
+//  @param: $sm, $med, $lg, $xl - @media sizes
+//  @param: $pad  - item padding 
+//  @param: $gap  - column-gap
+//----------------------------------------------
+@mixin col-grid($sm:null, $med:null, $lg:null, $xl:null, $gap:0, $pad:0){
+  position: relative;
+  display: block;
+  margin-left: -$pad;
+  margin-right: -$pad;
+  column-count: $sm;
+  column-gap: $gap;
+  -webkit-perspective: 1;
+
+
+  @if $med {
+    @media(min-width: $mq-med){
+      column-count: $med;
+    }
+  }
+
+  @if $lg {
+    @media(min-width: $mq-large){
+      column-count: $lg
+    }
+  }
+
+  @if $xl {
+    @media(min-width: $mq-xlarge){
+      column-count: $xl
+    }
+  }
+
+  & > *{
+    @media (min-width: $mq-med){
+      // Ensure columns break at parent
+      break-inside: avoid-column;
+      padding-left: $pad;
+      padding-right: $pad;
+    }
+  }
+}

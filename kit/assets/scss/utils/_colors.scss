@@ -1,0 +1,57 @@
+//-------------------------------------------- 
+// BG Color Helpers
+//--------------------------------------------
+
+.bg-white{
+ background-color: #fff;
+}
+
+.bg-black{
+ background-color: $color-black;
+}
+
+.bg-dark{
+ background-color: $color-dark;
+}
+
+.bg-lightgrey{
+ background-color: $color-lightgrey;
+}
+
+.bg-alpha{
+  background-color: $color-alpha;
+}
+
+.bg-beta{
+  background-color: $color-beta;
+}
+
+.bg-alert{
+  background-color: $color-alert;
+}
+
+.bg-success{
+  background-color: $color-success;
+}
+
+//----------------------------------------------
+// Color Themes
+//----------------------------------------------
+[data-theme="light"]{
+  background: #fff;
+  color: $color-black;
+}
+
+[data-theme="lightgrey"]{
+  background: $color-lightgrey;
+  color: $color-black;
+}
+
+[data-theme="dark"]{
+  background: $color-dark;
+  color: #fff;
+
+  h1,h2,h3,h4,h5{
+    color: #fff;
+  }
+}

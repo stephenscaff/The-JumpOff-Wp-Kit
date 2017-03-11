@@ -1,0 +1,111 @@
+//----------------------------------------------
+//  Data-Scroll: Fade In
+//  Entrance animation that fades element in(opacity).
+//
+//  @see   js/vendor/waypoints.js
+//  @see   js/component/scroll-animations.js
+//  @group data-scroll
+//----------------------------------------------
+[data-scroll="fade-in"]{
+  will-change: opacity;
+  @media(min-width: $mq-med){
+    opacity:0;
+  }
+  &.animated{
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+}
+
+//----------------------------------------------
+//  Data-Scroll: Fade Up
+//  Entrance animation that fades element 
+//  up(transform) and in (opacity).
+//
+//  @see   js/vendor/waypoints.js
+//  @see   js/component/scroll-animations.js
+//  @group data-scroll
+//----------------------------------------------
+[data-scroll="fade-up"]{
+  will-change: opacity;
+  @media(min-width: $mq-med){
+    opacity:0;
+ 
+  }
+  &.animated{
+    animation: fade-up 0.5sp $ease-cb-2 both;
+    opacity: 1;
+    transition: opacity 0.7s ease;
+  }
+}
+
+//----------------------------------------------
+//  Data-Scroll: Stagger Up
+//  Entrance animation that staggers child notes
+//  up (transform) and in (opacity)
+//
+//  @see   js/vendor/waypoints.js
+//  @see   js/component/scroll-animations.js
+//  @group data-scroll
+//----------------------------------------------
+[data-scroll="stagger-up"]{
+ will-change: opacity, transform;
+
+  & > *{
+    backface-visibility: hidden;
+    perspective: 1000;
+    will-change: opacity;
+    opacity: 0;
+    //overflow-y: hidden;
+  }
+  &.animated > *{
+    //opacity: 1;
+    animation: fade-up 1s ease both;
+    transition: opacity 1.2s ease;
+    @include nth-ani-delay(10, 0.15s);
+    
+  }
+}
+
+//----------------------------------------------
+//  Data-Scroll: Stagger In
+//  Entrance animation that staggers child notes
+//  in (opacity)
+//
+//  @see   js/vendor/waypoints.js
+//  @see   js/component/scroll-animations.js
+//  @group data-scroll
+//----------------------------------------------
+[data-scroll="stagger-in"]{
+ will-change: opacity, transform;
+
+  & > *{
+    will-change: opacity;
+    opacity: 0;
+    overflow-y: hidden;
+  }
+  &.animated > *{
+    opacity: 1;
+    animation: fade-in 1.5s ease both;
+    //transition: opacity 8.7s ease;
+    @include nth-ani-delay(10, 0.2s);
+    
+  }
+}
+
+//----------------------------------------------
+//  Data-Scroll: No Js
+//  Fallback if no js
+//
+//  @see   js/vendor/waypoints.js
+//  @see   js/component/scroll-animations.js
+//  @group data-scroll
+//----------------------------------------------
+.no-js{
+  [data-scroll]{
+    opacity:1;
+  }
+  li{
+    opacity:1;
+  }
+}

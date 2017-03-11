@@ -1,0 +1,17 @@
+/**
+ * Page Transitions
+ * Super basic transitions. Built out as needed.
+ */
+
+.is-exiting{
+  animation: fade-out 1s ease both;
+}
+
+main{
+  opacity: 0;
+
+  .is-loaded &{
+    opacity: 1;
+    transition: opacity 0.75s ease;
+  }
+}

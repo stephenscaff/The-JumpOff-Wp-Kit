@@ -12,10 +12,8 @@
 // ----------------------------------------------
 // Fonts
 //-----------------------------------------------
-$font-header: "gibson", Georgia, serif;
-$font-paragraph: "noto-serif", Georgia, serif;
-
-//$font-title: ;
+$font-header: "verlag", Helvetica, sans-serif;
+$font-paragraph: "tiempos", Georgia, serif;
 //$font-subtitle: ;
 
 // ----------------------------------------------
@@ -26,16 +24,24 @@ $base-lineheight: 1.8;
 // ----------------------------------------------
 // Font Size vars
 //-----------------------------------------------
+$font-scale-up: 0.1em;
+$font-h1: 2.25em;
+$font-h2: 1.9em;
+$font-h3: 1.3em;
+$font-h4: 1.1em;
+$font-h5: 1em;
 $font-small: 0.9em;
-$font-xsmall: 0.8em;
+$font-xsmall: 0.85em;
 $font-xxsmall: 0.7em;
-$font-xxxsmall: 0.5em;
+$font-xxxsmall: 0.6em;
 
-// -----------------------------`-----------------
+// -----------------------------------------------
 // Paddings
 //-----------------------------------------------
+$pad-xl:8em;
 $pad-lg:6em;
-$pad: 4em;
+$pad-med: 5em;
+$pad: 3em;
 $pad-sm: 2em;
 
 // ----------------------------------------------
@@ -46,17 +52,18 @@ $grid-cols: 12;
 // Grid col sizes
 $grid-col: 100% / $grid-cols;
 // Grid col pad
-$grid-col-pad: 2%;
+$grid-col-pad: 1.5em;
 $grid-gutter: 2%;
-$grid-max-width-sm: 50em;
-$grid-max-width: 60em;
+$grid-max-width-sm: 42em;
+$grid-max-width: 60em; 
+$grid-max-width-med: 70em;
 $grid-max-width-lg: 80%;
 $grid-max-width-xl: 95%;
 $grid-width: 95%;
 
-/*----------------------------------------------
---Media Queries (min-widths)
------------------------------------------------*/
+// ----------------------------------------------
+// MQs
+//-----------------------------------------------
 //Smallest phone
 $mq-xsmall: 22em;
 //phone
@@ -72,9 +79,9 @@ $mq-xxlarge: 115em;
 //Thunderbold goes to 157em
 $mq-xxxlarge: 130em;
 
-/*----------------------------------------------
---Colors
------------------------------------------------*/
+// ----------------------------------------------
+// Colors
+//-----------------------------------------------
 $color-alpha:     #C43A31;
 $color-beta:      #003a49;
 
@@ -125,3 +132,30 @@ $z-lowest: -1;
 $ease-cb: cubic-bezier(.4,0,.2,1);
 $ease-cb-2: cubic-bezier(.19,1,.22,1);
 $ease-cb-3: cubic-bezier(.77,0,.175,1);
+
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-in-quart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-back: cubic-bezier(0.680, -0.550, 0.265, 1.550);

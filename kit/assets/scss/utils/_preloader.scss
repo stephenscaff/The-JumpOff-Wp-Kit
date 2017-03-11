@@ -1,15 +1,27 @@
-/*----------------------------------------------
---Preloading graphic/animation
------------------------------------------------*/
+//----------------------------------------------
+// Preloader
+//----------------------------------------------
 .preloader {
   position: absolute;
-  top: 40%;
+  top: calc(50% - 3em);
   right: 0;
-  bottom: 50%;
   left: 0;
-  width: 4em;
-  height: 4em;
-  margin: 0 auto;
+  width: 3em;
+  height: 3em;
+  margin: 5% auto 0;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top-color: rgba(0,0,0,1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite both;
+  opacity: 1;
+  transition: opacity 2s 0.2s ease-out;
+}
+
+
+//----------------------------------------------
+// Preloader: Bounce
+//----------------------------------------------
+.preloader-bounce{
 
   &:before, &:after {
     content: '';
@@ -28,11 +40,43 @@
   }
 }
 
-@keyframes preloader-bounce {
-  0%, 100% {
-    transform: scale(1.4) rotate(3.2deg);
+//----------------------------------------------
+// Preloader Spinner
+//----------------------------------------------
+.preloader--spinner{
+  border: 1px solid rgba(0,0,0,0.2);
+  border-top-color: rgba(0,0,0,1);
+  border-radius: 50%;
+  animation: spin 1s linear infinite both;
+}
+
+
+//----------------------------------------------
+// Has Image Preloader, fade in
+//----------------------------------------------
+.has-preloader{
+  //min-height: 17em;
+
+  & > img, [class*="__img"]{
+    opacity: 0;
+    //will-change: opacity;
+  //transition: opacity 1s ease-in, transform 1s $ease-cb;
   }
-  50% {
-    transform: scale(0.5);
+
+  // Boom - We're loaded.
+  &.is-loaded{
+    
+    .preloader{
+      //animation: spin-out 2s linear forwards;
+      opacity: 0;
+      transition: opacity 1s 0.3s ease-out;
+    }
+    & > img, [class*="__img"]{
+      opacity: 1;
+      transition: opacity 1s 0.3s ease-in, transform 1s $ease-cb;
+      //animation: fade-in 4s 0.3s ease both;
+    }
   }
 }
+
+

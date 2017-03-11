@@ -30,10 +30,10 @@
         $tabs.find('li:first-child').addClass("is-active");
         
         $tabs.find(s.tabNav).on('click', function () {
-          $tabs.find(s.tabViewer).addClass('fade-in is-active');
+          $tabs.find(s.tabViewer).addClass('fade-in');
           $tabs.find(s.tabNav).removeClass("is-active");
           $(this).addClass("is-active");
-          $tabs.find(s.tabViewer + ':eq(' + $(this).index() + ')').show().siblings().hide().removeClass('is-active fade-in');
+          $tabs.find(s.tabViewer + ':eq(' + $(this).index() + ')').show().siblings().hide();
         });
       });
     },

@@ -1,108 +1,38 @@
-/*----------------------------------------------
---Helper/Utilites classes - Most common use cases
------------------------------------------------*/
-
-/*----------------------------------------------
---Clear Fix
------------------------------------------------*/
-.cf {
-  @include cf;
-}
-
-/*----------------------------------------------
--Background Image Styles
------------------------------------------------*/
-.bg-img{
-  @include bg-img-cover;
-}
-
-/*----------------------------------------------
--Paddings
------------------------------------------------*/
+//----------------------------------------------
+//  Padding Helpers
+//----------------------------------------------
 .pad{
   padding: $pad 0; 
 }
+
 .pad-sm{
   padding: $pad-sm 0; 
 }
+
 .pad-lg{
   padding: $pad-lg 0;
 }
-/*----------------------------------------------
--Margins
------------------------------------------------*/
-.mb-1{
-  margin-bottom: 1em;
-}
-.mt-1{
-  margin-top: 1em;
+
+.pad-b{
+  padding-bottom: $pad;
 }
 
-/*----------------------------------------------
--Floats
------------------------------------------------*/
-.float-right {
-  float: right !important;
-}
-.float-left {
-  float: left !important;
-}
-.float-none {
-  float: none !important;
+.pad-t{
+  padding-top: $pad;
 }
 
-/*----------------------------------------------
--Text alignment
------------------------------------------------*/
-.text-center {
-  text-align: center !important;
-}
-.text-right {
-  text-align: right !important;
-}
-.text-left {
-  text-align: left !important;
+.no-pad{
+  padding: 0;
 }
 
-/*----------------------------------------------
-- Centering
------------------------------------------------*/
-%centered,
-.centered,
-.centered.grid__col{
-  float: none;
-  margin: 0 auto;
-  display: block;
-}
-
-
-%center-all,
-.center-all {
-  display: table;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 100%;
-  
-  .grid__col{
-    margin: 0 auto;
-    float: none;
-    display: block;
-    text-align:center;
-  }
-}
-
-/*----------------------------------------------
-- Displays
------------------------------------------------*/
-.display-none {
+//----------------------------------------------
+//  Visibilities
+//----------------------------------------------
+.is-hidden{
   display: none !important;
 }
-.hidden {
-  opacity: 0 !important;
-  visibility: hidden !important;
-}
-.visualy-hidden {
+
+.is-visualy-hidden {
   position: absolute !important;
   left: -9999px !important;
   width: 1px;
@@ -110,30 +40,17 @@
   overflow: hidden;
   clip: rect(0,0,0,0);
 }
+
 .no-interaction {
   pointer-events: none !important;
 }
 
-/*----------------------------------------------
--No Breaks
------------------------------------------------*/
+//----------------------------------------------
+//  No Breaks
+//----------------------------------------------
 %no-breaks,
 .no-breaks{
   br{
     display:none;
   }
-}
-
-/*----------------------------------------------
-- Filters
------------------------------------------------*/
-%greyscale,
-.greyscale{
-  filter: grayscale(100%);
-}
-
-%darken,
-.darken{
-  opacity: 0.3;
-  background-color: #000;
 }

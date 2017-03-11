@@ -22,12 +22,14 @@
        * Throttles scrolling via setInterval
        */
       onScrollDown: function(){
+        
         var scrolledDown;
 
         $(window).scroll(function(){
           scrolledDown = true;
         });
 
+        // Throttle scroll
         setInterval(function() {
           if (scrolledDown) {
             ScrollingNav.hasScrolled();

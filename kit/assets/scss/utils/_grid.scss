@@ -1,75 +1,176 @@
-/*----------------------------------------------
--Grid 
------------------------------------------------*/
+//----------------------------------------------
+//  Grid 
+//  Our global grid container, to be applies as a
+//  helper class, or placeholder extend.
+//
+//  @group Grid
+//----------------------------------------------
+%grid,
 .grid {
+  position: relative;
   width: 92%;
   max-width: $grid-max-width;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  @include cf; 
+  //@include cf; 
   @media (min-width: $mq-med){
-    width: 100%;
+    width: 90%;
   }
 }
 
-/*----------------------------------------------
--FLex Grid
------------------------------------------------*/
-.grid--flex{
-  @media (min-width: $mq-med){
+
+//----------------------------------------------
+//  FLex Grid
+//  Apply if you want to use a flexbox grid instead
+//
+//  @group Grid
+//----------------------------------------------
+[class*="grid"].grid--flex{
+@media (min-width: $mq-med){
     display: flex;
   }
 }
-/*----------------------------------------------
--GRID : Add col padding if no cols
------------------------------------------------*/
+//----------------------------------------------
+//  Grid Padding
+//
+//  @group Grid
+//  @depreciated
+//----------------------------------------------
 .grid--pad{
-  padding-left:   $grid-col-pad;
-  padding-right:  $grid-col-pad;
+  padding-left:  $grid-col-pad;
+  padding-right: $grid-col-pad;
 }
 
-/*----------------------------------------------
--GRID Large
------------------------------------------------*/
-.grid-lg,
-.grid--lg {
-  @extend .grid;
-  max-width: $grid-max-width-lg;
+//----------------------------------------------
+//  Grid Small
+//
+//  @group Grid
+//----------------------------------------------
+%grid-sm,
+.grid-sm{
+  @extend %grid;
+  @media (min-width: $mq-med){
+    max-width: $grid-max-width-sm;
+  }
 }
 
-/*----------------------------------------------
--GRID XL
------------------------------------------------*/
+//----------------------------------------------
+//  GRID Med
+//
+//  @group Grid
+//----------------------------------------------
+%grid-med,
+.grid-med {
+  @extend %grid;
+  @media (min-width: $mq-large){
+    max-width: $grid-max-width-med;
+  }
+}
+
+//----------------------------------------------
+//  GRID Large
+//
+//  @group Grid
+//----------------------------------------------
+%grid-lg,
+.grid-lg {
+  position: relative;
+  width: 92%;
+  max-width: $grid-max-width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $mq-med){
+    max-width: $grid-max-width-xl;
+  }
+  @media (min-width: $mq-xxlarge){
+    max-width: $grid-max-width-lg;
+  }  
+}
+
+//----------------------------------------------
+//  GRID XL
+//
+//  @group Grid
+//----------------------------------------------
 .grid-xl,
 .grid--xl {
-  @extend .grid;
-  max-width: $grid-max-width-xl;
+  position: relative;
+  width: 92%;
+  max-width: $grid-max-width;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: $mq-med){
+    max-width: $grid-max-width-xl;
+  }
 }
 
-/*----------------------------------------------
--GRID : Full Width
------------------------------------------------*/
-.grid--full {
+//----------------------------------------------
+//  GRID Full Width
+//
+//  @group Grid
+//----------------------------------------------
+.grid-full, .grid--full {
   @extend .grid;
   width: 100%;
   max-width: 100%;
 }
 
-/*----------------------------------------------
--GRID : Full width Small
------------------------------------------------*/
-.grid--full-small{
-  @media(max-width:$mq-med){
+//----------------------------------------------
+//  GRID Full on small
+//
+//  @group Grid
+//----------------------------------------------
+.grid-full-sm{
+  @media (max-width: $mq-med){
     width: 100%;
   }
 }
+//----------------------------------------------
+//  GRID Wrap
+//  Grid parent wrapper if you want to keep the
+//  container contained on larger screens
+//
+//  @group Grid
+//----------------------------------------------
+.grid-wrap{
+  @media (min-width: $mq-xlarge){
+    margin: 0 auto;
+    max-width: $grid-max-width-xl;
+  }
+  @media (min-width: $mq-xxxlarge){
+    margin: 0 auto;
+    max-width: 90%;
+  }
+}
+//----------------------------------------------
+//  GRID Columns
+//
+//  @group Grid
+//----------------------------------------------
+.grid__col { 
+  position: relative;
+  float: left;
+  width: 100%;
+  min-height: 1px;
+  //padding-left: $grid-col-pad;
+  padding-right: $grid-col-pad;
 
+  &:last-of-type{
+    padding-right: 0;
+  }
+}
 
-/*----------------------------------------------
--Grid : Nested
------------------------------------------------*/
-.grid .grid{
+//----------------------------------------------
+//  Nested Grids
+//
+//  @group Grid
+//----------------------------------------------
+.grid .grid__col + .grid{
   width: auto;
   max-width: none;
   min-width: 0;
@@ -77,50 +178,37 @@
   margin-right: -$grid-col-pad;
 }
 
-/*----------------------------------------------
--Grid: Columns
------------------------------------------------*/
-.grid__col { 
-  position: relative;
-  float: left;
-  width: 100%;
-  min-height: 1px;
-  padding-left: $grid-col-pad;
-  padding-right: $grid-col-pad;
-}
-
-/*----------------------------------------------
--Cols: Float last col right
------------------------------------------------*/
-.grid__cols + .cols:last-child { 
-  @media (min-width: $mq-med) { 
-    float: right;
-  }
-}
-
-/*----------------------------------------------   
--Grid System: old school
------------------------------------------------*/
+//----------------------------------------------
+//  GRID Cols : Sm
+//  Grid column helpers and placeholders for small
+//  @group Grid
+//----------------------------------------------
 @for $i from 1 through $grid-cols {
  //Columns "xsm-*"  
- .g-xsm-#{$i} {
-  max-width: ((100 / $grid-cols) * $i) * 1%;
-  flex-basis: ((100 / $grid-cols) * $i) * 1%;
- }
+  %g-xsm-#{$i}, .g-xsm-#{$i} {
+    max-width: ((100 / $grid-cols) * $i) * 1%;
+    flex-basis: ((100 / $grid-cols) * $i) * 1%;
+  }
 }
-/*----------------------------------------------
--Grid Cols Main: after med
------------------------------------------------*/
+//----------------------------------------------
+//  GRID Cols : Med
+//  Grid column helpers and placeholders for med up
+//  @group Grid
+//----------------------------------------------
 @media (min-width: $mq-med) {
   @for $i from 1 through $grid-cols {
     //Columns "g-*"  
-    .g-#{$i} {
+    %g-#{$i}, .g-#{$i} {
       max-width: ((100 / $grid-cols) * $i) * 1%;
       flex-basis: ((100 / $grid-cols) * $i) * 1%;
     }
+
     // Offsets "os-*"
-    .g-offset-#{$i}{
+    %g-ml-#{$i}, .g-ml-#{$i}{
       margin-left: ((100 / $grid-cols) * $i) * 1%;
+    }
+    %g-mr-#{$i}, .g-ml-#{$i}{
+      margin-right: ((100 / $grid-cols) * $i) * 1%;
     }
   }
 }
