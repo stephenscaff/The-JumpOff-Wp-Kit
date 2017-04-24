@@ -11,15 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header(); ?>
 
-<!-- Main
-================================================== -->
-<main role="main"></main>
+<!-- Main -->
+<main role="main">
+  
+<?php get_template_part( 'partials/partial-modules' ); ?>
 
-<!-- Sect: CTA
-================================================== -->
-<?php get_template_part( 'partials/sect', 'cta' );?>
+</main>
 
-
-<!-- Footer
-================================================== -->	
+<!-- Footer --> 
 <?php get_footer(); ?>

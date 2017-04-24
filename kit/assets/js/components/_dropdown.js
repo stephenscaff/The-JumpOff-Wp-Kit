@@ -1,47 +1,49 @@
-/**	
+/**
  * Dropdown
+ * A simple dropdown that also replaces a label with selected node. 
  */
-function DropDown(el) {
-	this.dd = el;
-	this.initEvents();
-}
-DropDown.prototype = {
-	initEvents : function() {
-		var obj = this;
-		obj.dd.on('click', function(event){
-			$(this).toggleClass('active');
-			event.stopPropagation();
-		});	
-	}
-};
-//Init
-$(function() {
-	var dd = new DropDown( $('.js-dropdown') );
-	$(document).click(function() {
-		// all dropdowns
-		$('.dd-wrap').removeClass('active');
-	});
-});
 
+ var DropItDown = (function() {
+    
+  var $dropDown = $('.js-dropdown'),
+  isOpen = 'is-open',
+  tagName = $('this, a'),
+  label = $(this).find('.dropdown__label span');
 
+  return {
+   
+    /**
+     * Init Popups
+     */
+    init: function() {
+      this.toggleDrop();
+    },
 
-/**	
- * Dropdown
- */
-$('.js-dropdown').on('click',function(data){
-	var $drop = $(this);
-	var tagName = $('this, a');
-	if(!$drop.hasClass('is-open')){
-		$drop.find('ul').css('z-index','10');
-		$drop.addClass('is-open');
-		var label = $drop.find('.dropdown__label span');
-		label.text(label.attr('data-label'));
-	} else {
-		$drop.removeClass('is-open');
-		
-		//Get li or a nodes to replace dd label
-		if($(data.target)[0].nodeName === 'LI' || $(data.target)[0].nodeName === 'A'){
-			$drop.find('.dropdown__label span').text($(data.target).text());
-		}
-	}
-});
+    /**
+     * Toggle Drop
+     */
+    toggleDrop: function(){
+      
+      $dropDown.on('click',function(data){
+				
+				if(!$(this).hasClass(isOpen)){
+					
+					$(this).find('ul').css('z-index','10');
+					$(this).addClass(isOpen);
+					label.text(label.attr('data-label'));
+				
+				} else {
+					
+					$(this).removeClass(isOpen);
+	
+					//Get li or a nodes to replace dd label
+					if($(data.target)[0].nodeName === 'LI' || $(data.target)[0].nodeName === 'A'){
+						// @todo - figure out why label loses scope here
+						$(this).find('.dropdown__label span').text($(data.target).text());
+					}
+				}
+			});
+    },
+  };
+})();
+DropItDown.init();

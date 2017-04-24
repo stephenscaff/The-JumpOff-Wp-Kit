@@ -1,9 +1,6 @@
-
-//  0.6 Animations
-
 //----------------------------------------------
 //  nth-trans-delay()
-//  @description: Transition Delay on nth-childs
+//  ransition Delay on nth-childs
 //  @param: $delay_items: [7]    - number of nth-of-type items to create
 //  @param: $delay_time:[1.5s]   - transition-dealy value
 //----------------------------------------------
@@ -17,7 +14,7 @@
 
 //----------------------------------------------
 //  nth-ani-delay()
-//  @description: Animation Delay on nth-childs
+//  Animation Delay on nth-childs
 //  @param: $delay_items: [7] - number of nth-of-type items to create
 //  @param: $delay_time:[1.5s] - transition-dealy value
 //----------------------------------------------
@@ -31,7 +28,7 @@
 
 //----------------------------------------------
 //  nth-fade-ins()
-//  @description: Sequential Fadein Animation via nth-of-type
+//  Sequential Fadein Animation via nth-of-type
 //  @param:  $aniItems: [4]    - number of nth-of-type items to create
 //  @param:  $aniDuration:[0.6s]   - animation duration
 //  @param:  $aniStart:[0.6s]   -   animation start
@@ -44,31 +41,6 @@
  }
 }
 
-/*----------------------------------------------
--Seperator Width animation
------------------------------------------------*/
-@mixin sep-width($speed: 1s, $start: 0s, $width: '100%'){
-  animation: sep-width $speed $start $ease-cb  both;
-  max-width: $width;
-  @include engineGPU('width');
-
-  @keyframes sep-width{
-    0%   { width: 0;}
-    100% { width: 100%;}
-  }
-}
-
-
-//----------------------------------------------
-//  engine3d()
-//  @decrption: Activate browser's 3d engine for smoother FPS
-//              But, use will-change first
-//----------------------------------------------
-@mixin engine3d($type: '') {
-  transform: translateZ(0);
-  visibility: visible;
-  -webkit-backface-visibility: hidden;
-}
 //----------------------------------------------
 //  engineGPU()
 //  @decrption: Trigger GPU, sans transform

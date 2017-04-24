@@ -23,9 +23,10 @@
     max-width: 54em;
   }
   
-/**
- * Intro Section
- */
+//----------------------------------------------
+//  Intro -- Left Modifier
+//  @group intros
+//-----------------------------------------------
   &.intro--left{
     text-align: left;
     background-color: transparent;

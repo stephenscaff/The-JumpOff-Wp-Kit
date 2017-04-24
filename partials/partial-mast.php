@@ -18,6 +18,7 @@ $mast_title = get_field('mast_title', $id);
 $mast_text = get_field('mast_text', $id);
 $mast_bg = get_field('mast_bg', $id);
 $mast_icon = get_field('icons');
+
 ?>
 
 <section class="mast mast--<?php echo $class ?>">

@@ -28,6 +28,19 @@ var site = {
   plax: function(){
     $('.js-parallax').parallax(6, 'false');
   },
+  /**
+   * Laxy Load
+   * @see js/vendor/_unveil.js
+   */
+  lazy: function(){
+    $(".js-lazy").unveil(10, function() {
+      $(this).load(function() {
+        //this.style.opacity = 1;
+        //$(this).parent().addClass('loaded');
+        //$(this).fadeOut(0).fadeIn(400);
+      });
+    });
+  },
 };
 
 
@@ -38,8 +51,8 @@ var site = {
 $(function(){
   // Feature JS
   site.featureJS();
-  // Plax
-  if($('.js-parallax').length){
-    site.plax();
+  // Lazy Loader
+  if($('.js-lazy').length){
+    site.lazy();
   }
 });

@@ -198,7 +198,7 @@ $header-height: 4em;
     box-shadow: 0 1px 1px rgba($color-dark, .1);
     transition: transform .5s ease, background .1s ease;
     animation: nav-down ease-in-out .3s .1s both;
-    @include engine3d;
+    @include engineGPU;
 
     nav a:not(.btn){
       display: inline-block;

@@ -5,20 +5,51 @@
 //
 //  @see js/vendor/_vides.js
 //-----------------------------------------------
-.bg-vid {
-  z-index: 0;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+// .bg-vid {
+//   z-index: 0;
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-position: center;
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   overflow: hidden;
 
-  & > video {
-    position: absolute !important;
-    top: 0 !important;
+//   & > video {
+//     position: absolute !important;
+//     top: 0 !important;
+//   }
+// }
+
+// CSS Only
+.bg-vid{
+
+  &__vid-wrap{
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+    @include bg_overlay(#111, 0.4);
+  }
+
+  &__vid{
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: auto;
+    min-width: 100%;
+    max-width: none;
+    height: auto;
+    min-height: 100%;
+    object-fit:cover;
   }
 }

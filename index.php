@@ -26,8 +26,8 @@ get_header(); ?>
 <!-- Posts -->
 <?php get_template_part( 'partials/partial', 'posts' );?>
 
-<!-- Pagination -->
-<?php get_template_part( 'partials/partial', 'pagination' );?>
+<!-- Load More -->
+<?php get_template_part( 'partials/partial', 'load-more' );?>
 
 </main>
 

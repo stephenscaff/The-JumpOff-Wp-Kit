@@ -5,7 +5,7 @@
  * The Partial for Post Footers, used on blogposts and the mondalite post type.
  *
  * @author    Stephen Scaff
- * @package   Jumpoff
+ * @package   Partials
  * @version   1.0
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 <footer class="post-footer">
   <div class="grid">
-    <div class="grid__col g-6 centered">
+    <div class="post-footer__content">
       <!-- Post Cats -->
       <aside class="post-cats">
         <span class="post-cats__title">Posted In : </span>

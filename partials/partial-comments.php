@@ -3,7 +3,7 @@
  * Post: COmments
  *
  * @author    Stephen Scaff
- * @package   jumpoff
+ * @package   partials
  * @version     1.0
  */
 

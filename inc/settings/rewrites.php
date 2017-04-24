@@ -32,5 +32,3 @@ function jumpoff_taxonomy_slug_rewrite($wp_rewrite) {
   $wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_filter('generate_rewrite_rules', 'jumpoff_taxonomy_slug_rewrite');
-
-?>

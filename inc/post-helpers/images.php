@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 * @param $echo (boolean) : cho (default) or return image
 **/ 
 
-function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
+function jumpoff_ft_img($size, $post_id = '') {
   global $post, $posts;
 
   // Allow loading posts by ID instead of relying on global $post/the loop
@@ -96,15 +96,8 @@ function jumpoff_ft_img($size, $post_id = '', $echo = 'true') {
     }   
   }  
 
-  // If $echo is false, return, else echo.
-  // Needed so we can create a ft image shortcode
-  // @since 1.2
-  // @see inc/funcitons/shortcodes.php
-  if ( $echo == FALSE  ) {
     return $related_img;
-  } else {
-    echo $related_img;
-  }
+
 }
 
 /**

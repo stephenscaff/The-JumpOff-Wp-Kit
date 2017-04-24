@@ -5,7 +5,7 @@
  * The Partial for Post Footers, used on blogposts and the mondalite post type.
  *
  * @author    Stephen Scaff
- * @package   Jumpoff
+ * @package   partials
  * @version   1.0
  */
 

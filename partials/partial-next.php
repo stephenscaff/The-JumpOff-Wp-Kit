@@ -1,39 +1,34 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 /**
- *  Section: Next Post
+ * Partial: Next
+ * Partial for showing links to the next post
  *
- *  @author     Stephen Scaff
- *  @package    partials
- *  @version    1.0
- *  @uses       cptNav::$loop_navigation_find to find first/last posts
- *  @uses       jumpoff_prev_link() which calls our cptNav class
- *  
- *              $format='%link &raquo;', 
- *              $link='%title', 
- *              $in_same_term = false, 
- *              $excluded_terms = '', 
- *              $taxonomy = 'category'
+ * @author    Thomas Vaeth
+ * @package   partials/partial-next
+ * @version   1.0
  */
-if (is_post_type('resources')){
-  $in_term = TRUE;
-  $tax = 'resource-types';
-} else{
-  $in_term = FALSE;
-  $tax = 'product-filters';
-}
-?>
-<section class="pagination pagination--next">
-<?php jumpoff_next_link(  '%link', '
-  <div class="pagination__content">
-    <span class="pagination__meta">Previous</span>
-    <span class="pagination__title">%title</span>
-  </div>', $in_term, '', $tax); ?>
-<?php jumpoff_prev_link(  '%link', '
-  <div class="pagination__content">
-    <span class="pagination__meta">Next</span>
-    <span class="pagination__title">%title</span>
-  </div>', $in_term, 'true', $tax); ?>
-</section>
- 
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+$next_post = get_adjacent_post(false, '', true);
+$post_type = get_post_type();
+?>
+
+<?php 
+if (is_singular('post') OR is_singular('events')) :
+  if ($next_post) :
+    include(locate_template('partials/content/content-next.php'));
+  else :
+  
+  $args = array(
+    'post_type' => $post_type,
+    'posts_per_page' => 1,
+    'orderby' => 'date',
+    'order' => 'DESC'
+  );
+  $next_post_arr = get_posts($args);
+  $next_post = $next_post_arr[0]->ID;
+    include(locate_template('partials/content/content-next.php'));
+  endif; 
+endif;
+?>

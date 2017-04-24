@@ -9,6 +9,10 @@
   padding: $pad-sm 0; 
 }
 
+.pad-med{
+  padding: $pad-med 0; 
+}
+
 .pad-lg{
   padding: $pad-lg 0;
 }
@@ -23,6 +27,14 @@
 
 .no-pad{
   padding: 0;
+}
+
+.mb{
+  margin-bottom: $mb;
+}
+
+.mb-2{
+  margin-bottom: $mb * 2;
 }
 
 //----------------------------------------------
@@ -41,7 +53,7 @@
   clip: rect(0,0,0,0);
 }
 
-.no-interaction {
+.no-pointer {
   pointer-events: none !important;
 }
 

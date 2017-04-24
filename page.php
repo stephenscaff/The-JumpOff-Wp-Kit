@@ -24,9 +24,11 @@ get_header(); ?>
 <!-- Content -->
 <section class="content pad">
   <div class="grid-sm">
-<?php while (have_posts()) : the_post();
-    the_content();
-   endwhile; ?> 
+  <?php 
+    while (have_posts()) : the_post();
+      the_content();
+   endwhile; 
+  ?> 
   </div>
 </section>
 

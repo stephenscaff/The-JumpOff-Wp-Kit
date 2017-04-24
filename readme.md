@@ -22,10 +22,7 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |       |-- fonts.min.scss    # minified base64 font-face
 |
 |   |-- js 
-|       |-- plugins.min.js    # all minified plugins
-|       |-- scripts.min.js    # minified init and one off scripts
-|       |-- jquery.min.js  
-|       |-- modernizr.js   
+|       |-- app.min.js   
 |
 |-- kit/                      # Working files
 |   |-- assets/               # scss and js
@@ -33,34 +30,50 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 |           |-- app.scss      # main scss imports
 |           |-- fonts.scss    # font base64 imports
 |
-|           |-- base/
+|           |-- tools/
 |               |--- _config.scss
-|               |--- _mixins.scss
-|               |--- _colors.scss
+|               |--- _extends-type.scss
+|               |--- _mixins-type.scss
+|               |--- _mixins-modules.scss
+|               |--- _mixins-animations.scss 
+|           |-- base/
+|               |--- _forms.scss
+|               |--- _links.scss
+|               |--- _lists.scss
 |               |--  _media.scss  
-|               |--  typography.scss      
+|               |--  _typography.scss      
 |           |--components/  
 |               |-- _animations.scss  
 |               |-- _buttons.scss      
 |               |-- _grid.scss    
 |               |-- etc...  
-|           |--partials/
-|               |-- _header.scss
-|               |-- _footer.scss       
-|               |-- _posts.scss     
-|           |--pages/
-|               |-- _home.scss      
-|               |-- _about.scss  
+|           |--partials/regions/
+|               |-- _header-site.scss
+|               |-- _header-menu.scss
+|               |-- _header-drawer.scss
+|               |-- _footer-site.scss       
+|           |--utils/
+|               |-- _helpers.scss    
+|               |-- _helpers-decor.scss    
+|               |-- _helpers-colors.scss      
+|               |-- _themes.scss  
+|               |-- _grid.scss  
+|               |-- _animations-keyframes.scss  
+|               |-- _animations-scrolling.scss  
 |               |-- _etc...  
 |           |-- vendor/ 
-|               |-- _normalizer.scss 
+|               |-- _bg-vids.scss 
+|               |-- _slick.scss 
+|               |-- _etc...  
 |
-|       |-- js/             # js files
-|           |-- scripts.js  # working scripts
-|           |-- plugins.js  # imported plugins
-|           |-- plugins/    # plugin import files
-|               |-- _easings.js   
-|               |-- _tabs.js
+|       |-- js/                   # js files
+|           |-- _init.js          # working scripts
+|           |-- app.js            # imported components and inits
+|           |-- components/       # components
+|               |-- _popups.js   
+|               |-- _page-transitions.js
+|               |-- _instagrammin.js
+|               |-- signup.js
 |               |-- _etc...   
 |
 ```
@@ -68,44 +81,31 @@ For Wp, we organize loops and partials into a partials folder, and various inclu
 ## Wordpress Structre
 
 ```
+|-- acf-json/                         # JSON Stored custom fields
+|      
 |-- inc/                      
-|   |-- admin-styles/      
-|       |-- admin-styles.min.css     # Admin Styles, minifed
-|       |-- admin-styles.scss        # Admin styles, working
+|   |-- admin/      
+|   |-- cleanup/  
+|   |-- feeds/                     
+|   |-- fields/                    
+|       |-- class-acf-modules.php     
+|   |-- helpers/                  
+|   |-- load-more/                         
+|   |-- loaders/       
+|   |-- paths/                  
+|   |-- post-helpers/                       
+|   |-- post-types/  
+|   |-- settings/
+|   |-- shortcodes/  
+|   |-- utils/   
+|   |-- woo/    
+
+|-- partials 
+|   |-- content/   
+|   |-- modules/
 |
-|   |-- cpts 
-|       |-- post-types.php           # Custom Post Types & Taxonomies
-|
-|   |-- customfields
-|       |-- custom-fields.php        # custom-fields saves
-|
-|   |-- functions                    # Functions, called in functions.php
-|       |-- admin.php                # admin related functions (appearance, editor, post filters)
-|       |-- settings.php             # wp defulat settings (images, permalinks, etc)
-|       |-- theme-support.php        # register theme support (thumbnails, post formats, etc)
-|       |-- styles-scripts.php       # Scripts and Styles load and enqueue  
-|       |-- cleanup.php              # Cleanups 
-|       |-- users.php                # User related functions 
-|       |-- dash.php                 # Dashboard related functions 
-|       |-- editor.php               # Post Editor 
-|       |-- helpers.php              # Helpers (excerpts, paths, cats, etc)
-|       |-- loops.php                # Modular Loop helpers
-|       |-- nav.php                  # Nav functions
-|       |-- pagination.php           # Paginaiton
-|       |-- socials.php              # Social integration funcitons
-|       |-- users.php                # User related functions 
-|
-|-- page-templates/                  # Custom Page Templates
-|   |-- home.php                
-|
-|-- partials/                        # Partials, Loops, and modular elements
-|   |-- content/                     # Loop content
-|       |-- content-posts.php        # scss files
-|       |-- content-etc.php         
-|   |-- partials-head.php            # global head content, called in header.php
-|   |-- partials-header.php          # global header content, called in header.php
-|   |-- partials-footer.php          # global footer content, called in header.php
-|   |-- post-author.php              # modular sections
-|
-|-- resources/                       # a place to save working files and notes, ie PSDs, Icon Project Json files, etc
+|-- woocommerce/                      # Woo tempalte overrides
+|-- woocommerce-swatches/             # Woo tempalte overrides
+|-- woocommerc-gateway-stripe/        # Woo tempalte overrides
+
 ```

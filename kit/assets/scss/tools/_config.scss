@@ -12,9 +12,9 @@
 // ----------------------------------------------
 // Fonts
 //-----------------------------------------------
-$font-header: "idealsans", Helvetica, sans-serif;
+$font-header: "verlag", Helvetica, sans-serif;
 $font-paragraph: "tiempos", Georgia, serif;
-$font-preheader: "arvo", Helvetica, sans-serif;
+
 
 // ----------------------------------------------
 // Line Height
@@ -38,28 +38,30 @@ $font-xxxsmall: 0.6em;
 // -----------------------------------------------
 // Paddings
 //-----------------------------------------------
-$pad-xl:8em;
-$pad-lg:6em;
+$pad-xl:  8em;
+$pad-lg:  6em;
 $pad-med: 5em;
-$pad: 3em;
-$pad-sm: 2em;
+$pad:     3em;
+$pad-sm:  2em;
+
+//-----------------------------------------------
+// Constant Margin Bottom
+//-----------------------------------------------
+$mb: $pad / 2;
 
 // ----------------------------------------------
 // Grid
 //-----------------------------------------------
-//$grid-max-width: 67em;
 $grid-cols: 12;
-// Grid col sizes
 $grid-col: 100% / $grid-cols;
-// Grid col pad
 $grid-col-pad: 1.5em;
 $grid-gutter: 2%;
+$grid-width: 95%;
 $grid-max-width-sm: 42em;
 $grid-max-width: 60em; 
 $grid-max-width-med: 70em;
 $grid-max-width-lg: 80%;
 $grid-max-width-xl: 95%;
-$grid-width: 95%;
 
 // ----------------------------------------------
 // MQs
@@ -84,17 +86,14 @@ $mq-xxxlarge: 130em;
 //-----------------------------------------------
 $color-alpha:     #C43A31;
 $color-beta:      #003a49;
-
 $color-white:     #fff;
 $color-light:     rgba(255,255,255,0.8);
 $color-dark:      rgba(0,0,0,0.8);
-
 $color-lightgrey: #fbfbfb;
 $color-grey:      #d7d7d7;
 $color-midgrey:   #a7a6a6;
 $color-darkgrey:  #095c69;
 $color-black:      #111;
-
 $color-alert:     #c43a31;
 $color-success:   #1ABC9C;
 

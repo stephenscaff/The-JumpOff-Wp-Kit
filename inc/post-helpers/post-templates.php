@@ -34,7 +34,7 @@ function jumpoff_text_limit($string, $length, $replacer) {
 function jumpoff_excerpt($characters, $rep='...') {
   $excerpt = get_the_excerpt('', '', false);
   $shortened_excerpt = jumpoff_text_limit($excerpt, $characters, $rep);
-  echo $shortened_excerpt;
+  return $shortened_excerpt;
 }
 
 /**

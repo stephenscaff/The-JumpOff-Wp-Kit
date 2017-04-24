@@ -1,16 +1,40 @@
-
 //----------------------------------------------   
 //  Global Font Styles
-//  @description: create extendable and global font/header styles
-//                _base/typography.scss handles header sizings and setup.
-//                You create titles and subtitles here.
+//  Extendable and global font/header styles
+//  _base/typography.scss handles header sizings and setup.
 //----------------------------------------------- 
+%font-headline{
+  font-family: $font-header;
+  font-size: 2.25em;
+  text-transform: none;
+  letter-spacing: 0;
+
+  @media (min-width: $mq-med){
+    font-size: 5vw;
+  }
+}
+
 %font-title{
-  text-transform: uppercase;
   font-family: $font-header;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.175em;
+}
+
+%font-title-sans{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+
+%font-pretitle{
+  font-family: $font-paragraph;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: $font-xsmall;
 }
 
 %font-subtitle{
@@ -28,9 +52,11 @@
 }
 
 %font-links{
-  font-family: $font-paragraph;
+  font-family: $font-header;
+  font-size: $font-xsmall;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.2em;
 }
 
 /*----------------------------------------------   
@@ -38,17 +64,25 @@
 -----------------------------------------------  */
 %font-lead,
 .font-lead{
-  font-size: 120%;
+  font-size: 110%;
  -webkit-hyphens: none;
  -moz-hyphens: none;
  -ms-hyphens: none;
  hyphens: none;
  margin-bottom: 0.8em;
  line-height: 1.6;
- @media (min-width: $mq-med) {
-   font-size: 135%;
- }
+  @media (min-width: $mq-med) {
+    font-size: 135%;
+  }
 }
+
+.has-lead{
+  p:first-of-type{
+    @extend %font-lead;
+  }
+}
+
+
 //----------------------------------------------
 //  Example: Styles for BEM elements
 //----------------------------------------------
@@ -99,20 +133,33 @@
 //  @param: $font_lg  - at Large break
 //  @param: $font_xl  - at Xlarge break  
 //----------------------------------------------
-@mixin font-rwd($font_sm, $font_med, $font_lg, $font_xl) {
-  font-size: $fontSm;
- 
-  @media (min-width: $mq-med) {
-    font-size: $font_med;
-  } 
-  @media (min-width: $mq-large) {
-    font-size: $font_lg;
+@mixin font-rwd($sm:null, $med:null, $lg:null, $xl:null, $xxl:null) {
+  font-size: $sm;
+  
+  @if $med {
+    @media(min-width: $mq-med){
+      font-size: $med;
+    }
   }
-  @media (min-width: $mq-xlarge) {
-    font-size: $font_xl;
-  }  
-}
 
+  @if $lg {
+    @media(min-width: $mq-large){
+      font-size: $lg;
+    }
+  }
+
+  @if $xl {
+    @media(min-width: $mq-xlarge){
+      font-size: $xl;
+    }
+  }
+
+  @if $xxl {
+    @media(min-width: $mq-xxlarge){
+      font-size: $xxl;
+    }
+  }
+}
 //----------------------------------------------
 //  unstyled-list
 //  Creates an unstyled list, if you don't reset all lists
@@ -122,3 +169,14 @@
   padding-left: 0;
   list-style-type: none;
 }
+//----------------------------------------------
+//  Text Overflow
+//  Ellipsis text to handle overflows
+//----------------------------------------------
+@mixin text-overflow{
+  max-width: 98%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+

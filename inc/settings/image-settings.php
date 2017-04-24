@@ -22,10 +22,12 @@ if (!class_exists('WpImageSettings ')) {
     add_filter('init',  array($this, 'large_images'));
     add_filter('init',  array($this, 'add_image_sizes'));
     add_filter('image_size_names_choose',  array($this, 'add_images_to_admin'));
-    add_filter('post_thumbnail_html',  array($this, 'remove_wxh_attribute', 10 ));
-    add_filter('image_send_to_editor',  array($this, 'remove_wxh_attribute', 10 ));
+    add_filter('post_thumbnail_html',  array($this, 'remove_wxh_attribute' ));
+
+    // Comment out the following method calls for src set images
+    $this->image_output();
+    //add_filter('image_send_to_editor',  array($this, 'remove_wxh_attribute', 10 ));
     add_action('after_setup_theme',  array($this, 'image_output_settings'));
-    add_filter( 'image_send_to_editor', array( $this, 'image_wrapper', 10, 9 ) );
   }
 
 /**
@@ -84,7 +86,7 @@ if (!class_exists('WpImageSettings ')) {
   function add_image_sizes(){
     // New Image: 'Mast'
     add_image_size( 'mast', 2000, 1200, true );
-    add_image_size( 'small', 750, 450, true );
+    add_image_size( 'team', 1250, 1000, true );
   }
 
 /**
@@ -97,7 +99,7 @@ if (!class_exists('WpImageSettings ')) {
 
     return array_merge( $sizes, array(
       'mast' => __('Mastheads'),
-      'small' => __('Small'),
+      'team' => __('Team'),
     ));
   }
 
@@ -108,8 +110,8 @@ if (!class_exists('WpImageSettings ')) {
  *  @return $html 
  */
   function remove_wxh_attribute( $html ) {
-   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
-   return $html;
+    $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+    return $html;
   }
 
 /**
@@ -119,6 +121,7 @@ if (!class_exists('WpImageSettings ')) {
  *  @return $html 
  */
   function image_output_settings() {
+
    // no alignment
    update_option('image_default_align', 'none' );
    // don't auto link
@@ -128,18 +131,24 @@ if (!class_exists('WpImageSettings ')) {
   }
 
   /**
-   * Image Wrapper
+   * Image output
+   * Wraps post images in a figure/figcaption
    */
-  function image_wrapper($html, $id, $caption, $title, $align, $url, $size, $alt) {
-    $src  = wp_get_attachment_image_src( $id, $size, false );
-    $output = "<figure id='media-" .$id . "' class='align-" . $align . "'>";
-    $output .= "<img src='" . $src[0] . "' alt='" . $alt . "' />";
-    if ($caption) {
-      $output .= "<figcaption>" . $caption ."</figcaption>";
+  function image_output(){
+  
+    add_filter( 'image_send_to_editor', 'image_wrapper', 10, 9 );
+
+    function image_wrapper($html, $id, $caption, $title, $align, $url, $size, $alt) {
+      $src  = wp_get_attachment_image_src( $id, $size, false );
+      $output = "<figure id='media-" .$id . "' class='align-" . $align . "'>";
+      $output .= "<img src='" . $src[0] . "' alt='" . $alt . "' />";
+      if ($caption) {
+        $output .= "<figcaption>" . $caption ."</figcaption>";
+      }
+      $output .= "</figure>";
+      return $output;
     }
-    $output .= "</figure>";
-    return $output;
+    }
   }
-}
 }
 new WpImageSettings ();

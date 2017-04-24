@@ -1,22 +1,4 @@
 //----------------------------------------------
-//  MODULE MIXINS
-//  Positioning
-//  Backgrounds
-//  Sections (mast)
-//----------------------------------------------
-
-//----------------------------------------------
-//  Microclearfix
-//----------------------------------------------
-@mixin cf {
-  &:after {
-    content: '';
-    display: table;
-    clear: both;
-  }
-}
-
-//----------------------------------------------
 //  abs-center()
 //  @description: absolutely centers and element
 //----------------------------------------------
@@ -36,8 +18,6 @@
   margin: 0 auto;
   text-align:center;
 }
-
-
 
 //----------------------------------------------
 //  trans-center()
@@ -79,7 +59,7 @@
 //  Basic styles for positioning a psedu element
 //  inside it's parent so it fills available space.
 //----------------------------------------------
-@mixin pseudo-element($zindex: 0) {
+@mixin pseudo-el($zindex: 0) {
   z-index: $zindex;
   content: '';
   position: absolute;

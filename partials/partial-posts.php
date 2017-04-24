@@ -5,8 +5,8 @@
  * Outputs default posts loop
  *
  * @author    Stephen Scaff
- * @package   jumpoff/content/posts-related
- * @version     1.0
+ * @package   partials
+ * @version   1.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

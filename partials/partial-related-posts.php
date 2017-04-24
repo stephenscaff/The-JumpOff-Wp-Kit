@@ -5,7 +5,7 @@
  * The section for Related Posts.
  *
  * @author    Stephen Scaff
- * @package   jumpoff/content/posts-related
+ * @package   partials
  * @version     1.0
  */
 
@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 ?>
 
-<!-- INRIX BLOG -->
 <section class="heading bg-lightgrey">
   <header class="grid-lg">
     <h2 class="heading__title">Related News</h2>
