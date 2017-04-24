@@ -3,14 +3,11 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /**
- *  Post Type: Clients
+ *  Custom Dash
  *
- *  Slug : press-releases
- *  Supports : title','thumbnail', 'editor', 'excerpt'
+ *  Class to establish a new dash/welcome view
  *
  *  @version    1.0
- *  @see        single-press-releases
- *  @see        archive-press-releases
  */
 
 class CustomDash {

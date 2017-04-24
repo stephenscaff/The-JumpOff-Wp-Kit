@@ -24,3 +24,8 @@ require_once('inc/post-types/includes.php');
 
 require_once('inc/settings/includes.php');
 
+require_once('inc/load-more/load-more.php');
+
+require_once('inc/utils/post-duplicator.php');
+
+

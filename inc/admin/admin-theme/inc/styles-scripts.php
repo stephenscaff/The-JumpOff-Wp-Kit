@@ -15,8 +15,7 @@ class AdminStylesScripts {
   }
 
   function load_styles(){
-    wp_enqueue_style('admin', get_template_directory_uri() . '/inc/admin/admin-theme/assets/css/admin.css', false );
-    wp_enqueue_style( 'icons',  get_template_directory_uri() . '/assets/css/fonts.min.css', false );
+    wp_enqueue_style('admin', get_template_directory_uri() . '/inc/admin/admin-theme/assets/css/admin.min.css', false );
   }
 
   /**
