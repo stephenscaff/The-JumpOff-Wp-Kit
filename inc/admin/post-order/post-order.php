@@ -91,9 +91,9 @@ class PostOrder_Engine {
         if ($this->_check_load_script_css()) {
             wp_enqueue_script('jquery');
             wp_enqueue_script('jquery-ui-sortable');
-            wp_enqueue_script('orderjs', get_template_directory_uri() . '/inc/admin/admin-post-order/assets/post_order.js', array('jquery'), null, true);
+            wp_enqueue_script('orderjs', get_template_directory_uri() . '/inc/admin/post-order/assets/post_order.js', array('jquery'), null, true);
 
-            wp_enqueue_style('order', get_template_directory_uri() . '/inc/admin/admin-post-order/assets/post_order.css', array(), null);
+            wp_enqueue_style('order', get_template_directory_uri() . '/inc/admin/post-order/assets/post_order.css', array(), null);
         }
     }
 
